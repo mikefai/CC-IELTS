@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>IELTS Speaking · Part 2 Long Turn · Band 5–6</title>
+<style>
+:root{--bg:#f4f7fb;--card:#fff;--ink:#182234;--muted:#5c6b80;--line:#dfe6ef;--accent:#1d4ed8;--accent-soft:#e8eefc;--green:#15803d;--green-soft:#e5f5eb;--red:#b91c1c;--red-soft:#fdeaea;--amber:#b45309;--amber-soft:#fdf1e2}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:"Segoe UI",system-ui,-apple-system,sans-serif;background:var(--bg);color:var(--ink);line-height:1.6}
+.wrap{max-width:820px;margin:0 auto;padding:1.5rem 1.25rem 4rem}
+header.top{position:sticky;top:0;z-index:10;background:rgba(244,247,251,.92);backdrop-filter:blur(6px);border-bottom:1px solid var(--line);margin:-1.5rem -1.25rem 1.5rem;padding:.8rem 1.25rem;display:flex;justify-content:space-between;align-items:center}
+.crumb{font-size:.82rem;color:var(--muted);text-decoration:none}
+.pill{font-size:.72rem;font-weight:700;background:var(--accent);color:#fff;border-radius:999px;padding:.2rem .65rem;letter-spacing:.05em}
+h1{font-size:1.65rem;margin:.2rem 0 .3rem}
+.sub{color:var(--muted);font-size:.95rem;margin-bottom:1.4rem}
+h2{font-size:1.12rem;margin:1.8rem 0 .6rem;color:var(--accent)}
+h2::before{content:"";display:inline-block;width:.55rem;height:.55rem;border-radius:3px;background:var(--accent);margin-right:.5rem;vertical-align:2px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:1.2rem 1.3rem;margin-bottom:1rem;box-shadow:0 1px 3px rgba(24,34,52,.05)}
+.strat{display:flex;gap:.8rem;align-items:flex-start}
+.strat+.strat{margin-top:.9rem}
+.strat .num{flex:0 0 1.7rem;height:1.7rem;border-radius:50%;background:var(--accent-soft);color:var(--accent);font-weight:800;display:flex;align-items:center;justify-content:center;font-size:.9rem;margin-top:.1rem}
+.strat p{font-size:.92rem;color:var(--muted)}
+.cuecard{background:#fffdf5;border:2px solid #e8d9a8;border-radius:14px;padding:1.4rem;text-align:center;box-shadow:0 2px 8px rgba(180,83,9,.08)}
+.cuecard h3{font-size:1.05rem;color:var(--amber);margin-bottom:.6rem}
+.cuecard p{font-size:1.02rem}
+.cuecard ul{list-style:none;margin:.7rem 0;font-size:.95rem;color:var(--muted)}
+.btn{display:inline-block;background:var(--accent);color:#fff;border:none;border-radius:10px;padding:.6rem 1.3rem;font-size:.95rem;font-weight:700;cursor:pointer;font-family:inherit}
+.btn.ghost{background:var(--card);color:var(--accent);border:1.5px solid var(--accent)}
+.btn:disabled{opacity:.5;cursor:not-allowed}
+.timer{font-variant-numeric:tabular-nums;font-weight:800;font-size:2.4rem;text-align:center}
+.timer.prep{color:var(--amber)}
+.timer.speak{color:var(--green)}
+.phrase{display:inline-block;background:var(--accent-soft);color:var(--accent);border-radius:999px;padding:.25rem .75rem;font-size:.85rem;font-weight:600;margin:.2rem}
+.hidden{display:none}
+footer{margin-top:2.5rem;border-top:1px solid var(--line);padding-top:1rem;font-size:.85rem;color:var(--muted)}
+footer a{color:var(--accent);text-decoration:none}
+</style>
+</head>
+<body>
+<header class="top">
+  <a class="crumb" href="../../index.html">← Speaking hub</a>
+  <span class="pill">SPEAKING · BAND 5–6 · PART 2</span>
+</header>
+<div class="wrap">
+<h1>The Long Turn: One Minute of Notes, Two Minutes of Talk</h1>
+<p class="sub">Part 2 is the most predictable part of the Speaking test: you always get a cue card, one minute to prepare, and up to two minutes to speak. Train the format until it feels routine. <strong>3 strategies only.</strong></p>
+
+<h2>Today's three strategies</h2>
+<div class="card">
+<div class="strat"><span class="num">1</span><div><b>Write keywords, never sentences</b><p>In one minute you can write about eight words. Nouns and a few verbs — "grandmother · Sunday · kitchen · recipe". Sentences waste time you need for thinking.</p></div></div>
+<div class="strat"><span class="num">2</span><div><b>Use the PPF shape</b><p>Say what the situation <strong>w</strong>as like (Past), how it works <strong>n</strong>ow (Present), and how you expect it to change (Future). PPF guarantees you keep talking for two minutes.</p></div></div>
+<div class="strat"><span class="num">3</span><div><b>Signpost out loud</b><p>Openers and connectors buy thinking time and sound fluent: "I'd like to talk about…", "What made it special was…", "Looking ahead, I suppose…".</p></div></div>
+</div>
+<h2>Cue-card trainer</h2>
+<div class="card">
+<div class="cuecard">
+<h3>Cue Card</h3>
+<p id="cue-topic">Describe a skill you would like to learn.</p>
+<ul>
+<li id="cue-1">what the skill is</li>
+<li id="cue-2">how you would learn it</li>
+<li id="cue-3">how long you think it would take</li>
+<li id="cue-4">and explain why you want to learn it</li>
+</ul>
+</div>
+<div class="timer prep hidden" id="clock">1:00</div>
+<p style="text-align:center;margin-top:.8rem">
+<button class="btn" id="prepBtn">Start 1-minute prep</button>
+<button class="btn ghost" id="speakBtn" disabled>Start 2-minute talk</button>
+<button class="btn ghost" id="nextBtn">New cue card</button>
+</p>
+</div>
+
+<h2>Signposting bank — say these out loud</h2>
+<div class="card">
+<p><span class="phrase">I'd like to talk about…</span> <span class="phrase">What made it special was…</span> <span class="phrase">At the time, I remember…</span> <span class="phrase">These days it's more like…</span> <span class="phrase">Looking ahead, I suppose…</span> <span class="phrase">So all in all…</span></p>
+<p class="hidden" id="ppf" style="margin-top:.6rem;font-size:.92rem;color:var(--muted)">PPF shape: <strong>Past</strong> → how it began · <strong>Present</strong> → the situation now · <strong>Future</strong> → what you expect or hope. Aim for roughly 40 seconds each.</p>
+</div>
+
+<footer>
+<p>Answer key balance check: n/a (speaking production task — no MCQ key). ✅ Assessment reminder: fluency, vocabulary, grammar, pronunciation — Part 2 rewards <em>keeping going</em>, not perfect ideas.</p>
+<p><a href="../../index.html">← Speaking section hub</a> · <a href="../../../index.html">IELTS Materials Hub</a></p>
+</footer>
+<script>
+var CARDS=[
+{t:"Describe a skill you would like to learn.",p:["what the skill is","how you would learn it","how long you think it would take","and explain why you want to learn it"]},
+{t:"Describe a place you like to go to relax.",p:["where it is","how often you go there","what you do there","and explain why it helps you relax"]},
+{t:"Describe a person who has influenced you.",p:["who this person is","how you know them","what they have done","and explain why they have influenced you"]},
+{t:"Describe a decision you made that was difficult.",p:["what the decision was","when you made it","what made it difficult","and explain how you felt about it afterwards"]},
+{t:"Describe a book or article you enjoyed reading.",p:["what it was about","when you read it","why you chose it","and explain what you learned from it"]},
+{t:"Describe a meal you remember well.",p:["where it was","who you were with","what you ate","and explain why you remember this meal"]},
+{t:"Describe something you own that is important to you.",p:["what it is","how you got it","how you use it","and explain why it is important to you"]},
+{t:"Describe a journey you would like to make in the future.",p:["where you would go","who you would go with","what you would do there","and explain why you would like to make this journey"]}
+];
+var ci=0;
+function showCard(){
+  var c=CARDS[ci];
+  document.getElementById("cue-topic").textContent=c.t;
+  c.p.forEach(function(v,i){document.getElementById("cue-"+(i+1)).textContent=v});
+  document.getElementById("clock").classList.add("hidden");
+  document.getElementById("prepBtn").disabled=false;
+  document.getElementById("speakBtn").disabled=true;
+}
+function run(seconds,cls,cb){
+  var end=Date.now()+seconds*1000;
+  var el=document.getElementById("clock");
+  el.classList.remove("hidden","prep","speak");el.classList.add(cls);
+  var t=setInterval(function(){
+    var s=Math.max(0,(end-Date.now())/1000);
+    el.textContent=Math.floor(s/60)+":"+("0"+Math.floor(s%60)).slice(-2);
+    if(s<=0){clearInterval(t);cb()}
+  },250);
+}
+document.getElementById("prepBtn").addEventListener("click",function(){
+  this.disabled=true;
+  run(60,"prep",function(){
+    document.getElementById("prepBtn").disabled=false;
+    document.getElementById("speakBtn").disabled=false;
+    document.getElementById("ppf").classList.remove("hidden");
+  });
+});
+document.getElementById("speakBtn").addEventListener("click",function(){
+  this.disabled=true;document.getElementById("prepBtn").disabled=true;
+  run(120,"speak",function(){
+    document.getElementById("prepBtn").disabled=false;
+    document.getElementById("clock").textContent="Done — great work!";
+    document.getElementById("clock").classList.add("speak");
+  });
+});
+document.getElementById("nextBtn").addEventListener("click",function(){ci=(ci+1)%CARDS.length;showCard()});
+showCard();
+</script>
+
+</div>
+</body>
+</html>

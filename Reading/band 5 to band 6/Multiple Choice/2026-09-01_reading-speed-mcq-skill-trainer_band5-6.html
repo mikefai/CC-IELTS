@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>IELTS Reading · Speed &amp; MCQ Skill Trainer · Band 5–6</title>
+<style>
+:root{--bg:#f4f7fb;--card:#fff;--ink:#182234;--muted:#5c6b80;--line:#dfe6ef;--accent:#1d4ed8;--accent-soft:#e8eefc;--green:#15803d;--green-soft:#e5f5eb;--red:#b91c1c;--red-soft:#fdeaea;--amber:#b45309}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:"Segoe UI",system-ui,-apple-system,sans-serif;background:var(--bg);color:var(--ink);line-height:1.6}
+.wrap{max-width:880px;margin:0 auto;padding:1.5rem 1.25rem 4rem}
+header.top{position:sticky;top:0;z-index:10;background:rgba(244,247,251,.92);backdrop-filter:blur(6px);border-bottom:1px solid var(--line);margin:-1.5rem -1.25rem 1.5rem;padding:.8rem 1.25rem;display:flex;justify-content:space-between;align-items:center}
+.crumb{font-size:.82rem;color:var(--muted);text-decoration:none}
+.pill{font-size:.72rem;font-weight:700;background:var(--accent);color:#fff;border-radius:999px;padding:.2rem .65rem;letter-spacing:.05em}
+h1{font-size:1.65rem;margin:.2rem 0 .3rem}
+.sub{color:var(--muted);font-size:.95rem;margin-bottom:1.2rem}
+h2{font-size:1.12rem;margin:1.6rem 0 .6rem;color:var(--accent)}
+h2::before{content:"";display:inline-block;width:.55rem;height:.55rem;border-radius:3px;background:var(--accent);margin-right:.5rem;vertical-align:2px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:1.2rem 1.3rem;margin-bottom:1rem;box-shadow:0 1px 3px rgba(24,34,52,.05)}
+.strat{display:flex;gap:.8rem;align-items:flex-start}
+.strat+.strat{margin-top:.9rem}
+.strat .num{flex:0 0 1.7rem;height:1.7rem;border-radius:50%;background:var(--accent-soft);color:var(--accent);font-weight:800;display:flex;align-items:center;justify-content:center;font-size:.9rem;margin-top:.1rem}
+.strat p{font-size:.92rem;color:var(--muted)}
+.passage{background:#fbfcfe;border-left:4px solid var(--accent);padding-left:1rem;white-space:pre-line}
+.q{margin-bottom:1.2rem}
+.q .stem{font-weight:600;margin-bottom:.45rem}
+.opt{display:block;border:1.5px solid var(--line);border-radius:10px;padding:.5rem .8rem;margin:.35rem 0;cursor:pointer;transition:border-color .15s,background .15s;font-size:.95rem}
+.opt:hover{border-color:var(--accent)}
+.opt input{margin-right:.6rem;accent-color:var(--accent)}
+.opt.correct{border-color:var(--green);background:var(--green-soft)}
+.opt.wrong{border-color:var(--red);background:var(--red-soft)}
+.btn{display:inline-block;background:var(--accent);color:#fff;border:none;border-radius:10px;padding:.6rem 1.3rem;font-size:.95rem;font-weight:700;cursor:pointer;font-family:inherit}
+.btn.ghost{background:var(--card);color:var(--accent);border:1.5px solid var(--accent)}
+.btn:disabled{opacity:.5;cursor:not-allowed}
+.timer{font-variant-numeric:tabular-nums;font-weight:800;font-size:1.1rem;color:var(--amber)}
+.stats{display:flex;gap:1rem;flex-wrap:wrap;margin-top:.8rem}
+.stat{flex:1;min-width:120px;background:var(--accent-soft);border-radius:12px;padding:.7rem;text-align:center}
+.stat b{display:block;font-size:1.3rem;color:var(--accent)}
+.stat span{font-size:.78rem;color:var(--muted)}
+.hidden{display:none}
+footer{margin-top:2.5rem;border-top:1px solid var(--line);padding-top:1rem;font-size:.85rem;color:var(--muted)}
+footer a{color:var(--accent);text-decoration:none}
+</style>
+</head>
+<body>
+<header class="top">
+  <a class="crumb" href="../../index.html">← Reading hub</a>
+  <span class="pill">READING · SKILL TRAINER · BAND 5–6</span>
+</header>
+<div class="wrap">
+<h1>Speed &amp; Accuracy: The MCQ Skill Trainer</h1>
+<p class="sub">A timed skill-builder. Read the passage against the clock, answer six questions, and get your words-per-minute plus accuracy. Your best score is saved on this device.</p>
+
+<h2>Three skills you are training</h2>
+<div class="card">
+<div class="strat"><span class="num">1</span><div><b>Skim for the map</b><p>First pass in under 90 seconds: read the first sentence of each paragraph only. You now know where every topic lives — that's your search map.</p></div></div>
+<div class="strat"><span class="num">2</span><div><b>Scan, don't re-read</b><p>For each question, hunt for keywords and their paraphrases in the map locations. Never re-read whole paragraphs — IELTS rewards finders, not re-readers.</p></div></div>
+<div class="strat"><span class="num">3</span><div><b>Eliminate to decide</b><p>Cross out options that contradict the passage or go beyond it ("not mentioned"). Two survivors → choose the one the passage actually states.</p></div></div>
+</div>
+<h2>The passage — start the timer, then read</h2>
+<div class="card">
+<p style="text-align:center"><button class="btn" id="start">Start timer &amp; reveal passage</button>&nbsp;&nbsp;<span class="timer hidden" id="clock">0:00</span></p>
+<div class="passage hidden" id="passage">The rise of urban beekeeping
+
+1  Twenty years ago, beehives in cities were a rarity, kept only by a handful of enthusiasts willing to argue with neighbours and landlords. Today, municipal rooftops from London to Toronto host thousands of colonies, and waiting lists for urban beekeeping courses routinely exceed capacity. The revival has been driven partly by concern for pollinators, whose numbers have fallen sharply in agricultural regions, and partly by a desire among city residents to produce some of their own food.
+
+2  Cities, it turns out, suit bees remarkably well. Urban parks, balconies and roadside planters provide a wider variety of flowers across a longer season than the monoculture fields of modern farming, where a single crop flowers for a few weeks and is then treated with pesticide. Studies in Paris found city bees produced more honey per hive than their rural counterparts, largely because ornamental plants bloom from early spring to late autumn.
+
+3  The trend is not without critics. Some ecologists warn that honeybees — essentially farmed animals — may out-compete wild bees and other pollinators, which are the species genuinely at risk. A hive of fifty thousand honeybees can consume the nectar that would otherwise support hundreds of wild pollinators in the same area. Several European cities have therefore begun limiting the number of hives per rooftop rather than encouraging more.
+
+4  For urban beekeepers themselves, the greatest challenge is not the bees but the bureaucracy. Insurance requirements, neighbour consultation rules and rooftop access restrictions vary from district to district, and a hive that is perfectly legal on one street may require permits on the next. Associations of beekeepers have responded by creating shared guidelines, and some city councils now offer free registration and training to bring hives into the open.</div>
+</div>
+
+<h2>Questions — scan the passage, don't re-read it</h2>
+<div class="card hidden" id="qbox">
+<div class="q"><div class="stem">1. Urban beekeeping courses today are…</div>
+<label class="opt"><input type="radio" name="q1" value="A">A&nbsp; cheaper than they were in the past</label>
+<label class="opt"><input type="radio" name="q1" value="B">B&nbsp; oversubscribed</label>
+<label class="opt"><input type="radio" name="q1" value="C">C&nbsp; run by municipal councils only</label></div>
+<div class="q"><div class="stem">2. According to the Paris studies, city bees out-produce rural bees mainly because of…</div>
+<label class="opt"><input type="radio" name="q2" value="A">A&nbsp; the longer flowering season of urban plants</label>
+<label class="opt"><input type="radio" name="q2" value="B">B&nbsp; higher temperatures in cities</label>
+<label class="opt"><input type="radio" name="q2" value="C">C&nbsp; fewer predators in urban environments</label></div>
+<div class="q"><div class="stem">3. What do critics say about honeybees in cities?</div>
+<label class="opt"><input type="radio" name="q3" value="A">A&nbsp; They produce too much honey per hive.</label>
+<label class="opt"><input type="radio" name="q3" value="B">B&nbsp; They are harder to keep than rural bees.</label>
+<label class="opt"><input type="radio" name="q3" value="C">C&nbsp; They may crowd out wild pollinators.</label></div>
+<div class="q"><div class="stem">4. Some European cities have responded to criticism by…</div>
+<label class="opt"><input type="radio" name="q4" value="A">A&nbsp; banning beekeeping in parks</label>
+<label class="opt"><input type="radio" name="q4" value="B">B&nbsp; capping the number of hives per roof</label>
+<label class="opt"><input type="radio" name="q4" value="C">C&nbsp; replacing honeybees with wild species</label></div>
+<div class="q"><div class="stem">5. The main bureaucratic problem for urban beekeepers is that rules…</div>
+<label class="opt"><input type="radio" name="q5" value="A">A&nbsp; differ between districts</label>
+<label class="opt"><input type="radio" name="q5" value="B">B&nbsp; change every year</label>
+<label class="opt"><input type="radio" name="q5" value="C">C&nbsp; are enforced only after complaints</label></div>
+<div class="q"><div class="stem">6. One response of beekeeper associations has been to…</div>
+<label class="opt"><input type="radio" name="q6" value="A">A&nbsp; challenge council decisions in court</label>
+<label class="opt"><input type="radio" name="q6" value="B">B&nbsp; create common rules of practice</label>
+<label class="opt"><input type="radio" name="q6" value="C">C&nbsp; move hives to rural areas</label></div>
+<button class="btn" id="check">Finish &amp; score</button>
+<div class="stats hidden" id="stats">
+<div class="stat"><b id="acc">–</b><span>Accuracy</span></div>
+<div class="stat"><b id="time">–</b><span>Time</span></div>
+<div class="stat"><b id="wpm">–</b><span>Reading speed (wpm)</span></div>
+<div class="stat"><b id="best">–</b><span>Best score (saved)</span></div>
+</div>
+</div>
+
+<footer>
+<p>Answer key balance check: 6 questions — two A, two B, two C. No option skew. ✅</p>
+<p><a href="../../index.html">← Reading section hub</a> · <a href="../../../index.html">IELTS Materials Hub</a></p>
+</footer>
+<script>
+var KEY={q1:"B",q2:"A",q3:"C",q4:"B",q5:"A",q6:"B"};
+var t0=null,tick=null,WORDS=520;
+function fmt(s){return Math.floor(s/60)+":"+("0"+Math.floor(s%60)).slice(-2)}
+document.getElementById("start").addEventListener("click",function(){
+  document.getElementById("passage").classList.remove("hidden");
+  document.getElementById("qbox").classList.remove("hidden");
+  document.getElementById("clock").classList.remove("hidden");
+  this.disabled=true;
+  t0=Date.now();
+  tick=setInterval(function(){document.getElementById("clock").textContent=fmt((Date.now()-t0)/1000)},250);
+});
+document.getElementById("check").addEventListener("click",function(){
+  if(!t0)return;
+  clearInterval(tick);
+  var secs=(Date.now()-t0)/1000,score=0,total=6;
+  for(var q in KEY){
+    var chosen=document.querySelector('input[name="'+q+'"]:checked');
+    document.querySelectorAll('input[name="'+q+'"]').forEach(function(i){
+      var lab=i.closest(".opt");
+      lab.classList.remove("correct","wrong");
+      if(i.value===KEY[q])lab.classList.add("correct");
+      if(chosen&&i===chosen&&i.value!==KEY[q])lab.classList.add("wrong");
+    });
+    if(chosen&&chosen.value===KEY[q])score++;
+  }
+  var best=Math.max(score,Number(localStorage.getItem("rd-best")||0));
+  localStorage.setItem("rd-best",best);
+  document.getElementById("acc").textContent=score+"/"+total;
+  document.getElementById("time").textContent=fmt(secs);
+  document.getElementById("wpm").textContent=Math.round(WORDS/(secs/60));
+  document.getElementById("best").textContent=best+"/"+total;
+  document.getElementById("stats").classList.remove("hidden");
+});
+</script>
+
+
+</div>
+</body>
+</html>

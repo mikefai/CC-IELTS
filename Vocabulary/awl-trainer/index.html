@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Academic Word List Trainer · IELTS Vocabulary</title>
+<style>
+:root{--bg:#f4f7fb;--card:#fff;--ink:#182234;--muted:#5c6b80;--line:#dfe6ef;--accent:#1d4ed8;--accent-soft:#e8eefc;--green:#15803d;--green-soft:#e5f5eb;--red:#b91c1c;--red-soft:#fdeaea;--amber:#b45309;--amber-soft:#fdf1e2}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:"Segoe UI",system-ui,-apple-system,sans-serif;background:var(--bg);color:var(--ink);line-height:1.6}
+.wrap{max-width:760px;margin:0 auto;padding:1.5rem 1.25rem 4rem}
+header.top{position:sticky;top:0;z-index:10;background:rgba(244,247,251,.92);backdrop-filter:blur(6px);border-bottom:1px solid var(--line);margin:-1.5rem -1.25rem 1.5rem;padding:.8rem 1.25rem;display:flex;justify-content:space-between;align-items:center}
+.crumb{font-size:.82rem;color:var(--muted);text-decoration:none}
+.pill{font-size:.72rem;font-weight:700;background:var(--accent);color:#fff;border-radius:999px;padding:.2rem .65rem;letter-spacing:.05em}
+h1{font-size:1.6rem;margin:.2rem 0 .3rem}
+.sub{color:var(--muted);font-size:.95rem;margin-bottom:1.2rem}
+.card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:1.4rem;margin-bottom:1rem;box-shadow:0 1px 3px rgba(24,34,52,.05);text-align:center}
+.progressbar{height:8px;background:var(--accent-soft);border-radius:999px;overflow:hidden;margin:.5rem 0 1rem}
+.progressbar i{display:block;height:100%;background:var(--accent);width:0;transition:width .3s}
+.word{font-size:2.2rem;font-weight:800;color:var(--accent);margin:.4rem 0}
+.pos{font-size:.85rem;color:var(--muted);font-style:italic;margin-bottom:.8rem}
+.meaning{font-size:1.05rem;min-height:3.2rem}
+.btn{display:inline-block;background:var(--accent);color:#fff;border:none;border-radius:10px;padding:.6rem 1.3rem;font-size:.95rem;font-weight:700;cursor:pointer;font-family:inherit}
+.btn.ghost{background:var(--card);color:var(--accent);border:1.5px solid var(--accent)}
+.btn.good{background:var(--green)}
+.btn.bad{background:var(--red)}
+.btn:disabled{opacity:.5;cursor:not-allowed}
+.row{display:flex;gap:.7rem;justify-content:center;flex-wrap:wrap;margin-top:1rem}
+.opt{display:block;width:100%;text-align:left;border:1.5px solid var(--line);border-radius:10px;padding:.55rem .8rem;margin:.4rem 0;cursor:pointer;font-size:.95rem;background:var(--card);font-family:inherit;color:var(--ink)}
+.opt:hover{border-color:var(--accent)}
+.opt.correct{border-color:var(--green);background:var(--green-soft)}
+.opt.wrong{border-color:var(--red);background:var(--red-soft)}
+.example{font-size:.92rem;color:var(--muted);background:var(--accent-soft);border-radius:10px;padding:.6rem .8rem;margin-top:.8rem;text-align:left;font-style:italic}
+.scorebar{display:flex;gap:.8rem;justify-content:center;margin-top:1rem;flex-wrap:wrap}
+.chip{font-size:.82rem;font-weight:700;background:var(--accent-soft);color:var(--accent);border-radius:999px;padding:.25rem .8rem}
+.chip.g{background:var(--green-soft);color:var(--green)}
+.chip.r{background:var(--red-soft);color:var(--red)}
+.sets{display:flex;gap:.5rem;flex-wrap:wrap;justify-content:center;margin:.8rem 0}
+.setbtn{border:1.5px solid var(--line);background:var(--card);border-radius:10px;padding:.4rem .8rem;cursor:pointer;font-family:inherit;font-weight:600;color:var(--muted)}
+.setbtn.on{border-color:var(--accent);color:var(--accent);background:var(--accent-soft)}
+footer{margin-top:2rem;border-top:1px solid var(--line);padding-top:1rem;font-size:.85rem;color:var(--muted);text-align:left}
+footer a{color:var(--accent);text-decoration:none}
+.hidden{display:none}
+</style>
+</head>
+<body>
+<header class="top">
+  <a class="crumb" href="../index.html">← Vocabulary hub</a>
+  <span class="pill">VOCABULARY · AWL TRAINER</span>
+</header>
+<div class="wrap">
+<h1>Academic Word List Trainer</h1>
+<p class="sub">The 30 highest-value academic headwords (Academic Word List, subset 1) in three exercise modes. Your mastery level is saved on this device — words you mark "I know it" disappear; words you miss come back.</p>
+<div class="card">
+  <div class="sets" id="sets"></div>
+  <div class="progressbar"><i id="bar"></i></div>
+  <div class="scorebar">
+    <span class="chip" id="c-total">–</span>
+    <span class="chip g" id="c-known">–</span>
+    <span class="chip r" id="c-unknown">–</span>
+  </div>
+</div>
+
+<div class="card" id="stage">
+  <div class="word" id="w-word">—</div>
+  <div class="pos" id="w-pos"></div>
+  <div class="meaning" id="w-meaning">Choose a word set to begin.</div>
+  <div class="example hidden" id="w-example"></div>
+  <div class="row" id="w-row"></div>
+</div>
+
+<footer>
+<p>Word sets: <strong>Set A</strong> research &amp; analysis · <strong>Set B</strong> economy &amp; society · <strong>Set C</strong> ideas &amp; systems. Mode alternates word→meaning and meaning→word. Balance check: n/a (recognition trainer, not an answer key). ✅</p>
+<p><a href="../index.html">← Vocabulary section hub</a> · <a href="../../index.html">IELTS Materials Hub</a></p>
+</footer>
+<script>
+var DATA=[
+{id:1,set:"A",w:"analyse",p:"verb",m:"to examine something in detail in order to understand or explain it",e:"The study analysed the responses of over 2,000 participants."},
+{id:2,set:"A",w:"approach",p:"noun / verb",m:"a way of dealing with something; to move closer to",e:"We need a new approach to urban transport."},
+{id:3,set:"A",w:"assess",p:"verb",m:"to judge the quality or value of something",e:"Teachers assess progress through monthly tests."},
+{id:4,set:"A",w:"concept",p:"noun",m:"an abstract idea or general notion",e:"The concept of fairness differs between cultures."},
+{id:5,set:"A",w:"context",p:"noun",m:"the circumstances that form the setting for an event or statement",e:"Taken out of context, the quotation changes its meaning."},
+{id:6,set:"A",w:"derive",p:"verb",m:"to obtain something from a source; to trace the origin of",e:"The word 'salary' derives from the Latin for salt."},
+{id:7,set:"A",w:"factor",p:"noun",m:"one of several elements that contribute to a result",e:"Diet is only one factor in overall health."},
+{id:8,set:"A",w:"identify",p:"verb",m:"to recognise and name; to establish what something is",e:"Researchers identified three causes of the delay."},
+{id:9,set:"A",w:"indicate",p:"verb",m:"to show, point out or suggest",e:"The results indicate a strong link between sleep and memory."},
+{id:10,set:"A",w:"significant",p:"adj",m:"large enough to be important or noticeable",e:"There was a significant improvement in the second group."},
+{id:11,set:"B",w:"economy",p:"noun",m:"the system of money, industry and trade of a region",e:"Tourism supports the local economy."},
+{id:12,set:"B",w:"income",p:"noun",m:"money received, especially on a regular basis, for work or investment",e:"Household income rose by 4 per cent."},
+{id:13,set:"B",w:"distribute",p:"verb",m:"to give out or spread something over an area",e:"Aid was distributed to families across the region."},
+{id:14,set:"B",w:"establish",p:"verb",m:"to set up or create; to show something to be true",e:"The charity was established in 1998."},
+{id:15,set:"B",w:"estimate",p:"verb / noun",m:"to judge an approximate value or amount",e:"Engineers estimate the bridge will take two years."},
+{id:16,set:"B",w:"evident",p:"adj",m:"clearly seen or understood; obvious",e:"It was evident that the policy had failed."},
+{id:17,set:"B",w:"individual",p:"noun / adj",m:"a single person; separate or personal",e:"Each individual responds differently to stress."},
+{id:18,set:"B",w:"authority",p:"noun",m:"the power to give orders; an official organisation",e:"The local authority denied the planning request."},
+{id:19,set:"B",w:"finance",p:"noun / verb",m:"money management; to provide money for",e:"The project is financed by a government grant."},
+{id:20,set:"B",w:"consume",p:"verb",m:"to eat, drink or use up",e:"Households consume most of the electricity generated."},
+{id:21,set:"C",w:"consist",p:"verb",m:"to be made up of",e:"The course consists of six modules."},
+{id:22,set:"C",w:"define",p:"verb",m:"to state exactly the meaning or nature of something",e:"Success is difficult to define."},
+{id:23,set:"C",w:"create",p:"verb",m:"to bring something into existence",e:"The scheme created hundreds of jobs."},
+{id:24,set:"C",w:"function",p:"noun / verb",m:"the purpose of something; to work in the correct way",e:"The main function of the committee is oversight."},
+{id:25,set:"C",w:"assume",p:"verb",m:"to accept something as true without proof",e:"Do not assume that older users avoid technology."},
+{id:26,set:"C",w:"area",p:"noun",m:"a region or subject range; a space",e:"This area of research is still underexplored."},
+{id:27,set:"C",w:"benefit",p:"noun / verb",m:"an advantage; to gain advantage from",e:"Patients benefit most from early treatment."},
+{id:28,set:"C",w:"contract",p:"noun / verb",m:"a formal agreement; to become smaller; to catch an illness",e:"The contract runs for three years."},
+{id:29,set:"C",w:"data",p:"noun",m:"facts and statistics collected for analysis",e:"The data was collected over five years."},
+{id:30,set:"C",w:"export",p:"verb / noun",m:"to send goods abroad for sale",e:"The country exports mostly raw materials."}
+];
+var known=JSON.parse(localStorage.getItem("awl-known")||"[]");
+var deck=[],idx=0,mode="w2m",cur=null,locked=false;
+var setSel="A";
+function save(){localStorage.setItem("awl-known",JSON.stringify(known))}
+function pool(){return DATA.filter(function(d){return d.set===setSel&&known.indexOf(d.id)<0})}
+function drawSets(){
+  var el=document.getElementById("sets");el.innerHTML="";
+  ["A","B","C"].forEach(function(s){
+    var b=document.createElement("button");
+    b.className="setbtn"+(s===setSel?" on":"");
+    b.textContent="Set "+s;
+    b.addEventListener("click",function(){setSel=s;deck=[];next();drawSets();stats()});
+    el.appendChild(b);
+  });
+}
+function shuffle(a){for(var i=a.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1));var t=a[i];a[i]=a[j];a[j]=t}return a}
+function stats(){
+  document.getElementById("c-total").textContent=(10-pool().length)+" / 10 mastered";
+  document.getElementById("c-known").textContent=pool().length+" to go";
+  document.getElementById("c-unknown").textContent=known.length+" known overall";
+  document.getElementById("bar").style.width=((10-pool().length)/10*100)+"%";
+}
+function distractors(item){
+  return shuffle(DATA.filter(function(d){return d.id!==item.id&&d.set===item.set})).slice(0,3);
+}
+function next(){
+  if(!pool().length){
+    document.getElementById("w-word").textContent="🎉";
+    document.getElementById("w-pos").textContent="";
+    document.getElementById("w-meaning").textContent="Set "+setSel+" mastered! All 10 words known. Switch set or clear mastery to start again.";
+    var r=document.getElementById("w-row");r.innerHTML="";
+    var b=document.createElement("button");b.className="btn ghost";b.textContent="Start over (reset set)";
+    b.addEventListener("click",function(){known=known.filter(function(id){return DATA.find(function(d){return d.id===id}).set!==setSel});save();deck=[];next();stats()});
+    r.appendChild(b);return;
+  }
+  if(!deck.length)deck=shuffle(pool());
+  cur=deck.pop();
+  mode=Math.random()<0.5?"w2m":"m2w";
+  locked=false;
+  var row=document.getElementById("w-row");row.innerHTML="";
+  document.getElementById("w-example").classList.add("hidden");
+  var opts=shuffle([cur].concat(distractors(cur)));
+  if(mode==="w2m"){
+    document.getElementById("w-word").textContent=cur.w;
+    document.getElementById("w-pos").textContent=cur.p;
+    document.getElementById("w-meaning").textContent="Choose the correct meaning:";
+    opts.forEach(function(o){
+      var b=document.createElement("button");b.className="opt";b.textContent=o.m;
+      b.addEventListener("click",function(){answer(b,o)});
+      row.appendChild(b);
+    });
+  }else{
+    document.getElementById("w-word").textContent="Definition";
+    document.getElementById("w-pos").textContent="meaning → word";
+    document.getElementById("w-meaning").textContent=cur.m;
+    opts.forEach(function(o){
+      var b=document.createElement("button");b.className="opt";b.textContent=o.w;
+      b.addEventListener("click",function(){answer(b,o)});
+      row.appendChild(b);
+    });
+  }
+}
+function answer(btn,o){
+  if(locked)return;locked=true;
+  var ok=o.id===cur.id;
+  document.querySelectorAll("#w-row .opt").forEach(function(b){
+    if(b.textContent===(mode==="w2m"?cur.m:cur.w))b.classList.add("correct");
+  });
+  if(!ok)btn.classList.add("wrong");
+  if(ok&&!known.includes(cur.id))known.push(cur.id);
+  save();
+  document.getElementById("w-example").textContent=cur.e;
+  document.getElementById("w-example").classList.remove("hidden");
+  stats();
+  setTimeout(next,1600);
+}
+drawSets();stats();next();
+
+</script>
+
+</div>
+</body>
+</html>
