@@ -1,224 +1,117 @@
 <title>The Elimination Method</title>
+<meta name="theme-color" content="#1d4ed8">
+<meta name="description" content="The Elimination Method — LBEnglishCo IELTS Academic material. Self-contained, offline, light-theme lesson.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500;700&family=Literata:opsz,wght@7..72,400;7..72,600&display=swap">
 
-<style>
-  :root {
-    --ground: #F4F5F8;
-    --surface: #FFFFFF;
-    --sunk: #E9ECF2;
-    --ink: #16202E;
-    --ink-soft: #5C6A7D;
-    --ink-faint: #8E99A8;
-    --accent: #33456B;
-    --accent-soft: #E2E7F1;
-    --kill: #B0413E;
-    --kill-soft: #F7E9E8;
-    --keep: #3B7A57;
-    --keep-soft: #E6F0EA;
-    --rule: #D8DDE6;
+<style>:root{--ground:#F4F5F8;--surface:#FFFFFF;--sunk:#E9ECF2;--ink:#16202E;--ink-soft:#5C6A7D;--ink-faint:#8E99A8;--accent:#33456B;--accent-soft:#E2E7F1;--kill:#B0413E;--kill-soft:#F7E9E8;--keep:#3B7A57;--keep-soft:#E6F0EA;--rule:#D8DDE6;--f-display:"Instrument Serif",Georgia,serif;--f-body:"Literata",Georgia,"Times New Roman",serif;--f-mono:"JetBrains Mono",ui-monospace,"Cascadia Mono",Consolas,monospace}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--ground:#14181F;--surface:#1C222C;--sunk:#242C38;--ink:#E6EAF0;--ink-soft:#9AA6B6;--ink-faint:#6B7788;--accent:#8FA6D4;--accent-soft:#232D42;--kill:#E08A85;--kill-soft:#2E2020;--keep:#7FC49C;--keep-soft:#1B2A22;--rule:#2C3542}
+}
+:root[data-theme="dark"]{--ground:#14181F;--surface:#1C222C;--sunk:#242C38;--ink:#E6EAF0;--ink-soft:#9AA6B6;--ink-faint:#6B7788;--accent:#8FA6D4;--accent-soft:#232D42;--kill:#E08A85;--kill-soft:#2E2020;--keep:#7FC49C;--keep-soft:#1B2A22;--rule:#2C3542}
+*{box-sizing:border-box}
+body{margin:0;background:var(--ground);color:var(--ink);font-family:var(--f-body);font-size:1.02rem;line-height:1.7;-webkit-font-smoothing:antialiased}
+.wrap{max-width:780px;margin:0 auto;padding:0 clamp(1rem,5vw,2rem)}
+.wide{max-width:980px}
+h1,h2,h3{margin:0;line-height:1.15;text-wrap:balance}
+h1{font-family:var(--f-display);font-size:clamp(2.8rem,7vw,4.4rem);font-weight:400;letter-spacing:-0.01em}
+h2{font-family:var(--f-display);font-size:clamp(1.9rem,4vw,2.5rem);font-weight:400}
+h3{font-family:var(--f-mono);font-size:0.92rem;font-weight:700;letter-spacing:0.02em}
+.eyebrow{font-family:var(--f-mono);font-size:0.7rem;font-weight:500;letter-spacing:0.16em;text-transform:uppercase;color:var(--accent)}
+p{max-width:68ch}
+.hero{padding:clamp(3rem,9vw,6rem) 0 clamp(2rem,5vw,3.5rem);border-bottom:1px solid var(--rule)}
+.hero .lede{font-size:1.2rem;color:var(--ink-soft);margin-top:1.25rem}
+.hero .lede em{font-style:italic;color:var(--ink)}
+.facts{display:flex;flex-wrap:wrap;gap:0 2.25rem;margin-top:2rem;font-family:var(--f-mono);font-size:0.78rem}
+.facts div{display:flex;flex-direction:column;gap:0.1rem}
+.facts span{color:var(--ink-faint);letter-spacing:0.08em;text-transform:uppercase;font-size:0.66rem}
+.facts b{font-weight:500;color:var(--ink)}
+section{padding:clamp(2.75rem,7vw,4.5rem) 0;border-bottom:1px solid var(--rule)}
+.sec-head{margin-bottom:2rem}
+.sec-head .eyebrow{display:block;margin-bottom:0.6rem}
+.sec-head p{color:var(--ink-soft);margin-top:0.9rem}
+.stem-demo{background:var(--surface);border:1px solid var(--rule);border-radius:4px;padding:1.75rem;margin-bottom:1rem}
+.stem-line{font-family:var(--f-body);font-size:1.2rem;line-height:2.1}
+.chunk{font:inherit;background:none;border:none;padding:0.1rem 0.25rem;margin:0 -0.1rem;border-bottom:2px solid var(--accent-soft);color:inherit;cursor:pointer;border-radius:2px;transition:background 0.15s ease,border-color 0.15s ease}
+.chunk:hover{background:var(--accent-soft)}
+.chunk.on{background:var(--accent);border-color:var(--accent);color:var(--surface)}
+.stem-hint{font-family:var(--f-mono);font-size:0.72rem;color:var(--ink-faint);margin-top:1.1rem}
+.stem-out{background:var(--sunk);border-left:3px solid var(--accent);border-radius:0 4px 4px 0;padding:1.1rem 1.25rem;min-height:5.5rem}
+.stem-out .tag{font-family:var(--f-mono);font-size:0.7rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--accent);display:block;margin-bottom:0.4rem}
+.stem-out p{margin:0;font-size:0.95rem}
+.cards{display:grid;gap:0.9rem}
+@media (min-width:720px){.cards{grid-template-columns:1fr 1fr}
+}
+.card{background:var(--surface);border:1px solid var(--rule);border-radius:4px;padding:1.25rem 1.35rem}
+.card .num{font-family:var(--f-mono);font-size:0.7rem;font-weight:700;color:var(--kill);letter-spacing:0.1em}
+.card h3{margin:0.35rem 0 0.5rem;font-family:var(--f-body);font-size:1.12rem;font-weight:600;letter-spacing:0}
+.card p{font-size:0.92rem;margin:0;color:var(--ink-soft)}
+.card .tell{display:block;margin-top:0.7rem;font-family:var(--f-mono);font-size:0.75rem;color:var(--ink);background:var(--kill-soft);padding:0.4rem 0.55rem;border-radius:3px}
+.worked{background:var(--surface);border:1px solid var(--rule);border-radius:4px;padding:1.5rem}
+.worked .qline{font-weight:600;margin:0 0 1rem}
+.demo-opt{display:grid;grid-template-columns:1.6rem 1fr;gap:0.6rem;padding:0.55rem 0;border-top:1px solid var(--rule);font-size:0.96rem}
+.demo-opt b{font-family:var(--f-mono);font-size:0.85rem;color:var(--accent)}
+.demo-opt.dead{color:var(--ink-faint)}
+.demo-opt.dead .txt{text-decoration:line-through;text-decoration-color:var(--kill);text-decoration-thickness:2px}
+.demo-opt .verdict{display:block;font-family:var(--f-mono);font-size:0.72rem;margin-top:0.3rem;color:var(--kill)}
+.demo-opt.live .verdict{color:var(--keep)}
+.passage{background:var(--surface);border:1px solid var(--rule);border-radius:4px;padding:clamp(1.25rem,4vw,2.25rem)}
+.passage-title{font-family:var(--f-display);font-size:1.9rem;margin-bottom:1.5rem}
+.para{display:grid;grid-template-columns:1.9rem 1fr;gap:0 0.9rem;margin-bottom:1.35rem;scroll-margin-top:1rem;border-radius:3px}
+.para p{margin:0;max-width:64ch}
+.para-letter{font-family:var(--f-mono);font-size:0.85rem;font-weight:700;color:var(--accent);padding-top:0.28rem}
+.para.flash{animation:fl 1.6s ease}
+@keyframes fl{0%,15%{background:var(--accent-soft)}
+100%{background:transparent}
+}
+@media (prefers-reduced-motion:reduce){.para.flash{animation:none;outline:2px solid var(--accent);outline-offset:5px}
+}
+.qcard{background:var(--surface);border:1px solid var(--rule);border-radius:4px;padding:1.2rem 1.35rem;margin-bottom:0.9rem}
+.qcard>.qtop{display:flex;gap:0.75rem;align-items:baseline;margin-bottom:0.85rem}
+.qcard .qn{font-family:var(--f-mono);font-size:0.78rem;font-weight:700;color:var(--ink-faint)}
+.qcard .qs{font-weight:600;font-size:1rem}
+.opt{display:grid;grid-template-columns:1.5rem 1fr 1.6rem;gap:0.55rem;align-items:start;padding:0.4rem 0.45rem;border-radius:3px;cursor:pointer}
+.opt:hover{background:var(--sunk)}
+.opt .ol{font-family:var(--f-mono);font-size:0.8rem;font-weight:700;color:var(--accent);padding-top:0.12rem}
+.opt .ot{font-size:0.95rem}
+.opt.picked{background:var(--accent-soft)}
+.opt.picked .ol{color:var(--ink)}
+.opt.dead{opacity:0.42}
+.opt.dead .ot{text-decoration:line-through;text-decoration-color:var(--kill);text-decoration-thickness:2px}
+.opt.correct{background:var(--keep-soft);box-shadow:inset 3px 0 0 var(--keep)}
+.opt.mistake{background:var(--kill-soft);box-shadow:inset 3px 0 0 var(--kill)}
+.x{font-family:var(--f-mono);font-size:0.8rem;line-height:1;background:none;border:1px solid var(--rule);border-radius:3px;color:var(--ink-faint);cursor:pointer;padding:0.2rem 0.35rem}
+.x:hover{border-color:var(--kill);color:var(--kill)}
+.opt.dead .x{border-color:var(--kill);color:var(--kill);background:var(--kill-soft)}
+.bar{position:sticky;top:0;z-index:5;background:var(--surface);border:1px solid var(--rule);border-radius:4px;padding:0.75rem 1rem;margin-bottom:1.25rem;display:flex;flex-wrap:wrap;gap:0.6rem;align-items:center}
+.clock{font-family:var(--f-mono);font-variant-numeric:tabular-nums;font-size:1.3rem;font-weight:700;color:var(--accent);min-width:4.5ch}
+.clock.idle{color:var(--ink-faint)}
+.clock.over{color:var(--kill)}
+button{font-family:var(--f-mono);font-size:0.78rem;font-weight:500;padding:0.45rem 0.8rem;border-radius:3px;border:1px solid var(--rule);background:var(--surface);color:var(--ink);cursor:pointer;transition:background 0.15s ease,border-color 0.15s ease}
+button:hover{background:var(--sunk);border-color:var(--ink-faint)}
+button.primary{background:var(--accent);border-color:var(--accent);color:var(--surface)}
+button.primary:hover{filter:brightness(1.12)}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.attempts{font-family:var(--f-mono);font-size:0.78rem;color:var(--ink-soft);margin-left:auto}
+details{border:1px solid var(--rule);border-radius:4px;margin-bottom:0.7rem;background:var(--surface)}
+details summary{font-family:var(--f-mono);font-size:0.82rem;font-weight:500;padding:0.75rem 1rem;cursor:pointer;color:var(--accent)}
+details[open] summary{border-bottom:1px solid var(--rule)}
+.dbody{padding:1.25rem}
+.dbody p{margin:0 0 0.8rem;font-size:0.95rem}
+.ansline{font-family:var(--f-mono);font-size:0.85rem;font-weight:700;color:var(--keep);margin-bottom:0.6rem}
+.ev{background:var(--accent-soft);padding:0.75rem 0.9rem;border-radius:3px;font-size:0.92rem;font-style:italic;margin-bottom:1rem}
+.fail{display:grid;grid-template-columns:1.4rem 1fr;gap:0.5rem;padding:0.55rem 0;border-top:1px dotted var(--rule);font-size:0.9rem}
+.fail .fl{font-family:var(--f-mono);font-weight:700;color:var(--kill)}
+.ftype{display:inline-block;font-family:var(--f-mono);font-size:0.66rem;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;background:var(--kill-soft);color:var(--kill);padding:0.1rem 0.35rem;border-radius:2px;margin-right:0.4rem}
+.jump{font-family:var(--f-mono);font-size:0.7rem;font-weight:700;background:var(--accent-soft);color:var(--accent);border:none;border-radius:2px;padding:0.15rem 0.4rem;cursor:pointer}
+ol.steps{padding-left:1.3rem}
+ol.steps>li{margin-bottom:0.9rem;max-width:66ch}
+ol.steps b{font-family:var(--f-mono);font-size:0.85rem}
+.note{border-left:3px solid var(--accent);background:var(--sunk);padding:0.9rem 1.1rem;border-radius:0 3px 3px 0;margin:1.25rem 0}
+.note p{margin:0;font-size:0.93rem}
+.note .eyebrow{display:block;margin-bottom:0.35rem}
+footer{font-family:var(--f-mono);font-size:0.72rem;color:var(--ink-faint);text-align:center;padding:2rem 1rem 3rem}</style>
 
-    --f-display: "Instrument Serif", Georgia, serif;
-    --f-body: "Literata", Georgia, "Times New Roman", serif;
-    --f-mono: "JetBrains Mono", ui-monospace, "Cascadia Mono", Consolas, monospace;
-  }
-
-  @media (prefers-color-scheme: dark) {
-    :root:not([data-theme="light"]) {
-      --ground: #14181F;
-      --surface: #1C222C;
-      --sunk: #242C38;
-      --ink: #E6EAF0;
-      --ink-soft: #9AA6B6;
-      --ink-faint: #6B7788;
-      --accent: #8FA6D4;
-      --accent-soft: #232D42;
-      --kill: #E08A85;
-      --kill-soft: #2E2020;
-      --keep: #7FC49C;
-      --keep-soft: #1B2A22;
-      --rule: #2C3542;
-    }
-  }
-  :root[data-theme="dark"] {
-    --ground: #14181F;
-    --surface: #1C222C;
-    --sunk: #242C38;
-    --ink: #E6EAF0;
-    --ink-soft: #9AA6B6;
-    --ink-faint: #6B7788;
-    --accent: #8FA6D4;
-    --accent-soft: #232D42;
-    --kill: #E08A85;
-    --kill-soft: #2E2020;
-    --keep: #7FC49C;
-    --keep-soft: #1B2A22;
-    --rule: #2C3542;
-  }
-
-  * { box-sizing: border-box; }
-
-  body {
-    margin: 0;
-    background: var(--ground);
-    color: var(--ink);
-    font-family: var(--f-body);
-    font-size: 1.02rem;
-    line-height: 1.7;
-    -webkit-font-smoothing: antialiased;
-  }
-
-  .wrap { max-width: 780px; margin: 0 auto; padding: 0 clamp(1rem, 5vw, 2rem); }
-  .wide { max-width: 980px; }
-
-  h1, h2, h3 { margin: 0; line-height: 1.15; text-wrap: balance; }
-  h1 { font-family: var(--f-display); font-size: clamp(2.8rem, 7vw, 4.4rem); font-weight: 400; letter-spacing: -0.01em; }
-  h2 { font-family: var(--f-display); font-size: clamp(1.9rem, 4vw, 2.5rem); font-weight: 400; }
-  h3 { font-family: var(--f-mono); font-size: 0.92rem; font-weight: 700; letter-spacing: 0.02em; }
-
-  .eyebrow {
-    font-family: var(--f-mono); font-size: 0.7rem; font-weight: 500;
-    letter-spacing: 0.16em; text-transform: uppercase; color: var(--accent);
-  }
-  p { max-width: 68ch; }
-
-  /* ---------- hero ---------- */
-  .hero { padding: clamp(3rem, 9vw, 6rem) 0 clamp(2rem, 5vw, 3.5rem); border-bottom: 1px solid var(--rule); }
-  .hero .lede { font-size: 1.2rem; color: var(--ink-soft); margin-top: 1.25rem; }
-  .hero .lede em { font-style: italic; color: var(--ink); }
-  .facts { display: flex; flex-wrap: wrap; gap: 0 2.25rem; margin-top: 2rem; font-family: var(--f-mono); font-size: 0.78rem; }
-  .facts div { display: flex; flex-direction: column; gap: 0.1rem; }
-  .facts span { color: var(--ink-faint); letter-spacing: 0.08em; text-transform: uppercase; font-size: 0.66rem; }
-  .facts b { font-weight: 500; color: var(--ink); }
-
-  /* ---------- sections ---------- */
-  section { padding: clamp(2.75rem, 7vw, 4.5rem) 0; border-bottom: 1px solid var(--rule); }
-  .sec-head { margin-bottom: 2rem; }
-  .sec-head .eyebrow { display: block; margin-bottom: 0.6rem; }
-  .sec-head p { color: var(--ink-soft); margin-top: 0.9rem; }
-
-  /* ---------- stem dissector ---------- */
-  .stem-demo {
-    background: var(--surface); border: 1px solid var(--rule); border-radius: 4px;
-    padding: 1.75rem; margin-bottom: 1rem;
-  }
-  .stem-line { font-family: var(--f-body); font-size: 1.2rem; line-height: 2.1; }
-  .chunk {
-    font: inherit; background: none; border: none; padding: 0.1rem 0.25rem; margin: 0 -0.1rem;
-    border-bottom: 2px solid var(--accent-soft); color: inherit; cursor: pointer;
-    border-radius: 2px; transition: background 0.15s ease, border-color 0.15s ease;
-  }
-  .chunk:hover { background: var(--accent-soft); }
-  .chunk.on { background: var(--accent); border-color: var(--accent); color: var(--surface); }
-  .stem-hint { font-family: var(--f-mono); font-size: 0.72rem; color: var(--ink-faint); margin-top: 1.1rem; }
-  .stem-out {
-    background: var(--sunk); border-left: 3px solid var(--accent); border-radius: 0 4px 4px 0;
-    padding: 1.1rem 1.25rem; min-height: 5.5rem;
-  }
-  .stem-out .tag { font-family: var(--f-mono); font-size: 0.7rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent); display: block; margin-bottom: 0.4rem; }
-  .stem-out p { margin: 0; font-size: 0.95rem; }
-
-  /* ---------- distractor cards ---------- */
-  .cards { display: grid; gap: 0.9rem; }
-  @media (min-width: 720px) { .cards { grid-template-columns: 1fr 1fr; } }
-  .card { background: var(--surface); border: 1px solid var(--rule); border-radius: 4px; padding: 1.25rem 1.35rem; }
-  .card .num { font-family: var(--f-mono); font-size: 0.7rem; font-weight: 700; color: var(--kill); letter-spacing: 0.1em; }
-  .card h3 { margin: 0.35rem 0 0.5rem; font-family: var(--f-body); font-size: 1.12rem; font-weight: 600; letter-spacing: 0; }
-  .card p { font-size: 0.92rem; margin: 0; color: var(--ink-soft); }
-  .card .tell { display: block; margin-top: 0.7rem; font-family: var(--f-mono); font-size: 0.75rem; color: var(--ink); background: var(--kill-soft); padding: 0.4rem 0.55rem; border-radius: 3px; }
-
-  /* ---------- worked example ---------- */
-  .worked { background: var(--surface); border: 1px solid var(--rule); border-radius: 4px; padding: 1.5rem; }
-  .worked .qline { font-weight: 600; margin: 0 0 1rem; }
-  .demo-opt { display: grid; grid-template-columns: 1.6rem 1fr; gap: 0.6rem; padding: 0.55rem 0; border-top: 1px solid var(--rule); font-size: 0.96rem; }
-  .demo-opt b { font-family: var(--f-mono); font-size: 0.85rem; color: var(--accent); }
-  .demo-opt.dead { color: var(--ink-faint); }
-  .demo-opt.dead .txt { text-decoration: line-through; text-decoration-color: var(--kill); text-decoration-thickness: 2px; }
-  .demo-opt .verdict { display: block; font-family: var(--f-mono); font-size: 0.72rem; margin-top: 0.3rem; color: var(--kill); }
-  .demo-opt.live .verdict { color: var(--keep); }
-
-  /* ---------- passage ---------- */
-  .passage { background: var(--surface); border: 1px solid var(--rule); border-radius: 4px; padding: clamp(1.25rem, 4vw, 2.25rem); }
-  .passage-title { font-family: var(--f-display); font-size: 1.9rem; margin-bottom: 1.5rem; }
-  .para { display: grid; grid-template-columns: 1.9rem 1fr; gap: 0 0.9rem; margin-bottom: 1.35rem; scroll-margin-top: 1rem; border-radius: 3px; }
-  .para p { margin: 0; max-width: 64ch; }
-  .para-letter { font-family: var(--f-mono); font-size: 0.85rem; font-weight: 700; color: var(--accent); padding-top: 0.28rem; }
-  .para.flash { animation: fl 1.6s ease; }
-  @keyframes fl { 0%,15% { background: var(--accent-soft); } 100% { background: transparent; } }
-  @media (prefers-reduced-motion: reduce) { .para.flash { animation: none; outline: 2px solid var(--accent); outline-offset: 5px; } }
-
-  /* ---------- practice questions ---------- */
-  .qcard { background: var(--surface); border: 1px solid var(--rule); border-radius: 4px; padding: 1.2rem 1.35rem; margin-bottom: 0.9rem; }
-  .qcard > .qtop { display: flex; gap: 0.75rem; align-items: baseline; margin-bottom: 0.85rem; }
-  .qcard .qn { font-family: var(--f-mono); font-size: 0.78rem; font-weight: 700; color: var(--ink-faint); }
-  .qcard .qs { font-weight: 600; font-size: 1rem; }
-
-  .opt { display: grid; grid-template-columns: 1.5rem 1fr 1.6rem; gap: 0.55rem; align-items: start; padding: 0.4rem 0.45rem; border-radius: 3px; cursor: pointer; }
-  .opt:hover { background: var(--sunk); }
-  .opt .ol { font-family: var(--f-mono); font-size: 0.8rem; font-weight: 700; color: var(--accent); padding-top: 0.12rem; }
-  .opt .ot { font-size: 0.95rem; }
-  .opt.picked { background: var(--accent-soft); }
-  .opt.picked .ol { color: var(--ink); }
-  .opt.dead { opacity: 0.42; }
-  .opt.dead .ot { text-decoration: line-through; text-decoration-color: var(--kill); text-decoration-thickness: 2px; }
-  .opt.correct { background: var(--keep-soft); box-shadow: inset 3px 0 0 var(--keep); }
-  .opt.mistake { background: var(--kill-soft); box-shadow: inset 3px 0 0 var(--kill); }
-  .x {
-    font-family: var(--f-mono); font-size: 0.8rem; line-height: 1;
-    background: none; border: 1px solid var(--rule); border-radius: 3px;
-    color: var(--ink-faint); cursor: pointer; padding: 0.2rem 0.35rem;
-  }
-  .x:hover { border-color: var(--kill); color: var(--kill); }
-  .opt.dead .x { border-color: var(--kill); color: var(--kill); background: var(--kill-soft); }
-
-  /* ---------- controls ---------- */
-  .bar {
-    position: sticky; top: 0; z-index: 5;
-    background: var(--surface); border: 1px solid var(--rule); border-radius: 4px;
-    padding: 0.75rem 1rem; margin-bottom: 1.25rem;
-    display: flex; flex-wrap: wrap; gap: 0.6rem; align-items: center;
-  }
-  .clock { font-family: var(--f-mono); font-variant-numeric: tabular-nums; font-size: 1.3rem; font-weight: 700; color: var(--accent); min-width: 4.5ch; }
-  .clock.idle { color: var(--ink-faint); }
-  .clock.over { color: var(--kill); }
-  button {
-    font-family: var(--f-mono); font-size: 0.78rem; font-weight: 500;
-    padding: 0.45rem 0.8rem; border-radius: 3px; border: 1px solid var(--rule);
-    background: var(--surface); color: var(--ink); cursor: pointer;
-    transition: background 0.15s ease, border-color 0.15s ease;
-  }
-  button:hover { background: var(--sunk); border-color: var(--ink-faint); }
-  button.primary { background: var(--accent); border-color: var(--accent); color: var(--surface); }
-  button.primary:hover { filter: brightness(1.12); }
-  :focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
-  .attempts { font-family: var(--f-mono); font-size: 0.78rem; color: var(--ink-soft); margin-left: auto; }
-
-  /* ---------- key ---------- */
-  details { border: 1px solid var(--rule); border-radius: 4px; margin-bottom: 0.7rem; background: var(--surface); }
-  details summary { font-family: var(--f-mono); font-size: 0.82rem; font-weight: 500; padding: 0.75rem 1rem; cursor: pointer; color: var(--accent); }
-  details[open] summary { border-bottom: 1px solid var(--rule); }
-  .dbody { padding: 1.25rem; }
-  .dbody p { margin: 0 0 0.8rem; font-size: 0.95rem; }
-  .ansline { font-family: var(--f-mono); font-size: 0.85rem; font-weight: 700; color: var(--keep); margin-bottom: 0.6rem; }
-  .ev { background: var(--accent-soft); padding: 0.75rem 0.9rem; border-radius: 3px; font-size: 0.92rem; font-style: italic; margin-bottom: 1rem; }
-  .fail { display: grid; grid-template-columns: 1.4rem 1fr; gap: 0.5rem; padding: 0.55rem 0; border-top: 1px dotted var(--rule); font-size: 0.9rem; }
-  .fail .fl { font-family: var(--f-mono); font-weight: 700; color: var(--kill); }
-  .ftype { display: inline-block; font-family: var(--f-mono); font-size: 0.66rem; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; background: var(--kill-soft); color: var(--kill); padding: 0.1rem 0.35rem; border-radius: 2px; margin-right: 0.4rem; }
-  .jump { font-family: var(--f-mono); font-size: 0.7rem; font-weight: 700; background: var(--accent-soft); color: var(--accent); border: none; border-radius: 2px; padding: 0.15rem 0.4rem; cursor: pointer; }
-
-  ol.steps { padding-left: 1.3rem; }
-  ol.steps > li { margin-bottom: 0.9rem; max-width: 66ch; }
-  ol.steps b { font-family: var(--f-mono); font-size: 0.85rem; }
-
-  .note { border-left: 3px solid var(--accent); background: var(--sunk); padding: 0.9rem 1.1rem; border-radius: 0 3px 3px 0; margin: 1.25rem 0; }
-  .note p { margin: 0; font-size: 0.93rem; }
-  .note .eyebrow { display: block; margin-bottom: 0.35rem; }
-
-  footer { font-family: var(--f-mono); font-size: 0.72rem; color: var(--ink-faint); text-align: center; padding: 2rem 1rem 3rem; }
-</style>
-
-<!-- ============ HERO ============ -->
 <div class="hero">
   <div class="wrap">
     <span class="eyebrow">IELTS Academic Reading · Lesson</span>
@@ -234,7 +127,6 @@
   </div>
 </div>
 
-<!-- ============ PART 1 : STEM ANALYSIS ============ -->
 <section>
   <div class="wrap">
     <div class="sec-head">
@@ -265,7 +157,6 @@
   </div>
 </section>
 
-<!-- ============ PART 2 : DISTRACTORS ============ -->
 <section>
   <div class="wrap wide">
     <div class="sec-head">
@@ -314,7 +205,6 @@
   </div>
 </section>
 
-<!-- ============ PART 3 : ELIMINATION ============ -->
 <section>
   <div class="wrap">
     <div class="sec-head">
@@ -347,7 +237,6 @@
   </div>
 </section>
 
-<!-- ============ PASSAGE ============ -->
 <section>
   <div class="wrap">
     <div class="sec-head">
@@ -377,7 +266,6 @@
   </div>
 </section>
 
-<!-- ============ QUESTIONS ============ -->
 <section>
   <div class="wrap">
     <div class="sec-head">
@@ -402,7 +290,6 @@
   </div>
 </section>
 
-<!-- ============ KEY ============ -->
 <section>
   <div class="wrap">
     <div class="sec-head">
@@ -419,7 +306,6 @@
   </div>
 </section>
 
-<!-- ============ TEACHER SECTION ============ -->
 <section>
   <div class="wrap">
     <div class="sec-head">

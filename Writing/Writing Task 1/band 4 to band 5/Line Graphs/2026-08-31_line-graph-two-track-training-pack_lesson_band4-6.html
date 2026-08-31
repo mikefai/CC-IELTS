@@ -4,353 +4,135 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>IELTS Academic Task 1 — Line Graph Training Pack (Band 4→5.5 / Band 5→6)</title>
-<style>
-/* ============================================================
-   IELTS Academic Writing Task 1 — Line Graph Training Pack
-   Single-file, offline, light theme only.
-   ============================================================ */
-
-:root{
-  --ink:#1c1c1a;
-  --ink-soft:#4a4a46;
-  --ink-faint:#6f6f69;
-  --paper:#ffffff;
-  --paper-tint:#f7f6f2;
-  --rule:#dcd8ce;
-  --rule-strong:#b9b3a5;
-  --accent:#1a4d8f;
-  --accent-soft:#eaf0f8;
-  --warm:#8c3b0a;
-  --warm-soft:#fbf0e8;
-  --green:#2e6b34;
-  --green-soft:#edf4ed;
-  --maxw:64rem;
+<meta name="theme-color" content="#1d4ed8">
+<meta name="description" content="IELTS Academic Task 1 — Line Graph Training Pack (Band 4→5.5 / Band 5→6) — LBEnglishCo IELTS Academic material. Self-contained, offline, light-theme lesson.">
+<style>:root{--ink:#1c1c1a;--ink-soft:#4a4a46;--ink-faint:#6f6f69;--paper:#ffffff;--paper-tint:#f7f6f2;--rule:#dcd8ce;--rule-strong:#b9b3a5;--accent:#1a4d8f;--accent-soft:#eaf0f8;--warm:#8c3b0a;--warm-soft:#fbf0e8;--green:#2e6b34;--green-soft:#edf4ed;--maxw:64rem}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--paper-tint);color:var(--ink);font-family:"Iowan Old Style","Palatino Linotype",Palatino,Georgia,"Times New Roman",serif;font-size:17px;line-height:1.55}
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 1.25rem 5rem}
+.masthead{background:var(--paper);border-bottom:1px solid var(--rule);padding:1.6rem 0 1.1rem}
+.masthead .wrap{padding-bottom:0}
+.masthead h1{font-size:1.5rem;line-height:1.25;margin:0 0 .35rem;letter-spacing:-.01em}
+.masthead p.sub{margin:0;color:var(--ink-soft);font-size:.95rem;font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+.toolbar{display:flex;flex-wrap:wrap;gap:.5rem;margin-top:.9rem;font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+.toolbar button{font:inherit;font-size:.8rem;padding:.35rem .7rem;background:var(--paper);color:var(--ink-soft);border:1px solid var(--rule-strong);border-radius:.3rem;cursor:pointer}
+.toolbar button:hover{background:var(--accent-soft);color:var(--accent);border-color:var(--accent)}
+.toolbar button:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
+.save-flag{font-size:.78rem;color:var(--ink-faint);align-self:center;font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+.tabbar{position:sticky;top:0;z-index:20;background:var(--paper);border-bottom:1px solid var(--rule-strong);box-shadow:0 1px 0 rgba(0,0,0,.03)}
+.tablist{max-width:var(--maxw);margin:0 auto;padding:0 1.25rem;display:flex;gap:.25rem}
+.tablist button{font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;font-size:.9rem;font-weight:600;padding:.85rem 1.1rem;background:transparent;color:var(--ink-faint);border:0;border-bottom:3px solid transparent;cursor:pointer}
+.tablist button:hover{color:var(--ink)}
+.tablist button:focus-visible{outline:3px solid var(--accent);outline-offset:-3px}
+.tablist button[aria-selected="true"]{color:var(--accent);border-bottom-color:var(--accent)}
+.tablist button .tagline{display:block;font-weight:400;font-size:.74rem;color:var(--ink-faint);margin-top:.12rem}
+.panel{padding-top:1.75rem}
+.panel:focus{outline:none}
+.blockhead{margin:2.5rem 0 1.1rem;padding:.55rem .85rem;border-radius:.35rem;font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;font-size:.78rem;font-weight:700;letter-spacing:.09em;text-transform:uppercase}
+.blockhead.student{background:var(--accent-soft);color:var(--accent);border-left:4px solid var(--accent)}
+.blockhead.answers{background:var(--warm-soft);color:var(--warm);border-left:4px solid var(--warm)}
+.blockhead.teacher{background:var(--green-soft);color:var(--green);border-left:4px solid var(--green)}
+.blockhead span{display:block;font-size:.74rem;font-weight:400;letter-spacing:0;text-transform:none;margin-top:.2rem;opacity:.85}
+section.sec{background:var(--paper);border:1px solid var(--rule);border-radius:.4rem;padding:1.3rem 1.5rem 1.5rem;margin:0 0 1rem}
+section.sec>h3{margin:0 0 .9rem;font-size:1.06rem;padding-bottom:.5rem;border-bottom:1px solid var(--rule);display:flex;align-items:baseline;gap:.6rem}
+section.sec>h3 .num{font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;font-size:.7rem;font-weight:700;color:var(--paper);background:var(--ink-soft);border-radius:.25rem;padding:.15rem .42rem;letter-spacing:.05em;position:relative;top:-.1rem}
+h4{font-size:.97rem;margin:1.35rem 0 .5rem}
+h5{font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;font-size:.8rem;text-transform:uppercase;letter-spacing:.06em;color:var(--ink-faint);margin:1.2rem 0 .45rem}
+p{margin:0 0 .75rem}
+ul,ol{margin:0 0 .8rem;padding-left:1.4rem}
+li{margin-bottom:.35rem}
+code,.mono{font-family:ui-monospace,"SFMono-Regular",Menlo,Consolas,monospace;font-size:.86em;background:var(--paper-tint);padding:.08em .3em;border-radius:.2rem}
+.note{border-left:3px solid var(--rule-strong);padding:.55rem 0 .55rem .9rem;margin:.9rem 0;color:var(--ink-soft);font-size:.94rem}
+.callout{background:var(--paper-tint);border:1px solid var(--rule);border-radius:.35rem;padding:.85rem 1rem;margin:.95rem 0;font-size:.95rem}
+.callout .lbl{display:block;font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;font-size:.72rem;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--ink-faint);margin-bottom:.35rem}
+.warn{border-left:3px solid var(--warm);background:var(--warm-soft)}
+.warn .lbl{color:var(--warm)}
+table{border-collapse:collapse;width:100%;margin:.9rem 0 1.1rem;font-size:.9rem}
+caption{text-align:left;font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;font-size:.78rem;color:var(--ink-faint);padding-bottom:.4rem}
+th,td{border:1px solid var(--rule);padding:.45rem .6rem;text-align:left;vertical-align:top}
+th{background:var(--paper-tint);font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;font-size:.8rem}
+td.num,th.num{text-align:right;font-variant-numeric:tabular-nums}
+.scroller{overflow-x:auto}
+.chartbox{border:1px solid var(--rule-strong);border-radius:.35rem;background:var(--paper);padding:.9rem 1rem 1rem;margin:1rem 0 1.2rem}
+.chartbox .rubric{font-size:.97rem;margin:0 0 .7rem;padding-bottom:.6rem;border-bottom:1px dashed var(--rule)}
+.chartbox svg{width:100%;height:auto;display:block}
+.legend{display:flex;flex-wrap:wrap;gap:.35rem 1.15rem;margin-top:.6rem;font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;font-size:.8rem}
+.legend .k{display:flex;align-items:center;gap:.4rem}
+.legend svg{width:34px;height:10px;flex:none}
+ol.items{list-style:none;counter-reset:it;padding-left:0}
+ol.items>li{counter-increment:it;position:relative;padding:.7rem 0 .7rem 2.5rem;border-bottom:1px dotted var(--rule)}
+ol.items>li:last-child{border-bottom:0}
+ol.items>li::before{content:counter(it);position:absolute;left:0;top:.72rem;font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;font-size:.72rem;font-weight:700;color:var(--paper);background:var(--accent);width:1.5rem;height:1.5rem;border-radius:50%;display:flex;align-items:center;justify-content:center}
+.scaf{display:inline-block;font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;font-size:.68rem;font-weight:700;letter-spacing:.05em;text-transform:uppercase;padding:.1rem .4rem;border-radius:.2rem;margin-left:.4rem;vertical-align:.1rem}
+.scaf.full{background:#e6efdd;color:#3c5b28}
+.scaf.part{background:#fdf0d6;color:#7a5410}
+.scaf.none{background:#f2e4e4;color:#8a3030}
+input[type="text"],textarea{font-family:inherit;font-size:.95rem;color:var(--ink);background:#fffdf8;border:1px solid var(--rule-strong);border-radius:.25rem;padding:.35rem .5rem;width:100%}
+input[type="text"]{max-width:26rem}
+input.short{max-width:9rem}
+textarea{display:block;width:100%;resize:vertical;line-height:1.7}
+input:focus,textarea:focus{outline:2px solid var(--accent);outline-offset:1px;border-color:var(--accent)}
+label.ck{display:flex;gap:.55rem;align-items:flex-start;padding:.28rem 0;font-size:.94rem;cursor:pointer}
+label.ck input{margin-top:.35rem;flex:none;width:1rem;height:1rem}
+.fieldrow{display:flex;flex-wrap:wrap;gap:.6rem;align-items:center;margin:.4rem 0}
+.hint{font-size:.85rem;color:var(--ink-faint);font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+.taskbar{display:flex;flex-wrap:wrap;gap:.75rem;align-items:center;background:var(--paper-tint);border:1px solid var(--rule);border-radius:.35rem;padding:.6rem .8rem;margin:.9rem 0;font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;font-size:.85rem}
+.taskbar .clock{font-variant-numeric:tabular-nums;font-size:1.35rem;font-weight:700;min-width:4.4rem;color:var(--accent)}
+.taskbar .clock.over{color:var(--warm)}
+.taskbar button{font:inherit;font-size:.8rem;padding:.3rem .65rem;background:var(--paper);border:1px solid var(--rule-strong);border-radius:.25rem;cursor:pointer;color:var(--ink-soft)}
+.taskbar button:hover{border-color:var(--accent);color:var(--accent)}
+.wc{margin-left:auto;color:var(--ink-faint)}
+.wc b{color:var(--ink);font-variant-numeric:tabular-nums}
+.wc.ok b{color:var(--green)}
+.wc.low b{color:var(--warm)}
+.collapse{border:1px solid var(--rule);border-radius:.4rem;margin:0 0 1rem;background:var(--paper);overflow:hidden}
+.collapse>.ctrl{display:flex;width:100%;align-items:center;gap:.6rem;font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;font-size:.92rem;font-weight:600;text-align:left;background:var(--paper);color:var(--ink);border:0;padding:.85rem 1.1rem;cursor:pointer}
+.collapse>.ctrl:hover{background:var(--paper-tint)}
+.collapse>.ctrl:focus-visible{outline:3px solid var(--accent);outline-offset:-3px}
+.collapse>.ctrl .chev{flex:none;width:.85rem;height:.85rem;border-right:2px solid var(--ink-faint);border-bottom:2px solid var(--ink-faint);transform:rotate(-45deg);transition:transform .15s}
+.collapse>.ctrl[aria-expanded="true"] .chev{transform:rotate(45deg)}
+.collapse>.ctrl .state{margin-left:auto;font-size:.75rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--paper);background:var(--ink-faint);border-radius:.2rem;padding:.15rem .45rem}
+.collapse>.ctrl[aria-expanded="true"] .state{background:var(--green)}
+.collapse>.body{padding:0 1.1rem 1.1rem;border-top:1px solid var(--rule)}
+.collapse>.body.is-collapsed{display:none}
+.model{background:#fffdf6;border:1px solid #e3d9bf;border-radius:.35rem;padding:1rem 1.15rem;margin:.9rem 0}
+.model p{margin:0 0 .7rem}
+.model p:last-child{margin-bottom:0}
+.model .meta{font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;font-size:.75rem;color:var(--ink-faint);margin-bottom:.7rem;padding-bottom:.5rem;border-bottom:1px solid #e3d9bf}
+.wrong{color:#8a3030}
+.right{color:#2e6b34}
+.wrong::before{content:"\2717 ";font-weight:700}
+.right::before{content:"\2713 ";font-weight:700}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+@media (max-width:44rem){.grid2{grid-template-columns:1fr}
+body{font-size:16px}
+.wrap{padding:0 .85rem 3rem}
+section.sec{padding:1rem 1rem 1.2rem}
+.tablist button{padding:.7rem .65rem;font-size:.82rem}
 }
-
-*{box-sizing:border-box;}
-html{-webkit-text-size-adjust:100%;}
-body{
-  margin:0;
-  background:var(--paper-tint);
-  color:var(--ink);
-  font-family:"Iowan Old Style","Palatino Linotype",Palatino,Georgia,"Times New Roman",serif;
-  font-size:17px;
-  line-height:1.55;
-}
-.wrap{max-width:var(--maxw);margin:0 auto;padding:0 1.25rem 5rem;}
-
-/* ---------- masthead ---------- */
-.masthead{
-  background:var(--paper);
-  border-bottom:1px solid var(--rule);
-  padding:1.6rem 0 1.1rem;
-}
-.masthead .wrap{padding-bottom:0;}
-.masthead h1{
-  font-size:1.5rem;line-height:1.25;margin:0 0 .35rem;
-  letter-spacing:-.01em;
-}
-.masthead p.sub{
-  margin:0;color:var(--ink-soft);font-size:.95rem;
-  font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
-}
-.toolbar{
-  display:flex;flex-wrap:wrap;gap:.5rem;margin-top:.9rem;
-  font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
-}
-.toolbar button{
-  font:inherit;font-size:.8rem;padding:.35rem .7rem;
-  background:var(--paper);color:var(--ink-soft);
-  border:1px solid var(--rule-strong);border-radius:.3rem;cursor:pointer;
-}
-.toolbar button:hover{background:var(--accent-soft);color:var(--accent);border-color:var(--accent);}
-.toolbar button:focus-visible{outline:3px solid var(--accent);outline-offset:2px;}
-.save-flag{
-  font-size:.78rem;color:var(--ink-faint);align-self:center;
-  font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
-}
-
-/* ---------- tab bar ---------- */
-.tabbar{
-  position:sticky;top:0;z-index:20;
-  background:var(--paper);
-  border-bottom:1px solid var(--rule-strong);
-  box-shadow:0 1px 0 rgba(0,0,0,.03);
-}
-.tablist{
-  max-width:var(--maxw);margin:0 auto;padding:0 1.25rem;
-  display:flex;gap:.25rem;
-}
-.tablist button{
-  font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
-  font-size:.9rem;font-weight:600;
-  padding:.85rem 1.1rem;
-  background:transparent;color:var(--ink-faint);
-  border:0;border-bottom:3px solid transparent;
-  cursor:pointer;
-}
-.tablist button:hover{color:var(--ink);}
-.tablist button:focus-visible{outline:3px solid var(--accent);outline-offset:-3px;}
-.tablist button[aria-selected="true"]{
-  color:var(--accent);border-bottom-color:var(--accent);
-}
-.tablist button .tagline{
-  display:block;font-weight:400;font-size:.74rem;color:var(--ink-faint);
-  margin-top:.12rem;
-}
-
-/* ---------- panels & blocks ---------- */
-.panel{padding-top:1.75rem;}
-.panel:focus{outline:none;}
-
-.blockhead{
-  margin:2.5rem 0 1.1rem;
-  padding:.55rem .85rem;
-  border-radius:.35rem;
-  font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
-  font-size:.78rem;font-weight:700;letter-spacing:.09em;text-transform:uppercase;
-}
-.blockhead.student{background:var(--accent-soft);color:var(--accent);border-left:4px solid var(--accent);}
-.blockhead.answers{background:var(--warm-soft);color:var(--warm);border-left:4px solid var(--warm);}
-.blockhead.teacher{background:var(--green-soft);color:var(--green);border-left:4px solid var(--green);}
-.blockhead span{display:block;font-size:.74rem;font-weight:400;letter-spacing:0;text-transform:none;margin-top:.2rem;opacity:.85;}
-
-section.sec{
-  background:var(--paper);
-  border:1px solid var(--rule);
-  border-radius:.4rem;
-  padding:1.3rem 1.5rem 1.5rem;
-  margin:0 0 1rem;
-}
-section.sec > h3{
-  margin:0 0 .9rem;
-  font-size:1.06rem;
-  padding-bottom:.5rem;border-bottom:1px solid var(--rule);
-  display:flex;align-items:baseline;gap:.6rem;
-}
-section.sec > h3 .num{
-  font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
-  font-size:.7rem;font-weight:700;color:var(--paper);background:var(--ink-soft);
-  border-radius:.25rem;padding:.15rem .42rem;letter-spacing:.05em;
-  position:relative;top:-.1rem;
-}
-h4{font-size:.97rem;margin:1.35rem 0 .5rem;}
-h5{
-  font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
-  font-size:.8rem;text-transform:uppercase;letter-spacing:.06em;color:var(--ink-faint);
-  margin:1.2rem 0 .45rem;
-}
-p{margin:0 0 .75rem;}
-ul,ol{margin:0 0 .8rem;padding-left:1.4rem;}
-li{margin-bottom:.35rem;}
-code,.mono{
-  font-family:ui-monospace,"SFMono-Regular",Menlo,Consolas,monospace;
-  font-size:.86em;background:var(--paper-tint);padding:.08em .3em;border-radius:.2rem;
-}
-
-.note{
-  border-left:3px solid var(--rule-strong);
-  padding:.55rem 0 .55rem .9rem;
-  margin:.9rem 0;
-  color:var(--ink-soft);font-size:.94rem;
-}
-.callout{
-  background:var(--paper-tint);border:1px solid var(--rule);
-  border-radius:.35rem;padding:.85rem 1rem;margin:.95rem 0;font-size:.95rem;
-}
-.callout .lbl{
-  display:block;font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
-  font-size:.72rem;font-weight:700;letter-spacing:.07em;text-transform:uppercase;
-  color:var(--ink-faint);margin-bottom:.35rem;
-}
-.warn{border-left:3px solid var(--warm);background:var(--warm-soft);}
-.warn .lbl{color:var(--warm);}
-
-/* ---------- tables ---------- */
-table{border-collapse:collapse;width:100%;margin:.9rem 0 1.1rem;font-size:.9rem;}
-caption{
-  text-align:left;font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
-  font-size:.78rem;color:var(--ink-faint);padding-bottom:.4rem;
-}
-th,td{border:1px solid var(--rule);padding:.45rem .6rem;text-align:left;vertical-align:top;}
-th{background:var(--paper-tint);font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;font-size:.8rem;}
-td.num,th.num{text-align:right;font-variant-numeric:tabular-nums;}
-.scroller{overflow-x:auto;}
-
-/* ---------- chart ---------- */
-.chartbox{
-  border:1px solid var(--rule-strong);border-radius:.35rem;
-  background:var(--paper);padding:.9rem 1rem 1rem;margin:1rem 0 1.2rem;
-}
-.chartbox .rubric{
-  font-size:.97rem;margin:0 0 .7rem;padding-bottom:.6rem;
-  border-bottom:1px dashed var(--rule);
-}
-.chartbox svg{width:100%;height:auto;display:block;}
-.legend{
-  display:flex;flex-wrap:wrap;gap:.35rem 1.15rem;margin-top:.6rem;
-  font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;font-size:.8rem;
-}
-.legend .k{display:flex;align-items:center;gap:.4rem;}
-.legend svg{width:34px;height:10px;flex:none;}
-
-/* ---------- items / inputs ---------- */
-ol.items{list-style:none;counter-reset:it;padding-left:0;}
-ol.items > li{
-  counter-increment:it;position:relative;
-  padding:.7rem 0 .7rem 2.5rem;border-bottom:1px dotted var(--rule);
-}
-ol.items > li:last-child{border-bottom:0;}
-ol.items > li::before{
-  content:counter(it);position:absolute;left:0;top:.72rem;
-  font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
-  font-size:.72rem;font-weight:700;color:var(--paper);background:var(--accent);
-  width:1.5rem;height:1.5rem;border-radius:50%;
-  display:flex;align-items:center;justify-content:center;
-}
-.scaf{
-  display:inline-block;font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
-  font-size:.68rem;font-weight:700;letter-spacing:.05em;text-transform:uppercase;
-  padding:.1rem .4rem;border-radius:.2rem;margin-left:.4rem;
-  vertical-align:.1rem;
-}
-.scaf.full{background:#e6efdd;color:#3c5b28;}
-.scaf.part{background:#fdf0d6;color:#7a5410;}
-.scaf.none{background:#f2e4e4;color:#8a3030;}
-
-input[type="text"],textarea{
-  font-family:inherit;font-size:.95rem;color:var(--ink);
-  background:#fffdf8;border:1px solid var(--rule-strong);border-radius:.25rem;
-  padding:.35rem .5rem;width:100%;
-}
-input[type="text"]{max-width:26rem;}
-input.short{max-width:9rem;}
-textarea{display:block;width:100%;resize:vertical;line-height:1.7;}
-input:focus,textarea:focus{outline:2px solid var(--accent);outline-offset:1px;border-color:var(--accent);}
-label.ck{
-  display:flex;gap:.55rem;align-items:flex-start;
-  padding:.28rem 0;font-size:.94rem;cursor:pointer;
-}
-label.ck input{margin-top:.35rem;flex:none;width:1rem;height:1rem;}
-.fieldrow{display:flex;flex-wrap:wrap;gap:.6rem;align-items:center;margin:.4rem 0;}
-.hint{font-size:.85rem;color:var(--ink-faint);font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;}
-
-/* ---------- timer / counter ---------- */
-.taskbar{
-  display:flex;flex-wrap:wrap;gap:.75rem;align-items:center;
-  background:var(--paper-tint);border:1px solid var(--rule);border-radius:.35rem;
-  padding:.6rem .8rem;margin:.9rem 0;
-  font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;font-size:.85rem;
-}
-.taskbar .clock{
-  font-variant-numeric:tabular-nums;font-size:1.35rem;font-weight:700;
-  min-width:4.4rem;color:var(--accent);
-}
-.taskbar .clock.over{color:var(--warm);}
-.taskbar button{
-  font:inherit;font-size:.8rem;padding:.3rem .65rem;background:var(--paper);
-  border:1px solid var(--rule-strong);border-radius:.25rem;cursor:pointer;color:var(--ink-soft);
-}
-.taskbar button:hover{border-color:var(--accent);color:var(--accent);}
-.wc{margin-left:auto;color:var(--ink-faint);}
-.wc b{color:var(--ink);font-variant-numeric:tabular-nums;}
-.wc.ok b{color:var(--green);}
-.wc.low b{color:var(--warm);}
-
-/* ---------- collapsibles ---------- */
-.collapse{border:1px solid var(--rule);border-radius:.4rem;margin:0 0 1rem;background:var(--paper);overflow:hidden;}
-.collapse > .ctrl{
-  display:flex;width:100%;align-items:center;gap:.6rem;
-  font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
-  font-size:.92rem;font-weight:600;text-align:left;
-  background:var(--paper);color:var(--ink);
-  border:0;padding:.85rem 1.1rem;cursor:pointer;
-}
-.collapse > .ctrl:hover{background:var(--paper-tint);}
-.collapse > .ctrl:focus-visible{outline:3px solid var(--accent);outline-offset:-3px;}
-.collapse > .ctrl .chev{
-  flex:none;width:.85rem;height:.85rem;border-right:2px solid var(--ink-faint);
-  border-bottom:2px solid var(--ink-faint);transform:rotate(-45deg);transition:transform .15s;
-}
-.collapse > .ctrl[aria-expanded="true"] .chev{transform:rotate(45deg);}
-.collapse > .ctrl .state{
-  margin-left:auto;font-size:.75rem;font-weight:700;letter-spacing:.06em;
-  text-transform:uppercase;color:var(--paper);background:var(--ink-faint);
-  border-radius:.2rem;padding:.15rem .45rem;
-}
-.collapse > .ctrl[aria-expanded="true"] .state{background:var(--green);}
-.collapse > .body{padding:0 1.1rem 1.1rem;border-top:1px solid var(--rule);}
-.collapse > .body.is-collapsed{display:none;}
-
-/* ---------- model answer ---------- */
-.model{
-  background:#fffdf6;border:1px solid #e3d9bf;border-radius:.35rem;
-  padding:1rem 1.15rem;margin:.9rem 0;
-}
-.model p{margin:0 0 .7rem;}
-.model p:last-child{margin-bottom:0;}
-.model .meta{
-  font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
-  font-size:.75rem;color:var(--ink-faint);margin-bottom:.7rem;
-  padding-bottom:.5rem;border-bottom:1px solid #e3d9bf;
-}
-.wrong{color:#8a3030;}
-.right{color:#2e6b34;}
-.wrong::before{content:"\2717 ";font-weight:700;}
-.right::before{content:"\2713 ";font-weight:700;}
-
-.grid2{display:grid;grid-template-columns:1fr 1fr;gap:1rem;}
-@media (max-width:44rem){
-  .grid2{grid-template-columns:1fr;}
-  body{font-size:16px;}
-  .wrap{padding:0 .85rem 3rem;}
-  section.sec{padding:1rem 1rem 1.2rem;}
-  .tablist button{padding:.7rem .65rem;font-size:.82rem;}
-}
-
-.footnote{
-  margin-top:2rem;font-size:.82rem;color:var(--ink-faint);
-  font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
-  border-top:1px solid var(--rule);padding-top:.9rem;
-}
-
-/* ============================================================
-   PRINT — active tab only, everything expanded, controls hidden
-   ============================================================ */
-@media print{
-  @page{size:A4;margin:16mm 14mm;}
-  html,body{background:#fff;font-size:10.5pt;}
-  .wrap{max-width:none;padding:0;}
-  .tabbar,.toolbar,.save-flag,.taskbar{display:none !important;}
-  .masthead{border-bottom:1.5pt solid #000;padding:0 0 .5rem;margin-bottom:.8rem;}
-  .panel[hidden]{display:none !important;}
-  .collapse > .ctrl{display:none !important;}
-  .collapse > .body,
-  .collapse > .body.is-collapsed{display:block !important;padding:0;border-top:0;}
-  .collapse{border:0;margin:0;}
-  section.sec{
-    border:0;border-top:1pt solid #000;border-radius:0;
-    padding:.5rem 0 .8rem;margin:0 0 .4rem;
-  }
-  section.sec > h3{border-bottom:0;padding-bottom:.2rem;break-after:avoid;}
-  h4,h5{break-after:avoid;}
-  .blockhead{
-    border:0;border-top:2pt solid #000;border-radius:0;
-    background:#fff !important;color:#000 !important;
-    padding:.6rem 0 .2rem;margin:1.1rem 0 .4rem;break-before:page;
-  }
-  .blockhead.student{break-before:auto;}
-  .chartbox{break-inside:avoid;border:1pt solid #555;}
-  table{font-size:9pt;}
-  tr,li{break-inside:avoid;}
-  .model,.callout,.note{break-inside:avoid;}
-  textarea{
-    min-height:0 !important;height:auto;
-    border:0;border-bottom:1pt solid #999;background:#fff;
-  }
-  input[type="text"]{border:0;border-bottom:1pt solid #999;background:#fff;}
-}
-</style>
+.footnote{margin-top:2rem;font-size:.82rem;color:var(--ink-faint);font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;border-top:1px solid var(--rule);padding-top:.9rem}
+@media print{@page{size:A4;margin:16mm 14mm}
+html,body{background:#fff;font-size:10.5pt}
+.wrap{max-width:none;padding:0}
+.tabbar,.toolbar,.save-flag,.taskbar{display:none !important}
+.masthead{border-bottom:1.5pt solid #000;padding:0 0 .5rem;margin-bottom:.8rem}
+.panel[hidden]{display:none !important}
+.collapse>.ctrl{display:none !important}
+.collapse>.body,.collapse>.body.is-collapsed{display:block !important;padding:0;border-top:0}
+.collapse{border:0;margin:0}
+section.sec{border:0;border-top:1pt solid #000;border-radius:0;padding:.5rem 0 .8rem;margin:0 0 .4rem}
+section.sec>h3{border-bottom:0;padding-bottom:.2rem;break-after:avoid}
+h4,h5{break-after:avoid}
+.blockhead{border:0;border-top:2pt solid #000;border-radius:0;background:#fff !important;color:#000 !important;padding:.6rem 0 .2rem;margin:1.1rem 0 .4rem;break-before:page}
+.blockhead.student{break-before:auto}
+.chartbox{break-inside:avoid;border:1pt solid #555}
+table{font-size:9pt}
+tr,li{break-inside:avoid}
+.model,.callout,.note{break-inside:avoid}
+textarea{min-height:0 !important;height:auto;border:0;border-bottom:1pt solid #999;background:#fff}
+input[type="text"]{border:0;border-bottom:1pt solid #999;background:#fff}
+}</style>
 </head>
 <body>
 
@@ -383,17 +165,12 @@ label.ck input{margin-top:.35rem;flex:none;width:1rem;height:1rem;}
 
 <div class="wrap">
 
-<!-- ============================================================
-     TAB 1 — BAND 4 to 5.5
-     ============================================================ -->
 <div class="panel" role="tabpanel" id="panel-a" aria-labelledby="tab-a" tabindex="0">
 
-  <!-- ============ STUDENT MATERIAL ============ -->
   <div class="blockhead student">Student material
     <span>Track 1 · Academic Task 1 · line graph · working towards a consistent Band 5.5 performance</span>
   </div>
 
-  <!-- 1 TARGET -->
   <section class="sec">
     <h3><span class="num">01</span> Target &amp; five-minute diagnostic</h3>
 
@@ -455,7 +232,6 @@ label.ck input{margin-top:.35rem;flex:none;width:1rem;height:1rem;}
     </table>
   </section>
 
-  <!-- 2 BAND GAP -->
   <section class="sec">
     <h3><span class="num">02</span> The gap, in observable behaviour</h3>
     <p>The public Writing Task 1 criteria are Task Achievement, Coherence and Cohesion, Lexical Resource,
@@ -514,7 +290,6 @@ label.ck input{margin-top:.35rem;flex:none;width:1rem;height:1rem;}
     </div>
   </section>
 
-  <!-- 3 TEACH -->
   <section class="sec">
     <h3><span class="num">03</span> Teach — the Start–End–Shape check</h3>
 
@@ -609,7 +384,6 @@ label.ck input{margin-top:.35rem;flex:none;width:1rem;height:1rem;}
     </div>
   </section>
 
-  <!-- 4 GUIDED PRACTICE -->
   <section class="sec">
     <h3><span class="num">04</span> Guided practice — 12 items on Graph A</h3>
     <p class="hint">The support fades as you go down. Items 1–3 hand you everything; items 10–12 hand you
@@ -681,7 +455,6 @@ label.ck input{margin-top:.35rem;flex:none;width:1rem;height:1rem;}
     </ol>
   </section>
 
-  <!-- 5 TIMED TRANSFER -->
   <section class="sec">
     <h3><span class="num">05</span> Timed transfer — a new graph, 20 minutes</h3>
 
@@ -725,7 +498,6 @@ label.ck input{margin-top:.35rem;flex:none;width:1rem;height:1rem;}
     <label class="ck"><input type="checkbox"> Is the word count 150 or more?</label>
   </section>
 
-  <!-- ============ ANSWERS / MODELS ============ -->
   <div class="blockhead answers">Answers &amp; models
     <span>Hidden by default. Attempt the section above before opening this.</span>
   </div>
@@ -867,7 +639,6 @@ label.ck input{margin-top:.35rem;flex:none;width:1rem;height:1rem;}
     </div>
   </section>
 
-  <!-- ============ TEACHER NOTES ============ -->
   <div class="blockhead teacher">Teacher notes
     <span>Staging, feedback priorities, differentiation, homework, and progression rules.</span>
   </div>
@@ -1057,20 +828,14 @@ label.ck input{margin-top:.35rem;flex:none;width:1rem;height:1rem;}
     </div>
   </section>
 
-</div><!-- /panel-a -->
+</div>
 
-
-<!-- ============================================================
-     TAB 2 — BAND 5 to 6
-     ============================================================ -->
 <div class="panel" role="tabpanel" id="panel-b" aria-labelledby="tab-b" tabindex="0" hidden>
 
-  <!-- ============ STUDENT MATERIAL ============ -->
   <div class="blockhead student">Student material
     <span>Track 2 · Academic Task 1 · line graph · working towards a consistent Band 6 performance</span>
   </div>
 
-  <!-- 1 TARGET -->
   <section class="sec">
     <h3><span class="num">01</span> Target &amp; five-minute diagnostic</h3>
 
@@ -1134,7 +899,6 @@ label.ck input{margin-top:.35rem;flex:none;width:1rem;height:1rem;}
     </table>
   </section>
 
-  <!-- 2 BAND GAP -->
   <section class="sec">
     <h3><span class="num">02</span> The gap, in observable behaviour</h3>
     <p>The same four public criteria apply — Task Achievement, Coherence and Cohesion, Lexical Resource,
@@ -1188,7 +952,6 @@ label.ck input{margin-top:.35rem;flex:none;width:1rem;height:1rem;}
     </div>
   </section>
 
-  <!-- 3 TEACH -->
   <section class="sec">
     <h3><span class="num">03</span> Teach — group, select, paraphrase</h3>
 
@@ -1293,7 +1056,6 @@ label.ck input{margin-top:.35rem;flex:none;width:1rem;height:1rem;}
     relationship, use it — it catches misreadings before they reach the page, and it costs ten seconds.</p>
   </section>
 
-  <!-- 4 GUIDED PRACTICE -->
   <section class="sec">
     <h3><span class="num">04</span> Guided practice — 10 items on Graph A</h3>
     <p class="hint">Items 1–4 give you the decisions to judge. Items 5–8 make you repair or compress
@@ -1401,7 +1163,6 @@ label.ck input{margin-top:.35rem;flex:none;width:1rem;height:1rem;}
     </ol>
   </section>
 
-  <!-- 5 TIMED TRANSFER -->
   <section class="sec">
     <h3><span class="num">05</span> Timed transfer — a new graph, 20 minutes</h3>
 
@@ -1451,7 +1212,6 @@ label.ck input{margin-top:.35rem;flex:none;width:1rem;height:1rem;}
     <label class="ck"><input type="checkbox"> Word count between 160 and 200, and no causes invented?</label>
   </section>
 
-  <!-- ============ ANSWERS / MODELS ============ -->
   <div class="blockhead answers">Answers &amp; models
     <span>Hidden by default. Attempt the section above before opening this.</span>
   </div>
@@ -1663,7 +1423,6 @@ label.ck input{margin-top:.35rem;flex:none;width:1rem;height:1rem;}
     </div>
   </section>
 
-  <!-- ============ TEACHER NOTES ============ -->
   <div class="blockhead teacher">Teacher notes
     <span>Staging, feedback priorities, differentiation, homework, and progression rules.</span>
   </div>
@@ -1874,7 +1633,7 @@ label.ck input{margin-top:.35rem;flex:none;width:1rem;height:1rem;}
     </div>
   </section>
 
-</div><!-- /panel-b -->
+</div>
 
 <p class="footnote">
   All graphs, tasks, model answers and keys on this page are original material written for classroom use.
@@ -1883,7 +1642,7 @@ label.ck input{margin-top:.35rem;flex:none;width:1rem;height:1rem;}
   behaviour are the author's own. Nothing here awards or predicts an official band score.
 </p>
 
-</div><!-- /wrap -->
+</div>
 
 <script>
 (function () {

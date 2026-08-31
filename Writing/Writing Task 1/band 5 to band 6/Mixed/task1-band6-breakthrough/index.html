@@ -5,8 +5,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="description" content="Offline teaching webpage for IELTS Academic Writing Task 1 — for students stuck below Band 6 who need to reach Band 6+.">
 <title>IELTS Writing Task 1 — Band 6 Breakthrough</title>
+<meta name="theme-color" content="#1d4ed8">
 <link rel="stylesheet" href="css/styles.css">
-<!-- set theme before first paint so there is no flash -->
+
 <script>
   (function () {
     try {
@@ -20,7 +21,6 @@
 
 <a class="skip-link" href="#main">Skip to content</a>
 
-<!-- ============================ HEADER / NAV ============================ -->
 <header class="site-header">
   <div class="wrap--wide site-header__inner">
     <span class="brand">Task 1 &middot; <span>Band 6 Breakthrough</span></span>
@@ -52,7 +52,6 @@
 
 <main id="main">
 
-  <!-- ============================ HERO ============================ -->
   <section class="hero wrap">
     <span class="eyebrow">IELTS Academic &middot; Writing Task 1 &middot; target Band 6+</span>
     <h1>You are one habit away from Band 6.</h1>
@@ -62,7 +61,6 @@
       Everything works offline.</p>
   </section>
 
-  <!-- ============================ 1. KNOW THE BATTLEFIELD ============================ -->
   <section id="battlefield" class="section">
     <div class="wrap">
       <div class="section__head">
@@ -71,16 +69,16 @@
         <p class="lead">The rules of the task, and exactly what the examiner is looking for.</p>
       </div>
 
-      <div id="fact-row" class="fact-row"><!-- facts injected by app.js --></div>
+      <div id="fact-row" class="fact-row"></div>
 
       <h3>The four criteria &mdash; each worth 25%</h3>
       <p>Your Task 1 band is the average of these four. Here is the plain-English gap between
         Band 6 and Band 7 for each one.</p>
-      <div id="criteria-grid" class="grid grid--2"><!-- criteria cards injected by app.js --></div>
+      <div id="criteria-grid" class="grid grid--2"></div>
 
       <div id="overview-klaxon" class="klaxon" role="note">
         <h3>The one rule you cannot break</h3>
-        <p><!-- overview rule injected by app.js --></p>
+        <p></p>
       </div>
 
       <div class="teacher-note teacher-only">
@@ -90,7 +88,6 @@
     </div>
   </section>
 
-  <!-- ============================ 2. THE 6 QUESTION TYPES ============================ -->
   <section id="types" class="section">
     <div class="wrap">
       <div class="section__head">
@@ -100,8 +97,8 @@
       </div>
 
       <div class="tabs">
-        <div id="qt-tablist" class="tabs__list" role="tablist" aria-label="Question types"><!-- tabs injected --></div>
-        <div id="qt-panels"><!-- panels injected --></div>
+        <div id="qt-tablist" class="tabs__list" role="tablist" aria-label="Question types"></div>
+        <div id="qt-panels"></div>
       </div>
 
       <div class="teacher-note teacher-only">
@@ -110,7 +107,6 @@
     </div>
   </section>
 
-  <!-- ============================ 3. THE 4-PARAGRAPH SKELETON ============================ -->
   <section id="skeleton" class="section">
     <div class="wrap">
       <div class="section__head">
@@ -119,7 +115,7 @@
         <p class="lead">Use this structure for every Task 1, whatever the visual. Word budgets included.</p>
       </div>
 
-      <div id="skeleton-list"><!-- paragraphs injected by app.js --></div>
+      <div id="skeleton-list"></div>
 
       <div class="teacher-note teacher-only">
         Model P1 live on the board. Then send students to the Paraphrase Lab (Tool D) for P1 practice.
@@ -127,7 +123,6 @@
     </div>
   </section>
 
-  <!-- ============================ 4. VOCABULARY BANK ============================ -->
   <section id="vocab" class="section">
     <div class="wrap">
       <div class="section__head">
@@ -139,10 +134,10 @@
       <div class="vocab-controls">
         <label class="visually-hidden" for="vocab-search">Search the vocabulary bank</label>
         <input id="vocab-search" type="search" placeholder="Search e.g. 'sharp', 'whereas', 'demolished'">
-        <div id="vocab-filters" role="group" aria-label="Filter vocabulary by function"><!-- filter buttons injected --></div>
+        <div id="vocab-filters" role="group" aria-label="Filter vocabulary by function"></div>
       </div>
 
-      <div id="vocab-tables"><!-- tables injected by app.js --></div>
+      <div id="vocab-tables"></div>
 
       <div class="teacher-note teacher-only">
         Give each student a target of 5 personal replacements before the Writing Arena.
@@ -150,7 +145,6 @@
     </div>
   </section>
 
-  <!-- ============================ 5. THE 7 DEADLY SINS ============================ -->
   <section id="sins" class="section">
     <div class="wrap">
       <div class="section__head">
@@ -159,7 +153,7 @@
         <p class="lead">The Band-5 habits, why each one costs marks, and the fix. Tap to open.</p>
       </div>
 
-      <div id="sins-accordion"><!-- accordion injected by app.js --></div>
+      <div id="sins-accordion"></div>
 
       <div class="teacher-note teacher-only">
         Diagnostic: students privately tick the sins they commit. That becomes their goal in the Arena.
@@ -167,7 +161,6 @@
     </div>
   </section>
 
-  <!-- ============================ 6. BAND 6 vs BAND 8 ============================ -->
   <section id="compare" class="section">
     <div class="wrap">
       <div class="section__head">
@@ -176,7 +169,7 @@
         <p class="lead">The same task, answered twice. Turn on the annotations to see what earns the higher band.</p>
       </div>
 
-      <p class="plab__prompt" id="bvb-task"><!-- task injected --></p>
+      <p class="plab__prompt" id="bvb-task"></p>
 
       <div class="bvb__toolbar">
         <button id="bvb-toggle" class="btn" type="button" aria-pressed="false">
@@ -187,11 +180,11 @@
       <div class="bvb__cols">
         <div class="bvb__col six card">
           <h4>Band 6 answer <span class="tag">~Band 6</span></h4>
-          <div id="bvb-six" class="bvb__essay"><!-- injected --></div>
+          <div id="bvb-six" class="bvb__essay"></div>
         </div>
         <div class="bvb__col eight card">
           <h4>Band 8 answer <span class="tag">~Band 8</span></h4>
-          <div id="bvb-eight" class="bvb__essay"><!-- injected --></div>
+          <div id="bvb-eight" class="bvb__essay"></div>
         </div>
       </div>
 
@@ -201,7 +194,6 @@
     </div>
   </section>
 
-  <!-- ============================ PRACTICE TOOLS ============================ -->
   <section id="tools" class="section">
     <div class="wrap">
       <div class="section__head">
@@ -210,7 +202,6 @@
         <p class="lead">Your progress in the Arena, Rubric and Quiz is saved on this device only.</p>
       </div>
 
-      <!-- Tool A: Writing Arena -->
       <div id="tool-arena" class="tool">
         <h3><span class="tool__letter" aria-hidden="true">A</span> Writing Arena</h3>
         <p>Write a full Task 1 answer under exam conditions. Tick each box as you complete it.</p>
@@ -242,20 +233,19 @@
         <ul id="arena-drafts" class="draft-list"></ul>
       </div>
 
-      <!-- Tool B: Self-Assessment Rubric -->
       <div id="tool-rubric" class="tool">
         <h3><span class="tool__letter" aria-hidden="true">B</span> Self-Assessment Rubric</h3>
         <p>Score your draft honestly against the four criteria. The tool estimates your band and
           tells you the one thing to fix next.</p>
 
-        <div id="rubric-sliders"><!-- sliders injected by rubric.js --></div>
+        <div id="rubric-sliders"></div>
 
         <div class="rubric__result">
           Estimated overall band
           <span id="rubric-band" class="rubric__band" role="status" aria-live="polite">6.0</span>
         </div>
 
-        <div id="rubric-tips" aria-live="polite"><!-- tips injected --></div>
+        <div id="rubric-tips" aria-live="polite"></div>
 
         <p style="margin:1rem 0 0.5rem">
           <button id="rubric-save" class="btn" type="button">Save to progress chart</button>
@@ -265,21 +255,19 @@
              aria-label="Your overall band score over time"></svg>
       </div>
 
-      <!-- Tool C: Overview Trainer -->
       <div class="tool">
         <h3><span class="tool__letter" aria-hidden="true">C</span> Overview Trainer</h3>
         <p>The overview is the paragraph that decides your band. Practise it three times.
           Write two sentences, no numbers, starting with "Overall".</p>
-        <div id="overview-trainer"><!-- 3 trainer cards injected by overview-trainer.js --></div>
+        <div id="overview-trainer"></div>
       </div>
 
-      <!-- Tool D: Paraphrase Lab -->
       <div id="tool-plab" class="tool">
         <h3><span class="tool__letter" aria-hidden="true">D</span> Paraphrase Lab</h3>
         <p>Rewrite the first sentence of each prompt. Change the nouns, the verbs and the structure.
           Then reveal the model to compare.</p>
 
-        <p class="plab__prompt" id="plab-prompt"><!-- prompt injected --></p>
+        <p class="plab__prompt" id="plab-prompt"></p>
 
         <div class="field">
           <label for="plab-input">Your paraphrase of sentence 1</label>
@@ -293,7 +281,7 @@
             Reveal model paraphrase
           </button>
         </p>
-        <div id="plab-model" class="plab__model" hidden><!-- model injected --></div>
+        <div id="plab-model" class="plab__model" hidden></div>
 
         <div class="plab__nav">
           <button id="plab-prev" class="btn btn--soft btn--sm" type="button">&larr; Previous</button>
@@ -302,7 +290,6 @@
         </div>
       </div>
 
-      <!-- Tool E: Vocabulary Quiz -->
       <div id="tool-quiz" class="tool">
         <h3><span class="tool__letter" aria-hidden="true">E</span> Vocabulary Quiz</h3>
         <p>15 questions on trend verbs, comparison, approximation and the overview rule.
@@ -320,14 +307,12 @@
 
 </main>
 
-<!-- ============================ TEACHER PANEL ============================ -->
 <aside id="teacher-panel" class="teacher-panel" aria-label="Teacher notes" aria-hidden="true">
   <button id="teacher-close" class="btn btn--soft btn--sm close" type="button">Close</button>
   <h3>Teacher notes</h3>
-  <div id="teacher-panel-body"><!-- lesson plan injected by app.js --></div>
+  <div id="teacher-panel-body"></div>
 </aside>
 
-<!-- ============================ FOOTER ============================ -->
 <footer class="site-footer">
   <div class="wrap">
     <p>IELTS Academic Writing Task 1 &mdash; Band 6 Breakthrough. Target: Band 5 &rarr; Band 6+.
@@ -335,7 +320,6 @@
   </div>
 </footer>
 
-<!-- data first, then shell, then one script per tool -->
 <script src="js/data.js" defer></script>
 <script src="js/app.js" defer></script>
 <script src="js/arena.js" defer></script>
