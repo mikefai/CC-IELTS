@@ -1,0 +1,1644 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Two Visuals, One Story</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500;700&family=Literata:opsz,wght@7..72,400;7..72,600&display=swap">
+
+<style>
+  :root {
+    --ground: #F4F5F8; --surface: #FFFFFF; --sunk: #E9ECF2;
+    --ink: #16202E; --ink-soft: #5C6A7D; --ink-faint: #8E99A8;
+    --accent: #33456B; --accent-soft: #E2E7F1;
+    --kill: #B0413E; --kill-soft: #F7E9E8;
+    --keep: #3B7A57; --keep-soft: #E6F0EA;
+    --warn: #9A6B1E; --warn-soft: #FBF0DC;
+    --gra: #6D5192; --gra-soft: #ECE5F3;
+    --rule: #D8DDE6;
+    --f-display: "Instrument Serif", Georgia, serif;
+    --f-body: "Literata", Georgia, "Times New Roman", serif;
+    --f-mono: "JetBrains Mono", ui-monospace, "Cascadia Mono", Consolas, monospace;
+  }
+
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+
+  body {
+    margin: 0; background: var(--ground); color: var(--ink);
+    font-family: var(--f-body); font-size: 1.02rem; line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  h1, h2, h3, h4 { margin: 0; line-height: 1.15; text-wrap: balance; }
+  h1 { font-family: var(--f-display); font-size: clamp(2.6rem, 7vw, 4.2rem); font-weight: 400; letter-spacing: -0.01em; }
+  h2 { font-family: var(--f-display); font-size: clamp(1.8rem, 4vw, 2.4rem); font-weight: 400; }
+  h3 { font-family: var(--f-mono); font-size: 0.92rem; font-weight: 700; letter-spacing: 0.02em; }
+  h4 { font-family: var(--f-body); font-size: 1.05rem; font-weight: 600; }
+  .eyebrow { font-family: var(--f-mono); font-size: 0.7rem; font-weight: 500; letter-spacing: 0.16em; text-transform: uppercase; color: var(--accent); }
+  p { max-width: 68ch; }
+  a { color: var(--accent); }
+
+  /* ---------- shell / sidebar ---------- */
+  .shell { display: flex; align-items: flex-start; max-width: 1200px; margin: 0 auto; }
+  .sidenav {
+    position: sticky; top: 0; align-self: flex-start;
+    width: 236px; flex-shrink: 0; height: 100vh; overflow-y: auto;
+    padding: 1.6rem 1.15rem 2rem; border-right: 1px solid var(--rule);
+    background: var(--surface);
+  }
+  .sidenav .brand { font-family: var(--f-display); font-size: 1.5rem; line-height: 1.1; display: block; margin-bottom: 0.2rem; }
+  .sidenav .brand-sub { font-family: var(--f-mono); font-size: 0.62rem; letter-spacing: 0.13em; text-transform: uppercase; color: var(--ink-faint); display: block; margin-bottom: 1.4rem; }
+  .nav-toggle { display: none; }
+  .nav-list { list-style: none; margin: 0; padding: 0; }
+  .nav-list .grp { font-family: var(--f-mono); font-size: 0.6rem; letter-spacing: 0.13em; text-transform: uppercase; color: var(--ink-faint); margin: 1.15rem 0 0.35rem; }
+  .nav-list a {
+    display: block; font-family: var(--f-mono); font-size: 0.76rem; text-decoration: none;
+    color: var(--ink-soft); padding: 0.34rem 0.5rem; border-radius: 3px; border-left: 2px solid transparent;
+    transition: background 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+  }
+  .nav-list a:hover { background: var(--sunk); color: var(--ink); }
+  .nav-list a.active { color: var(--accent); border-left-color: var(--accent); background: var(--accent-soft); font-weight: 500; }
+  .nav-list a.sub { padding-left: 1.15rem; font-size: 0.72rem; }
+
+  .content { flex: 1; min-width: 0; }
+  .wrap { max-width: 820px; margin: 0 auto; padding: 0 clamp(1rem, 5vw, 2.4rem); }
+
+  /* ---------- hero ---------- */
+  .hero { padding: clamp(2.6rem, 8vw, 4.6rem) 0 clamp(1.8rem, 5vw, 2.8rem); border-bottom: 1px solid var(--rule); }
+  .hero .lede { font-size: 1.16rem; color: var(--ink-soft); margin-top: 1.05rem; }
+  .hero .lede em { font-style: italic; color: var(--ink); }
+  .facts { display: flex; flex-wrap: wrap; gap: 0.7rem 2.1rem; margin-top: 1.7rem; font-family: var(--f-mono); font-size: 0.78rem; }
+  .facts div { display: flex; flex-direction: column; gap: 0.1rem; }
+  .facts span { color: var(--ink-faint); letter-spacing: 0.08em; text-transform: uppercase; font-size: 0.66rem; }
+  .facts b { font-weight: 500; color: var(--ink); }
+
+  /* ---------- sections ---------- */
+  section { padding: clamp(2.4rem, 7vw, 3.9rem) 0; border-bottom: 1px solid var(--rule); scroll-margin-top: 0.5rem; }
+  .sec-head { margin-bottom: 1.7rem; }
+  .sec-head .eyebrow { display: block; margin-bottom: 0.5rem; }
+  .sec-head p { color: var(--ink-soft); margin-top: 0.8rem; }
+  .stage-tag { font-family: var(--f-mono); font-size: 0.68rem; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: var(--surface); background: var(--accent); padding: 0.2rem 0.5rem; border-radius: 3px; display: inline-block; margin-bottom: 0.7rem; }
+  .budget { font-family: var(--f-mono); font-size: 0.72rem; color: var(--ink-soft); background: var(--sunk); border: 1px solid var(--rule); border-radius: 3px; padding: 0.5rem 0.7rem; display: inline-block; margin-top: 0.4rem; }
+
+  /* ---------- generic blocks ---------- */
+  .card { background: var(--surface); border: 1px solid var(--rule); border-radius: 4px; padding: 1.25rem 1.4rem; }
+  .cards { display: grid; gap: 0.9rem; }
+  @media (min-width: 720px) { .cards.two { grid-template-columns: 1fr 1fr; } .cards.three { grid-template-columns: 1fr 1fr 1fr; } }
+  .card .num { font-family: var(--f-mono); font-size: 0.7rem; font-weight: 700; color: var(--accent); letter-spacing: 0.1em; }
+  .card h3 { margin: 0.35rem 0 0.5rem; }
+  .card h4 { margin: 0.3rem 0 0.5rem; }
+  .card p { font-size: 0.92rem; margin: 0 0 0.5rem; color: var(--ink-soft); }
+  .card p:last-child { margin-bottom: 0; }
+  .card .tell { display: block; margin-top: 0.7rem; font-family: var(--f-mono); font-size: 0.74rem; color: var(--ink); background: var(--accent-soft); padding: 0.4rem 0.55rem; border-radius: 3px; }
+
+  .note { border-left: 3px solid var(--accent); background: var(--sunk); padding: 0.9rem 1.1rem; border-radius: 0 3px 3px 0; margin: 1.15rem 0; }
+  .note p { margin: 0; font-size: 0.93rem; }
+  .note .eyebrow { display: block; margin-bottom: 0.3rem; }
+  .amber { border-left: 3px solid var(--warn); background: var(--warn-soft); padding: 0.9rem 1.1rem; border-radius: 0 3px 3px 0; margin: 1.15rem 0; }
+  .amber .eyebrow { color: var(--warn); display: block; margin-bottom: 0.35rem; }
+  .amber p { margin: 0 0 0.5rem; font-size: 0.93rem; }
+  .ex { font-family: var(--f-mono); font-size: 0.82rem; display: block; margin-top: 0.3rem; }
+  .ex.no { color: var(--kill); }
+  .ex.yes { color: var(--keep); }
+
+  /* ---------- skeleton steps ---------- */
+  .skeleton { display: grid; gap: 0.7rem; }
+  .skel-step { display: grid; grid-template-columns: 2.3rem 1fr; gap: 0.9rem; background: var(--surface); border: 1px solid var(--rule); border-radius: 4px; padding: 1rem 1.2rem; }
+  .skel-step .n { font-family: var(--f-mono); font-weight: 700; color: var(--accent); font-size: 1.1rem; }
+  .skel-step h3 { margin-bottom: 0.3rem; }
+  .skel-step p { margin: 0; font-size: 0.93rem; color: var(--ink-soft); }
+  .skel-step .new { font-family: var(--f-mono); font-size: 0.66rem; color: var(--warn); text-transform: uppercase; letter-spacing: 0.06em; display: block; margin-top: 0.4rem; }
+
+  /* ---------- data ---------- */
+  .figblock { background: var(--surface); border: 1px solid var(--rule); border-radius: 4px; padding: 1.25rem; margin: 1rem 0; }
+  .figblock .figlabel { font-family: var(--f-mono); font-size: 0.68rem; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: var(--accent); margin-bottom: 0.7rem; }
+  .figblock .figcap { font-family: var(--f-mono); font-size: 0.72rem; color: var(--ink-faint); margin-top: 0.7rem; }
+  .figgrid { display: grid; gap: 1rem; }
+  @media (min-width: 760px) { .figgrid.two { grid-template-columns: 1fr 1fr; align-items: start; } }
+
+  table.data { width: 100%; border-collapse: collapse; font-size: 0.9rem; }
+  table.data caption { font-family: var(--f-mono); font-size: 0.72rem; color: var(--ink-soft); text-align: left; margin-bottom: 0.5rem; }
+  table.data th, table.data td { border: 1px solid var(--rule); padding: 0.45rem 0.6rem; text-align: center; }
+  table.data th { background: var(--sunk); font-family: var(--f-mono); font-size: 0.68rem; text-transform: uppercase; letter-spacing: 0.03em; }
+  table.data td:first-child, table.data th:first-child { text-align: left; }
+  .chartwrap { overflow-x: auto; }
+  svg.chart { display: block; width: 100%; height: auto; min-width: 380px; }
+  svg text { font-family: var(--f-mono); }
+  .c-axis { stroke: var(--rule); stroke-width: 1; }
+  .c-grid { stroke: var(--rule); stroke-width: 1; stroke-dasharray: 2 3; }
+  .c-label { fill: var(--ink-faint); font-size: 10px; }
+  .c-val { fill: var(--ink); font-size: 10px; font-weight: 700; }
+  .c-l1 { fill: none; stroke: var(--accent); stroke-width: 2.5; }
+  .c-l2 { fill: none; stroke: var(--warn); stroke-width: 2.5; }
+  .c-l3 { fill: none; stroke: var(--keep); stroke-width: 2.5; }
+  .c-p1 { fill: var(--accent); } .c-p2 { fill: var(--warn); } .c-p3 { fill: var(--keep); }
+  .c-b1 { fill: var(--accent); } .c-b2 { fill: var(--warn); }
+  .legend { display: flex; flex-wrap: wrap; gap: 0.4rem 1rem; font-family: var(--f-mono); font-size: 0.7rem; color: var(--ink-soft); margin-top: 0.6rem; }
+  .legend span { display: inline-flex; align-items: center; gap: 0.35rem; }
+  .swatch { width: 0.75rem; height: 0.75rem; border-radius: 2px; display: inline-block; }
+
+  /* ---------- band ladder ---------- */
+  .ladder { border: 1px solid var(--rule); border-radius: 4px; overflow: hidden; margin-top: 1.2rem; background: var(--surface); }
+  .ladder-tabs { display: flex; border-bottom: 1px solid var(--rule); background: var(--sunk); }
+  .ladder-tab {
+    flex: 1; font-family: var(--f-mono); font-size: 0.76rem; font-weight: 500; text-align: center;
+    padding: 0.7rem 0.5rem; border: none; background: transparent; color: var(--ink-soft); cursor: pointer;
+    border-bottom: 2px solid transparent; transition: background 0.15s ease, color 0.15s ease;
+  }
+  .ladder-tab:hover { background: var(--surface); }
+  .ladder-tab[aria-selected="true"] { background: var(--surface); color: var(--accent); border-bottom-color: var(--accent); font-weight: 700; }
+  .ladder-tab.t5[aria-selected="true"] { color: var(--kill); border-bottom-color: var(--kill); }
+  .ladder-tab.t65[aria-selected="true"] { color: var(--warn); border-bottom-color: var(--warn); }
+  .ladder-tab.t75[aria-selected="true"] { color: var(--keep); border-bottom-color: var(--keep); }
+  .ladder-panel { padding: 1.3rem 1.4rem; }
+  .ladder-panel[hidden] { display: none; }
+  .ladder-panel .essay p { font-size: 0.95rem; margin: 0 0 0.75rem; max-width: none; }
+  .ladder-panel .wc { font-family: var(--f-mono); font-size: 0.72rem; color: var(--ink-faint); margin-top: 0.4rem; }
+  .verdict { font-family: var(--f-mono); font-size: 0.74rem; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase; display: inline-block; padding: 0.25rem 0.55rem; border-radius: 3px; margin-bottom: 0.9rem; }
+  .verdict.v5 { background: var(--kill-soft); color: var(--kill); }
+  .verdict.v65 { background: var(--warn-soft); color: var(--warn); }
+  .verdict.v75 { background: var(--keep-soft); color: var(--keep); }
+
+  .callouts { margin-top: 1rem; padding: 0.9rem 1.15rem; background: var(--sunk); border-radius: 4px; }
+  .callouts ul { margin: 0; padding-left: 1.2rem; }
+  .callouts li { font-size: 0.85rem; color: var(--ink-soft); margin-bottom: 0.4rem; }
+  .callouts li:last-child { margin-bottom: 0; }
+  .callouts b { color: var(--ink); font-family: var(--f-mono); font-size: 0.8rem; }
+  .callouts.bad li::marker { color: var(--kill); }
+  .callouts.good li::marker { color: var(--keep); }
+
+  /* ---------- criterion highlight ---------- */
+  mark.tr, mark.cc, mark.lr, mark.gra { padding: 0.02rem 0.18rem; border-radius: 2px; color: var(--ink); background: transparent; box-shadow: none; }
+  .coded mark.tr  { background: var(--accent-soft); box-shadow: inset 0 -0.55em 0 var(--accent-soft); }
+  .coded mark.cc  { background: var(--keep-soft); }
+  .coded mark.lr  { background: var(--warn-soft); }
+  .coded mark.gra { background: var(--gra-soft); }
+  .coded mark.tr  { border-bottom: 2px solid var(--accent); }
+  .coded mark.cc  { border-bottom: 2px solid var(--keep); }
+  .coded mark.lr  { border-bottom: 2px solid var(--warn); }
+  .coded mark.gra { border-bottom: 2px solid var(--gra); }
+  .crit-legend { display: flex; flex-wrap: wrap; gap: 0.5rem 1.1rem; font-family: var(--f-mono); font-size: 0.7rem; margin: 0.4rem 0 1rem; align-items: center; }
+  .crit-legend .key { display: inline-flex; align-items: center; gap: 0.35rem; color: var(--ink-soft); }
+  .crit-legend .box { width: 0.8rem; height: 0.8rem; border-radius: 2px; display: inline-block; }
+  .box.tr { background: var(--accent); } .box.cc { background: var(--keep); }
+  .box.lr { background: var(--warn); } .box.gra { background: var(--gra); }
+
+  /* ---------- sentence transform ---------- */
+  .xform { border: 1px solid var(--rule); border-radius: 4px; overflow: hidden; margin: 1rem 0; background: var(--surface); }
+  .xform-tabs { display: flex; background: var(--sunk); border-bottom: 1px solid var(--rule); }
+  .xform-tab { flex: 1; font-family: var(--f-mono); font-size: 0.74rem; padding: 0.6rem; border: none; background: transparent; color: var(--ink-soft); cursor: pointer; border-bottom: 2px solid transparent; }
+  .xform-tab[aria-selected="true"] { background: var(--surface); color: var(--accent); border-bottom-color: var(--accent); font-weight: 700; }
+  .xform-body { padding: 1.1rem 1.25rem; }
+  .xform-body[hidden] { display: none; }
+  .xform-body p { margin: 0 0 0.6rem; font-size: 0.95rem; }
+  .xform-body .lab { font-family: var(--f-mono); font-size: 0.66rem; text-transform: uppercase; letter-spacing: 0.06em; color: var(--ink-faint); display: block; margin-bottom: 0.35rem; }
+  .xform-body.b5 .lab { color: var(--kill); }
+  .xform-body.b75 .lab { color: var(--keep); }
+  .move { font-family: var(--f-mono); font-size: 0.78rem; color: var(--ink-soft); background: var(--accent-soft); border-radius: 3px; padding: 0.5rem 0.65rem; margin-top: 0.6rem; }
+
+  /* ---------- upgrade table ---------- */
+  table.upg { width: 100%; border-collapse: collapse; font-size: 0.9rem; margin: 1rem 0; }
+  table.upg th, table.upg td { border: 1px solid var(--rule); padding: 0.6rem 0.75rem; text-align: left; vertical-align: top; }
+  table.upg th { background: var(--sunk); font-family: var(--f-mono); font-size: 0.66rem; text-transform: uppercase; letter-spacing: 0.04em; }
+  table.upg td.b5 { color: var(--kill); font-size: 0.86rem; }
+  table.upg td.b75 { color: var(--keep); }
+  table.upg code { font-family: var(--f-mono); font-size: 0.8rem; background: var(--sunk); padding: 0.05rem 0.25rem; border-radius: 2px; }
+
+  /* ---------- drills ---------- */
+  .drill { background: var(--surface); border: 1px solid var(--rule); border-radius: 4px; padding: 1.2rem 1.35rem; margin: 1rem 0; }
+  .drill .dnum { font-family: var(--f-mono); font-size: 0.7rem; font-weight: 700; letter-spacing: 0.08em; color: var(--accent); text-transform: uppercase; }
+  .drill h3 { margin: 0.3rem 0 0.6rem; font-family: var(--f-body); font-size: 1.15rem; font-weight: 600; }
+  .item { border-top: 1px dotted var(--rule); padding: 0.95rem 0; }
+  .item:first-of-type { border-top: none; }
+  .item .prompt { font-size: 0.94rem; margin: 0 0 0.55rem; }
+  .item .prompt .qn { font-family: var(--f-mono); font-size: 0.76rem; font-weight: 700; color: var(--ink-faint); margin-right: 0.5rem; }
+  .item .given { font-family: var(--f-mono); font-size: 0.82rem; color: var(--ink-soft); background: var(--sunk); border-radius: 3px; padding: 0.5rem 0.65rem; margin-bottom: 0.55rem; }
+  textarea {
+    width: 100%; min-height: 4.4rem; font-family: var(--f-body); font-size: 0.94rem; line-height: 1.5;
+    padding: 0.7rem 0.8rem; border-radius: 4px; border: 1px solid var(--rule);
+    background: var(--surface); color: var(--ink); resize: vertical;
+  }
+  textarea:focus-visible { outline: 2px solid var(--accent); outline-offset: 1px; }
+  button {
+    font-family: var(--f-mono); font-size: 0.78rem; font-weight: 500;
+    padding: 0.45rem 0.85rem; border-radius: 3px; border: 1px solid var(--rule);
+    background: var(--surface); color: var(--ink); cursor: pointer;
+    transition: background 0.15s ease, border-color 0.15s ease;
+  }
+  button:hover { background: var(--sunk); border-color: var(--ink-faint); }
+  button.primary { background: var(--accent); border-color: var(--accent); color: var(--surface); }
+  button.primary:hover { filter: brightness(1.12); }
+  button.ghost { background: transparent; }
+  :focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+  .btn-row { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 0.65rem; align-items: center; }
+  .reveal { display: none; margin-top: 0.8rem; }
+  .reveal.show { display: block; }
+  .reveal .note { margin: 0.5rem 0 0; }
+  .tag-line { font-family: var(--f-mono); font-size: 0.7rem; color: var(--ink-faint); margin-top: 0.5rem; }
+
+  /* ---------- timed self-assessment ---------- */
+  .bar {
+    position: sticky; top: 0; z-index: 6;
+    background: var(--surface); border: 1px solid var(--rule); border-radius: 4px;
+    padding: 0.7rem 1rem; margin-bottom: 1.15rem;
+    display: flex; flex-wrap: wrap; gap: 0.6rem; align-items: center;
+  }
+  .clock { font-family: var(--f-mono); font-variant-numeric: tabular-nums; font-size: 1.3rem; font-weight: 700; color: var(--accent); min-width: 6ch; }
+  .clock.idle { color: var(--ink-faint); }
+  .clock.over { color: var(--kill); }
+  .timer-note { font-family: var(--f-mono); font-size: 0.74rem; color: var(--ink-soft); margin-left: auto; max-width: 34ch; text-align: right; }
+  .rubric-row { border-top: 1px solid var(--rule); padding: 0.9rem 0; }
+  .rubric-row:first-of-type { border-top: none; }
+  .rubric-row .rc { font-family: var(--f-mono); font-size: 0.72rem; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase; color: var(--accent); }
+  .rubric-row .rq { font-size: 0.93rem; margin: 0.35rem 0 0.6rem; }
+  .rubric-opts { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+  .rubric-opts label { display: inline-flex; align-items: center; gap: 0.35rem; font-family: var(--f-mono); font-size: 0.75rem; color: var(--ink-soft); border: 1px solid var(--rule); border-radius: 3px; padding: 0.3rem 0.55rem; cursor: pointer; }
+  .rubric-opts label:hover { background: var(--sunk); }
+  .rubric-opts input { accent-color: var(--accent); }
+  .meter { height: 0.7rem; background: var(--sunk); border-radius: 4px; overflow: hidden; margin-top: 1.1rem; border: 1px solid var(--rule); }
+  .meter-fill { height: 100%; width: 0%; background: var(--accent); transition: width 0.35s ease; }
+  @media (prefers-reduced-motion: reduce) { .meter-fill { transition: none; } }
+  .score-out { font-family: var(--f-mono); font-size: 0.9rem; font-weight: 700; color: var(--accent); margin-top: 0.7rem; }
+  .checklist { display: grid; gap: 0.45rem; margin-top: 0.7rem; font-size: 0.9rem; }
+  .checklist label { display: flex; gap: 0.5rem; align-items: flex-start; color: var(--ink-soft); }
+  .checklist input { margin-top: 0.28rem; accent-color: var(--accent); }
+
+  ol.steps { padding-left: 1.3rem; }
+  ol.steps > li { margin-bottom: 0.85rem; max-width: 66ch; font-size: 0.95rem; }
+  ol.steps b { font-family: var(--f-mono); font-size: 0.85rem; }
+  ol.reflect { padding-left: 1.3rem; }
+  ol.reflect > li { margin-bottom: 0.9rem; max-width: 66ch; }
+
+  footer { font-family: var(--f-mono); font-size: 0.72rem; color: var(--ink-faint); text-align: center; padding: 2rem 1rem 3rem; }
+
+  /* ---------- responsive ---------- */
+  @media (max-width: 980px) {
+    .shell { display: block; }
+    .sidenav {
+      position: sticky; top: 0; width: auto; height: auto; overflow: visible;
+      border-right: none; border-bottom: 1px solid var(--rule); z-index: 30;
+      padding: 0.7rem clamp(1rem, 5vw, 2.4rem);
+      display: flex; flex-direction: column;
+    }
+    .sidenav .brand-row { display: flex; align-items: baseline; justify-content: space-between; gap: 1rem; }
+    .sidenav .brand { font-size: 1.15rem; margin: 0; }
+    .sidenav .brand-sub { display: none; }
+    .nav-toggle { display: inline-flex; align-items: center; gap: 0.4rem; }
+    .nav-list { display: none; margin-top: 0.7rem; max-height: 60vh; overflow-y: auto; }
+    .sidenav.open .nav-list { display: block; }
+    .nav-list .grp { margin-top: 0.8rem; }
+    section { scroll-margin-top: 3.75rem; }
+    .bar { top: 3.4rem; }
+  }
+
+  @media print {
+    .sidenav, .bar, .nav-toggle { display: none !important; }
+    .shell { display: block; }
+    body { background: #fff; color: #000; font-size: 10.5pt; }
+    h1 { font-size: 20pt; }
+    section { break-inside: avoid; border-color: #bbb; }
+    .ladder-panel[hidden] { display: block !important; }
+    .ladder-tabs { display: none; }
+    .ladder-panel { border-top: 1px solid #bbb; }
+    .reveal { display: block !important; }
+    .drill, .card, .figblock, .ladder { break-inside: avoid; }
+    .coded mark.tr, .coded mark.cc, .coded mark.lr, .coded mark.gra { box-shadow: none; border-bottom: 1px solid #666; }
+  }
+</style>
+</head>
+<body>
+<div class="shell">
+
+  <nav class="sidenav" id="sidenav" aria-label="Lesson contents">
+    <div class="brand-row">
+      <span class="brand">Two Visuals,<br>One Story</span>
+      <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="navList">Contents &#9662;</button>
+    </div>
+    <span class="brand-sub">IELTS Writing Task 1</span>
+    <ul class="nav-list" id="navList">
+      <li><a href="#s-dashboard" class="active">Dashboard</a></li>
+      <li class="grp">Sub-lesson A</li>
+      <li><a href="#s-a" class="sub">The dual-visual architecture</a></li>
+      <li class="grp">Sub-lesson B</li>
+      <li><a href="#s-b" class="sub">Synthesis &amp; comparison language</a></li>
+      <li class="grp">Sub-lesson C &mdash; case studies</li>
+      <li><a href="#s-c" class="sub">How to run a case study</a></li>
+      <li><a href="#s-c1" class="sub">1 &middot; Table + Line graph</a></li>
+      <li><a href="#s-c2" class="sub">2 &middot; Pie chart + Table</a></li>
+      <li><a href="#s-c3" class="sub">3 &middot; Bar chart + Line graph</a></li>
+      <li class="grp">Practice</li>
+      <li><a href="#s-drills" class="sub">Interactive drills</a></li>
+      <li class="grp">&nbsp;</li>
+      <li><a href="#s-teacher">For the teacher</a></li>
+    </ul>
+  </nav>
+
+  <div class="content">
+    <header class="hero">
+      <div class="wrap">
+        <span class="eyebrow">IELTS Academic Writing &middot; Task 1 &middot; Lesson 4 &middot; Mixed visuals</span>
+        <h1>Two Visuals, One Story</h1>
+        <p class="lede">Some Task 1 questions give you <em>two</em> charts at once &mdash; a table and a line graph, a pie chart and a bar chart. A Band 5 script describes them as two separate things and stops. A Band 7.5 script treats them as one set of data with one story to tell, and spends its best sentence showing how the two connect. This lesson builds that skill in three stages.</p>
+        <div class="facts">
+          <div><span>Builds from</span><b>Band 5.0&ndash;5.5</b></div>
+          <div><span>Target</span><b>Band 7.5+</b></div>
+          <div><span>Task</span><b>20 minutes &middot; 150+ words</b></div>
+          <div><span>Assumes</span><b>Single-visual skeleton (Lessons 1&ndash;3)</b></div>
+          <div><span>New techniques</span><b>3 + 4, staged</b></div>
+        </div>
+      </div>
+    </header>
+
+    <main>
+<!-- ===================== DASHBOARD ===================== -->
+<section id="s-dashboard">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">Dashboard</span>
+      <h2>What a two-visual question is really asking</h2>
+      <p>The instruction looks the same as always &mdash; <em>&ldquo;Summarise the information by selecting and reporting the main features, and make comparisons where relevant.&rdquo;</em> The only change is that the information now sits in two pictures instead of one. Your job is unchanged: one introduction, one overview, two body paragraphs, 150+ words, 20 minutes.</p>
+    </div>
+
+    <h3 style="color:var(--ink-soft);margin-bottom:0.8rem;">The Two-Visual Dilemma &mdash; why Band 5 scripts stall here</h3>
+    <div class="cards two">
+      <div class="card" style="background:var(--kill-soft);border-color:var(--kill);">
+        <span class="num" style="color:var(--kill);">FAILURE 1</span>
+        <h4>The data dump</h4>
+        <p>Every number from both charts, in the order they appear, with no filtering. Two visuals doubles the data, so a dump that was merely weak on one chart becomes an unreadable wall on two. Task Achievement caps at Band 5 when nothing is selected.</p>
+      </div>
+      <div class="card" style="background:var(--kill-soft);border-color:var(--kill);">
+        <span class="num" style="color:var(--kill);">FAILURE 2</span>
+        <h4>The disjointed halves</h4>
+        <p>Paragraph 1 is about Chart A. Paragraph 2 is about Chart B. They never meet. There is no sentence anywhere that uses the word <em>while</em>, <em>whereas</em>, or <em>compared with</em> to hold the two together. Coherence &amp; Cohesion cannot rise above 5 without cross-visual links.</p>
+      </div>
+      <div class="card" style="background:var(--kill-soft);border-color:var(--kill);">
+        <span class="num" style="color:var(--kill);">FAILURE 3</span>
+        <h4>The missing overview</h4>
+        <p>With two charts to process, the panicking candidate skips the overview entirely and goes straight to numbers &mdash; or writes an &ldquo;overview&rdquo; that only covers one of the two visuals. A single-visual overview on a two-visual task is an automatic Band 5 for Task Achievement.</p>
+      </div>
+      <div class="card" style="background:var(--kill-soft);border-color:var(--kill);">
+        <span class="num" style="color:var(--kill);">FAILURE 4</span>
+        <h4>The 50/50 clock split</h4>
+        <p>Ten minutes on each chart, regardless of which one carries the real story. Often one visual is rich (a 20-year trend) and the other is thin (four categories at one point in time). Equal time forces padding on the thin one and rushing on the rich one.</p>
+      </div>
+    </div>
+
+    <div class="note">
+      <span class="eyebrow">The one idea this lesson turns on</span>
+      <p>Two visuals are not two tasks. They are one dataset that happens to be drawn twice. Every technique below exists to make your script sound like it was written by someone who saw <em>one</em> picture.</p>
+    </div>
+
+    <div class="sec-head" style="margin-top:2.4rem;">
+      <span class="eyebrow">The blueprint</span>
+      <h2>The universal four-paragraph plan, extended for two visuals</h2>
+      <p>This is the same skeleton you learned for a single table or graph. Only paragraphs 1 and 2 change &mdash; and they change in a small, learnable way.</p>
+    </div>
+
+    <div class="skeleton">
+      <div class="skel-step">
+        <span class="n">1</span>
+        <div>
+          <h3>Introduction &mdash; paraphrase both visuals in one sentence</h3>
+          <p>One complex sentence that names what each visual shows, the time frame(s), and the units. Not two sentences &mdash; one, joined with <em>while</em> or a relative clause. This is Technique A1.</p>
+          <span class="new">Changed for two visuals</span>
+        </div>
+      </div>
+      <div class="skel-step">
+        <span class="n">2</span>
+        <div>
+          <h3>The dual overview &mdash; two sentences, one per visual, plus the link</h3>
+          <p>Sentence 1: the single biggest feature of Visual 1. Sentence 2: the single biggest feature of Visual 2 <em>and</em> how it relates to Visual 1 (mirrors it, contrasts with it, or explains it). No numbers anywhere. This is Technique A2.</p>
+          <span class="new">Changed for two visuals</span>
+        </div>
+      </div>
+      <div class="skel-step">
+        <span class="n">3</span>
+        <div>
+          <h3>Body paragraph 1 &mdash; the first visual (or the first shared theme)</h3>
+          <p>Report and support the main features of one visual with specific figures. Use synthesis, not listing (Sub-lesson B). Default partition: one visual per body paragraph.</p>
+        </div>
+      </div>
+      <div class="skel-step">
+        <span class="n">4</span>
+        <div>
+          <h3>Body paragraph 2 &mdash; the second visual, linked back</h3>
+          <p>Report the second visual, and include at least one sentence that ties a figure here to a figure in Body 1 (<em>a pattern also visible in&hellip;</em>, <em>in contrast to&hellip;</em>). This linking sentence is what separates Band 6.5 from Band 7.5.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="amber">
+      <span class="eyebrow">Time budget for a two-visual task</span>
+      <p><b>2 min</b> read both visuals and decide which carries the main story &nbsp;&middot;&nbsp; <b>2 min</b> introduction + dual overview &nbsp;&middot;&nbsp; <b>7 min</b> Body 1 &nbsp;&middot;&nbsp; <b>6 min</b> Body 2 (shorter &mdash; it reuses language from Body 1) &nbsp;&middot;&nbsp; <b>3 min</b> check verbs, articles, and that the overview names both visuals.</p>
+    </div>
+  </div>
+</section>
+<!-- ===================== SUB-LESSON A ===================== -->
+<section id="s-a">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="stage-tag">Sub-lesson A &middot; one 45-min session</span>
+      <span class="eyebrow">The shape</span>
+      <h2>The dual-visual architecture</h2>
+      <p>Three techniques. They cover only paragraphs 1 and 2 of your answer, because the body paragraphs use the same skills you already have &mdash; they just need the synthesis language from Sub-lesson B.</p>
+      <span class="budget">Technique budget this session: A1 unified introduction &middot; A2 dual overview &middot; A3 body partition. Stop there.</span>
+    </div>
+
+    <!-- A1 -->
+    <h3 style="color:var(--ink-soft);margin:1.4rem 0 0.7rem;">A1 &middot; The unified introduction</h3>
+    <p>The task gives you two sentences of instruction &mdash; one describing each visual. Band 5 rewrites them as two sentences. Band 7.5 fuses them into <b>one</b>, because a single sentence signals to the examiner that you see one dataset.</p>
+
+    <div class="figblock">
+      <div class="figlabel">The task wording (typical)</div>
+      <p style="margin:0;font-size:0.95rem;"><em>The table below shows the amount of electricity generated by four countries in 2000 and 2020. The pie chart shows the sources of that electricity in the same four countries combined in 2020.</em></p>
+    </div>
+
+    <div class="xform" data-xform>
+      <div class="xform-tabs" role="tablist">
+        <button class="xform-tab" role="tab" aria-selected="true" data-x="0">Band 5 &mdash; two sentences</button>
+        <button class="xform-tab" role="tab" aria-selected="false" data-x="1">Band 7.5 &mdash; one sentence</button>
+      </div>
+      <div class="xform-body b5" data-xb="0">
+        <span class="lab">What most candidates write</span>
+        <p>&ldquo;The table shows the electricity generated by four countries in 2000 and 2020. The pie chart shows the sources of the electricity in 2020.&rdquo;</p>
+        <div class="move">Problem: the two objects (<code>table</code>, <code>pie chart</code>) sit in separate sentences with an identical verb (<em>shows</em>&hellip;<em>shows</em>). It reads as a list, and it copies the task's structure almost word for word.</div>
+      </div>
+      <div class="xform-body b75" data-xb="1" hidden>
+        <span class="lab">The upgrade</span>
+        <p>&ldquo;The table compares total electricity output in four countries at two points in time, 2000 and 2020, while the accompanying pie chart breaks down the combined 2020 figure by energy source.&rdquo;</p>
+        <div class="move">Moves used: <b>one</b> main clause + <em>while</em> + a second clause; <em>compares</em> and <em>breaks down</em> instead of <em>shows</em> twice; <em>accompanying</em> to bind the second visual to the first; <em>the combined 2020 figure</em> refers back, proving you noticed the pie chart is a subset of the table.</div>
+      </div>
+    </div>
+
+    <div class="note">
+      <span class="eyebrow">The three-part frame for any unified introduction</span>
+      <p><b>[Visual 1: what + who/where + when]</b> &nbsp;+&nbsp; <em>while / whereas / and</em> &nbsp;+&nbsp; <b>[Visual 2: what + how it relates to Visual 1]</b>. Fill the two brackets from the task wording, never copy the connector-free version.</p>
+    </div>
+
+    <div class="amber">
+      <span class="eyebrow">Turkish L1 trap &mdash; the "which" chain</span>
+      <p>Learners often join the two visuals with a loose <em>which</em>: <span class="ex no">&#10007; &ldquo;The table shows electricity in four countries, which the pie chart shows the sources in 2020.&rdquo;</span> <em>which</em> cannot take a new subject (<em>the pie chart</em>). Use <em>while</em> / <em>whereas</em> for a contrast of two separate subjects; keep <em>which</em> only for adding information about the <b>same</b> noun.</p>
+      <span class="ex yes">&#10003; &ldquo;&hellip;in four countries, <b>whereas</b> the pie chart shows the sources of that electricity in 2020.&rdquo;</span>
+    </div>
+
+    <!-- A2 -->
+    <h3 style="color:var(--ink-soft);margin:2.2rem 0 0.7rem;">A2 &middot; The dual overview</h3>
+    <p>The overview is worth more than any other part of the answer, and on a two-visual task it is where most marks are lost. The rule: <b>two sentences, each naming the biggest feature of one visual, with no numbers &mdash; and the second sentence also states the relationship between the two.</b></p>
+
+    <div class="cards two">
+      <div class="card">
+        <span class="num">SENTENCE 1</span>
+        <h4>The dominant feature of Visual 1</h4>
+        <p>The one thing a person would notice from across the room: the overall direction, the biggest category, the widest gap. Begin with <em>Overall,</em>.</p>
+        <span class="tell">&ldquo;Overall, total electricity output rose in every country over the period, with the two largest producers pulling further ahead.&rdquo;</span>
+      </div>
+      <div class="card">
+        <span class="num">SENTENCE 2</span>
+        <h4>The dominant feature of Visual 2 + the link</h4>
+        <p>The headline of the second visual, then a clause connecting it to the first: <em>a pattern that mirrors&hellip;</em>, <em>in contrast to&hellip;</em>, <em>which helps explain&hellip;</em>.</p>
+        <span class="tell">&ldquo;The pie chart shows that this electricity came overwhelmingly from fossil fuels, although renewables made up a visible minority &mdash; a mix that varied little across the countries whose output had grown fastest.&rdquo;</span>
+      </div>
+    </div>
+
+    <div class="callouts good">
+      <ul>
+        <li><b>Three relationship types to look for</b> &mdash; <b>mirror</b> (both visuals show the same pattern), <b>contrast</b> (they pull in opposite directions), <b>explain</b> (one visual is the cause or the composition of the other).</li>
+        <li>If you genuinely cannot see a relationship, the fallback link is scope: <em>&ldquo;&hellip;while the second chart narrows this picture to a single year.&rdquo;</em> Weak, but still a link.</li>
+        <li>Never put a number in either sentence. &ldquo;Rose in every country&rdquo; is an overview. &ldquo;Rose from 120 to 180 TWh&rdquo; is a body sentence in the wrong place.</li>
+      </ul>
+    </div>
+
+    <div class="amber">
+      <span class="eyebrow">Turkish L1 trap &mdash; the "-DIr" hedge</span>
+      <p>Direct translation of Turkish <em>-DIr</em> produces over-hedged overviews: <span class="ex no">&#10007; &ldquo;It can be said that generally the electricity may have increased in the countries.&rdquo;</span> An IELTS overview is a confident statement of fact about the data in front of you. Drop <em>it can be said that</em>, <em>maybe</em>, <em>probably</em>. <span class="ex yes">&#10003; &ldquo;Overall, electricity output increased in all four countries.&rdquo;</span></p>
+    </div>
+
+    <!-- A3 -->
+    <h3 style="color:var(--ink-soft);margin:2.2rem 0 0.7rem;">A3 &middot; Choosing your body partition</h3>
+    <p>You have two ways to divide the data between Body 1 and Body 2. Pick before you write &mdash; changing partway through is what produces the disjointed script.</p>
+
+    <div class="cards two">
+      <div class="card">
+        <span class="num">PARTITION 1 &mdash; DEFAULT</span>
+        <h4>One visual per body paragraph</h4>
+        <p>Body 1 = Visual 1 in full. Body 2 = Visual 2 in full, with one or two sentences linking back. Works for <b>every</b> two-visual task. Safe, clear, and fast to plan.</p>
+        <p><b>Use it when</b> the two visuals show different things (e.g. a trend over time + a one-year breakdown) or share no categories.</p>
+        <span class="tell">Choose this if you are unsure. It never goes wrong.</span>
+      </div>
+      <div class="card">
+        <span class="num">PARTITION 2 &mdash; ADVANCED</span>
+        <h4>Group by shared theme, across both visuals</h4>
+        <p>Body 1 = the high performers / the first half of the period, taken from <b>both</b> visuals at once. Body 2 = the rest, from both. Every paragraph already compares across the two pictures.</p>
+        <p><b>Use it only when</b> the two visuals share the same categories (e.g. the same four countries, the same age groups). Then grouping by category is more elegant than grouping by chart.</p>
+        <span class="tell">Higher ceiling, higher risk. Attempt it once Partition 1 is automatic.</span>
+      </div>
+    </div>
+
+    <div class="note">
+      <span class="eyebrow">Deciding in ten seconds</span>
+      <p>Ask one question: <em>do both visuals use the same set of names down the side?</em> If yes &rarr; Partition 2 is available. If no &rarr; Partition 1 is your only sensible option. When in doubt, Partition 1.</p>
+    </div>
+  </div>
+</section>
+<!-- ===================== SUB-LESSON B ===================== -->
+<section id="s-b">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="stage-tag">Sub-lesson B &middot; one 45-min session</span>
+      <span class="eyebrow">The sentences</span>
+      <h2>Synthesis &amp; comparison language</h2>
+      <p>Four sentence-level techniques. They turn a list of numbers into prose that compares, and they give you the words that hold two visuals together. This is where Lexical Resource and Grammatical Range are won.</p>
+      <span class="budget">Technique budget this session: B1 synthesis clauses &middot; B2 concessive/comparative bridges &middot; B3 cross-visual links &middot; B4 dual-subject framing.</span>
+    </div>
+
+    <!-- B1 -->
+    <h3 style="color:var(--ink-soft);margin:1.4rem 0 0.7rem;">B1 &middot; Mechanical listing &rarr; synthesis</h3>
+    <p>Two numbers that belong together should share one sentence, joined by a <b>participle phrase</b> (<em>-ing</em> / <em>-ed</em>) or a <b>relative clause</b> (<em>which</em>). This halves your sentence count and doubles your grammar range.</p>
+
+    <table class="upg">
+      <tr><th>Band 5 &mdash; one number per sentence</th><th>Band 7.5 &mdash; synthesised</th></tr>
+      <tr>
+        <td class="b5">&ldquo;Germany produced 350 TWh. France produced 340 TWh.&rdquo;</td>
+        <td class="b75">&ldquo;Germany produced 350&nbsp;TWh, <code>closely followed by</code> France at 340&nbsp;TWh.&rdquo;</td>
+      </tr>
+      <tr>
+        <td class="b5">&ldquo;Coal was the biggest source. It was 45 per cent.&rdquo;</td>
+        <td class="b75">&ldquo;Coal was the largest source, <code>accounting for</code> 45 per cent of the total.&rdquo;</td>
+      </tr>
+      <tr>
+        <td class="b5">&ldquo;The figure rose to 180 TWh in 2020. This was the highest figure.&rdquo;</td>
+        <td class="b75">&ldquo;The figure rose to 180&nbsp;TWh in 2020, <code>the highest recorded</code> across the period.&rdquo;</td>
+      </tr>
+      <tr>
+        <td class="b5">&ldquo;Nigeria was the lowest. It had 22 per cent.&rdquo;</td>
+        <td class="b75">&ldquo;Nigeria, <code>which had the lowest rate at 22 per cent</code>, remained far behind the others.&rdquo;</td>
+      </tr>
+    </table>
+
+    <div class="callouts">
+      <ul>
+        <li><b>Five synthesis connectors to memorise:</b> <em>accounting for X</em> &middot; <em>closely followed by Y</em> &middot; <em>compared with Z</em> &middot; <em>at X, the highest/lowest</em> &middot; <em>which represented X</em>.</li>
+        <li>A participle phrase has no new subject: <em>&ldquo;Coal led, <b>accounting</b> for 45%&rdquo;</em> &mdash; the <em>-ing</em> word still refers to <em>coal</em>. If the second fact has a different subject, use <em>while</em> instead (see B2).</li>
+      </ul>
+    </div>
+
+    <!-- B2 -->
+    <h3 style="color:var(--ink-soft);margin:2.2rem 0 0.7rem;">B2 &middot; Concessive &amp; comparative bridges</h3>
+    <p>These words carry the comparison the task explicitly asks for (&ldquo;make comparisons where relevant&rdquo;). Use at least three different ones across your answer.</p>
+
+    <div class="cards two">
+      <div class="card">
+        <span class="num">CONCESSIVE &mdash; two things are different</span>
+        <h4><em>while &middot; whereas &middot; by contrast &middot; on the other hand</em></h4>
+        <p>&ldquo;Renewables supplied nearly a third of France's electricity, <b>whereas</b> in Germany the share was closer to a fifth.&rdquo;</p>
+        <p><em>while</em> and <em>whereas</em> go <b>inside</b> one sentence, joining two clauses. <em>By contrast</em> and <em>on the other hand</em> start a new sentence.</p>
+      </div>
+      <div class="card">
+        <span class="num">COMPARATIVE &mdash; one thing beats another</span>
+        <h4><em>outpacing &middot; lagging behind &middot; exceeding &middot; more than double</em></h4>
+        <p>&ldquo;Output in China grew fastest, <b>outpacing</b> every other country and <b>more than doubling</b> by 2020.&rdquo;</p>
+        <p>Participle forms (<em>outpacing</em>, <em>exceeding</em>) attach to the sentence you are already in &mdash; no new clause needed.</p>
+      </div>
+    </div>
+
+    <div class="amber">
+      <span class="eyebrow">Turkish L1 trap &mdash; comparative structure</span>
+      <p><span class="ex no">&#10007; &ldquo;Germany was more higher than France.&rdquo; / &ldquo;China grew fast more than India.&rdquo;</span> One comparative marker only: either <em>-er</em> or <em>more</em>, never both; <em>more X than Y</em>, not <em>X more than Y</em>. <span class="ex yes">&#10003; &ldquo;Germany was higher than France.&rdquo; / &ldquo;China grew more quickly than India.&rdquo;</span></p>
+    </div>
+
+    <!-- B3 -->
+    <h3 style="color:var(--ink-soft);margin:2.2rem 0 0.7rem;">B3 &middot; Cross-visual linking sentences</h3>
+    <p>At least one sentence in Body 2 must reach back to Body 1. This is the single most reliable Band 7 signal on a two-visual task &mdash; it proves you processed the visuals together, not separately.</p>
+
+    <table class="upg">
+      <tr><th>Function</th><th>Sentence frame</th></tr>
+      <tr><td><b>Mirror</b> &mdash; the second visual repeats the first's pattern</td><td class="b75">&ldquo;This concentration at the top <code>echoes the table</code>, where the same two countries dominated output.&rdquo;</td></tr>
+      <tr><td><b>Contrast</b> &mdash; the second visual reverses it</td><td class="b75">&ldquo;<code>In contrast to</code> the steady rise shown in the graph, the pie chart reveals a source mix that has barely shifted.&rdquo;</td></tr>
+      <tr><td><b>Explain</b> &mdash; one visual accounts for the other</td><td class="b75">&ldquo;This heavy reliance on coal <code>helps account for</code> the sharp output growth seen in the same countries in the graph.&rdquo;</td></tr>
+      <tr><td><b>Scope</b> &mdash; the fallback link</td><td class="b75">&ldquo;<code>Whereas the table spans two decades</code>, the pie chart captures only the final year, offering a snapshot rather than a trend.&rdquo;</td></tr>
+    </table>
+
+    <!-- B4 -->
+    <h3 style="color:var(--ink-soft);margin:2.2rem 0 0.7rem;">B4 &middot; Dual-subject sentence framing</h3>
+    <p>A compound sentence that names both visuals' data in one breath. Reserve this for the introduction and for one high-value sentence in the overview or the linking paragraph &mdash; overusing it makes the writing dense.</p>
+
+    <div class="figblock">
+      <div class="figlabel">The pattern</div>
+      <p style="margin:0 0 0.6rem;font-size:0.94rem;"><b>&ldquo;While [Visual 1 fact], [Visual 2 fact], suggesting [the relationship].&rdquo;</b></p>
+      <p style="margin:0;font-size:0.94rem;color:var(--ink-soft);">&ldquo;While total output climbed steadily across all four economies, the source breakdown stayed dominated by fossil fuels, suggesting that growth was met by burning more of the same rather than by switching to renewables.&rdquo;</p>
+    </div>
+
+    <div class="note">
+      <span class="eyebrow">Do not turn every sentence into B4</span>
+      <p>One or two dual-subject sentences per script is a Band 7.5 signal. Five is a Band 6 signal &mdash; it reads as if you are avoiding the detail work. The body paragraphs are still mostly single-subject sentences carrying specific figures.</p>
+    </div>
+  </div>
+</section>
+<!-- ===================== SUB-LESSON C — INTRO ===================== -->
+<section id="s-c">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="stage-tag">Sub-lesson C &middot; two 45-min sessions</span>
+      <span class="eyebrow">The application</span>
+      <h2>Guided case studies &mdash; how to run one</h2>
+      <p>No new techniques here. Three worked examples that apply Sub-lessons A and B to real chart pairs, plus the drills. Each case study follows the same four steps.</p>
+      <span class="budget">Technique budget this session: 0 new. Consolidation only &mdash; A1&ndash;A3 and B1&ndash;B4 applied under time pressure.</span>
+    </div>
+
+    <div class="skeleton">
+      <div class="skel-step"><span class="n">1</span><div><h3>Read both visuals &mdash; 90 seconds</h3><p>Name the story of each in your head. Decide which one carries the main trend and which is the supporting picture.</p></div></div>
+      <div class="skel-step"><span class="n">2</span><div><h3>Data selection &mdash; report / combine / discard</h3><p>Mark the 4&ndash;6 features worth reporting, the 1&ndash;2 places the two visuals connect, and everything you will deliberately leave out.</p></div></div>
+      <div class="skel-step"><span class="n">3</span><div><h3>Compare the three band levels</h3><p>Read the Band 5.0 script and find the four failures from the Dashboard. Then read the 6.5 and the 7.5 and locate exactly what changed.</p></div></div>
+      <div class="skel-step"><span class="n">4</span><div><h3>Write your own &mdash; 20 minutes, then self-assess</h3><p>Use Drill 3's checklist. Compare against the 7.5 model, not for wording, but for whether you caught the same features and made the same links.</p></div></div>
+    </div>
+
+    <div class="note">
+      <span class="eyebrow">Reading the colour-coded Band 7.5 models</span>
+      <p>The target model in each case study can be viewed with its four assessment criteria highlighted. Use the toggle above each model to turn the colours on or off.</p>
+      <div class="crit-legend" style="margin-top:0.7rem;">
+        <span class="key"><span class="box tr"></span> Task Achievement &mdash; selection, overview, key figures</span>
+        <span class="key"><span class="box cc"></span> Coherence &amp; Cohesion &mdash; linkers, referencing, cross-visual bridges</span>
+        <span class="key"><span class="box lr"></span> Lexical Resource &mdash; precise words, collocations</span>
+        <span class="key"><span class="box gra"></span> Grammatical Range &amp; Accuracy &mdash; complex structures</span>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- ===================== CASE STUDY 1 ===================== -->
+<section id="s-c1">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">Case study 1 &middot; Table + Line graph</span>
+      <h2>Water: a global trend and a regional split</h2>
+      <p><em>The line graph shows global water consumption by sector between 1900 and 2020. The table shows how water was divided between the same three sectors in three world regions in 2020. Summarise the information by selecting and reporting the main features, and make comparisons where relevant.</em></p>
+    </div>
+
+    <div class="figgrid two">
+      <div class="figblock">
+        <div class="figlabel">Line graph &mdash; global water use, billion m&sup3; per year</div>
+        <div class="chartwrap">
+          <svg class="chart" viewBox="0 0 480 240" role="img" aria-label="Line graph of global water consumption from 1900 to 2020. Agriculture rises from about 500 to 2900 billion cubic metres and is the largest throughout. Industry rises from 40 to 1200. Domestic use rises from 20 to 500.">
+            <line class="c-axis" x1="55" y1="20" x2="55" y2="210"></line>
+            <line class="c-axis" x1="55" y1="210" x2="465" y2="210"></line>
+            <line class="c-grid" x1="55" y1="146.7" x2="465" y2="146.7"></line>
+            <line class="c-grid" x1="55" y1="83.3" x2="465" y2="83.3"></line>
+            <line class="c-grid" x1="55" y1="20" x2="465" y2="20"></line>
+            <text class="c-label" x="16" y="213">0</text>
+            <text class="c-label" x="10" y="150">1000</text>
+            <text class="c-label" x="10" y="86">2000</text>
+            <text class="c-label" x="10" y="23">3000</text>
+            <polyline class="c-l1" points="60,178.3 160,140.3 260,77 360,45.3 455,26.3"></polyline>
+            <polyline class="c-l2" points="60,207.5 160,197.3 260,165.7 360,146.7 455,134"></polyline>
+            <polyline class="c-l3" points="60,208.7 160,204.3 260,191 360,184.7 455,178.3"></polyline>
+            <g class="c-p1"><circle cx="60" cy="178.3" r="3"></circle><circle cx="160" cy="140.3" r="3"></circle><circle cx="260" cy="77" r="3"></circle><circle cx="360" cy="45.3" r="3"></circle><circle cx="455" cy="26.3" r="3"></circle></g>
+            <g class="c-p2"><circle cx="60" cy="207.5" r="3"></circle><circle cx="455" cy="134" r="3"></circle></g>
+            <g class="c-p3"><circle cx="60" cy="208.7" r="3"></circle><circle cx="455" cy="178.3" r="3"></circle></g>
+            <text class="c-val" x="430" y="20">2900</text>
+            <text class="c-val" x="430" y="128">1200</text>
+            <text class="c-val" x="435" y="192">500</text>
+            <text class="c-label" x="45" y="225">1900</text>
+            <text class="c-label" x="145" y="225">1950</text>
+            <text class="c-label" x="245" y="225">1980</text>
+            <text class="c-label" x="345" y="225">2000</text>
+            <text class="c-label" x="440" y="225">2020</text>
+          </svg>
+        </div>
+        <div class="legend">
+          <span><span class="swatch" style="background:var(--accent);"></span> Agriculture</span>
+          <span><span class="swatch" style="background:var(--warn);"></span> Industry</span>
+          <span><span class="swatch" style="background:var(--keep);"></span> Domestic</span>
+        </div>
+      </div>
+
+      <div class="figblock">
+        <div class="figlabel">Table &mdash; share of regional water use by sector, 2020 (%)</div>
+        <table class="data">
+          <tr><th>Region</th><th>Agri&shy;culture</th><th>Industry</th><th>Domestic</th></tr>
+          <tr><td>North America</td><td>40</td><td>46</td><td>14</td></tr>
+          <tr><td>Europe</td><td>32</td><td>53</td><td>15</td></tr>
+          <tr><td>South Asia</td><td>88</td><td>7</td><td>5</td></tr>
+        </table>
+        <div class="figcap">Rows total 100%. Data is illustrative and broadly consistent with published water-use statistics.</div>
+      </div>
+    </div>
+
+    <h3 style="color:var(--ink-soft);margin:1.8rem 0 0.7rem;">Step 2 &middot; Data selection</h3>
+    <div class="cards three">
+      <div class="card" style="background:var(--keep-soft);border-color:var(--keep);">
+        <span class="num" style="color:var(--keep);">REPORT</span>
+        <p>Agriculture is the largest sector globally in every year. All three sectors rose. Agriculture: ~500 &rarr; ~2,900. Industry grew fastest in proportional terms (~40 &rarr; ~1,200, roughly thirtyfold). In the table: South Asia 88% agriculture; Europe 53% and North America 46% industry.</p>
+      </div>
+      <div class="card" style="background:var(--accent-soft);border-color:var(--accent);">
+        <span class="num" style="color:var(--accent);">COMBINE</span>
+        <p>South Asia's farm-dominated split <b>mirrors</b> the global picture. North America and Europe <b>reverse</b> it &mdash; industry leads. One linking sentence in Body 2 must say this.</p>
+      </div>
+      <div class="card" style="background:var(--sunk);">
+        <span class="num">DISCARD</span>
+        <p>The 1950 and 1980 mid-points for industry and domestic use. Domestic figures for individual regions beyond noting they are small. The 7-point gap between North America (46%) and Europe (53%) &mdash; group them as &ldquo;industry-led&rdquo;.</p>
+      </div>
+    </div>
+
+    <h3 style="color:var(--ink-soft);margin:1.8rem 0 0.7rem;">Step 3 &middot; The three band levels</h3>
+
+    <div class="ladder" data-ladder>
+      <div class="ladder-tabs" role="tablist" aria-label="Band level">
+        <button class="ladder-tab t5" role="tab" aria-selected="true" data-l="0">Band 5.0</button>
+        <button class="ladder-tab t65" role="tab" aria-selected="false" data-l="1">Band 6.5</button>
+        <button class="ladder-tab t75" role="tab" aria-selected="false" data-l="2">Band 7.5 &mdash; target</button>
+      </div>
+
+      <div class="ladder-panel" data-lp="0">
+        <span class="verdict v5">Band 5.0 &middot; what to stop doing</span>
+        <div class="essay">
+          <p>The line graph gives information about the water use in the world from 1900 to 2020 and the table is about the water use in three regions in 2020.</p>
+          <p>In 1900 the agriculture was 500 and industry was 40 and domestic was 20. In 1950 agriculture has increased to 1100 and industry to 200. In 1980 agriculture was 2100, industry was 700 and domestic was 300. In 2000 agriculture reached 2600. In 2020 agriculture was 2900, industry was 1200 and domestic was 500. So agriculture is always the biggest.</p>
+          <p>For the table, in North America agriculture is 40%, industry is 46% and domestic is 14%. In Europe agriculture is 32%, industry is 53% and domestic is 15%. In South Asia agriculture is very high with 88%, industry is only 7% and domestic is 5%.</p>
+          <p>In my opinion, South Asia uses too much water for farming and should reduce it.</p>
+          <p class="wc">168 words</p>
+        </div>
+        <div class="callouts bad">
+          <ul>
+            <li><b>Failure 3 &mdash; no overview.</b> The answer goes straight from the introduction to raw numbers. &ldquo;Agriculture is always the biggest&rdquo; is tacked onto the end of a body paragraph, not stated up front, and nothing is said about the table's overall pattern.</li>
+            <li><b>Failure 1 &mdash; data dump.</b> Every value from the graph is listed in order; nothing is selected. The 1950 and 1980 mid-points add no information.</li>
+            <li><b>Failure 2 &mdash; disjointed halves.</b> Paragraph 2 is the graph, paragraph 3 is the table, and no sentence connects them. The words <em>while</em>, <em>whereas</em>, <em>mirror</em>, <em>in contrast</em> never appear.</li>
+            <li><b>Task Achievement</b> also drops for the final sentence: &ldquo;In my opinion&hellip; should reduce it&rdquo; is an opinion, which does not belong in Task 1 at all.</li>
+            <li><b>Grammar:</b> &ldquo;agriculture <em>has increased</em>&rdquo; &mdash; present perfect for a finished period (1900&ndash;1950); missing units throughout (&ldquo;agriculture was 500&rdquo; &mdash; 500 what?).</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="ladder-panel" data-lp="1" hidden>
+        <span class="verdict v65">Band 6.5 &middot; the realistic next step</span>
+        <div class="essay">
+          <p>The line graph shows global water consumption by three sectors between 1900 and 2020, measured in billions of cubic metres, while the table shows how water use was divided between the same sectors in three regions in 2020.</p>
+          <p>Overall, global water use increased in all three sectors over the period, and agriculture was always the largest user. The table shows that the balance is different in each region, because agriculture uses the most water in South Asia but industry uses the most in North America and Europe.</p>
+          <p>In 1900, agriculture used about 500 billion cubic metres, compared with only 40 for industry and 20 for domestic use. All three then rose, and by 2020 agriculture had reached around 2,900 billion cubic metres, while industry had grown to 1,200 and domestic use to 500.</p>
+          <p>In the table, South Asia is similar to the global picture, with 88% of its water going to agriculture. However, in Europe industry takes 53% and in North America 46%, which is the opposite pattern.</p>
+          <p class="wc">176 words</p>
+        </div>
+        <div class="callouts">
+          <ul>
+            <li><b>What earns 6.5:</b> the four-paragraph shape is correct; the introduction is one unified sentence (A1); the overview names both visuals and states a relationship (A2); the body uses <em>compared with</em> and one synthesis clause (&ldquo;grown to 1,200&rdquo;); there is a linking idea (&ldquo;similar to the global picture&hellip; the opposite pattern&rdquo;).</li>
+            <li><b>What holds it below 7:</b> the link is stated twice in plain words (&ldquo;is similar to&rdquo;, &ldquo;is the opposite&rdquo;) rather than woven in; &ldquo;the balance is different&hellip; because&rdquo; is loose; sentences stay mostly one-fact-per-clause; vocabulary is functional (&ldquo;uses&rdquo;, &ldquo;takes&rdquo;, &ldquo;rose&rdquo;) with little variation.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="ladder-panel" data-lp="2" hidden>
+        <span class="verdict v75">Band 7.5 &middot; target</span>
+        <div class="btn-row">
+          <button class="ghost" data-code-toggle aria-pressed="false">Show criterion colours</button>
+        </div>
+        <div class="essay" data-codable>
+          <p><mark class="cc">The line graph traces</mark> global water consumption across three sectors &mdash; agriculture, industry and domestic use &mdash; <mark class="gra">between 1900 and 2020, while the table breaks down</mark> the equivalent sectoral split for three world regions in 2020 alone.</p>
+          <p><mark class="tr">Overall, worldwide demand climbed steadily in every sector over the 120-year period, yet agriculture remained the dominant user throughout.</mark> <mark class="tr">The regional figures, however, show that this global pattern is reproduced only in South Asia,</mark> <mark class="cc">whereas</mark> in the two wealthier regions <mark class="lr">the balance has tilted</mark> firmly towards industry.</p>
+          <p>In 1900, agriculture already <mark class="lr">accounted for</mark> roughly 500 billion cubic metres, <mark class="gra">dwarfing industry and domestic use at just 40 and 20 billion respectively</mark>. All three sectors then expanded, and by 2020 agricultural withdrawals had reached about 2,900 billion cubic metres; <mark class="gra">industry, though still far smaller, had grown the fastest in proportional terms, climbing roughly thirtyfold to 1,200 billion</mark>.</p>
+          <p><mark class="cc">This agricultural dominance is mirrored in South Asia</mark>, where farming <mark class="lr">absorbs</mark> 88 per cent of all water and leaves industry a marginal 7 per cent. <mark class="cc">In sharp contrast</mark>, industry consumes 53 per cent of supply in Europe and 46 per cent in North America, <mark class="gra">leaving agriculture a secondary role in both</mark>.</p>
+          <p class="wc">185 words</p>
+        </div>
+        <div class="callouts good">
+          <ul>
+            <li><b>Task Achievement:</b> the overview covers both visuals and names the mirror/contrast relationship before any number; body figures are selected, not dumped (four graph values, three table values); no opinion.</li>
+            <li><b>Coherence:</b> &ldquo;this global pattern&rdquo;, &ldquo;this agricultural dominance&rdquo; refer back cleanly; &ldquo;is mirrored in South Asia&rdquo; and &ldquo;in sharp contrast&rdquo; are the cross-visual bridges (B3), placed in Body 2.</li>
+            <li><b>Lexical:</b> <em>tilted, absorbs, dwarfing, withdrawals, relegating, accounted for</em> &mdash; precise, varied, collocationally correct.</li>
+            <li><b>Grammar:</b> participle phrases (&ldquo;dwarfing&hellip;&rdquo;, &ldquo;climbing thirtyfold&hellip;&rdquo;, &ldquo;relegating&hellip;&rdquo;), a semicolon linking related clauses, consistent past simple / past perfect for the finished period.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- ===================== CASE STUDY 2 ===================== -->
+<section id="s-c2">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">Case study 2 &middot; Pie chart + Table</span>
+      <h2>One spending pattern, four very different budgets</h2>
+      <p><em>The pie chart shows the monthly expenditure of an average household by category in 2023. The table shows average monthly household income by the age of the main earner in the same year. Summarise the information by selecting and reporting the main features, and make comparisons where relevant.</em></p>
+    </div>
+
+    <div class="figgrid two">
+      <div class="figblock">
+        <div class="figlabel">Pie chart &mdash; average household monthly spending, 2023 (%)</div>
+        <div class="chartwrap">
+          <svg class="chart" viewBox="0 0 42 42" style="min-width:220px;max-width:260px;margin:0 auto;" role="img" aria-label="Pie chart of average household spending: housing and bills 32 percent, food and groceries 18 percent, transport 15 percent, other goods and services 13 percent, recreation and leisure 12 percent, savings 10 percent.">
+            <circle cx="21" cy="21" r="15.915" fill="none" stroke="var(--sunk)" stroke-width="6"></circle>
+            <circle cx="21" cy="21" r="15.915" fill="none" stroke="#33456B" stroke-width="6" stroke-dasharray="32 68" stroke-dashoffset="0" transform="rotate(-90 21 21)"></circle>
+            <circle cx="21" cy="21" r="15.915" fill="none" stroke="#9A6B1E" stroke-width="6" stroke-dasharray="18 82" stroke-dashoffset="-32" transform="rotate(-90 21 21)"></circle>
+            <circle cx="21" cy="21" r="15.915" fill="none" stroke="#3B7A57" stroke-width="6" stroke-dasharray="15 85" stroke-dashoffset="-50" transform="rotate(-90 21 21)"></circle>
+            <circle cx="21" cy="21" r="15.915" fill="none" stroke="#6D5192" stroke-width="6" stroke-dasharray="13 87" stroke-dashoffset="-65" transform="rotate(-90 21 21)"></circle>
+            <circle cx="21" cy="21" r="15.915" fill="none" stroke="#8E99A8" stroke-width="6" stroke-dasharray="12 88" stroke-dashoffset="-78" transform="rotate(-90 21 21)"></circle>
+            <circle cx="21" cy="21" r="15.915" fill="none" stroke="#C0C7D2" stroke-width="6" stroke-dasharray="10 90" stroke-dashoffset="-90" transform="rotate(-90 21 21)"></circle>
+          </svg>
+        </div>
+        <div class="legend">
+          <span><span class="swatch" style="background:#33456B;"></span> Housing &amp; bills 32%</span>
+          <span><span class="swatch" style="background:#9A6B1E;"></span> Food &amp; groceries 18%</span>
+          <span><span class="swatch" style="background:#3B7A57;"></span> Transport 15%</span>
+          <span><span class="swatch" style="background:#6D5192;"></span> Other goods &amp; services 13%</span>
+          <span><span class="swatch" style="background:#8E99A8;"></span> Recreation &amp; leisure 12%</span>
+          <span><span class="swatch" style="background:#C0C7D2;"></span> Savings 10%</span>
+        </div>
+      </div>
+
+      <div class="figblock">
+        <div class="figlabel">Table &mdash; average monthly household income by age of main earner, 2023</div>
+        <table class="data">
+          <tr><th>Age of main earner</th><th>Income (&pound;/month)</th></tr>
+          <tr><td>Under 30</td><td>2,600</td></tr>
+          <tr><td>30&ndash;44</td><td>3,900</td></tr>
+          <tr><td>45&ndash;59</td><td>4,400</td></tr>
+          <tr><td>60 and over</td><td>2,900</td></tr>
+        </table>
+        <div class="figcap">Figures are illustrative. The pie chart is a single national average and is not broken down by age.</div>
+      </div>
+    </div>
+
+    <h3 style="color:var(--ink-soft);margin:1.8rem 0 0.7rem;">Step 2 &middot; Data selection</h3>
+    <div class="cards three">
+      <div class="card" style="background:var(--keep-soft);border-color:var(--keep);">
+        <span class="num" style="color:var(--keep);">REPORT</span>
+        <p>Pie: housing largest at 32%; food 18%, transport 15%; the remaining three categories each 10&ndash;13%. Essentials (housing + food + transport) &asymp; two-thirds. Table: income rises from &pound;2,600 (under 30) to a &pound;4,400 peak at 45&ndash;59, then falls to &pound;2,900 at 60+.</p>
+      </div>
+      <div class="card" style="background:var(--accent-soft);border-color:var(--accent);">
+        <span class="num" style="color:var(--accent);">COMBINE</span>
+        <p>The pie is a <b>single average</b>; the table shows the income it is applied to varies by about 70% across the life cycle. So a fixed 32% housing share is a much heavier real burden for the lower-earning youngest and oldest groups. That is the linking sentence.</p>
+      </div>
+      <div class="card" style="background:var(--sunk);">
+        <span class="num">DISCARD</span>
+        <p>What sits inside &ldquo;other goods and services&rdquo;. The exact ordering of recreation vs other goods (12 vs 13 &mdash; call them &ldquo;similar&rdquo;). Treating 30&ndash;44 and 45&ndash;59 as separate stories &mdash; group them as the earning peak.</p>
+      </div>
+    </div>
+
+    <h3 style="color:var(--ink-soft);margin:1.8rem 0 0.7rem;">Step 3 &middot; The three band levels</h3>
+
+    <div class="ladder" data-ladder>
+      <div class="ladder-tabs" role="tablist" aria-label="Band level">
+        <button class="ladder-tab t5" role="tab" aria-selected="true" data-l="0">Band 5.0</button>
+        <button class="ladder-tab t65" role="tab" aria-selected="false" data-l="1">Band 6.5</button>
+        <button class="ladder-tab t75" role="tab" aria-selected="false" data-l="2">Band 7.5 &mdash; target</button>
+      </div>
+
+      <div class="ladder-panel" data-lp="0">
+        <span class="verdict v5">Band 5.0 &middot; what to stop doing</span>
+        <div class="essay">
+          <p>The pie chart shows the spending of an average household and the table shows the income of households by age.</p>
+          <p>The biggest category in the pie chart is housing and bills with 32%. After that food and groceries is 18% and transport is 15%. Other goods and services is 13% and recreation and leisure is 12%. The smallest one is savings with 10%.</p>
+          <p>In the table, people under 30 earn 2,600 pounds. People between 30 and 44 earn 3,900 pounds. People between 45 and 59 earn 4,400 pounds and this is the highest. People who are 60 or more earn 2,900 pounds.</p>
+          <p>I think young people don't earn enough and the government has to help them, and saving only 10% is not enough for the future.</p>
+          <p class="wc">161 words</p>
+        </div>
+        <div class="callouts bad">
+          <ul>
+            <li><b>Failure 3 &mdash; no overview.</b> Straight from a one-line introduction into the pie chart's numbers. Nothing tells the reader the big picture of either visual.</li>
+            <li><b>Failure 2 &mdash; disjointed halves.</b> The pie chart paragraph and the table paragraph never touch. There is no attempt to say what the two have to do with each other.</li>
+            <li><b>Failure 1 &mdash; partial data dump.</b> Every pie slice is listed in size order with no grouping into essentials vs discretionary; every table row is read out.</li>
+            <li><b>Task Achievement:</b> the last paragraph is pure opinion (&ldquo;the government has to help&rdquo;, &ldquo;is not enough&rdquo;).</li>
+            <li><b>Language:</b> &ldquo;people under 30 earn&rdquo; &mdash; the table is about household income by age of the main earner, not what individuals earn; repetitive sentence frames (&ldquo;People between X and Y earn Z&rdquo;).</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="ladder-panel" data-lp="1" hidden>
+        <span class="verdict v65">Band 6.5 &middot; the realistic next step</span>
+        <div class="essay">
+          <p>The pie chart shows how an average household divides its monthly spending, while the table shows average monthly household income according to the age of the main earner.</p>
+          <p>Overall, most of a household's spending goes on essential costs such as housing, food and transport, and only a small proportion is saved. The table shows that income is not the same at every age, as it is highest in middle age and lower for the youngest and oldest groups.</p>
+          <p>According to the pie chart, housing and bills is the largest category at 32%, followed by food at 18% and transport at 15%. Recreation, other goods and services, and savings are all fairly close together, between 10% and 13%.</p>
+          <p>In the table, households with a main earner under 30 have the lowest income, at &pound;2,600 per month. This rises to &pound;3,900 for the 30&ndash;44 group and peaks at &pound;4,400 for the 45&ndash;59 group, before falling to &pound;2,900 for those aged 60 and over.</p>
+          <p class="wc">176 words</p>
+        </div>
+        <div class="callouts">
+          <ul>
+            <li><b>What earns 6.5:</b> unified introduction; an overview that covers both visuals and groups the pie into essentials vs savings; the pie data is grouped (&ldquo;between 10% and 13%&rdquo;) rather than fully dumped; the table trend is described as a rise-peak-fall, not row by row; accurate reference to &ldquo;the main earner&rdquo;.</li>
+            <li><b>What holds it below 7:</b> the two visuals are still described in separate boxes &mdash; there is no sentence explaining that the average pie applies to households with very different incomes; &ldquo;income is not the same at every age, as it is highest&hellip;&rdquo; is vague; limited range in the verbs (&ldquo;shows&rdquo;, &ldquo;is&rdquo;, &ldquo;rises&rdquo;, &ldquo;falling&rdquo;).</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="ladder-panel" data-lp="2" hidden>
+        <span class="verdict v75">Band 7.5 &middot; target</span>
+        <div class="btn-row">
+          <button class="ghost" data-code-toggle aria-pressed="false">Show criterion colours</button>
+        </div>
+        <div class="essay" data-codable>
+          <p><mark class="gra">The pie chart sets out how a typical household divides its monthly spending across six categories, while the table records how average monthly income varies</mark> <mark class="lr">with the age of the main earner</mark>.</p>
+          <p><mark class="tr">Overall, spending is dominated by essentials &mdash; housing, food and transport take roughly two-thirds of the budget &mdash; while only a tenth is saved.</mark> <mark class="tr">Income, by contrast, follows a clear arc across the life cycle, peaking in middle age,</mark> <mark class="cc">so</mark> <mark class="tr">this single &lsquo;average&rsquo; in fact covers households of very unequal means</mark>.</p>
+          <p>Housing and bills form comfortably the largest expense at 32 per cent, <mark class="cc">followed by</mark> food at 18 and transport at 15. <mark class="gra">The three remaining items &mdash; other goods and services, recreation, and savings &mdash; are clustered closely together, each representing between 10 and 13 per cent</mark> of monthly outgoings.</p>
+          <p><mark class="cc">The table explains why that fixed pattern matters.</mark> Earnings <mark class="lr">climb</mark> from &pound;2,600 for the under-30s to a &pound;4,400 peak at 45&ndash;59, then <mark class="lr">drop sharply</mark> to &pound;2,900 for those aged 60 and over. <mark class="gra">For these lower-earning younger and older households, a 32 per cent housing share is a far heavier real cost than at the mid-life income peak.</mark></p>
+          <p class="wc">182 words</p>
+        </div>
+        <div class="callouts good">
+          <ul>
+            <li><b>Task Achievement:</b> both overviews present; the &ldquo;explain&rdquo; relationship (an average pattern over unequal incomes) is stated in the overview and developed in Body 2; figures selected, not dumped.</li>
+            <li><b>Coherence:</b> &ldquo;by contrast&rdquo;, &ldquo;which means&rdquo;, &ldquo;the table explains why this fixed pattern matters&rdquo; &mdash; the last is the cross-visual bridge (B3), and it opens Body 2 so the paragraph is built around the link.</li>
+            <li><b>Lexical:</b> <em>concentrated on essentials, set aside, an arc across the life cycle, clustered, climb, dropping sharply, outgoings, real cost</em>.</li>
+            <li><b>Grammar:</b> a dash-bracketed appositive, &ldquo;while&rdquo;-joined dual-subject opener (B4), a &ldquo;before + -ing&rdquo; participle, accurate conditionals-free factual past/present tense.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- ===================== CASE STUDY 3 ===================== -->
+<section id="s-c3">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">Case study 3 &middot; Bar chart + Line graph</span>
+      <h2>How you commute, and what fuel costs</h2>
+      <p><em>The bar chart shows the main mode of transport used by commuters in two cities in 2023. The line graph shows the average price of petrol per litre between 2010 and 2023. Summarise the information by selecting and reporting the main features, and make comparisons where relevant.</em></p>
+    </div>
+
+    <div class="figgrid two">
+      <div class="figblock">
+        <div class="figlabel">Bar chart &mdash; commuters by main transport mode, 2023 (%)</div>
+        <div class="chartwrap">
+          <svg class="chart" viewBox="0 0 470 240" role="img" aria-label="Grouped bar chart comparing commuting modes in Riverton and Hillside. Riverton: car 62 percent, public transport 20, walking 12, cycling 6. Hillside: public transport 41 percent, car 38, cycling 13, walking 8.">
+            <line class="c-axis" x1="55" y1="20" x2="55" y2="210"></line>
+            <line class="c-axis" x1="55" y1="210" x2="455" y2="210"></line>
+            <line class="c-grid" x1="55" y1="155.7" x2="455" y2="155.7"></line>
+            <line class="c-grid" x1="55" y1="101.4" x2="455" y2="101.4"></line>
+            <line class="c-grid" x1="55" y1="47.1" x2="455" y2="47.1"></line>
+            <text class="c-label" x="40" y="213">0</text>
+            <text class="c-label" x="34" y="159">20</text>
+            <text class="c-label" x="34" y="105">40</text>
+            <text class="c-label" x="34" y="51">60</text>
+            <rect class="c-b1" x="80" y="41.7" width="24" height="168.3"></rect>
+            <rect class="c-b2" x="106" y="106.9" width="24" height="103.1"></rect>
+            <rect class="c-b1" x="170" y="155.7" width="24" height="54.3"></rect>
+            <rect class="c-b2" x="196" y="98.7" width="24" height="111.3"></rect>
+            <rect class="c-b1" x="260" y="193.7" width="24" height="16.3"></rect>
+            <rect class="c-b2" x="286" y="174.7" width="24" height="35.3"></rect>
+            <rect class="c-b1" x="350" y="177.4" width="24" height="32.6"></rect>
+            <rect class="c-b2" x="376" y="188.3" width="24" height="21.7"></rect>
+            <text class="c-val" x="80" y="37">62</text>
+            <text class="c-val" x="107" y="102">38</text>
+            <text class="c-val" x="171" y="151">20</text>
+            <text class="c-val" x="197" y="94">41</text>
+            <text class="c-label" x="83" y="225">Car</text>
+            <text class="c-label" x="163" y="225">Public tr.</text>
+            <text class="c-label" x="262" y="225">Cycling</text>
+            <text class="c-label" x="355" y="225">Walking</text>
+          </svg>
+        </div>
+        <div class="legend">
+          <span><span class="swatch" style="background:var(--accent);"></span> Riverton</span>
+          <span><span class="swatch" style="background:var(--warn);"></span> Hillside</span>
+        </div>
+      </div>
+
+      <div class="figblock">
+        <div class="figlabel">Line graph &mdash; average petrol price, &pound; per litre</div>
+        <div class="chartwrap">
+          <svg class="chart" viewBox="0 0 480 240" role="img" aria-label="Line graph of average petrol price per litre from 2010 to 2023. It starts at 1.20 pounds, rises to 1.40 in 2013, falls to 1.05 in 2016, recovers to 1.28 in 2019, spikes to 1.85 in 2022, then falls to 1.55 in 2023.">
+            <line class="c-axis" x1="55" y1="20" x2="55" y2="210"></line>
+            <line class="c-axis" x1="55" y1="210" x2="465" y2="210"></line>
+            <line class="c-grid" x1="55" y1="162.5" x2="465" y2="162.5"></line>
+            <line class="c-grid" x1="55" y1="115" x2="465" y2="115"></line>
+            <line class="c-grid" x1="55" y1="67.5" x2="465" y2="67.5"></line>
+            <line class="c-grid" x1="55" y1="20" x2="465" y2="20"></line>
+            <text class="c-label" x="30" y="213">0</text>
+            <text class="c-label" x="18" y="166">0.50</text>
+            <text class="c-label" x="18" y="118">1.00</text>
+            <text class="c-label" x="18" y="71">1.50</text>
+            <text class="c-label" x="18" y="23">2.00</text>
+            <polyline class="c-l1" points="60,96 152.3,77 244.6,110.25 336.9,88.4 429.2,34.25 460,62.75"></polyline>
+            <g class="c-p1"><circle cx="60" cy="96" r="3"></circle><circle cx="152.3" cy="77" r="3"></circle><circle cx="244.6" cy="110.25" r="3"></circle><circle cx="336.9" cy="88.4" r="3"></circle><circle cx="429.2" cy="34.25" r="3"></circle><circle cx="460" cy="62.75" r="3"></circle></g>
+            <text class="c-val" x="405" y="30">1.85</text>
+            <text class="c-val" x="228" y="124">1.05</text>
+            <text class="c-label" x="48" y="225">2010</text>
+            <text class="c-label" x="138" y="225">2013</text>
+            <text class="c-label" x="230" y="225">2016</text>
+            <text class="c-label" x="322" y="225">2019</text>
+            <text class="c-label" x="412" y="225">2022</text>
+          </svg>
+        </div>
+        <div class="figcap">Prices are illustrative and shown in nominal terms.</div>
+      </div>
+    </div>
+
+    <h3 style="color:var(--ink-soft);margin:1.8rem 0 0.7rem;">Step 2 &middot; Data selection</h3>
+    <div class="cards three">
+      <div class="card" style="background:var(--keep-soft);border-color:var(--keep);">
+        <span class="num" style="color:var(--keep);">REPORT</span>
+        <p>Bar: Riverton is car-dominated (62%), far ahead of public transport (20%); Hillside is led by public transport (41%), with the car close behind (38%) and cycling more than double Riverton's (13% vs 6%). Line: no steady trend &mdash; a low near &pound;1.05 in 2016, a sharp peak of &pound;1.85 in 2022, then a partial fall to &pound;1.55.</p>
+      </div>
+      <div class="card" style="background:var(--accent-soft);border-color:var(--accent);">
+        <span class="num" style="color:var(--accent);">COMBINE</span>
+        <p>The 2022 price spike matters far more to Riverton, where six in ten commuters drive, than to transit-oriented Hillside. Volatility in the graph translates into exposure that depends on the bar chart. That is the linking sentence.</p>
+      </div>
+      <div class="card" style="background:var(--sunk);">
+        <span class="num">DISCARD</span>
+        <p>The exact 2013 and 2019 prices (&ldquo;drifted between roughly &pound;1.05 and &pound;1.40&rdquo;). Walking's 12% vs 8% difference. Any attempt to explain <em>why</em> prices moved &mdash; Task 1 never asks for causes.</p>
+      </div>
+    </div>
+
+    <h3 style="color:var(--ink-soft);margin:1.8rem 0 0.7rem;">Step 3 &middot; The three band levels</h3>
+
+    <div class="ladder" data-ladder>
+      <div class="ladder-tabs" role="tablist" aria-label="Band level">
+        <button class="ladder-tab t5" role="tab" aria-selected="true" data-l="0">Band 5.0</button>
+        <button class="ladder-tab t65" role="tab" aria-selected="false" data-l="1">Band 6.5</button>
+        <button class="ladder-tab t75" role="tab" aria-selected="false" data-l="2">Band 7.5 &mdash; target</button>
+      </div>
+
+      <div class="ladder-panel" data-lp="0">
+        <span class="verdict v5">Band 5.0 &middot; what to stop doing</span>
+        <div class="essay">
+          <p>The bar chart shows the transport of commuters in two cities and the line graph shows the petrol price from 2010 to 2023.</p>
+          <p>In Riverton, 62% of people use car, 20% use public transport, 6% cycle and 12% walk. In Hillside, 38% use car, 41% use public transport, 13% cycle and 8% walk. So Hillside people use more public transport than Riverton.</p>
+          <p>For the petrol price, in 2010 it was 1.20. In 2013 it has risen to 1.40. In 2016 it went down to 1.05. In 2019 it was 1.28. In 2022 it has increased a lot to 1.85 and this is the peak. In 2023 it decreased to 1.55.</p>
+          <p>I think people should use public transport more because petrol is expensive and it is better for the environment.</p>
+          <p class="wc">164 words</p>
+        </div>
+        <div class="callouts bad">
+          <ul>
+            <li><b>Failure 3 &mdash; no overview.</b> No sentence states the big contrast between the two cities, or the fact that the petrol price fluctuated rather than trended. &ldquo;So Hillside people use more public transport&rdquo; is buried at the end of a body paragraph.</li>
+            <li><b>Failure 2 &mdash; disjointed halves.</b> The bar chart and line graph are two separate lists. Nothing links a car-dependent city to a fuel-price spike.</li>
+            <li><b>Failure 1 &mdash; data dump.</b> Every bar and every data point is reported; the 2013 and 2019 prices carry no weight but are still listed.</li>
+            <li><b>Task Achievement:</b> the closing paragraph is an opinion and a recommendation &mdash; neither belongs in Task 1.</li>
+            <li><b>Grammar:</b> &ldquo;it <em>has risen</em>&rdquo;, &ldquo;it <em>has increased</em>&rdquo; &mdash; present perfect for dated, finished points; &ldquo;use car&rdquo; (missing article); missing currency unit on every price.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="ladder-panel" data-lp="1" hidden>
+        <span class="verdict v65">Band 6.5 &middot; the realistic next step</span>
+        <div class="essay">
+          <p>The bar chart compares how commuters travel to work in two cities, Riverton and Hillside, while the line graph shows the change in the average petrol price between 2010 and 2023.</p>
+          <p>Overall, commuters in Riverton mostly depend on cars, whereas in Hillside public transport is the most common choice. The petrol price did not follow a steady trend, but rose and fell several times before reaching its highest point in 2022.</p>
+          <p>In Riverton, 62% of commuters travel by car, which is far more than any other mode. Public transport is used by 20%, walking by 12% and cycling by only 6%. In Hillside the pattern is more balanced: 41% use public transport and 38% use cars, while cycling is higher at 13%.</p>
+          <p>The petrol price started at &pound;1.20 per litre in 2010 and rose to &pound;1.40 in 2013. It then fell to a low of &pound;1.05 in 2016, recovered to &pound;1.28 in 2019, and jumped sharply to &pound;1.85 in 2022 before falling back to &pound;1.55 in 2023.</p>
+          <p class="wc">180 words</p>
+        </div>
+        <div class="callouts">
+          <ul>
+            <li><b>What earns 6.5:</b> unified introduction; the overview covers both visuals and uses <em>whereas</em>; the bar chart is described with comparison (&ldquo;far more than any other mode&rdquo;, &ldquo;more balanced&rdquo;); the line graph is summarised as a fluctuation with a named peak, and the mid-points are handled in one flowing sentence.</li>
+            <li><b>What holds it below 7:</b> the two visuals still do not meet &mdash; there is no sentence saying the price spike matters more to a car-dependent city; &ldquo;did not follow a steady trend, but rose and fell several times&rdquo; is slightly wordy; the verbs are functional (&ldquo;travel&rdquo;, &ldquo;use&rdquo;, &ldquo;started&rdquo;, &ldquo;rose&rdquo;, &ldquo;fell&rdquo;).</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="ladder-panel" data-lp="2" hidden>
+        <span class="verdict v75">Band 7.5 &middot; target</span>
+        <div class="btn-row">
+          <button class="ghost" data-code-toggle aria-pressed="false">Show criterion colours</button>
+        </div>
+        <div class="essay" data-codable>
+          <p><mark class="gra">The bar chart compares the main means of commuting in two cities, Riverton and Hillside, while the line graph tracks the average price of petrol</mark> <mark class="cc">over the same broad period</mark>, from 2010 to 2023.</p>
+          <p><mark class="tr">Overall, the two cities have sharply contrasting travel habits: Riverton is dominated by the private car, whereas Hillside depends most on public transport.</mark> <mark class="tr">The petrol price, meanwhile, showed no consistent direction but fluctuated widely, spiking to its highest level in 2022</mark> <mark class="cc">&mdash; volatility that leaves the more car-reliant city far more exposed</mark>.</p>
+          <p>In Riverton, cars <mark class="lr">account for</mark> 62 per cent of commuting journeys, <mark class="gra">dwarfing public transport at 20 per cent, walking at 12 and cycling at just 6</mark>. Hillside's profile is <mark class="lr">far more even</mark>: public transport leads at 41 per cent, <mark class="cc">closely followed by</mark> the car at 38, with cycling roughly twice as common as in Riverton.</p>
+          <p>The price of petrol <mark class="lr">drifted</mark> between about &pound;1.05 and &pound;1.40 for most of the period, <mark class="gra">before surging to &pound;1.85 in 2022 and then easing to &pound;1.55 the following year</mark>. <mark class="cc">For a city where six in ten commuters drive, that 2022 peak would have bitten far harder than in transit-oriented Hillside.</mark></p>
+          <p class="wc">187 words</p>
+        </div>
+        <div class="callouts good">
+          <ul>
+            <li><b>Task Achievement:</b> overview names both visuals and the exposure relationship; the fluctuation is summarised, not tracked point by point; bar data is grouped and compared; no causes, no opinion.</li>
+            <li><b>Coherence:</b> the dash clause in the overview and the final sentence of Body 2 are the two cross-visual bridges (B3); &ldquo;meanwhile&rdquo;, &ldquo;the following year&rdquo; keep the time reference clean.</li>
+            <li><b>Lexical:</b> <em>contrasting travel habits, dominated by, account for, far more even, drifted, surging, easing, felt far more keenly</em>.</li>
+            <li><b>Grammar:</b> &ldquo;while&rdquo;-joined dual-subject opener (B4), a participle chain in the price sentence, &ldquo;dwarfing&hellip;&rdquo; reduced clause, &ldquo;roughly twice as common as&rdquo; comparative.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- ===================== DRILLS ===================== -->
+<section id="s-drills">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">Practice</span>
+      <h2>Interactive drills</h2>
+      <p>Three drills, in order of difficulty. Your typed answers are saved in this browser as you work, so you can stop and come back. Reveal the model only after you have written your own.</p>
+    </div>
+
+    <!-- DRILL 1 -->
+    <div class="drill">
+      <span class="dnum">Drill 1</span>
+      <h3>Fix the overview</h3>
+      <p style="font-size:0.93rem;color:var(--ink-soft);">Each item gives a two-visual task and a weak overview attempt. Rewrite it as a Band 7.5 dual overview: two sentences, one feature per visual, the relationship named, <b>no numbers</b>. Then reveal the model and the examiner note.</p>
+
+      <div class="item">
+        <p class="prompt"><span class="qn">1</span>Line graph: a city's population, 1990&ndash;2020 (rose throughout). Table: the city's age breakdown in 2020 (over-65s the largest group).</p>
+        <div class="given">Weak attempt: &ldquo;The line graph shows the population increased. The table shows there are more old people than young people.&rdquo;</div>
+        <textarea data-drill="d1-1" placeholder="Your Band 7.5 overview (two sentences, no numbers)&hellip;"></textarea>
+        <div class="btn-row"><button class="primary" data-reveal="d1-1">Reveal model &amp; feedback</button></div>
+        <div class="reveal" data-rev="d1-1">
+          <div class="note">
+            <span class="eyebrow">Model</span>
+            <p>&ldquo;Overall, the city's population grew steadily across the three decades, while its 2020 age profile shows that this larger population is also an ageing one, with residents over 65 forming the single biggest group.&rdquo;</p>
+          </div>
+          <p class="tag-line">Both visuals named &middot; relationship = &ldquo;this larger population is also an ageing one&rdquo; (the two facts combined) &middot; &ldquo;this larger population&rdquo; refers back &middot; no figures.</p>
+        </div>
+      </div>
+
+      <div class="item">
+        <p class="prompt"><span class="qn">2</span>Bar chart: the leading electricity source in each of four countries. Pie chart: the global electricity mix (fossil fuels the majority).</p>
+        <div class="given">Weak attempt: &ldquo;Different countries use different energy sources. In the world, coal and gas are used the most.&rdquo;</div>
+        <textarea data-drill="d1-2" placeholder="Your Band 7.5 overview&hellip;"></textarea>
+        <div class="btn-row"><button class="primary" data-reveal="d1-2">Reveal model &amp; feedback</button></div>
+        <div class="reveal" data-rev="d1-2">
+          <div class="note">
+            <span class="eyebrow">Model</span>
+            <p>&ldquo;Overall, fossil fuels dominate the global electricity mix, and this reliance is echoed at national level, where either coal or gas is the leading source in most of the four countries shown.&rdquo;</p>
+          </div>
+          <p class="tag-line">Relationship = <b>mirror</b> (&ldquo;echoed at national level&rdquo;) &middot; &ldquo;this reliance&rdquo; refers back &middot; &ldquo;most of&rdquo; not &ldquo;3 of 4&rdquo; keeps it number-free &middot; one sentence, joined by <em>and</em>.</p>
+        </div>
+      </div>
+
+      <div class="item">
+        <p class="prompt"><span class="qn">3</span>Table: visitor numbers to five countries, 2010 and 2020 (most fell). Line graph: global tourism, 2000&ndash;2020 (long rise, sharp drop in the last year).</p>
+        <div class="given">Weak attempt: &ldquo;Tourist numbers went up in most countries but then fell in 2020 because of the pandemic.&rdquo;</div>
+        <textarea data-drill="d1-3" placeholder="Your Band 7.5 overview&hellip;"></textarea>
+        <div class="btn-row"><button class="primary" data-reveal="d1-3">Reveal model &amp; feedback</button></div>
+        <div class="reveal" data-rev="d1-3">
+          <div class="note">
+            <span class="eyebrow">Model</span>
+            <p>&ldquo;Overall, international tourism grew strongly for most of the period before falling sharply in its final year, and the table reflects the same reversal, with the majority of the five destinations receiving fewer visitors in 2020 than a decade earlier.&rdquo;</p>
+          </div>
+          <p class="tag-line">&ldquo;because of the pandemic&rdquo; deleted &mdash; Task 1 never gives reasons &middot; relationship = &ldquo;the same reversal&rdquo; &middot; both visuals named &middot; &ldquo;a decade earlier&rdquo; avoids a bare year-number list.</p>
+        </div>
+      </div>
+
+      <div class="item">
+        <p class="prompt"><span class="qn">4</span>Pie chart: the composition of household waste (organic material the largest share). Bar chart: recycling rates in six cities (a wide spread).</p>
+        <div class="given">Weak attempt: &ldquo;Food waste is the biggest part of household waste. Recycling rates are between 20% and 60% in the cities.&rdquo;</div>
+        <textarea data-drill="d1-4" placeholder="Your Band 7.5 overview&hellip;"></textarea>
+        <div class="btn-row"><button class="primary" data-reveal="d1-4">Reveal model &amp; feedback</button></div>
+        <div class="reveal" data-rev="d1-4">
+          <div class="note">
+            <span class="eyebrow">Model</span>
+            <p>&ldquo;Overall, organic material makes up the largest single share of household waste, yet the bar chart shows that cities differ widely in how much of their waste they manage to recycle, from a small minority in the weakest performers to a clear majority in the best.&rdquo;</p>
+          </div>
+          <p class="tag-line">Relationship = <b>contrast</b> (&ldquo;yet&rdquo;) &middot; the &ldquo;20% to 60%&rdquo; range is replaced by &ldquo;a small minority&hellip; a clear majority&rdquo; &mdash; still no numbers &middot; &ldquo;food waste&rdquo; corrected to the chart's category, &ldquo;organic material&rdquo;.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- DRILL 2 -->
+    <div class="drill">
+      <span class="dnum">Drill 2</span>
+      <h3>Cross-visual sentence synthesis</h3>
+      <p style="font-size:0.93rem;color:var(--ink-soft);">Each item gives two isolated facts, one from each visual. Combine them into <b>one</b> complex sentence using a participle phrase, a relative clause, or <em>while / whereas</em>. Keep both figures.</p>
+
+      <div class="item">
+        <p class="prompt"><span class="qn">1</span></p>
+        <div class="given">A (line graph): Car use rose from 45% to 61% of journeys between 2000 and 2020.<br>B (bar chart): In 2020, car use was highest in suburban areas, at 74%.</div>
+        <textarea data-drill="d2-1" placeholder="One sentence, both figures&hellip;"></textarea>
+        <div class="btn-row"><button class="primary" data-reveal="d2-1">Reveal model</button></div>
+        <div class="reveal" data-rev="d2-1"><div class="note"><span class="eyebrow">Model</span><p>&ldquo;Car use climbed from 45 to 61 per cent of journeys over the two decades, a rise most pronounced in suburban areas, where it reached 74 per cent by 2020.&rdquo; <span class="tag-line" style="display:block;margin-top:0.4rem;">Move: appositive noun phrase (&ldquo;a rise most pronounced&hellip;&rdquo;) + relative clause (&ldquo;where it reached&hellip;&rdquo;).</span></p></div></div>
+      </div>
+
+      <div class="item">
+        <p class="prompt"><span class="qn">2</span></p>
+        <div class="given">A (table): Renewables generated 22% of the country's electricity in 2020.<br>B (line graph): Renewable output had doubled since 2010.</div>
+        <textarea data-drill="d2-2" placeholder="One sentence&hellip;"></textarea>
+        <div class="btn-row"><button class="primary" data-reveal="d2-2">Reveal model</button></div>
+        <div class="reveal" data-rev="d2-2"><div class="note"><span class="eyebrow">Model</span><p>&ldquo;Renewables accounted for 22 per cent of electricity generation in 2020, having doubled their output over the previous decade.&rdquo; <span class="tag-line" style="display:block;margin-top:0.4rem;">Move: perfect participle (&ldquo;having doubled&hellip;&rdquo;) attaches the second fact with no new clause.</span></p></div></div>
+      </div>
+
+      <div class="item">
+        <p class="prompt"><span class="qn">3</span></p>
+        <div class="given">A (bar chart): City X recycled 55% of its waste; City Y recycled 21%.<br>B (pie chart): Recyclable materials made up about 40% of total waste.</div>
+        <textarea data-drill="d2-3" placeholder="One sentence&hellip;"></textarea>
+        <div class="btn-row"><button class="primary" data-reveal="d2-3">Reveal model</button></div>
+        <div class="reveal" data-rev="d2-3"><div class="note"><span class="eyebrow">Model</span><p>&ldquo;City X recycled 55 per cent of its waste compared with just 21 per cent in City Y, even though recyclable materials made up around 40 per cent of the total in both.&rdquo; <span class="tag-line" style="display:block;margin-top:0.4rem;">Move: <em>compared with</em> for the within-visual gap, <em>even though</em> for the cross-visual link.</span></p></div></div>
+      </div>
+
+      <div class="item">
+        <p class="prompt"><span class="qn">4</span></p>
+        <div class="given">A (line graph): National unemployment peaked at 11% in 2012.<br>B (line graph, second line): Youth unemployment peaked at 24% in the same year.</div>
+        <textarea data-drill="d2-4" placeholder="One sentence&hellip;"></textarea>
+        <div class="btn-row"><button class="primary" data-reveal="d2-4">Reveal model</button></div>
+        <div class="reveal" data-rev="d2-4"><div class="note"><span class="eyebrow">Model</span><p>&ldquo;Unemployment peaked at 11 per cent in 2012, with the youth rate reaching 24 per cent &mdash; more than double the national figure &mdash; in the same year.&rdquo; <span class="tag-line" style="display:block;margin-top:0.4rem;">Move: <em>with</em> + noun + participle, plus a dash-bracketed comparison.</span></p></div></div>
+      </div>
+
+      <div class="item">
+        <p class="prompt"><span class="qn">5</span></p>
+        <div class="given">A (table): The average house price in the capital was &pound;480,000.<br>B (bar chart): The average national house price was &pound;270,000.</div>
+        <textarea data-drill="d2-5" placeholder="One sentence&hellip;"></textarea>
+        <div class="btn-row"><button class="primary" data-reveal="d2-5">Reveal model</button></div>
+        <div class="reveal" data-rev="d2-5"><div class="note"><span class="eyebrow">Model</span><p>&ldquo;At &pound;480,000, the average house price in the capital was close to double the national figure of &pound;270,000.&rdquo; <span class="tag-line" style="display:block;margin-top:0.4rem;">Move: fronted &ldquo;At &pound;480,000,&rdquo; + a single comparative clause holding both numbers.</span></p></div></div>
+      </div>
+
+      <div class="item">
+        <p class="prompt"><span class="qn">6</span></p>
+        <div class="given">A (pie chart): Manufacturing employed 28% of the workforce in 1990.<br>B (line graph): By 2020, that share had fallen to 11%.</div>
+        <textarea data-drill="d2-6" placeholder="One sentence&hellip;"></textarea>
+        <div class="btn-row"><button class="primary" data-reveal="d2-6">Reveal model</button></div>
+        <div class="reveal" data-rev="d2-6"><div class="note"><span class="eyebrow">Model</span><p>&ldquo;Manufacturing, which had employed 28 per cent of the workforce in 1990, saw its share fall to 11 per cent by 2020.&rdquo; <span class="tag-line" style="display:block;margin-top:0.4rem;">Move: non-defining relative clause (&ldquo;which had employed&hellip;&rdquo;) carries the older figure; the main clause carries the newer one.</span></p></div></div>
+      </div>
+    </div>
+
+    <!-- DRILL 3 -->
+    <div class="drill" id="drill3">
+      <span class="dnum">Drill 3</span>
+      <h3>Timed write + self-assessment</h3>
+      <p style="font-size:0.93rem;color:var(--ink-soft);">Pick any case study above, hide the models, and write a full answer in 20 minutes. The clock is a guide, not a lock &mdash; when it reaches zero it turns red and keeps counting, and you may finish the sentence you are on. Then score yourself against the four criteria.</p>
+
+      <div class="bar">
+        <span class="clock idle" id="d3clock">20:00</span>
+        <button class="primary" id="d3start">Start</button>
+        <button id="d3reset">Reset</button>
+        <span class="timer-note" id="d3note">Not started.</span>
+      </div>
+
+      <textarea data-drill="d3-essay" style="min-height:11rem;" placeholder="Write your full four-paragraph answer here&hellip;"></textarea>
+      <p class="tag-line" id="d3count">0 words</p>
+
+      <h4 style="margin:1.4rem 0 0.3rem;">Score your answer</h4>
+      <p style="font-size:0.9rem;color:var(--ink-soft);margin-top:0;">Choose the description that best matches what you actually wrote &mdash; not what you meant to write.</p>
+
+      <div id="d3rubric">
+        <div class="rubric-row" data-crit="TR">
+          <span class="rc">Task Achievement</span>
+          <p class="rq">How well did you select and overview?</p>
+          <div class="rubric-opts">
+            <label><input type="radio" name="d3-TR" value="1"> Reported most data with little selection; overview covers one visual only, or has numbers, or is missing.</label>
+            <label><input type="radio" name="d3-TR" value="2"> Clear overview covering both visuals; key features selected, maybe some minor detail; figures mostly accurate.</label>
+            <label><input type="radio" name="d3-TR" value="3"> Overview names the main feature of each visual and their relationship, no data; every body figure is purposeful.</label>
+          </div>
+        </div>
+        <div class="rubric-row" data-crit="CC">
+          <span class="rc">Coherence &amp; Cohesion</span>
+          <p class="rq">Did the two visuals connect?</p>
+          <div class="rubric-opts">
+            <label><input type="radio" name="d3-CC" value="1"> Four paragraphs, but the visuals sit in separate paragraphs with no link; basic connectors (and, also, so).</label>
+            <label><input type="radio" name="d3-CC" value="2"> Logical paragraphs; used while/whereas/compared with at least once; one plain sentence links the visuals.</label>
+            <label><input type="radio" name="d3-CC" value="3"> A body paragraph is built around a cross-visual bridge (mirrors / in contrast / helps explain); natural referencing; varied connectors.</label>
+          </div>
+        </div>
+        <div class="rubric-row" data-crit="LR">
+          <span class="rc">Lexical Resource</span>
+          <p class="rq">How varied and precise was the vocabulary?</p>
+          <div class="rubric-opts">
+            <label><input type="radio" name="d3-LR" value="1"> Repeated &ldquo;shows&rdquo;, &ldquo;increased&rdquo;, &ldquo;the biggest&rdquo;; some wrong word choices; several spelling slips.</label>
+            <label><input type="radio" name="d3-LR" value="2"> Some range and some precise items (accounted for, followed by, fluctuated); the odd awkward collocation.</label>
+            <label><input type="radio" name="d3-LR" value="3"> Varied, precise vocabulary used naturally (dominated by, tilted towards, drifted, surged); collocations correct.</label>
+          </div>
+        </div>
+        <div class="rubric-row" data-crit="GRA">
+          <span class="rc">Grammatical Range &amp; Accuracy</span>
+          <p class="rq">How complex and accurate were the sentences?</p>
+          <div class="rubric-opts">
+            <label><input type="radio" name="d3-GRA" value="1"> Mostly simple sentences, one fact each; present perfect for finished periods; article/preposition errors in most sentences.</label>
+            <label><input type="radio" name="d3-GRA" value="2"> Mix of simple and complex; some participle or relative clauses; errors present but meaning always clear.</label>
+            <label><input type="radio" name="d3-GRA" value="3"> Frequent, varied complex structures; the majority of sentences error-free; tense consistent throughout.</label>
+          </div>
+        </div>
+      </div>
+
+      <div class="meter"><div class="meter-fill" id="d3fill"></div></div>
+      <div class="score-out" id="d3score">Choose one option per criterion to see an estimate.</div>
+
+      <h4 style="margin:1.4rem 0 0.3rem;">Pre-submission checklist</h4>
+      <div class="checklist" id="d3check">
+        <label><input type="checkbox"> My introduction is one sentence and names both visuals.</label>
+        <label><input type="checkbox"> My overview has two sentences, one per visual, and zero numbers.</label>
+        <label><input type="checkbox"> My overview states how the two visuals relate (mirror / contrast / explain / scope).</label>
+        <label><input type="checkbox"> Body 2 has at least one sentence linking a figure back to Body 1.</label>
+        <label><input type="checkbox"> Every verb for the finished period is past simple &mdash; no &ldquo;has increased&rdquo;.</label>
+        <label><input type="checkbox"> Every &ldquo;the highest / the number of / the majority of&rdquo; has &ldquo;the&rdquo;.</label>
+        <label><input type="checkbox"> 150+ words, and I did not copy the task wording.</label>
+      </div>
+      <div class="btn-row"><button id="d3clearAll" class="ghost">Clear all my Drill 3 work</button></div>
+    </div>
+  </div>
+</section>
+<!-- ===================== FOR THE TEACHER ===================== -->
+<section id="s-teacher">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">For the teacher</span>
+      <h2>How to run this</h2>
+      <p>&ldquo;Mixed visuals&rdquo; is <em>one</em> exam skill, but it decomposes into seven named techniques &mdash; more than a Band 5 student can absorb in a sitting. This page is built as three sub-lessons for exactly that reason. Teach them in order, one session each, with the technique budget stated at the top of each sub-lesson enforced.</p>
+    </div>
+
+    <div class="cards three">
+      <div class="card">
+        <span class="num">SESSION 1 &middot; SUB-LESSON A</span>
+        <h4>The architecture</h4>
+        <p>A1 unified introduction, A2 dual overview, A3 body partition. Do Drill 1 (&ldquo;Fix the overview&rdquo;) with the models open the first time, closed the second. Do <b>not</b> touch Sub-lesson B this session.</p>
+        <span class="tell">Homework: write only the introduction + overview for Case Study 1. Two sentences plus one. No body.</span>
+      </div>
+      <div class="card">
+        <span class="num">SESSION 2 &middot; SUB-LESSON B</span>
+        <h4>The sentences</h4>
+        <p>Retrieval warm-up: reconstruct the A2 dual-overview rule from memory. Then B1&ndash;B4. Drill 2 (&ldquo;Cross-visual synthesis&rdquo;) is the core activity &mdash; one item modelled, the rest in pairs.</p>
+        <span class="tell">Homework: rewrite the Band 6.5 script of Case Study 2 or 3, upgrading five listing sentences to synthesis.</span>
+      </div>
+      <div class="card">
+        <span class="num">SESSIONS 3&ndash;4 &middot; SUB-LESSON C</span>
+        <h4>The application</h4>
+        <p>Warm-up: the seven techniques by name. Then one full case study walked through steps 1&ndash;3 together, and one written under time (Drill 3) with the self-assessment. The reflection questions below close the sequence.</p>
+        <span class="tell">Homework: a second timed answer on the remaining case study, marked with Drill 3's rubric.</span>
+      </div>
+      <div class="card" style="background:var(--kill-soft);border-color:var(--kill);">
+        <span class="num" style="color:var(--kill);">TURKISH L1 SPOTLIGHT</span>
+        <h4>Where two visuals go wrong for Turkish speakers</h4>
+        <p><b>Present perfect for a closed period</b> (&ldquo;the figure has risen in 2013&rdquo;) &mdash; doubly common here because there are twice as many data sentences. <b>Article omission</b> in comparison phrases (&ldquo;had highest rate&rdquo;). <b>&ldquo;which&rdquo; as an all-purpose join</b> between the two visuals (see A1). <b>&ldquo;-DIr&rdquo; hedging</b> flooding the overview with &ldquo;it can be said that&rdquo; (see A2).</p>
+        <span class="tell">Drill: give a mixed-visual model with the linkers removed; students reinsert <em>while / whereas / mirrored in / in contrast</em> from a fixed list.</span>
+      </div>
+    </div>
+
+    <h3 style="margin:2.4rem 0 0.9rem;color:var(--ink-soft);">Where this sits in the Task 1 sequence</h3>
+    <ol class="steps">
+      <li><b>Prerequisite, not optional.</b> This lesson assumes the four-part skeleton is automatic on a single table, line graph, bar chart and pie chart (Lessons 1&ndash;3 of the Task 1 sequence). A student who still writes a single-visual answer without an overview is not ready &mdash; send them back one lesson.</li>
+      <li><b>Realistic banding.</b> The skeleton and single-visual competence sit around Band 6. Everything on this page is the 6&nbsp;&rarr;&nbsp;7.5 move: synthesis, cross-visual linking, precise lexis. The Band 5.0 scripts in the case studies are diagnostic anchors, not the teaching target.</li>
+      <li><b>Process and map are not covered.</b> Two-visual tasks are almost always chart pairs (table, line, bar, pie in combination). Diagram + diagram and map + map do exist but are rare; teach them separately if they come up.</li>
+      <li><b>Pair with:</b> Cambridge IELTS 17&ndash;20, Academic Writing Task 1 &mdash; look specifically for the questions that show two charts. Recent papers use them more often than older ones.</li>
+    </ol>
+
+    <h3 style="margin:2.4rem 0 0.9rem;color:var(--ink-soft);">Anticipated problems &amp; solutions</h3>
+    <ol class="steps">
+      <li><b>The overview only covers one visual.</b> The commonest single error. Fix: require the overview to have exactly two sentences and physically point at each chart while saying which sentence belongs to it.</li>
+      <li><b>Students force a link that isn't there.</b> Not every pair has a strong mirror/contrast/explain relationship. Teach the scope fallback (&ldquo;whereas the table spans two decades, the pie captures one year&rdquo;) so they always have a safe link and never invent a false one.</li>
+      <li><b>Body paragraphs balloon because there is twice the data.</b> Enforce the time budget: Body 2 is shorter than Body 1 because it reuses language. If both bodies are 70+ words the answer will run long and rushed.</li>
+      <li><b>Partition drift.</b> A student starts &ldquo;one visual per paragraph&rdquo; and slides into &ldquo;by category&rdquo; halfway. Fix: write the two body-paragraph topic sentences <em>before</em> writing the bodies.</li>
+      <li><b>They spend the reveal comparing wording, not moves.</b> Redirect every model comparison to: did you select the same features? did you link the visuals in the same place? Wording is the last thing to worry about.</li>
+    </ol>
+
+    <h3 style="margin:2.4rem 0 0.9rem;color:var(--ink-soft);">Coaching script</h3>
+    <div class="card">
+      <p style="font-family:var(--f-mono);font-size:0.72rem;color:var(--ink-faint);margin:0 0 0.9rem;letter-spacing:0.08em;">CONFIDENCE ANCHOR &mdash; SAY THIS FIRST</p>
+      <p style="margin:0 0 1.25rem;">&ldquo;Two charts is not two essays. It is the same 150-word job you already do, with one extra sentence that connects the pictures. Your English is not the problem here &mdash; the plan is. We are going to fix the plan.&rdquo;</p>
+      <p style="font-family:var(--f-mono);font-size:0.72rem;color:var(--ink-faint);margin:0 0 0.9rem;letter-spacing:0.08em;">THE MAIN EXPLANATION</p>
+      <p style="margin:0 0 1.25rem;">&ldquo;Paragraph 1: one sentence that names both charts. Paragraph 2: two sentences &mdash; the big thing in chart one, the big thing in chart two, and how they relate. No numbers yet. Then two body paragraphs, one chart each, and somewhere in the second one a sentence that says &lsquo;this is like&rsquo; or &lsquo;this is the opposite of&rsquo; the first chart. That connecting sentence is the difference between a 6 and a 7.&rdquo;</p>
+      <p style="font-family:var(--f-mono);font-size:0.72rem;color:var(--ink-faint);margin:0 0 0.9rem;letter-spacing:0.08em;">IF THE STUDENT WRITES A ONE-VISUAL OVERVIEW</p>
+      <p style="margin:0 0 1.25rem;">&ldquo;Read me your overview. Now point at the chart it describes. Where is the sentence for the other chart? An overview that ignores half the task is a Band 5, however good the English.&rdquo;</p>
+      <p style="font-family:var(--f-mono);font-size:0.72rem;color:var(--ink-faint);margin:0 0 0.9rem;letter-spacing:0.08em;">ONE NEXT STEP &middot; QUICK CHECK</p>
+      <p style="margin:0;">&ldquo;This week: for every two-visual question you attempt, write the overview first and underline the word that links the two charts. If there's no linking word, the overview isn't finished.&rdquo; &mdash; then check: <em>&ldquo;Give me the four relationship types.&rdquo;</em> (mirror, contrast, explain, scope)</p>
+    </div>
+
+    <h3 style="margin:2.4rem 0 0.9rem;color:var(--ink-soft);">Closing reflection &mdash; for the student</h3>
+    <ol class="reflect">
+      <li>In your timed answer, where exactly is the sentence that links the two visuals? If you cannot point to one, that is the single change that would raise your band most.</li>
+      <li>Look at your overview. Cover the body paragraphs. Could a reader who had not seen the charts still understand the two main patterns and how they relate? If not, it is too vague or too detailed.</li>
+      <li>Count your sentences that contain only one number. More than four or five, and you are listing, not synthesising &mdash; go back to B1.</li>
+      <li>Which Turkish L1 trap showed up most in your writing &mdash; present perfect, missing articles, <em>which</em>-chaining, or over-hedging? Pick one to watch for next time.</li>
+      <li>Did you keep to the time budget, or did Body 1 eat the clock? If Body 2 was rushed, your linking sentence probably suffered &mdash; and that is the expensive one to lose.</li>
+    </ol>
+  </div>
+</section>    </main>
+
+    <footer>LBEnglishCo &middot; IELTS Academic Writing &middot; Task 1 &middot; Mixed Visuals &middot; 2026-08-28</footer>
+  </div>
+</div>
+
+<script>
+(function () {
+  "use strict";
+
+  var reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  var STORE = "lbenglish_wt1_mixed_2026-08-28";
+  var state = { drills: {}, rubric: {}, check: [] };
+  try {
+    var raw = JSON.parse(localStorage.getItem(STORE) || "{}");
+    if (raw && typeof raw === "object") {
+      state.drills = raw.drills || {};
+      state.rubric = raw.rubric || {};
+      state.check = raw.check || [];
+    }
+  } catch (e) {}
+  function save() { try { localStorage.setItem(STORE, JSON.stringify(state)); } catch (e) {} }
+
+  /* ---------------- sidebar: mobile toggle + scrollspy ---------------- */
+  var sidenav = document.getElementById("sidenav");
+  var navToggle = document.getElementById("navToggle");
+  var navLinks = [].slice.call(document.querySelectorAll(".nav-list a"));
+
+  if (navToggle) {
+    navToggle.addEventListener("click", function () {
+      var open = sidenav.classList.toggle("open");
+      navToggle.setAttribute("aria-expanded", open ? "true" : "false");
+    });
+  }
+  navLinks.forEach(function (a) {
+    a.addEventListener("click", function () {
+      if (window.innerWidth <= 980) {
+        sidenav.classList.remove("open");
+        if (navToggle) navToggle.setAttribute("aria-expanded", "false");
+      }
+    });
+  });
+
+  var linkFor = {};
+  navLinks.forEach(function (a) {
+    var id = a.getAttribute("href").slice(1);
+    linkFor[id] = a;
+  });
+  var sections = [].slice.call(document.querySelectorAll("section[id]"));
+  var curId = null;
+  function setActive(id) {
+    if (id === curId) return;
+    curId = id;
+    navLinks.forEach(function (a) { a.classList.remove("active"); });
+    if (linkFor[id]) linkFor[id].classList.add("active");
+  }
+  function computeActive() {
+    var line = 100; // px from top of viewport
+    var chosen = sections.length ? sections[0].id : null;
+    for (var i = 0; i < sections.length; i++) {
+      if (sections[i].getBoundingClientRect().top - line <= 0) chosen = sections[i].id;
+      else break;
+    }
+    if (chosen) setActive(chosen);
+  }
+  window.addEventListener("scroll", computeActive, { passive: true });
+  window.addEventListener("resize", computeActive);
+  computeActive();
+
+  /* ---------------- sentence-transform tabs ---------------- */
+  [].slice.call(document.querySelectorAll("[data-xform]")).forEach(function (box) {
+    var tabs = [].slice.call(box.querySelectorAll(".xform-tab"));
+    var bodies = [].slice.call(box.querySelectorAll(".xform-body"));
+    tabs.forEach(function (tab) {
+      tab.addEventListener("click", function () {
+        var k = tab.getAttribute("data-x");
+        tabs.forEach(function (t) { t.setAttribute("aria-selected", t === tab ? "true" : "false"); });
+        bodies.forEach(function (b) { b.hidden = b.getAttribute("data-xb") !== k; });
+      });
+    });
+  });
+
+  /* ---------------- band-ladder tabs ---------------- */
+  [].slice.call(document.querySelectorAll("[data-ladder]")).forEach(function (box) {
+    var tabs = [].slice.call(box.querySelectorAll(".ladder-tab"));
+    var panels = [].slice.call(box.querySelectorAll(".ladder-panel"));
+    tabs.forEach(function (tab) {
+      tab.addEventListener("click", function () {
+        var k = tab.getAttribute("data-l");
+        tabs.forEach(function (t) { t.setAttribute("aria-selected", t === tab ? "true" : "false"); });
+        panels.forEach(function (p) { p.hidden = p.getAttribute("data-lp") !== k; });
+      });
+    });
+  });
+
+  /* ---------------- criterion colour toggle ---------------- */
+  [].slice.call(document.querySelectorAll("[data-code-toggle]")).forEach(function (btn) {
+    btn.addEventListener("click", function () {
+      var panel = btn.closest(".ladder-panel") || btn.parentNode.parentNode;
+      var essay = panel.querySelector("[data-codable]");
+      if (!essay) return;
+      var on = essay.classList.toggle("coded");
+      btn.setAttribute("aria-pressed", on ? "true" : "false");
+      btn.textContent = on ? "Hide criterion colours" : "Show criterion colours";
+    });
+  });
+
+  /* ---------------- drill textareas: persist ---------------- */
+  [].slice.call(document.querySelectorAll("[data-drill]")).forEach(function (ta) {
+    var key = ta.getAttribute("data-drill");
+    if (state.drills[key] != null) ta.value = state.drills[key];
+    ta.addEventListener("input", function () {
+      state.drills[key] = ta.value;
+      save();
+      if (key === "d3-essay") paintCount();
+    });
+  });
+
+  /* ---------------- reveal buttons ---------------- */
+  [].slice.call(document.querySelectorAll("[data-reveal]")).forEach(function (btn) {
+    btn.addEventListener("click", function () {
+      var k = btn.getAttribute("data-reveal");
+      var box = document.querySelector('[data-rev="' + k + '"]');
+      if (box) {
+        box.classList.add("show");
+        btn.textContent = "Model shown below";
+        btn.disabled = true;
+      }
+    });
+  });
+
+  /* ---------------- Drill 3: word count ---------------- */
+  var d3essay = document.querySelector('[data-drill="d3-essay"]');
+  var d3count = document.getElementById("d3count");
+  function paintCount() {
+    if (!d3essay || !d3count) return;
+    var w = d3essay.value.trim() ? d3essay.value.trim().split(/\s+/).length : 0;
+    d3count.textContent = w + (w === 1 ? " word" : " words") + (w >= 150 ? "  ✓ over 150" : w > 0 ? "  — aim for 150+" : "");
+  }
+  paintCount();
+
+  /* ---------------- Drill 3: soft-stop timer ---------------- */
+  var TOTAL = 20 * 60, left = TOTAL, tick = null, running = false;
+  var clk = document.getElementById("d3clock");
+  var note = document.getElementById("d3note");
+  var startBtn = document.getElementById("d3start");
+  var resetBtn = document.getElementById("d3reset");
+
+  function paintClock() {
+    var neg = left < 0, a = Math.abs(left);
+    var m = Math.floor(a / 60), s = a % 60;
+    clk.textContent = (neg ? "-" : "") + m + ":" + (s < 10 ? "0" : "") + s;
+    clk.classList.toggle("over", left <= 0);
+    clk.classList.toggle("idle", !running && left === TOTAL);
+  }
+  function stopTick() { clearInterval(tick); tick = null; running = false; }
+
+  if (startBtn) {
+    startBtn.addEventListener("click", function () {
+      if (running) {
+        stopTick();
+        startBtn.textContent = "Resume";
+        note.textContent = "Paused at " + clk.textContent + ".";
+        return;
+      }
+      running = true;
+      startBtn.textContent = "Pause";
+      note.textContent = left <= 0 ? "Over time — finish your sentence and stop." : "Writing. 20 minutes on the clock.";
+      paintClock();
+      tick = setInterval(function () {
+        left--;
+        paintClock();
+        if (left === 0) {
+          note.textContent = "Time is up. The clock keeps running — finish the sentence you are on, then self-assess.";
+        }
+      }, 1000);
+    });
+  }
+  if (resetBtn) {
+    resetBtn.addEventListener("click", function () {
+      stopTick();
+      left = TOTAL;
+      startBtn.textContent = "Start";
+      note.textContent = "Not started.";
+      paintClock();
+    });
+  }
+  paintClock();
+
+  /* ---------------- Drill 3: rubric scoring ---------------- */
+  var CRITS = ["TR", "CC", "LR", "GRA"];
+  var fill = document.getElementById("d3fill");
+  var scoreOut = document.getElementById("d3score");
+
+  CRITS.forEach(function (c) {
+    var saved = state.rubric[c];
+    [].slice.call(document.querySelectorAll('input[name="d3-' + c + '"]')).forEach(function (r) {
+      if (saved && r.value === saved) r.checked = true;
+      r.addEventListener("change", function () {
+        state.rubric[c] = r.value;
+        save();
+        paintScore();
+      });
+    });
+  });
+
+  function paintScore() {
+    var total = 0, answered = 0;
+    CRITS.forEach(function (c) {
+      var v = state.rubric[c];
+      if (v) { total += parseInt(v, 10); answered++; }
+    });
+    var pct = Math.round((total / 12) * 100);
+    fill.style.width = pct + "%";
+    if (answered < 4) {
+      scoreOut.textContent = answered + " of 4 criteria scored — choose one option per criterion.";
+      fill.style.background = "var(--ink-faint)";
+      return;
+    }
+    var band;
+    if (total <= 6) band = "around Band 5.0–5.5 — the architecture is not yet in place";
+    else if (total <= 9) band = "around Band 6.0–6.5 — the skeleton works; push synthesis and cross-visual links";
+    else if (total <= 11) band = "around Band 7.0 — close; tighten the weakest criterion";
+    else band = "Band 7.5+ — target reached on this attempt";
+    scoreOut.textContent = total + " / 12 — " + band;
+    fill.style.background = total <= 6 ? "var(--kill)" : total <= 9 ? "var(--warn)" : "var(--keep)";
+  }
+
+  /* ---------------- Drill 3: checklist persist ---------------- */
+  var checkBoxes = [].slice.call(document.querySelectorAll("#d3check input"));
+  checkBoxes.forEach(function (cb, i) {
+    if (state.check[i]) cb.checked = true;
+    cb.addEventListener("change", function () {
+      state.check[i] = cb.checked;
+      save();
+    });
+  });
+
+  /* ---------------- Drill 3: clear all ---------------- */
+  var clearAll = document.getElementById("d3clearAll");
+  if (clearAll) {
+    clearAll.addEventListener("click", function () {
+      if (!window.confirm("Clear your Drill 3 essay, self-assessment and checklist? This cannot be undone.")) return;
+      if (d3essay) { d3essay.value = ""; delete state.drills["d3-essay"]; }
+      state.rubric = {};
+      state.check = [];
+      save();
+      checkBoxes.forEach(function (cb) { cb.checked = false; });
+      [].slice.call(document.querySelectorAll('#d3rubric input[type="radio"]')).forEach(function (r) { r.checked = false; });
+      paintCount();
+      paintScore();
+    });
+  }
+
+  paintScore();
+})();
+</script>
+</body>
+</html>

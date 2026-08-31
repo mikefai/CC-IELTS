@@ -1,0 +1,11 @@
+# OS / sync artifacts
+~$*
+Thumbs.db
+.DS_Store
+*.tmp
+*.log
+
+# Local memory / agent state
+.remember/
+.claude/
+

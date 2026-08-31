@@ -1,0 +1,420 @@
+<title>Numbers Into Words</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500;700&family=Literata:opsz,wght@7..72,400;7..72,600&display=swap">
+
+<style>
+  :root {
+    --ground: #F4F5F8; --surface: #FFFFFF; --sunk: #E9ECF2;
+    --ink: #16202E; --ink-soft: #5C6A7D; --ink-faint: #8E99A8;
+    --accent: #33456B; --accent-soft: #E2E7F1;
+    --kill: #B0413E; --kill-soft: #F7E9E8;
+    --keep: #3B7A57; --keep-soft: #E6F0EA;
+    --warn: #9A6B1E; --warn-soft: #FBF0DC;
+    --rule: #D8DDE6;
+    --f-display: "Instrument Serif", Georgia, serif;
+    --f-body: "Literata", Georgia, "Times New Roman", serif;
+    --f-mono: "JetBrains Mono", ui-monospace, "Cascadia Mono", Consolas, monospace;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --ground:#14181F; --surface:#1C222C; --sunk:#242C38;
+      --ink:#E6EAF0; --ink-soft:#9AA6B6; --ink-faint:#6B7788;
+      --accent:#8FA6D4; --accent-soft:#232D42;
+      --kill:#E08A85; --kill-soft:#2E2020;
+      --keep:#7FC49C; --keep-soft:#1B2A22;
+      --warn:#E0B366; --warn-soft:#2E2818;
+      --rule:#2C3542;
+    }
+  }
+  :root[data-theme="dark"] {
+    --ground:#14181F; --surface:#1C222C; --sunk:#242C38;
+    --ink:#E6EAF0; --ink-soft:#9AA6B6; --ink-faint:#6B7788;
+    --accent:#8FA6D4; --accent-soft:#232D42;
+    --kill:#E08A85; --kill-soft:#2E2020;
+    --keep:#7FC49C; --keep-soft:#1B2A22;
+    --warn:#E0B366; --warn-soft:#2E2818;
+    --rule:#2C3542;
+  }
+  * { box-sizing: border-box; }
+  body { margin:0; background:var(--ground); color:var(--ink); font-family:var(--f-body); font-size:1.02rem; line-height:1.7; -webkit-font-smoothing:antialiased; }
+  .wrap { max-width:800px; margin:0 auto; padding:0 clamp(1rem,5vw,2rem); }
+  h1,h2,h3 { margin:0; line-height:1.15; text-wrap:balance; }
+  h1 { font-family:var(--f-display); font-size:clamp(2.6rem,7vw,4.2rem); font-weight:400; letter-spacing:-0.01em; }
+  h2 { font-family:var(--f-display); font-size:clamp(1.8rem,4vw,2.4rem); font-weight:400; }
+  h3 { font-family:var(--f-mono); font-size:0.92rem; font-weight:700; letter-spacing:0.02em; }
+  .eyebrow { font-family:var(--f-mono); font-size:0.7rem; font-weight:500; letter-spacing:0.16em; text-transform:uppercase; color:var(--accent); }
+  p { max-width:68ch; }
+  .hero { padding:clamp(3rem,9vw,5.5rem) 0 clamp(2rem,5vw,3rem); border-bottom:1px solid var(--rule); }
+  .hero .lede { font-size:1.18rem; color:var(--ink-soft); margin-top:1.1rem; }
+  .hero .lede em { font-style:italic; color:var(--ink); }
+  .facts { display:flex; flex-wrap:wrap; gap:0 2.1rem; margin-top:1.8rem; font-family:var(--f-mono); font-size:0.78rem; }
+  .facts div { display:flex; flex-direction:column; gap:0.1rem; }
+  .facts span { color:var(--ink-faint); letter-spacing:0.08em; text-transform:uppercase; font-size:0.66rem; }
+  .facts b { font-weight:500; color:var(--ink); }
+  section { padding:clamp(2.5rem,7vw,4rem) 0; border-bottom:1px solid var(--rule); }
+  .sec-head { margin-bottom:1.8rem; }
+  .sec-head .eyebrow { display:block; margin-bottom:0.55rem; }
+  .sec-head p { color:var(--ink-soft); margin-top:0.8rem; }
+  .card { background:var(--surface); border:1px solid var(--rule); border-radius:4px; padding:1.25rem 1.4rem; }
+  .note { border-left:3px solid var(--accent); background:var(--sunk); padding:0.9rem 1.1rem; border-radius:0 3px 3px 0; margin:1.1rem 0; }
+  .note p { margin:0; font-size:0.93rem; }
+  .note .eyebrow { display:block; margin-bottom:0.3rem; }
+  .amber { border-left:3px solid var(--warn); background:var(--warn-soft); padding:0.9rem 1.1rem; border-radius:0 3px 3px 0; margin:1.1rem 0; }
+  .amber .eyebrow { color:var(--warn); display:block; margin-bottom:0.35rem; }
+  .amber p { margin:0 0 0.5rem; font-size:0.93rem; }
+  .amber .ex { font-family:var(--f-mono); font-size:0.82rem; display:block; margin-top:0.3rem; }
+  .amber .ex.no { color:var(--kill); }
+  .amber .ex.yes { color:var(--keep); }
+
+  /* skeleton */
+  .skeleton { display:grid; gap:0.7rem; }
+  .skel-step { display:grid; grid-template-columns:2.3rem 1fr; gap:0.9rem; background:var(--surface); border:1px solid var(--rule); border-radius:4px; padding:1rem 1.2rem; }
+  .skel-step .n { font-family:var(--f-mono); font-weight:700; color:var(--accent); font-size:1.1rem; }
+  .skel-step h3 { margin-bottom:0.3rem; }
+  .skel-step p { margin:0; font-size:0.93rem; color:var(--ink-soft); }
+
+  /* quiz mini */
+  .qm { display:grid; gap:0.6rem; margin-top:1rem; }
+  .qm-item { background:var(--surface); border:1px solid var(--rule); border-radius:4px; padding:0.9rem 1.1rem; }
+  .qm-item p.stem { margin:0 0 0.6rem; font-style:italic; font-size:0.96rem; }
+  .qm-btns { display:flex; gap:0.5rem; }
+  .qm-btns button { flex:1; }
+  .qm-fb { margin-top:0.6rem; font-family:var(--f-mono); font-size:0.78rem; display:none; padding:0.5rem 0.65rem; border-radius:3px; }
+  .qm-fb.show { display:block; }
+  .qm-fb.right { background:var(--keep-soft); color:var(--keep); }
+  .qm-fb.wrong { background:var(--kill-soft); color:var(--kill); }
+
+  button { font-family:var(--f-mono); font-size:0.78rem; font-weight:500; padding:0.5rem 0.85rem; border-radius:3px; border:1px solid var(--rule); background:var(--surface); color:var(--ink); cursor:pointer; transition:background .15s ease, border-color .15s ease; }
+  button:hover { background:var(--sunk); border-color:var(--ink-faint); }
+  button.primary { background:var(--accent); border-color:var(--accent); color:var(--surface); }
+  button.primary:hover { filter:brightness(1.12); }
+  :focus-visible { outline:2px solid var(--accent); outline-offset:2px; }
+
+  /* vocab */
+  .vocab-grid { display:grid; gap:0.8rem; }
+  @media (min-width:640px) { .vocab-grid { grid-template-columns:1fr 1fr; } }
+  .vword { background:var(--surface); border:1px solid var(--rule); border-radius:4px; padding:1rem 1.15rem; }
+  .vword .w { font-family:var(--f-mono); font-weight:700; color:var(--accent); font-size:0.95rem; }
+  .vword .pos { font-family:var(--f-mono); font-size:0.68rem; color:var(--ink-faint); text-transform:uppercase; margin-left:0.4rem; }
+  .vword .ex { font-size:0.9rem; color:var(--ink-soft); margin-top:0.4rem; font-style:italic; }
+  details.gloss summary { font-family:var(--f-mono); font-size:0.78rem; color:var(--accent); cursor:pointer; padding:0.6rem 0; }
+  .glist { columns:2; column-gap:1.5rem; font-size:0.9rem; color:var(--ink-soft); }
+  @media (max-width:600px) { .glist { columns:1; } }
+
+  /* chart */
+  .chartbox { background:var(--surface); border:1px solid var(--rule); border-radius:4px; padding:1.25rem; }
+  svg text { font-family:var(--f-mono); }
+  .chart-line { fill:none; stroke:var(--accent); stroke-width:2.5; }
+  .chart-pt { fill:var(--accent); }
+  .chart-axis { stroke:var(--rule); stroke-width:1; }
+  .chart-label { fill:var(--ink-faint); font-size:11px; }
+  .chart-val { fill:var(--ink); font-size:11px; font-weight:700; }
+
+  table.data { width:100%; border-collapse:collapse; font-size:0.92rem; }
+  table.data th, table.data td { border:1px solid var(--rule); padding:0.5rem 0.7rem; text-align:center; }
+  table.data th { background:var(--sunk); font-family:var(--f-mono); font-size:0.72rem; text-transform:uppercase; letter-spacing:0.04em; }
+
+  /* worked answer */
+  .answer { background:var(--surface); border:1px solid var(--rule); border-radius:4px; overflow:hidden; margin-top:1.2rem; }
+  .aline { display:grid; grid-template-columns:8.5rem 1fr; gap:0.9rem; padding:1rem 1.2rem; border-top:1px dotted var(--rule); }
+  .aline:first-child { border-top:none; }
+  .aline .tag { font-family:var(--f-mono); font-size:0.66rem; font-weight:700; letter-spacing:0.08em; text-transform:uppercase; color:var(--accent); align-self:start; padding-top:0.15rem; }
+  .aline p { margin:0; font-size:0.95rem; }
+  .aline mark { background:var(--accent-soft); color:var(--ink); padding:0.02rem 0.2rem; border-radius:2px; }
+  .callouts { padding:0.9rem 1.2rem 1.2rem; background:var(--sunk); }
+  .callouts ul { margin:0; padding-left:1.2rem; }
+  .callouts li { font-size:0.85rem; color:var(--ink-soft); margin-bottom:0.35rem; }
+  .callouts b { color:var(--ink); font-family:var(--f-mono); font-size:0.8rem; }
+
+  /* practice */
+  textarea { width:100%; min-height:5.5rem; font-family:var(--f-body); font-size:0.95rem; padding:0.8rem; border-radius:4px; border:1px solid var(--rule); background:var(--surface); color:var(--ink); resize:vertical; }
+  .checklist { display:grid; gap:0.4rem; margin-top:0.8rem; font-size:0.9rem; }
+  .checklist label { display:flex; gap:0.5rem; align-items:flex-start; color:var(--ink-soft); }
+  .reveal { display:none; margin-top:1rem; }
+  .reveal.show { display:block; }
+
+  ol.steps { padding-left:1.3rem; }
+  ol.steps > li { margin-bottom:0.7rem; max-width:66ch; font-size:0.95rem; }
+  footer { font-family:var(--f-mono); font-size:0.72rem; color:var(--ink-faint); text-align:center; padding:2rem 1rem 3rem; }
+</style>
+
+<div class="hero">
+  <div class="wrap">
+    <span class="eyebrow">IELTS Academic Writing · Task 1 · Lesson 1</span>
+    <h1>Numbers Into Words</h1>
+    <p class="lede">Task 1 is not a maths test and it is not an opinion essay. It is a translation job: turn a table or a graph into 150 accurate words, in twenty minutes. This lesson teaches the one structure that does that job every time — first on a table, then on a line graph — because it is the <em>same</em> skill both times.</p>
+    <div class="facts">
+      <div><span>Target band</span><b>5.0 – 6.5</b></div>
+      <div><span>Timing</span><b>20 minutes</b></div>
+      <div><span>Worth</span><b>⅓ of Writing</b></div>
+      <div><span>New strategy</span><b>1 (the skeleton)</b></div>
+    </div>
+  </div>
+</div>
+
+<!-- ============ PART 1 : WHAT TASK 1 ACTUALLY IS ============ -->
+<section>
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">Part 1</span>
+      <h2>What Task 1 actually is</h2>
+      <p>You are given one table, graph, chart, or diagram and asked to <b>describe</b> it in at least 150 words. That's all. Not explain why it happened. Not say if it's good or bad. Not compare it to your own country unless the task tells you to. Describe what the numbers show.</p>
+    </div>
+    <div class="note">
+      <span class="eyebrow">The single most common beginner mistake</span>
+      <p>Writing an opinion. "I think internet access is important because…" scores <b>zero</b> for Task Achievement, no matter how good the English is. Task 1 has no opinions in it anywhere. If you catch yourself writing "I think" or "in my opinion," stop — that sentence belongs in Task 2, not here.</p>
+    </div>
+
+    <h3 style="margin:1.6rem 0 0.8rem;color:var(--ink-soft);">Quick check: Task 1 or Task 2?</h3>
+    <div class="qm" id="tqm"></div>
+  </div>
+</section>
+
+<!-- ============ PART 2 : THE SKELETON ============ -->
+<section>
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">Part 2 · The one strategy this lesson teaches</span>
+      <h2>The four-part skeleton</h2>
+      <p>Every Task 1 answer — table, line graph, bar chart, pie chart, it does not matter which — is built from the same four parts, in the same order. Learn this once and you can write about any data you're given.</p>
+    </div>
+    <div class="skeleton">
+      <div class="skel-step"><span class="n">1</span><div><h3>Paraphrase the question</h3><p>Rewrite the task sentence in your own words. Don't copy it — examiners notice, and copied words don't count toward your 150.</p></div></div>
+      <div class="skel-step"><span class="n">2</span><div><h3>Overview</h3><p>Two sentences stating the two or three <b>biggest, most general</b> patterns — no numbers, no small details. This is worth more marks than any other single part of the answer, and it's the part almost every beginner skips.</p></div></div>
+      <div class="skel-step"><span class="n">3</span><div><h3>Body paragraph 1</h3><p>Group roughly half the data logically (e.g. the two highest categories, or the first half of the time period) and support it with specific numbers.</p></div></div>
+      <div class="skel-step"><span class="n">4</span><div><h3>Body paragraph 2</h3><p>Cover the remaining data the same way. Together, Body 1 and 2 should mention every number the overview referred to in general terms.</p></div></div>
+    </div>
+    <div class="note">
+      <span class="eyebrow">Why the Overview matters most</span>
+      <p>A candidate who writes a perfect Overview and a messy set of numbers still scores higher than one who lists every number perfectly but never steps back to say what it all means. The Overview proves you understood the data — the body proves you can support it.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PART 3 : THE GRAMMAR POINT ============ -->
+<section>
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">Part 3 · The one grammar point this lesson teaches</span>
+      <h2>Past simple, not present perfect</h2>
+      <p>Almost every Task 1 table or graph gives you a data period with a clear end point — "between 2005 and 2020," "in 2010 and 2022." Because that period is <b>finished</b>, describe it with the <b>past simple</b>, not the present perfect.</p>
+    </div>
+    <div class="amber">
+      <span class="eyebrow">Turkish L1 trap</span>
+      <p>Turkish has no direct equivalent of the English present perfect, so learners either avoid it completely or overuse it in the wrong place — and Task 1 is exactly the wrong place, because the time period is closed, not open until now.</p>
+      <span class="ex no">✕ "The number of visitors has increased between 2000 and 2020."</span>
+      <span class="ex yes">✓ "The number of visitors increased between 2000 and 2020."</span>
+      <p style="margin-top:0.6rem;">Save the present perfect for the rare graph that says "up to the present" or "so far" with no fixed end date — you won't need it often at this level.</p>
+    </div>
+    <div class="amber">
+      <span class="eyebrow">Turkish L1 trap — prepositions and articles with numbers</span>
+      <p>Two more errors this task produces constantly:</p>
+      <span class="ex no">✕ "South Korea had highest rate, compared with Germany." (missing article)</span>
+      <span class="ex yes">✓ "South Korea had <b>the</b> highest rate, compared with Germany."</span>
+      <span class="ex no">✕ "Brazil's figure was higher than the Kenya." (wrong preposition/article pattern)</span>
+      <span class="ex yes">✓ "Brazil's figure was higher <b>than</b> Kenya's." / "…compared <b>with</b> Kenya."</span>
+      <p style="margin-top:0.6rem;">Fixed rule: <b>the number of</b>, <b>the majority of</b>, <b>the highest/lowest</b> always take "the." Comparisons use <b>than</b> (no preposition needed) or <b>compared with/to</b> — never "compared than" or "higher from."</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PART 4 : ACTIVE VOCABULARY ============ -->
+<section>
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">Part 4 · Six words to actually learn today</span>
+      <h2>The active set</h2>
+      <p>Six words. Learn these properly before adding more — a longer list you half-remember is worth less than six you can use without thinking.</p>
+    </div>
+    <div class="vocab-grid">
+      <div class="vword"><span class="w">increase</span><span class="pos">verb / noun</span><p class="ex">"Access <b>increased</b> sharply between 2010 and 2022."</p></div>
+      <div class="vword"><span class="w">decrease / fall</span><span class="pos">verb / noun</span><p class="ex">"Fiction borrowing <b>fell</b> over the period."</p></div>
+      <div class="vword"><span class="w">fluctuate</span><span class="pos">verb</span><p class="ex">"Visitor numbers <b>fluctuated</b> before rising steadily."</p></div>
+      <div class="vword"><span class="w">remain stable</span><span class="pos">verb phrase</span><p class="ex">"The figure for Germany <b>remained stable</b> at around 60%."</p></div>
+      <div class="vword"><span class="w">peak</span><span class="pos">verb / noun</span><p class="ex">"Visitors <b>peaked</b> at 130,000 in 2020."</p></div>
+      <div class="vword"><span class="w">compared with/to</span><span class="pos">preposition phrase</span><p class="ex">"62% in Brazil, <b>compared with</b> 22% in Kenya."</p></div>
+    </div>
+    <details class="gloss">
+      <summary>+ Reference glossary — for later, not for today</summary>
+      <div class="glist">rise · climb · surge · soar · dip · decline · drop · plummet · level off · overtake · exceed · a slight rise · a dramatic fall · a gradual increase · a sharp decline</div>
+    </details>
+  </div>
+</section>
+
+<!-- ============ PART 5 : WORKED EXAMPLE — TABLE ============ -->
+<section>
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">Part 5 · Worked example — Table</span>
+      <h2>No shape, only comparison</h2>
+      <p>A table has no visual trend line, so instead of describing a "shape," you compare <b>categories against each other</b> and, if there are two years, each category <b>against itself over time</b>.</p>
+    </div>
+
+    <p style="font-weight:600;">Task: The table below shows the percentage of households with high-speed internet access in four countries in 2010 and 2022.</p>
+
+    <div class="chartbox">
+      <table class="data">
+        <tr><th>Country</th><th>2010</th><th>2022</th></tr>
+        <tr><td>South Korea</td><td>78%</td><td>98%</td></tr>
+        <tr><td>Germany</td><td>60%</td><td>95%</td></tr>
+        <tr><td>Brazil</td><td>15%</td><td>62%</td></tr>
+        <tr><td>Kenya</td><td>3%</td><td>22%</td></tr>
+      </table>
+    </div>
+
+    <div class="answer">
+      <div class="aline"><span class="tag">Paraphrase</span><p>The table illustrates the proportion of homes with fast internet connections in four different countries at two points in time, <mark>2010 and 2022</mark>.</p></div>
+      <div class="aline"><span class="tag">Overview</span><p>Overall, access to high-speed internet <mark>rose in every country</mark> over the period shown, although South Korea and Germany remained far ahead of Brazil and Kenya throughout. The most striking growth occurred in Brazil, while Kenya still had the lowest level of access by the end of the period.</p></div>
+      <div class="aline"><span class="tag">Body 1</span><p>In 2010, South Korea had by far <mark>the highest</mark> rate of household internet access, at 78%, <mark>compared with</mark> 60% in Germany. Both countries saw further increases over the next twelve years, reaching 98% and 95% respectively in 2022, meaning that almost every home in these two nations was connected by the end of the period.</p></div>
+      <div class="aline"><span class="tag">Body 2</span><p>Brazil and Kenya started from much lower figures. Only 15% of Brazilian households and just 3% of Kenyan households <mark>had</mark> high-speed internet in 2010. Although both countries recorded increases, the rise was considerably sharper in Brazil, whose figure jumped to 62% by 2022, <mark>than</mark> in Kenya, which reached only 22% over the same period.</p></div>
+      <div class="callouts">
+        <ul>
+          <li><b>reaching X and Y respectively</b> — reports two numbers in one clause instead of two separate sentences. Saves words, sounds fluent.</li>
+          <li><b>compared with</b> / <b>than</b> — the two comparison patterns from Part 3, both used correctly here.</li>
+          <li>Every verb is <b>past simple</b> (rose, had, reached, jumped) — the period 2010–2022 is closed.</li>
+          <li>The Overview names the pattern (everyone rose, two groups, Brazil's growth, Kenya's low end) <b>before</b> a single number appears.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PART 6 : WORKED EXAMPLE — LINE GRAPH ============ -->
+<section>
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">Part 6 · Worked example — Line graph</span>
+      <h2>Same skeleton, one new thing: the shape</h2>
+      <p>A line graph <em>does</em> have a shape over time — so, on top of the same four parts, describe how the line moves: steady, sharp, gradual, a dip, a peak.</p>
+    </div>
+
+    <p style="font-weight:600;">Task: The graph below shows the number of visitors (in thousands) to a national park between 2000 and 2020.</p>
+
+    <div class="chartbox">
+      <svg viewBox="0 0 460 220" style="width:100%;height:auto;">
+        <line class="chart-axis" x1="40" y1="10" x2="40" y2="190"/>
+        <line class="chart-axis" x1="40" y1="190" x2="440" y2="190"/>
+        <text class="chart-label" x="4" y="14">130</text>
+        <text class="chart-label" x="4" y="70">100</text>
+        <text class="chart-label" x="4" y="130">50</text>
+        <text class="chart-label" x="12" y="194">0</text>
+        <polyline class="chart-line" points="60,142 150,113 240,124 330,58 420,16"/>
+        <g class="chart-pt"><circle cx="60" cy="142"/><circle cx="150" cy="113"/><circle cx="240" cy="124"/><circle cx="330" cy="58"/><circle cx="420" cy="16"/></g>
+        <text class="chart-val" x="46" y="132">40k</text>
+        <text class="chart-val" x="136" y="103">55k</text>
+        <text class="chart-val" x="226" y="140">50k</text>
+        <text class="chart-val" x="316" y="48">90k</text>
+        <text class="chart-val" x="392" y="12">130k</text>
+        <text class="chart-label" x="52" y="206">2000</text>
+        <text class="chart-label" x="140" y="206">2005</text>
+        <text class="chart-label" x="230" y="206">2010</text>
+        <text class="chart-label" x="320" y="206">2015</text>
+        <text class="chart-label" x="405" y="206">2020</text>
+      </svg>
+    </div>
+
+    <div class="answer">
+      <div class="aline"><span class="tag">Paraphrase</span><p>The line graph illustrates how many people visited a national park over a twenty-year period, <mark>from 2000 to 2020</mark>.</p></div>
+      <div class="aline"><span class="tag">Overview</span><p>Overall, the number of visitors to the park <mark>increased substantially</mark> over the two decades, despite a brief decline in the middle of the period. The most rapid growth took place in the final five years shown.</p></div>
+      <div class="aline"><span class="tag">Body 1</span><p>In 2000, approximately 40,000 people visited the park. This figure rose to around 55,000 by 2005, before <mark>falling back slightly</mark> to 50,000 in 2010.</p></div>
+      <div class="aline"><span class="tag">Body 2</span><p>From 2010 onwards, visitor numbers <mark>climbed steadily</mark>, almost doubling to reach 90,000 in 2015. This upward trend continued <mark>even more sharply</mark> over the next five years, and by 2020 the park was welcoming approximately 130,000 visitors annually — well over three times the figure recorded in 2000.</p></div>
+      <div class="callouts">
+        <ul>
+          <li>The Overview mentions the <b>dip</b> (2005–2010) and the <b>acceleration</b> (2015–2020) — the two features that make this graph interesting, stated with zero numbers.</li>
+          <li><b>climbed steadily</b> vs. <b>even more sharply</b> — two different rates of change, named precisely instead of just "increased" twice.</li>
+          <li>"Well over three times the figure recorded in 2000" — a comparison back to the start point, a strong closing move for a body paragraph.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PART 7 : GUIDED PRACTICE ============ -->
+<section>
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">Part 7 · Your turn</span>
+      <h2>Write one Overview — that's all</h2>
+      <p>Not the whole answer. Just the Overview. Getting this one part right is worth more than a rushed full answer today.</p>
+    </div>
+
+    <p style="font-weight:600;">Task: The table below shows the number of books borrowed from a public library in 2015 and 2023, by category.</p>
+
+    <div class="chartbox">
+      <table class="data">
+        <tr><th>Category</th><th>2015</th><th>2023</th></tr>
+        <tr><td>Fiction</td><td>4,200</td><td>3,100</td></tr>
+        <tr><td>Non-fiction</td><td>2,800</td><td>4,600</td></tr>
+        <tr><td>Children's books</td><td>5,000</td><td>7,900</td></tr>
+      </table>
+    </div>
+
+    <p style="font-size:0.9rem;color:var(--ink-soft);">Look for two general patterns before you write a single number. Hint: one category moved differently from the other two.</p>
+    <textarea id="pans" placeholder="Write your two-sentence Overview here…"></textarea>
+    <div class="checklist">
+      <label><input type="checkbox"> I used zero specific numbers.</label>
+      <label><input type="checkbox"> I named the overall direction (borrowing up, down, or mixed?).</label>
+      <label><input type="checkbox"> I pointed out the one category that behaved differently.</label>
+      <label><input type="checkbox"> Every verb is past simple.</label>
+    </div>
+    <div style="margin-top:0.9rem;"><button class="primary" id="revealBtn">Reveal a model Overview</button></div>
+    <div class="reveal" id="revealBox">
+      <div class="note">
+        <span class="eyebrow">Model overview</span>
+        <p>Overall, the total number of books borrowed increased between 2015 and 2023, driven mainly by strong growth in non-fiction and children's titles. Fiction was the only category to see a decline over the period.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOR THE TEACHER ============ -->
+<section>
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">For the teacher</span>
+      <h2>How to run this</h2>
+    </div>
+    <ol class="steps">
+      <li><b>This is Session 1 of a Task 1 sequence, not the whole topic.</b> Task 1 has six visual types in total (line, bar, pie, table, process, map). Teaching all six in one sitting guarantees none of them stick — this lesson deliberately covers only table and line graph, because they share the same skeleton and the comparison learned here transfers directly.</li>
+      <li><b>Suggested split:</b> Parts 1–4 (skeleton + grammar + vocab) in one 40-minute session; Parts 5–7 (worked examples + practice) in a second session once the skeleton is genuinely memorised, not just seen once.</li>
+      <li><b>Homework:</b> one task only — write the full four-part answer for the library-books table above, 150 words, no time limit. Calibrated to finish in one sitting; do not assign a second table this week.</li>
+      <li><b>Next session:</b> bar chart and pie chart, reusing this exact skeleton — tell students explicitly that it's the same four parts again, to build confidence rather than presenting it as new content.</li>
+      <li><b>Pair with:</b> Cambridge IELTS 17–19, Writing Task 1 tables and line graphs, for authentic exposure once the skeleton is solid.</li>
+    </ol>
+  </div>
+</section>
+
+<footer>LBEnglishCo · IELTS Academic Writing · Task 1 · Table &amp; Line Graph</footer>
+
+<script>
+  var tItems = [
+    { stem: "In my opinion, this growth is a positive development for the country's economy.", ans: 2 },
+    { stem: "The table shows the number of books borrowed from a library in 2015 and 2023.", ans: 1 },
+    { stem: "Some people believe that governments should invest more in public transport than roads.", ans: 2 },
+    { stem: "Overall, access to high-speed internet rose in every country over the period shown.", ans: 1 }
+  ];
+  var host = document.getElementById('tqm');
+  tItems.forEach(function(it, i){
+    var div = document.createElement('div'); div.className = 'qm-item';
+    div.innerHTML =
+      '<p class="stem">' + '"' + it.stem + '"' + '</p>' +
+      '<div class="qm-btns"><button data-v="1">Task 1</button><button data-v="2">Task 2</button></div>' +
+      '<div class="qm-fb" id="fb'+i+'"></div>';
+    host.appendChild(div);
+    div.querySelectorAll('button').forEach(function(b){
+      b.addEventListener('click', function(){
+        var fb = div.querySelector('.qm-fb');
+        var right = parseInt(b.dataset.v,10) === it.ans;
+        fb.className = 'qm-fb show ' + (right ? 'right' : 'wrong');
+        fb.textContent = right
+          ? (it.ans === 1 ? 'Correct — describes data, no opinion.' : 'Correct — states a personal belief, so it belongs in Task 2.')
+          : (it.ans === 1 ? 'Not quite — this sentence only describes data, no opinion. That is Task 1.' : 'Not quite — "in my opinion" / "some people believe" signals Task 2, not Task 1.');
+      });
+    });
+  });
+
+  document.getElementById('revealBtn').addEventListener('click', function(){
+    document.getElementById('revealBox').classList.add('show');
+  });
+</script>

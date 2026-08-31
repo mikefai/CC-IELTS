@@ -1,0 +1,768 @@
+<title>The Elimination Method</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500;700&family=Literata:opsz,wght@7..72,400;7..72,600&display=swap">
+
+<style>
+  :root {
+    --ground: #F4F5F8;
+    --surface: #FFFFFF;
+    --sunk: #E9ECF2;
+    --ink: #16202E;
+    --ink-soft: #5C6A7D;
+    --ink-faint: #8E99A8;
+    --accent: #33456B;
+    --accent-soft: #E2E7F1;
+    --kill: #B0413E;
+    --kill-soft: #F7E9E8;
+    --keep: #3B7A57;
+    --keep-soft: #E6F0EA;
+    --rule: #D8DDE6;
+
+    --f-display: "Instrument Serif", Georgia, serif;
+    --f-body: "Literata", Georgia, "Times New Roman", serif;
+    --f-mono: "JetBrains Mono", ui-monospace, "Cascadia Mono", Consolas, monospace;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --ground: #14181F;
+      --surface: #1C222C;
+      --sunk: #242C38;
+      --ink: #E6EAF0;
+      --ink-soft: #9AA6B6;
+      --ink-faint: #6B7788;
+      --accent: #8FA6D4;
+      --accent-soft: #232D42;
+      --kill: #E08A85;
+      --kill-soft: #2E2020;
+      --keep: #7FC49C;
+      --keep-soft: #1B2A22;
+      --rule: #2C3542;
+    }
+  }
+  :root[data-theme="dark"] {
+    --ground: #14181F;
+    --surface: #1C222C;
+    --sunk: #242C38;
+    --ink: #E6EAF0;
+    --ink-soft: #9AA6B6;
+    --ink-faint: #6B7788;
+    --accent: #8FA6D4;
+    --accent-soft: #232D42;
+    --kill: #E08A85;
+    --kill-soft: #2E2020;
+    --keep: #7FC49C;
+    --keep-soft: #1B2A22;
+    --rule: #2C3542;
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    margin: 0;
+    background: var(--ground);
+    color: var(--ink);
+    font-family: var(--f-body);
+    font-size: 1.02rem;
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .wrap { max-width: 780px; margin: 0 auto; padding: 0 clamp(1rem, 5vw, 2rem); }
+  .wide { max-width: 980px; }
+
+  h1, h2, h3 { margin: 0; line-height: 1.15; text-wrap: balance; }
+  h1 { font-family: var(--f-display); font-size: clamp(2.8rem, 7vw, 4.4rem); font-weight: 400; letter-spacing: -0.01em; }
+  h2 { font-family: var(--f-display); font-size: clamp(1.9rem, 4vw, 2.5rem); font-weight: 400; }
+  h3 { font-family: var(--f-mono); font-size: 0.92rem; font-weight: 700; letter-spacing: 0.02em; }
+
+  .eyebrow {
+    font-family: var(--f-mono); font-size: 0.7rem; font-weight: 500;
+    letter-spacing: 0.16em; text-transform: uppercase; color: var(--accent);
+  }
+  p { max-width: 68ch; }
+
+  /* ---------- hero ---------- */
+  .hero { padding: clamp(3rem, 9vw, 6rem) 0 clamp(2rem, 5vw, 3.5rem); border-bottom: 1px solid var(--rule); }
+  .hero .lede { font-size: 1.2rem; color: var(--ink-soft); margin-top: 1.25rem; }
+  .hero .lede em { font-style: italic; color: var(--ink); }
+  .facts { display: flex; flex-wrap: wrap; gap: 0 2.25rem; margin-top: 2rem; font-family: var(--f-mono); font-size: 0.78rem; }
+  .facts div { display: flex; flex-direction: column; gap: 0.1rem; }
+  .facts span { color: var(--ink-faint); letter-spacing: 0.08em; text-transform: uppercase; font-size: 0.66rem; }
+  .facts b { font-weight: 500; color: var(--ink); }
+
+  /* ---------- sections ---------- */
+  section { padding: clamp(2.75rem, 7vw, 4.5rem) 0; border-bottom: 1px solid var(--rule); }
+  .sec-head { margin-bottom: 2rem; }
+  .sec-head .eyebrow { display: block; margin-bottom: 0.6rem; }
+  .sec-head p { color: var(--ink-soft); margin-top: 0.9rem; }
+
+  /* ---------- stem dissector ---------- */
+  .stem-demo {
+    background: var(--surface); border: 1px solid var(--rule); border-radius: 4px;
+    padding: 1.75rem; margin-bottom: 1rem;
+  }
+  .stem-line { font-family: var(--f-body); font-size: 1.2rem; line-height: 2.1; }
+  .chunk {
+    font: inherit; background: none; border: none; padding: 0.1rem 0.25rem; margin: 0 -0.1rem;
+    border-bottom: 2px solid var(--accent-soft); color: inherit; cursor: pointer;
+    border-radius: 2px; transition: background 0.15s ease, border-color 0.15s ease;
+  }
+  .chunk:hover { background: var(--accent-soft); }
+  .chunk.on { background: var(--accent); border-color: var(--accent); color: var(--surface); }
+  .stem-hint { font-family: var(--f-mono); font-size: 0.72rem; color: var(--ink-faint); margin-top: 1.1rem; }
+  .stem-out {
+    background: var(--sunk); border-left: 3px solid var(--accent); border-radius: 0 4px 4px 0;
+    padding: 1.1rem 1.25rem; min-height: 5.5rem;
+  }
+  .stem-out .tag { font-family: var(--f-mono); font-size: 0.7rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent); display: block; margin-bottom: 0.4rem; }
+  .stem-out p { margin: 0; font-size: 0.95rem; }
+
+  /* ---------- distractor cards ---------- */
+  .cards { display: grid; gap: 0.9rem; }
+  @media (min-width: 720px) { .cards { grid-template-columns: 1fr 1fr; } }
+  .card { background: var(--surface); border: 1px solid var(--rule); border-radius: 4px; padding: 1.25rem 1.35rem; }
+  .card .num { font-family: var(--f-mono); font-size: 0.7rem; font-weight: 700; color: var(--kill); letter-spacing: 0.1em; }
+  .card h3 { margin: 0.35rem 0 0.5rem; font-family: var(--f-body); font-size: 1.12rem; font-weight: 600; letter-spacing: 0; }
+  .card p { font-size: 0.92rem; margin: 0; color: var(--ink-soft); }
+  .card .tell { display: block; margin-top: 0.7rem; font-family: var(--f-mono); font-size: 0.75rem; color: var(--ink); background: var(--kill-soft); padding: 0.4rem 0.55rem; border-radius: 3px; }
+
+  /* ---------- worked example ---------- */
+  .worked { background: var(--surface); border: 1px solid var(--rule); border-radius: 4px; padding: 1.5rem; }
+  .worked .qline { font-weight: 600; margin: 0 0 1rem; }
+  .demo-opt { display: grid; grid-template-columns: 1.6rem 1fr; gap: 0.6rem; padding: 0.55rem 0; border-top: 1px solid var(--rule); font-size: 0.96rem; }
+  .demo-opt b { font-family: var(--f-mono); font-size: 0.85rem; color: var(--accent); }
+  .demo-opt.dead { color: var(--ink-faint); }
+  .demo-opt.dead .txt { text-decoration: line-through; text-decoration-color: var(--kill); text-decoration-thickness: 2px; }
+  .demo-opt .verdict { display: block; font-family: var(--f-mono); font-size: 0.72rem; margin-top: 0.3rem; color: var(--kill); }
+  .demo-opt.live .verdict { color: var(--keep); }
+
+  /* ---------- passage ---------- */
+  .passage { background: var(--surface); border: 1px solid var(--rule); border-radius: 4px; padding: clamp(1.25rem, 4vw, 2.25rem); }
+  .passage-title { font-family: var(--f-display); font-size: 1.9rem; margin-bottom: 1.5rem; }
+  .para { display: grid; grid-template-columns: 1.9rem 1fr; gap: 0 0.9rem; margin-bottom: 1.35rem; scroll-margin-top: 1rem; border-radius: 3px; }
+  .para p { margin: 0; max-width: 64ch; }
+  .para-letter { font-family: var(--f-mono); font-size: 0.85rem; font-weight: 700; color: var(--accent); padding-top: 0.28rem; }
+  .para.flash { animation: fl 1.6s ease; }
+  @keyframes fl { 0%,15% { background: var(--accent-soft); } 100% { background: transparent; } }
+  @media (prefers-reduced-motion: reduce) { .para.flash { animation: none; outline: 2px solid var(--accent); outline-offset: 5px; } }
+
+  /* ---------- practice questions ---------- */
+  .qcard { background: var(--surface); border: 1px solid var(--rule); border-radius: 4px; padding: 1.2rem 1.35rem; margin-bottom: 0.9rem; }
+  .qcard > .qtop { display: flex; gap: 0.75rem; align-items: baseline; margin-bottom: 0.85rem; }
+  .qcard .qn { font-family: var(--f-mono); font-size: 0.78rem; font-weight: 700; color: var(--ink-faint); }
+  .qcard .qs { font-weight: 600; font-size: 1rem; }
+
+  .opt { display: grid; grid-template-columns: 1.5rem 1fr 1.6rem; gap: 0.55rem; align-items: start; padding: 0.4rem 0.45rem; border-radius: 3px; cursor: pointer; }
+  .opt:hover { background: var(--sunk); }
+  .opt .ol { font-family: var(--f-mono); font-size: 0.8rem; font-weight: 700; color: var(--accent); padding-top: 0.12rem; }
+  .opt .ot { font-size: 0.95rem; }
+  .opt.picked { background: var(--accent-soft); }
+  .opt.picked .ol { color: var(--ink); }
+  .opt.dead { opacity: 0.42; }
+  .opt.dead .ot { text-decoration: line-through; text-decoration-color: var(--kill); text-decoration-thickness: 2px; }
+  .opt.correct { background: var(--keep-soft); box-shadow: inset 3px 0 0 var(--keep); }
+  .opt.mistake { background: var(--kill-soft); box-shadow: inset 3px 0 0 var(--kill); }
+  .x {
+    font-family: var(--f-mono); font-size: 0.8rem; line-height: 1;
+    background: none; border: 1px solid var(--rule); border-radius: 3px;
+    color: var(--ink-faint); cursor: pointer; padding: 0.2rem 0.35rem;
+  }
+  .x:hover { border-color: var(--kill); color: var(--kill); }
+  .opt.dead .x { border-color: var(--kill); color: var(--kill); background: var(--kill-soft); }
+
+  /* ---------- controls ---------- */
+  .bar {
+    position: sticky; top: 0; z-index: 5;
+    background: var(--surface); border: 1px solid var(--rule); border-radius: 4px;
+    padding: 0.75rem 1rem; margin-bottom: 1.25rem;
+    display: flex; flex-wrap: wrap; gap: 0.6rem; align-items: center;
+  }
+  .clock { font-family: var(--f-mono); font-variant-numeric: tabular-nums; font-size: 1.3rem; font-weight: 700; color: var(--accent); min-width: 4.5ch; }
+  .clock.idle { color: var(--ink-faint); }
+  .clock.over { color: var(--kill); }
+  button {
+    font-family: var(--f-mono); font-size: 0.78rem; font-weight: 500;
+    padding: 0.45rem 0.8rem; border-radius: 3px; border: 1px solid var(--rule);
+    background: var(--surface); color: var(--ink); cursor: pointer;
+    transition: background 0.15s ease, border-color 0.15s ease;
+  }
+  button:hover { background: var(--sunk); border-color: var(--ink-faint); }
+  button.primary { background: var(--accent); border-color: var(--accent); color: var(--surface); }
+  button.primary:hover { filter: brightness(1.12); }
+  :focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+  .attempts { font-family: var(--f-mono); font-size: 0.78rem; color: var(--ink-soft); margin-left: auto; }
+
+  /* ---------- key ---------- */
+  details { border: 1px solid var(--rule); border-radius: 4px; margin-bottom: 0.7rem; background: var(--surface); }
+  details summary { font-family: var(--f-mono); font-size: 0.82rem; font-weight: 500; padding: 0.75rem 1rem; cursor: pointer; color: var(--accent); }
+  details[open] summary { border-bottom: 1px solid var(--rule); }
+  .dbody { padding: 1.25rem; }
+  .dbody p { margin: 0 0 0.8rem; font-size: 0.95rem; }
+  .ansline { font-family: var(--f-mono); font-size: 0.85rem; font-weight: 700; color: var(--keep); margin-bottom: 0.6rem; }
+  .ev { background: var(--accent-soft); padding: 0.75rem 0.9rem; border-radius: 3px; font-size: 0.92rem; font-style: italic; margin-bottom: 1rem; }
+  .fail { display: grid; grid-template-columns: 1.4rem 1fr; gap: 0.5rem; padding: 0.55rem 0; border-top: 1px dotted var(--rule); font-size: 0.9rem; }
+  .fail .fl { font-family: var(--f-mono); font-weight: 700; color: var(--kill); }
+  .ftype { display: inline-block; font-family: var(--f-mono); font-size: 0.66rem; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; background: var(--kill-soft); color: var(--kill); padding: 0.1rem 0.35rem; border-radius: 2px; margin-right: 0.4rem; }
+  .jump { font-family: var(--f-mono); font-size: 0.7rem; font-weight: 700; background: var(--accent-soft); color: var(--accent); border: none; border-radius: 2px; padding: 0.15rem 0.4rem; cursor: pointer; }
+
+  ol.steps { padding-left: 1.3rem; }
+  ol.steps > li { margin-bottom: 0.9rem; max-width: 66ch; }
+  ol.steps b { font-family: var(--f-mono); font-size: 0.85rem; }
+
+  .note { border-left: 3px solid var(--accent); background: var(--sunk); padding: 0.9rem 1.1rem; border-radius: 0 3px 3px 0; margin: 1.25rem 0; }
+  .note p { margin: 0; font-size: 0.93rem; }
+  .note .eyebrow { display: block; margin-bottom: 0.35rem; }
+
+  footer { font-family: var(--f-mono); font-size: 0.72rem; color: var(--ink-faint); text-align: center; padding: 2rem 1rem 3rem; }
+</style>
+
+<!-- ============ HERO ============ -->
+<div class="hero">
+  <div class="wrap">
+    <span class="eyebrow">IELTS Academic Reading · Lesson</span>
+    <h1>The Elimination Method</h1>
+    <p class="lede">Most candidates who lose marks on multiple choice do not misread the passage. They misread <em>the question</em> — and then pick the option that shares the most words with it. This lesson replaces that habit with a procedure.</p>
+    <div class="facts">
+      <div><span>Target</span><b>Band 6.5–7.5</b></div>
+      <div><span>Lesson</span><b>4 parts</b></div>
+      <div><span>Practice</span><b>12 questions</b></div>
+      <div><span>Passage</span><b>801 words</b></div>
+      <div><span>Retry</span><b>15:00 timed</b></div>
+    </div>
+  </div>
+</div>
+
+<!-- ============ PART 1 : STEM ANALYSIS ============ -->
+<section>
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">Part 1</span>
+      <h2>Question-stem analysis</h2>
+      <p>Every stem contains up to four working parts. Read them separately and the stem tells you exactly what kind of sentence you are looking for, and where. Click each highlighted part below.</p>
+    </div>
+
+    <div class="stem-demo">
+      <div class="stem-line">
+        <button class="chunk" data-k="scope">According to the passage,</button>
+        <button class="chunk" data-k="task">why</button> did
+        <button class="chunk" data-k="loc">Price</button>
+        <button class="chunk" data-k="focus">turn to radiography</button>?
+      </div>
+      <p class="stem-hint">Four parts. Each one does a different job.</p>
+    </div>
+
+    <div class="stem-out" id="stemOut">
+      <span class="tag">Select a part</span>
+      <p>Click any highlighted section of the stem above to see what it is doing and how it changes your search.</p>
+    </div>
+
+    <div class="note">
+      <span class="eyebrow">The habit to build</span>
+      <p>Before looking at a single option, say out loud what kind of answer the stem demands — <em>"a reason"</em>, <em>"a number"</em>, <em>"a purpose"</em>. Candidates who read the options first are led by them; candidates who predict first use the options as confirmation.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PART 2 : DISTRACTORS ============ -->
+<section>
+  <div class="wrap wide">
+    <div class="sec-head">
+      <span class="eyebrow">Part 2</span>
+      <h2>The five distractor types</h2>
+      <p>IELTS wrong options are not random. They fail in five recognisable ways. Learn the five and you stop analysing 36 separate options and start recognising five patterns.</p>
+    </div>
+
+    <div class="cards">
+      <div class="card">
+        <span class="num">TYPE 1</span>
+        <h3>True but not the answer</h3>
+        <p>The statement is accurate according to the passage — it simply does not answer the question that was asked.</p>
+        <span class="tell">Tell: you can find it in the text, but not near the thing the stem asked about.</span>
+      </div>
+      <div class="card">
+        <span class="num">TYPE 2</span>
+        <h3>Right words, wrong relationship</h3>
+        <p>Vocabulary lifted straight from the passage, but the cause, the date, the agent or the direction has been swapped.</p>
+        <span class="tell">Tell: it feels familiar. Familiarity is the trap, not the evidence.</span>
+      </div>
+      <div class="card">
+        <span class="num">TYPE 3</span>
+        <h3>Overstatement</h3>
+        <p>The passage hedges — <em>may, some, suggests, probably</em>. The option hardens it into <em>proves, all, always, the first.</em></p>
+        <span class="tell">Tell: absolute words. Check the passage for a hedge you skipped.</span>
+      </div>
+      <div class="card">
+        <span class="num">TYPE 4</span>
+        <h3>Outside knowledge</h3>
+        <p>Entirely plausible in the real world, and often actually true — but never stated in this passage.</p>
+        <span class="tell">Tell: you believe it, but you cannot point to a line.</span>
+      </div>
+      <div class="card">
+        <span class="num">TYPE 5</span>
+        <h3>Half-right</h3>
+        <p>The first half matches the passage perfectly. The second half does not. The deadliest type, because candidates commit after the first clause.</p>
+        <span class="tell">Tell: read every option to its final word before deciding.</span>
+      </div>
+      <div class="card" style="background:var(--accent-soft);border-color:var(--accent);">
+        <span class="num" style="color:var(--accent);">THE RULE</span>
+        <h3>An option is wrong until you can point at the line that kills it</h3>
+        <p>"It feels wrong" is not elimination. Name the type. If you cannot name it, you have not eliminated it — you have only disliked it.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PART 3 : ELIMINATION ============ -->
+<section>
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">Part 3</span>
+      <h2>Elimination strategy</h2>
+      <p>Four options, one answer. That means three of the four contain a specific, findable fault. Hunting the fault is faster and more reliable than hunting the truth, because a fault is usually a single word.</p>
+    </div>
+
+    <ol class="steps">
+      <li><b>Predict first.</b> From the stem alone, say what the answer must be. Do not look down yet.</li>
+      <li><b>Locate the evidence.</b> Find the sentence in the passage. Underline it. You are now answering from the text, not from memory.</li>
+      <li><b>Kill on a word.</b> Take each option and find the single word that contradicts, overstates, or misattributes. Cross it out physically.</li>
+      <li><b>Compare the survivors.</b> If two remain, do not re-read the passage from the top. Put the two side by side and find the one word where they differ — the answer always turns on that word.</li>
+      <li><b>Never leave a blank.</b> No penalty for a wrong answer. A guess between two survivors is a coin flip; a blank is a guaranteed zero.</li>
+    </ol>
+
+    <h3 style="margin:2.25rem 0 0.9rem;color:var(--ink-soft);">Worked example</h3>
+    <div class="worked">
+      <p class="qline">The writer mentions the astronomical clocks of medieval Europe in order to</p>
+      <div class="demo-opt dead"><b>A</b><span><span class="txt">show that the mechanism's design was later copied.</span><span class="verdict">TYPE 3 · Overstatement — the passage claims no line of descent, only a gap.</span></span></div>
+      <div class="demo-opt live"><b>B</b><span><span class="txt">emphasise how long the mechanism remained without parallel.</span><span class="verdict">SURVIVES · "no comparable geared mechanism survives … for more than a thousand years"</span></span></div>
+      <div class="demo-opt dead"><b>C</b><span><span class="txt">argue that medieval clockmakers were less skilled.</span><span class="verdict">TYPE 4 · Outside knowledge — no comparison of skill appears anywhere.</span></span></div>
+      <div class="demo-opt dead"><b>D</b><span><span class="txt">explain how the mechanism was eventually understood.</span><span class="verdict">TYPE 2 · Right words, wrong relationship — understanding came from imaging, not from clocks.</span></span></div>
+    </div>
+
+    <div class="note">
+      <span class="eyebrow">Part 4 · Option comparison</span>
+      <p>When two options survive, stop reading the passage and start reading <em>the options</em>. Lay them side by side and mark every word that differs. In a well-made question there is exactly one such word, and the passage decides it. Candidates who instead re-read the whole paragraph lose ninety seconds and usually change a right answer to a wrong one.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PASSAGE ============ -->
+<section>
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">Practice · Reading passage</span>
+      <h2>An object out of time</h2>
+      <p>Read the passage, then answer Questions 1–12. Paragraphs are labelled <b>A–G</b>.</p>
+    </div>
+
+    <div class="passage">
+      <div class="passage-title">An object out of time</div>
+
+      <div class="para" id="p-A"><span class="para-letter">A</span><p>In the autumn of 1900, a party of Greek sponge divers returning from North Africa was driven by a storm towards the small island of Antikythera, between Crete and the Peloponnese. While waiting for the weather to clear, their captain, Dimitrios Kontos, sent a diver down to survey the seabed. He surfaced with an account of bronze and marble limbs scattered across the slope — the cargo of a ship that had gone down in the first century BCE. Over the following months the divers recovered statues, glassware and coins, and among them an unremarkable corroded lump of bronze roughly the size of a shoebox. It was catalogued, shelved in Athens, and largely ignored.</p></div>
+
+      <div class="para" id="p-B"><span class="para-letter">B</span><p>That lump has since become the most discussed object in the history of ancient technology. It survives as 82 fragments containing at least thirty interlocking bronze gears, some with teeth barely more than a millimetre across, originally housed in a wooden case with dials on the front and back and a crank on the side. Turning the crank moved the dials forward or backward in time. What makes the device so difficult to place is not its ingenuity alone but its isolation: no comparable geared mechanism survives from anywhere in the world for more than a thousand years afterwards, until the astronomical clocks of medieval Europe. Nothing in the surviving Greek and Roman literature quite prepares us for it.</p></div>
+
+      <div class="para" id="p-C"><span class="para-letter">C</span><p>Dating the device has proved almost as difficult as reading it. The wreck itself is placed in the decades around 70 to 60 BCE on the evidence of the coins and pottery it carried. The mechanism must therefore be at least that old, but how much older is disputed. Estimates based on the style of the lettering have ranged across more than a century, and an argument drawn from the eclipse records inscribed on the back dial points to a starting date of 205 BCE, which would place its design closer to the lifetime of Archimedes than to the wreck itself. No consensus has emerged.</p></div>
+
+      <div class="para" id="p-D"><span class="para-letter">D</span><p>Serious investigation began only in 1951, when the historian of science Derek de Solla Price started work on the fragments. Price could not open the device, so he turned to radiography, and in 1971 gamma rays finally revealed the arrangement of gears beneath the corrosion. His monograph <em>Gears from the Greeks</em>, published in 1974, established that the mechanism was a calendrical computer rather than, as some had suggested, a navigational instrument. Price counted the teeth on the surviving gears and worked out several of the ratios. Not all of his conclusions have survived — his reconstruction of the gear train has since been substantially revised — but he was the first to demonstrate what the object fundamentally was.</p></div>
+
+      <div class="para" id="p-E"><span class="para-letter">E</span><p>The decisive advance came in 2005, when a team led by the mathematician and film-maker Tony Freeth brought microfocus X-ray computed tomography to Athens, together with a surface-imaging technique that exaggerates the play of light across a corroded face. The scans resolved individual gear teeth in three dimensions. More unexpectedly, they exposed some 3,400 characters of Greek text inscribed on the plates — effectively an instruction manual, most of it never read before. The inscriptions confirmed that the back dials tracked the nineteen-year Metonic cycle, which reconciles lunar months with solar years, and the Saros cycle, by which eclipses repeat approximately every eighteen years.</p></div>
+
+      <div class="para" id="p-F"><span class="para-letter">F</span><p>The most striking finding concerns the Moon. Its apparent speed across the sky is not constant, a variation Greek astronomers had described but could not easily reproduce mechanically. The engineer Michael Wright, who has built several working reconstructions, identified the solution: one gear carries a pin that rides in a slot cut into a second gear mounted slightly off-centre. As the pair rotates, the pin alternately speeds and slows the second gear. It is an elegant piece of engineering, and it means the maker was not merely counting days but modelling the irregular behaviour of a body in the sky. Wright has argued that the front of the device probably carried pointers for the five planets known in antiquity as well, though the relevant fragments do not survive.</p></div>
+
+      <div class="para" id="p-G"><span class="para-letter">G</span><p>Further scans in 2008 identified a small subsidiary dial listing the four-year cycle of athletic games, Olympia among them — a domestic touch on an otherwise astronomical instrument. The deeper question remains unanswered. A device of this refinement is unlikely to have been a first attempt, and Cicero, writing within a century of the wreck, twice describes bronze spheres that reproduced the motions of the Sun, Moon and planets. The probability is that the Antikythera mechanism belonged to a tradition of instrument-making that was substantial in its own time and has left almost nothing else behind. What survives is not a marvel without context, but the single surviving page of a lost literature.</p></div>
+    </div>
+    <p style="font-family:var(--f-mono);font-size:0.72rem;color:var(--ink-faint);margin-top:0.9rem;">801 words · The people, dates and findings described are historically accurate.</p>
+  </div>
+</section>
+
+<!-- ============ QUESTIONS ============ -->
+<section>
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">Practice · Questions 1–12</span>
+      <h2>Twelve multiple-choice questions</h2>
+      <p>Choose the correct letter, <b>A</b>, <b>B</b>, <b>C</b> or <b>D</b>. Click an option to select it. Click the <b>✕</b> to strike it out — use it, because eliminating is the skill this lesson is about.</p>
+    </div>
+
+    <div class="bar">
+      <span class="clock idle" id="clock">15:00</span>
+      <button class="primary" id="checkBtn">Check answers</button>
+      <button id="retryBtn">Timed retry</button>
+      <button id="clearBtn">Clear</button>
+      <span class="attempts" id="attempts"></span>
+    </div>
+
+    <p style="font-family:var(--f-mono);font-size:0.75rem;color:var(--ink-soft);margin:-0.4rem 0 1.4rem;line-height:1.6;">
+      <b style="color:var(--accent);">On the 15:00 timer.</b> That is <em>lesson</em> pace — about 75 seconds a question on a passage you have already read. It is not exam pace. In the real test you get roughly 20 minutes for a passage <em>and</em> its whole question block, and the working rule is: if one question passes <b>90 seconds</b>, mark it and move on. Never lose three easy questions chasing one hard one.
+    </p>
+
+    <div id="qhost"></div>
+  </div>
+</section>
+
+<!-- ============ KEY ============ -->
+<section>
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">Answer key</span>
+      <h2>Every answer, and why every wrong option fails</h2>
+      <p>Each wrong option is tagged with its distractor type from Part 2. The point is not to learn twelve answers — it is to start seeing the same five faults everywhere.</p>
+    </div>
+    <div id="keyhost"></div>
+
+    <div class="note">
+      <span class="eyebrow">Marking note</span>
+      <p>Twelve questions is not a band score. Use the count diagnostically: if the misses cluster in one distractor type, that type is the lesson for next week. A candidate who repeatedly falls for <b>Type 5 · Half-right</b> needs a reading-to-the-final-word drill, not more passages.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ TEACHER SECTION ============ -->
+<section>
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">For the teacher</span>
+      <h2>How to run this</h2>
+      <p>This page contains four strategies. That is more than one lesson can carry — working memory holds about four new chunks at once, and a session that introduces four strategies consolidates none of them. Split it.</p>
+    </div>
+
+    <h3 style="margin-bottom:0.9rem;color:var(--ink-soft);">Three-session split</h3>
+    <div class="cards">
+      <div class="card">
+        <span class="num" style="color:var(--accent);">SESSION 1</span>
+        <h3>Stem analysis</h3>
+        <p>Part 1 only. Students dissect ten stems from any Cambridge passage, naming the four parts. Then Questions 1–4 here, untimed, with the key open.</p>
+        <span class="tell" style="background:var(--accent-soft);color:var(--ink);">Homework: label the parts of five stems. Five minutes, not fifty.</span>
+      </div>
+      <div class="card">
+        <span class="num" style="color:var(--accent);">SESSION 2</span>
+        <h3>The five distractor types</h3>
+        <p>Retrieval warm-up first: name the four stem parts from memory, no notes. Then Part 2, then Questions 5–8 — tagging every rejected option with a type number.</p>
+        <span class="tell" style="background:var(--accent-soft);color:var(--ink);">Homework: find one real example of Type 5 in any practice book.</span>
+      </div>
+      <div class="card">
+        <span class="num" style="color:var(--accent);">SESSION 3</span>
+        <h3>Elimination and comparison</h3>
+        <p>Warm-up: the five types from memory. Then Parts 3–4, Questions 9–12, then the <b>timed retry</b> across all twelve as the closing task.</p>
+        <span class="tell" style="background:var(--accent-soft);color:var(--ink);">Pair with any Cambridge IELTS 15–20 Academic passage carrying an MCQ block.</span>
+      </div>
+      <div class="card" style="background:var(--kill-soft);border-color:var(--kill);">
+        <span class="num">TURKISH L1 SPOTLIGHT</span>
+        <h3>Under-reading the hedge</h3>
+        <p>English carries hedging lexically — <em>may, suggests, probably, is unlikely to</em>. Turkish carries it grammatically, through <em>-DIr</em> and evidential <em>-mIş</em>. Students therefore read straight past English hedges, which is precisely what <b>Type 3 · Overstatement</b> exploits.</p>
+        <span class="tell">Drill separately: highlight every hedge in a paragraph before answering anything.</span>
+      </div>
+    </div>
+
+    <h3 style="margin:2.5rem 0 0.9rem;color:var(--ink-soft);">Coaching script</h3>
+    <div class="worked">
+      <p style="font-family:var(--f-mono);font-size:0.72rem;color:var(--ink-faint);margin:0 0 0.9rem;letter-spacing:0.08em;">CONFIDENCE ANCHOR — SAY THIS FIRST</p>
+      <p style="margin:0 0 1.25rem;">“You already do the hard part — you understand the passage. What is costing you marks is not your English. It is that you pick the option that <em>looks</em> most like the text. That is a habit, and habits we can change in a week.”</p>
+
+      <p style="font-family:var(--f-mono);font-size:0.72rem;color:var(--ink-faint);margin:0 0 0.9rem;letter-spacing:0.08em;">THE MAIN EXPLANATION</p>
+      <p style="margin:0 0 1.25rem;">“Four options, one is right. So three of them have a fault you can find. Do not hunt for the right answer — hunt for the fault. Cover the options with your hand. Read the question. Say out loud what kind of answer you need: a reason? a number? a purpose? Now uncover them, and for each wrong one put your finger on the word that kills it. If you cannot find the word, you have not eliminated it. You have just decided you do not like it.”</p>
+
+      <p style="font-family:var(--f-mono);font-size:0.72rem;color:var(--ink-faint);margin:0 0 0.9rem;letter-spacing:0.08em;">IF THE STUDENT IS STUCK</p>
+      <p style="margin:0 0 1.25rem;">“Forget four. Take just these two. Which one is wrong — and which single word tells you?”</p>
+
+      <p style="font-family:var(--f-mono);font-size:0.72rem;color:var(--ink-faint);margin:0 0 0.9rem;letter-spacing:0.08em;">IF THE STUDENT IS DISCOURAGED</p>
+      <p style="margin:0 0 1.25rem;">“You got four wrong. Now look at <em>which type</em> they were. All Type 5? Then you do not have four problems, you have one — you are deciding before the end of the sentence. That is a two-minute fix, not a two-month one.”</p>
+
+      <p style="font-family:var(--f-mono);font-size:0.72rem;color:var(--ink-faint);margin:0 0 0.9rem;letter-spacing:0.08em;">ONE NEXT STEP · QUICK CHECK</p>
+      <p style="margin:0;">“This week, every multiple-choice question you do, write the type number beside each option you cross out. Just the number. Nothing else.” — then check: <em>“Give me the five types without looking.”</em></p>
+    </div>
+
+    <div class="note">
+      <span class="eyebrow">Scope note</span>
+      <p>Twelve questions on one passage is a technique drill, not a test. A full IELTS Academic Reading paper is three passages and forty questions in sixty minutes, and no band should be reported from this alone. Use the count diagnostically: if the misses cluster in one distractor type, that type is next week's lesson.</p>
+    </div>
+  </div>
+</section>
+
+<footer>IELTS Academic Reading · Multiple choice · LBEnglishCo · 2026-08-26</footer>
+
+<script>
+(function () {
+  "use strict";
+
+  /* ---------------- stem dissector ---------------- */
+  var STEM = {
+    scope: ["Scope limiter", "“According to the passage” means the answer is stated in the text. Anything you know from outside — however true — is automatically wrong. This phrase is the licence to eliminate Type 4 distractors on sight."],
+    task:  ["Task word", "“Why” demands a reason. Not a description, not a date, not a consequence. Before reading the options, decide the shape of the answer: a cause. Any option that is not a cause is already gone."],
+    loc:   ["Locator", "A proper name is the fastest thing to find in a passage. Scan for “Price”, ignore everything else. Names, numbers, dates and italics are your search keys — never search for abstract nouns."],
+    focus: ["Focus", "This narrows the search inside the located paragraph. Price does several things in paragraph D; only the radiography sentence is in scope. The focus tells you which sentence, not just which paragraph."]
+  };
+  var out = document.getElementById("stemOut");
+  document.querySelectorAll(".chunk").forEach(function (b) {
+    b.addEventListener("click", function () {
+      document.querySelectorAll(".chunk").forEach(function (o) { o.classList.remove("on"); });
+      b.classList.add("on");
+      var d = STEM[b.dataset.k];
+      out.innerHTML = '<span class="tag"></span><p></p>';
+      out.querySelector(".tag").textContent = d[0];
+      out.querySelector("p").textContent = d[1];
+    });
+  });
+
+  /* ---------------- question bank ---------------- */
+  var Q = [
+    { n:1, para:"A", stem:"Why did the sponge divers stop at Antikythera?", ans:"C",
+      ev:"“driven by a storm towards the small island of Antikythera”",
+      opts:{
+        A:["They had been commissioned to search for ancient wrecks.","Outside knowledge","We assume divers hunt wrecks. These were sponge divers returning from a season’s work; the passage says so in the first line."],
+        B:["Their captain recognised the site from an earlier voyage.","Right words, wrong relationship","Kontos does appear — but sending a diver down, not recognising anything. The name is real; the action attached to it is invented."],
+        C:["Bad weather forced them off their intended route.",null,null],
+        D:["The sponge beds near the island were unusually rich.","Outside knowledge","Plausible, and nowhere in the text."]
+      } },
+
+    { n:2, para:"B", stem:"What does the passage say about the surviving physical remains?", ans:"A",
+      ev:"“It survives as 82 fragments containing at least thirty interlocking bronze gears”",
+      opts:{
+        A:["They include at least thirty gears distributed across 82 fragments.",null,null],
+        B:["They consist of thirty separate fragments.","Right words, wrong relationship","Both numbers are in the passage, attached to the wrong nouns. 82 fragments, 30 gears — swapped."],
+        C:["The wooden case has survived intact.","Half-right","The wooden case is mentioned — but as the original housing. “Survived intact” is added by the option, not the text."],
+        D:["The gears were too corroded to be counted.","Right words, wrong relationship","Corrosion is real, but paragraph D says Price counted the teeth. The option contradicts the passage."]
+      } },
+
+    { n:3, para:"B", stem:"The writer mentions the astronomical clocks of medieval Europe in order to", ans:"B",
+      ev:"“no comparable geared mechanism survives from anywhere in the world for more than a thousand years afterwards”",
+      opts:{
+        A:["show that the mechanism’s design was later copied.","Overstatement","The passage asserts a gap, not a descent. “Copied” claims a connection the text never makes."],
+        B:["emphasise how long the mechanism remained without parallel.",null,null],
+        C:["argue that medieval clockmakers were less skilled.","Outside knowledge","No comparison of skill is made anywhere in the passage."],
+        D:["explain how the mechanism was eventually understood.","Right words, wrong relationship","Understanding came from radiography and CT scanning, not from clocks."]
+      } },
+
+    { n:4, para:"C", stem:"According to the passage, the eclipse records inscribed on the back dial suggest that", ans:"D",
+      ev:"“an argument drawn from the eclipse records … points to a starting date of 205 BCE”",
+      opts:{
+        A:["the wreck occurred between 70 and 60 BCE.","True but not the answer","Correct according to the passage — but that dating comes from the coins and pottery, not the eclipse records. The stem asks specifically about the eclipse records."],
+        B:["the style of the lettering is an unreliable guide.","Half-right","Lettering estimates are called wide-ranging, which is not the same as unreliable — and it is a separate method from the eclipse argument the stem asks about."],
+        C:["Archimedes was involved in building the device.","Overstatement","The passage says 205 BCE would fall closer to Archimedes’ lifetime. Proximity in time is not involvement."],
+        D:["the device may have been designed as early as 205 BCE.",null,null]
+      } },
+
+    { n:5, para:"C", stem:"What does the passage indicate about the dating of the mechanism?", ans:"A",
+      ev:"“No consensus has emerged.”",
+      opts:{
+        A:["It remains genuinely disputed.",null,null],
+        B:["The question has now been settled.","Right words, wrong relationship","Directly contradicted by the paragraph’s final sentence."],
+        C:["The mechanism must be more recent than the wreck.","Right words, wrong relationship","Reversed. The passage says the mechanism must be at least as old as the wreck."],
+        D:["It cannot have been made before 205 BCE.","Overstatement","205 BCE is one proposed starting date, not a proven floor."]
+      } },
+
+    { n:6, para:"D", stem:"What did Price’s 1974 monograph establish?", ans:"C",
+      ev:"“established that the mechanism was a calendrical computer rather than … a navigational instrument”",
+      opts:{
+        A:["That the mechanism was a navigational instrument.","Right words, wrong relationship","This is the idea Price ruled out. The phrase is in the passage attached to “rather than”."],
+        B:["That his reconstruction of the gear train was correct.","Half-right","He did produce a reconstruction — and the passage says it has since been substantially revised."],
+        C:["That the mechanism was a calendrical computer.",null,null],
+        D:["That the device could be safely opened.","Right words, wrong relationship","The passage says the opposite: he could not open it, which is why he used radiography."]
+      } },
+
+    { n:7, para:"D", stem:"How would you describe the writer’s attitude to Price’s work?", ans:"D",
+      ev:"“Not all of his conclusions have survived … but he was the first to demonstrate what the object fundamentally was.”",
+      opts:{
+        A:["Dismissive, because his reconstruction was later revised.","Half-right","The revision is real; “dismissive” is not. The sentence structure — concession then “but” — places the weight on the credit, not the correction."],
+        B:["Neutral, offering no evaluation at all.","Right words, wrong relationship","“He was the first to demonstrate” is plainly evaluative."],
+        C:["Critical of his reliance on radiography.","Outside knowledge","Radiography is described without any criticism."],
+        D:["Appreciative, while noting that details were later corrected.",null,null]
+      } },
+
+    { n:8, para:"E", stem:"The 2005 investigation was most significant because it", ans:"A",
+      ev:"“they exposed some 3,400 characters of Greek text … most of it never read before”",
+      opts:{
+        A:["revealed a large quantity of previously unread inscription.",null,null],
+        B:["was the first to apply radiography to the fragments.","Right words, wrong relationship","Price used gamma radiography in 1971 — thirty-four years earlier. Check dates before accepting any “first”."],
+        C:["allowed the device to be dismantled for study.","Outside knowledge","Nothing is said about dismantling. The whole point of the imaging was to avoid it."],
+        D:["proved for the first time that the device predicted eclipses.","Overstatement","The passage says the inscriptions “confirmed” the eclipse function. Confirming is not proving for the first time."]
+      } },
+
+    { n:9, para:"E", stem:"The Metonic cycle is described in the passage as", ans:"C",
+      ev:"“the nineteen-year Metonic cycle, which reconciles lunar months with solar years”",
+      opts:{
+        A:["a period of approximately eighteen years.","Right words, wrong relationship","Eighteen years is the Saros cycle, named in the very next clause."],
+        B:["a method of predicting eclipses.","Right words, wrong relationship","Again the Saros cycle. Three of the four options here recycle real terms from the same sentence."],
+        C:["a means of reconciling lunar months with solar years.",null,null],
+        D:["a four-year cycle of athletic games.","Right words, wrong relationship","That is the Olympiad dial in paragraph G — correct fact, wrong question."]
+      } },
+
+    { n:10, para:"F", stem:"The pin-and-slot arrangement was designed to", ans:"B",
+      ev:"“the pin alternately speeds and slows the second gear … modelling the irregular behaviour of a body in the sky”",
+      opts:{
+        A:["make the gear train run more smoothly.","Outside knowledge","A reasonable guess about mechanics, and the opposite of what the passage describes — the device deliberately introduces variation."],
+        B:["reproduce the Moon’s varying apparent speed.",null,null],
+        C:["allow the dials to be turned backwards.","True but not the answer","The crank does move the dials backward — stated in paragraph B, about a different component."],
+        D:["display the positions of the five known planets.","Half-right","Wright does suggest a planetary display, but as a separate claim about the front of the device, and the passage adds that the fragments do not survive."]
+      } },
+
+    { n:11, para:"G", stem:"The reference to Cicero is included in order to support the idea that", ans:"D",
+      ev:"“Cicero … twice describes bronze spheres that reproduced the motions of the Sun, Moon and planets”",
+      opts:{
+        A:["the mechanism was manufactured in Rome.","Outside knowledge","Cicero was Roman; the passage draws no conclusion about where the device was made."],
+        B:["Cicero himself owned such a device.","Overstatement","He describes them. Ownership is added by the option."],
+        C:["the wreck can be dated with precision.","True but not the answer","Cicero is dated relative to the wreck, but that is background, not the purpose of the reference."],
+        D:["devices of this kind were probably not unique.",null,null]
+      } },
+
+    { n:12, para:"G", stem:"Which of the following best expresses the writer’s overall point?", ans:"B",
+      ev:"“What survives is not a marvel without context, but the single surviving page of a lost literature.”",
+      opts:{
+        A:["Ancient Greek technology surpassed anything achieved since.","Overstatement","The passage compares the device only to what survives from the following millennium, and makes no claim about modern technology."],
+        B:["The mechanism is best understood as the last trace of a lost technical tradition.",null,null],
+        C:["The purpose of the mechanism remains entirely unknown.","Right words, wrong relationship","Its purpose is now well described. What remains unknown is its context."],
+        D:["Modern imaging has now answered every question about the device.","Overstatement","The passage explicitly says “the deeper question remains unanswered”."]
+      } }
+  ];
+
+  /* ---------------- render questions ---------------- */
+  var host = document.getElementById("qhost");
+  Q.forEach(function (q) {
+    var card = document.createElement("div");
+    card.className = "qcard";
+    var top = '<div class="qtop"><span class="qn">' + q.n + '</span><span class="qs">' + q.stem + '</span></div>';
+    var body = "";
+    ["A", "B", "C", "D"].forEach(function (L) {
+      body += '<div class="opt" data-q="' + q.n + '" data-o="' + L + '">' +
+              '<span class="ol">' + L + '</span>' +
+              '<span class="ot">' + q.opts[L][0] + '</span>' +
+              '<button class="x" title="Eliminate this option" aria-label="Eliminate option ' + L + '">✕</button>' +
+              '</div>';
+    });
+    card.innerHTML = top + body;
+    host.appendChild(card);
+  });
+
+  var picks = {}, dead = {};
+
+  host.addEventListener("click", function (e) {
+    var row = e.target.closest(".opt");
+    if (!row) return;
+    var qn = row.dataset.q, L = row.dataset.o;
+
+    if (e.target.classList.contains("x")) {
+      var k = qn + L;
+      dead[k] = !dead[k];
+      row.classList.toggle("dead", dead[k]);
+      if (dead[k] && picks[qn] === L) { delete picks[qn]; row.classList.remove("picked"); }
+      save();
+      return;
+    }
+
+    picks[qn] = L;
+    host.querySelectorAll('.opt[data-q="' + qn + '"]').forEach(function (o) { o.classList.remove("picked"); });
+    row.classList.add("picked");
+    row.classList.remove("dead");
+    dead[qn + L] = false;
+    save();
+  });
+
+  function save() {
+    try { localStorage.setItem("elim-method", JSON.stringify({ p: picks, d: dead })); } catch (e) {}
+  }
+  try {
+    var st = JSON.parse(localStorage.getItem("elim-method") || "{}");
+    if (st.p) { picks = st.p; }
+    if (st.d) { dead = st.d; }
+    Object.keys(picks).forEach(function (qn) {
+      var el = host.querySelector('.opt[data-q="' + qn + '"][data-o="' + picks[qn] + '"]');
+      if (el) el.classList.add("picked");
+    });
+    Object.keys(dead).forEach(function (k) {
+      if (!dead[k]) return;
+      var el = host.querySelector('.opt[data-q="' + k.slice(0, -1) + '"][data-o="' + k.slice(-1) + '"]');
+      if (el) el.classList.add("dead");
+    });
+  } catch (e) {}
+
+  /* ---------------- checking ---------------- */
+  var attempt1 = null, attempt2 = null, timedMode = false;
+
+  document.getElementById("checkBtn").addEventListener("click", function () {
+    var score = 0;
+    Q.forEach(function (q) {
+      host.querySelectorAll('.opt[data-q="' + q.n + '"]').forEach(function (o) {
+        o.classList.remove("correct", "mistake");
+        if (o.dataset.o === q.ans) o.classList.add("correct");
+        else if (picks[q.n] === o.dataset.o) o.classList.add("mistake");
+      });
+      if (picks[q.n] === q.ans) score++;
+    });
+
+    if (timedMode) { attempt2 = score; stopClock(); }
+    else if (attempt1 === null) { attempt1 = score; }
+    else { attempt1 = score; }
+
+    var txt = "Attempt 1: " + (attempt1 === null ? "—" : attempt1 + "/12");
+    if (attempt2 !== null) txt += "  ·  Timed retry: " + attempt2 + "/12";
+    document.getElementById("attempts").textContent = txt;
+  });
+
+  document.getElementById("clearBtn").addEventListener("click", function () { reset(); });
+
+  function reset() {
+    picks = {}; dead = {};
+    host.querySelectorAll(".opt").forEach(function (o) { o.classList.remove("picked", "dead", "correct", "mistake"); });
+    save();
+  }
+
+  /* ---------------- timed retry ---------------- */
+  var total = 15 * 60, left = total, tick = null;
+  var clock = document.getElementById("clock");
+
+  function paint() {
+    var m = Math.floor(Math.abs(left) / 60), s = Math.abs(left) % 60;
+    clock.textContent = (left < 0 ? "-" : "") + m + ":" + (s < 10 ? "0" : "") + s;
+    clock.classList.toggle("over", left <= 0);
+  }
+  function stopClock() { clearInterval(tick); tick = null; }
+
+  document.getElementById("retryBtn").addEventListener("click", function () {
+    reset();
+    document.querySelectorAll("details").forEach(function (d) { d.open = false; });
+    timedMode = true;
+    left = total;
+    clock.classList.remove("idle");
+    paint();
+    stopClock();
+    tick = setInterval(function () { left--; paint(); }, 1000);
+    document.querySelector("#qhost").scrollIntoView({ behavior: "smooth", block: "start" });
+  });
+
+  paint();
+
+  /* ---------------- answer key ---------------- */
+  var kh = document.getElementById("keyhost");
+  Q.forEach(function (q) {
+    var d = document.createElement("details");
+    var fails = "";
+    ["A", "B", "C", "D"].forEach(function (L) {
+      if (L === q.ans) return;
+      fails += '<div class="fail"><span class="fl">' + L + '</span><span>' +
+               '<span class="ftype">' + q.opts[L][1] + '</span>' + q.opts[L][2] + '</span></div>';
+    });
+    d.innerHTML =
+      '<summary>Q' + q.n + ' · ' + q.stem + '</summary>' +
+      '<div class="dbody">' +
+        '<div class="ansline">ANSWER: ' + q.ans + '</div>' +
+        '<div class="ev">' + q.ev + ' <button class="jump" data-go="' + q.para + '">¶ ' + q.para + '</button></div>' +
+        '<p style="font-family:var(--f-mono);font-size:0.72rem;color:var(--ink-faint);margin-bottom:0.2rem;">WHY THE OTHERS FAIL</p>' +
+        fails +
+      '</div>';
+    kh.appendChild(d);
+  });
+
+  document.addEventListener("click", function (e) {
+    var b = e.target.closest(".jump");
+    if (!b) return;
+    var t = document.getElementById("p-" + b.dataset.go);
+    if (!t) return;
+    t.scrollIntoView({ behavior: "smooth", block: "center" });
+    t.classList.remove("flash");
+    void t.offsetWidth;
+    t.classList.add("flash");
+  });
+})();
+</script>

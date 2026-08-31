@@ -1,0 +1,258 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>IELTS Speaking Part 1 — 5 Topics (Band 5–6)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600&family=IBM+Plex+Sans:wght@400;500;600&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&display=swap">
+<style>
+  :root{
+    --ground:#F7F8F7; --surface:#FFFFFF; --sunk:#EEF1EF;
+    --ink:#1B2422; --ink-soft:#5A6663; --ink-faint:#8A9591;
+    --accent:#2E5E58; --accent-soft:#E3EDEA;
+    --amber:#A9662B; --amber-soft:#F6ECE0;
+    --rule:#DDE3E0; --good:#2F6B45; --bad:#9B3A32;
+    --f-display:"Fraunces",Georgia,serif;
+    --f-body:"Source Serif 4",Georgia,"Times New Roman",serif;
+    --f-ui:"IBM Plex Sans","Segoe UI",system-ui,sans-serif;
+  }
+  @media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+    --ground:#121716; --surface:#1A211F; --sunk:#232C2A;
+    --ink:#E8EDEA; --ink-soft:#9AA8A3; --ink-faint:#6E7C77;
+    --accent:#6FB3A6; --accent-soft:#22322F;
+    --amber:#D69A5E; --amber-soft:#2E2820;
+    --rule:#2A3532; --good:#6DBF8E; --bad:#E08A80;
+  }}
+  :root[data-theme="dark"]{
+    --ground:#121716; --surface:#1A211F; --sunk:#232C2A;
+    --ink:#E8EDEA; --ink-soft:#9AA8A3; --ink-faint:#6E7C77;
+    --accent:#6FB3A6; --accent-soft:#22322F;
+    --amber:#D69A5E; --amber-soft:#2E2820;
+    --rule:#2A3532; --good:#6DBF8E; --bad:#E08A80;
+  }
+  *{box-sizing:border-box;}
+  body{margin:0;background:var(--ground);color:var(--ink);font-family:var(--f-body);font-size:1.02rem;line-height:1.65;-webkit-font-smoothing:antialiased;}
+  .wrap{max-width:820px;margin:0 auto;padding:0 clamp(1rem,5vw,2rem);}
+  h1,h2,h3{font-family:var(--f-display);margin:0;line-height:1.15;text-wrap:balance;font-weight:600;}
+  h1{font-size:clamp(2.1rem,6vw,3.1rem);letter-spacing:-0.015em;}
+  h2{font-size:clamp(1.5rem,3.5vw,2rem);}
+  h3{font-size:1.1rem;}
+  p{max-width:65ch;}
+  .label{font-family:var(--f-ui);font-size:0.7rem;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:var(--ink-faint);}
+  header{background:var(--surface);border-bottom:1px solid var(--rule);padding:clamp(2rem,6vw,3.5rem) 0 1.6rem;}
+  .subtitle{font-family:var(--f-ui);color:var(--ink-soft);font-size:0.98rem;margin:0.5rem 0 0;}
+  .meta{display:flex;flex-wrap:wrap;gap:0.9rem 1.9rem;margin-top:1.5rem;}
+  .meta div{display:flex;flex-direction:column;gap:0.15rem;}
+  .meta span{font-family:var(--f-ui);font-size:0.62rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--ink-faint);}
+  .meta b{font-family:var(--f-ui);font-size:0.9rem;font-weight:500;}
+  section{padding:clamp(2.2rem,6vw,3.4rem) 0;border-bottom:1px solid var(--rule);}
+  .sec-head .label{display:block;margin-bottom:0.5rem;}
+  .sec-head p{color:var(--ink-soft);margin-top:0.7rem;}
+  .rubric{font-family:var(--f-ui);font-size:0.9rem;background:var(--accent-soft);border-radius:4px;padding:0.9rem 1.1rem;margin:1.2rem 0;}
+  .rubric b{color:var(--accent);}
+  .topic{background:var(--surface);border:1px solid var(--rule);border-radius:5px;padding:1.3rem 1.5rem;margin-top:1.4rem;}
+  .topic h3{display:flex;align-items:baseline;gap:0.6rem;}
+  .topic h3 .n{font-family:var(--f-ui);font-size:0.8rem;font-weight:600;color:var(--surface);background:var(--accent);border-radius:3px;padding:0.1rem 0.5rem;}
+  ol.qs{margin:1rem 0 0;padding-left:1.3rem;}
+  ol.qs li{margin:0.55rem 0;}
+  details.reveal{margin:1.1rem 0 0;border:1px solid var(--rule);border-radius:4px;background:var(--sunk);overflow:hidden;}
+  details.reveal>summary{font-family:var(--f-ui);font-size:0.88rem;font-weight:600;padding:0.75rem 1rem;cursor:pointer;color:var(--accent);list-style:none;}
+  details.reveal>summary::-webkit-details-marker{display:none;}
+  details.reveal>summary::before{content:"▸ ";}
+  details.reveal[open]>summary::before{content:"▾ ";}
+  .rbody{padding:0.6rem 1rem 1rem;border-top:1px solid var(--rule);}
+  .sample{font-size:0.98rem;margin:0.3rem 0 0.9rem;}
+  .sample .q{font-family:var(--f-ui);font-size:0.8rem;font-weight:600;color:var(--ink-faint);display:block;margin-bottom:0.15rem;}
+  .phrases{font-family:var(--f-ui);font-size:0.86rem;color:var(--ink-soft);border-top:1px dashed var(--rule);padding-top:0.7rem;}
+  .phrases b{color:var(--accent);}
+  .phrases span{display:inline-block;background:var(--surface);border:1px solid var(--rule);border-radius:999px;padding:0.2rem 0.7rem;margin:0.2rem 0.3rem 0 0;}
+  .tip{font-family:var(--f-ui);font-size:0.9rem;border-left:3px solid var(--amber);background:var(--amber-soft);padding:0.85rem 1.1rem;border-radius:0 3px 3px 0;margin:1.2rem 0;}
+  .tip .label{color:var(--amber);display:block;margin-bottom:0.3rem;}
+  .foot{padding:2rem 0 3rem;color:var(--ink-faint);font-family:var(--f-ui);font-size:0.8rem;}
+  @media print{details.reveal{display:none;}}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <span class="label">IELTS Academic · Speaking</span>
+    <h1>Part 1 — Everyday Topics</h1>
+    <p class="subtitle">Five familiar topics, twenty questions. Practise answering out loud.</p>
+    <div class="meta">
+      <div><span>Exam</span><b>IELTS Academic</b></div>
+      <div><span>Section</span><b>Speaking, Part 1</b></div>
+      <div><span>Format</span><b>3 topics in the real test</b></div>
+      <div><span>Target band</span><b>5.0 – 6.0</b></div>
+      <div><span>Part 1 length</span><b>4 – 5 minutes</b></div>
+      <div><span>Questions here</span><b>20</b></div>
+    </div>
+  </div>
+</header>
+
+<div class="wrap">
+
+<section>
+  <div class="sec-head">
+    <span class="label">How Part 1 works</span>
+    <h2>What to expect</h2>
+    <p>Part 1 comes first. The examiner asks you short questions about familiar topics — your life, your habits, your likes and dislikes. There is <b>no preparation time</b>; you answer straight away.</p>
+  </div>
+  <div class="rubric">
+    <b>Give two or three sentences per answer.</b> One sentence is too short; a long speech is not needed here. A good shape is: <b>answer + reason + example or extra detail.</b>
+  </div>
+  <div class="tip">
+    <span class="label">Practice method</span>
+    Record yourself answering each question. Play it back and check: did you answer for about 15–20 seconds? Did you give a reason? Then open the sample answer and compare.
+  </div>
+</section>
+
+<section>
+  <div class="sec-head">
+    <span class="label">Topic 1</span>
+    <h2>Your hometown</h2>
+  </div>
+  <div class="topic">
+    <h3><span class="n">1</span> Hometown</h3>
+    <ol class="qs">
+      <li>Where is your hometown?</li>
+      <li>What do you like most about it?</li>
+      <li>Is it a good place for young people to live? Why?</li>
+      <li>Would you like to live there in the future?</li>
+    </ol>
+    <details class="reveal">
+      <summary>Show a band 5.5–6 sample answer</summary>
+      <div class="rbody">
+        <p class="sample"><span class="q">Where is your hometown?</span>My hometown is Bursa. It's a city in the north-west of Turkey, about two hours from Istanbul by car. It's quite large, but the area where I grew up is calm and green.</p>
+        <p class="sample"><span class="q">What do you like most about it?</span>I think the best thing is the food. Bursa is famous for a dish called İskender kebab, and there are a lot of small family restaurants. I also like that the mountains are close, so you can go skiing in winter.</p>
+        <p class="sample"><span class="q">Is it a good place for young people to live?</span>It's good in some ways. There's a university and some nice cafés, so students have things to do. But there aren't many big companies, so a lot of young people move to Istanbul to find better jobs.</p>
+        <p class="sample"><span class="q">Would you like to live there in the future?</span>Maybe when I'm older. Right now I want to work in a bigger city, but Bursa is a nice place to have a family because it's cheaper and less crowded.</p>
+        <div class="phrases"><b>Phrases to reuse:</b>
+          <span>It's famous for…</span><span>in some ways… but…</span><span>a lot of people move to… to find…</span>
+        </div>
+      </div>
+    </details>
+  </div>
+</section>
+
+<section>
+  <div class="sec-head">
+    <span class="label">Topic 2</span>
+    <h2>Work or studies</h2>
+  </div>
+  <div class="topic">
+    <h3><span class="n">2</span> Work or studies</h3>
+    <ol class="qs">
+      <li>Do you work or are you a student?</li>
+      <li>Why did you choose this subject / job?</li>
+      <li>What is the most difficult part of it?</li>
+      <li>What would you like to do after you finish?</li>
+    </ol>
+    <details class="reveal">
+      <summary>Show a band 5.5–6 sample answer</summary>
+      <div class="rbody">
+        <p class="sample"><span class="q">Do you work or are you a student?</span>I'm a student. I'm in my third year at university, and I'm studying business administration.</p>
+        <p class="sample"><span class="q">Why did you choose this subject?</span>I chose it because it's quite general, so it keeps my options open. My father has a small import business, and I've always been interested in how companies are managed.</p>
+        <p class="sample"><span class="q">What is the most difficult part of it?</span>For me the hardest part is the statistics and accounting modules. I'm not very confident with numbers, so I have to study those subjects much longer than the others.</p>
+        <p class="sample"><span class="q">What would you like to do after you finish?</span>I'd like to work in marketing for an international company. First I want to get some experience here, and then maybe do a master's degree abroad.</p>
+        <div class="phrases"><b>Phrases to reuse:</b>
+          <span>it keeps my options open</span><span>I've always been interested in…</span><span>I have to study… much longer than…</span>
+        </div>
+      </div>
+    </details>
+  </div>
+</section>
+
+<section>
+  <div class="sec-head">
+    <span class="label">Topic 3</span>
+    <h2>Free time</h2>
+  </div>
+  <div class="topic">
+    <h3><span class="n">3</span> Free time</h3>
+    <ol class="qs">
+      <li>What do you usually do in your free time?</li>
+      <li>Do you prefer to spend free time alone or with other people?</li>
+      <li>Has the way you spend your free time changed since you were a child?</li>
+      <li>Do you think people have enough free time these days?</li>
+    </ol>
+    <details class="reveal">
+      <summary>Show a band 5.5–6 sample answer</summary>
+      <div class="rbody">
+        <p class="sample"><span class="q">What do you usually do in your free time?</span>It depends on the day. During the week I usually just watch series or play football with my friends. At the weekend I try to go outside more, for example hiking or visiting my grandparents.</p>
+        <p class="sample"><span class="q">Do you prefer to spend free time alone or with other people?</span>Mostly with other people. I enjoy being with my friends because we laugh a lot. But sometimes after a busy week I need a quiet evening alone to relax.</p>
+        <p class="sample"><span class="q">Has the way you spend your free time changed since you were a child?</span>Yes, quite a lot. When I was a child I played outside all day with the kids in my street. Now I spend more time on my phone, which is not really a good change.</p>
+        <p class="sample"><span class="q">Do you think people have enough free time these days?</span>I don't think so. Most people I know work long hours or study a lot, so by the evening they're too tired to do anything. Weekends go very quickly.</p>
+        <div class="phrases"><b>Phrases to reuse:</b>
+          <span>It depends on the day</span><span>which is not really a good change</span><span>by the evening they're too tired to…</span>
+        </div>
+      </div>
+    </details>
+  </div>
+</section>
+
+<section>
+  <div class="sec-head">
+    <span class="label">Topic 4</span>
+    <h2>Food</h2>
+  </div>
+  <div class="topic">
+    <h3><span class="n">4</span> Food</h3>
+    <ol class="qs">
+      <li>What kind of food do you like?</li>
+      <li>Do you prefer eating at home or in a restaurant?</li>
+      <li>Can you cook? Who taught you?</li>
+      <li>Has the food people eat in your country changed in recent years?</li>
+    </ol>
+    <details class="reveal">
+      <summary>Show a band 5.5–6 sample answer</summary>
+      <div class="rbody">
+        <p class="sample"><span class="q">What kind of food do you like?</span>I like most food, but my favourite is probably traditional Turkish food, like grilled meat and vegetable dishes with olive oil. I don't really enjoy very spicy food.</p>
+        <p class="sample"><span class="q">Do you prefer eating at home or in a restaurant?</span>At home, usually. The food is healthier and cheaper, and I like eating with my family. I go to restaurants mainly for special occasions or to try something different.</p>
+        <p class="sample"><span class="q">Can you cook? Who taught you?</span>I can cook simple things — pasta, eggs, some rice dishes. My mother taught me the basics before I moved out for university, because she didn't want me to eat fast food every day.</p>
+        <p class="sample"><span class="q">Has the food people eat in your country changed in recent years?</span>Yes, I think so. There are many more foreign restaurants now, like sushi and burgers, especially in big cities. Young people also order food online much more than before.</p>
+        <div class="phrases"><b>Phrases to reuse:</b>
+          <span>my favourite is probably…</span><span>mainly for special occasions</span><span>much more than before</span>
+        </div>
+      </div>
+    </details>
+  </div>
+</section>
+
+<section>
+  <div class="sec-head">
+    <span class="label">Topic 5</span>
+    <h2>Technology</h2>
+  </div>
+  <div class="topic">
+    <h3><span class="n">5</span> Technology</h3>
+    <ol class="qs">
+      <li>How often do you use your phone during the day?</li>
+      <li>What do you mainly use the internet for?</li>
+      <li>Is there any technology you would like to learn to use better?</li>
+      <li>Do you think people rely on technology too much?</li>
+    </ol>
+    <details class="reveal">
+      <summary>Show a band 5.5–6 sample answer</summary>
+      <div class="rbody">
+        <p class="sample"><span class="q">How often do you use your phone during the day?</span>Honestly, too often. I check it as soon as I wake up, and then many times during the day for messages and social media. I think my screen time is around five hours.</p>
+        <p class="sample"><span class="q">What do you mainly use the internet for?</span>Mostly for studying and communication. I watch video lessons for my university course, and I use messaging apps to talk to my family and friends. I also read the news every morning.</p>
+        <p class="sample"><span class="q">Is there any technology you would like to learn to use better?</span>Yes, I'd like to be better at Excel. We use it in some of my classes, and I know it can do a lot of useful things, but I only know the basic functions.</p>
+        <p class="sample"><span class="q">Do you think people rely on technology too much?</span>In some ways, yes. For example, I can't remember any phone numbers now, and I feel lost without maps on my phone. But technology also helps a lot, so it's difficult to say it's completely bad.</p>
+        <div class="phrases"><b>Phrases to reuse:</b>
+          <span>Honestly, too often</span><span>I only know the basic functions</span><span>it's difficult to say it's completely bad</span>
+        </div>
+      </div>
+    </details>
+  </div>
+</section>
+
+<div class="foot">
+  IELTS Academic Speaking · Part 1 · Target band 5.0–6.0 · Created 2026-08-28
+</div>
+
+</div>
+</body>
+</html>

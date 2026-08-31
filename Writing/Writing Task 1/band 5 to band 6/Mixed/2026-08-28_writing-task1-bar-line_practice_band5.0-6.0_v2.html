@@ -1,0 +1,298 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>IELTS Writing Task 1 — Bar Chart &amp; Line Graph, Set 2 (Band 5–6)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600&family=IBM+Plex+Sans:wght@400;500;600&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&display=swap">
+<style>
+  :root{
+    --ground:#F7F8F7; --surface:#FFFFFF; --sunk:#EEF1EF;
+    --ink:#1B2422; --ink-soft:#5A6663; --ink-faint:#8A9591;
+    --accent:#2E5E58; --accent-soft:#E3EDEA;
+    --amber:#A9662B; --amber-soft:#F6ECE0;
+    --rule:#DDE3E0; --good:#2F6B45; --bad:#9B3A32;
+    --s1:#2E5E58; --s2:#A9662B; --s3:#3B5A9B;
+    --f-display:"Fraunces",Georgia,serif;
+    --f-body:"Source Serif 4",Georgia,"Times New Roman",serif;
+    --f-ui:"IBM Plex Sans","Segoe UI",system-ui,sans-serif;
+  }
+  @media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+    --ground:#121716; --surface:#1A211F; --sunk:#232C2A;
+    --ink:#E8EDEA; --ink-soft:#9AA8A3; --ink-faint:#6E7C77;
+    --accent:#6FB3A6; --accent-soft:#22322F;
+    --amber:#D69A5E; --amber-soft:#2E2820;
+    --rule:#2A3532; --good:#6DBF8E; --bad:#E08A80;
+    --s1:#6FB3A6; --s2:#D69A5E; --s3:#8AA6E0;
+  }}
+  :root[data-theme="dark"]{
+    --ground:#121716; --surface:#1A211F; --sunk:#232C2A;
+    --ink:#E8EDEA; --ink-soft:#9AA8A3; --ink-faint:#6E7C77;
+    --accent:#6FB3A6; --accent-soft:#22322F;
+    --amber:#D69A5E; --amber-soft:#2E2820;
+    --rule:#2A3532; --good:#6DBF8E; --bad:#E08A80;
+    --s1:#6FB3A6; --s2:#D69A5E; --s3:#8AA6E0;
+  }
+  *{box-sizing:border-box;}
+  body{margin:0;background:var(--ground);color:var(--ink);font-family:var(--f-body);font-size:1.02rem;line-height:1.65;-webkit-font-smoothing:antialiased;}
+  .wrap{max-width:820px;margin:0 auto;padding:0 clamp(1rem,5vw,2rem);}
+  h1,h2,h3{font-family:var(--f-display);margin:0;line-height:1.15;text-wrap:balance;font-weight:600;}
+  h1{font-size:clamp(2.1rem,6vw,3.1rem);letter-spacing:-0.015em;}
+  h2{font-size:clamp(1.5rem,3.5vw,2rem);}
+  h3{font-size:1.1rem;}
+  p{max-width:65ch;}
+  .label{font-family:var(--f-ui);font-size:0.7rem;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:var(--ink-faint);}
+  header{background:var(--surface);border-bottom:1px solid var(--rule);padding:clamp(2rem,6vw,3.5rem) 0 1.6rem;}
+  .subtitle{font-family:var(--f-ui);color:var(--ink-soft);font-size:0.98rem;margin:0.5rem 0 0;}
+  .meta{display:flex;flex-wrap:wrap;gap:0.9rem 1.9rem;margin-top:1.5rem;}
+  .meta div{display:flex;flex-direction:column;gap:0.15rem;}
+  .meta span{font-family:var(--f-ui);font-size:0.62rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--ink-faint);}
+  .meta b{font-family:var(--f-ui);font-size:0.9rem;font-weight:500;}
+  section{padding:clamp(2.2rem,6vw,3.4rem) 0;border-bottom:1px solid var(--rule);}
+  .sec-head .label{display:block;margin-bottom:0.5rem;}
+  .sec-head p{color:var(--ink-soft);margin-top:0.7rem;}
+  .rubric{font-family:var(--f-ui);font-size:0.92rem;background:var(--accent-soft);border-radius:4px;padding:1rem 1.2rem;margin:1.2rem 0;}
+  .rubric b{color:var(--accent);}
+  .prompt{background:var(--surface);border:1px solid var(--rule);border-radius:5px;padding:1.3rem 1.5rem;margin-top:1.3rem;font-family:var(--f-ui);font-size:0.98rem;}
+  .chartwrap{margin:1.2rem 0 0.4rem;overflow-x:auto;}
+  svg{display:block;width:100%;height:auto;min-width:460px;font-family:var(--f-ui);}
+  .grid{stroke:var(--rule);stroke-width:1;}
+  .axis{stroke:var(--ink-faint);stroke-width:1.4;}
+  .tick{fill:var(--ink-soft);font-size:12px;}
+  .axlabel{fill:var(--ink-soft);font-size:12px;font-weight:500;}
+  .b2010,.leg-a{fill:var(--s1);}
+  .b2020,.leg-b{fill:var(--s2);}
+  .ln1{fill:none;stroke:var(--s1);stroke-width:2.6;}
+  .ln2{fill:none;stroke:var(--s2);stroke-width:2.6;}
+  .ln3{fill:none;stroke:var(--s3);stroke-width:2.6;}
+  .dot1{fill:var(--s1);}.dot2{fill:var(--s2);}.dot3{fill:var(--s3);}
+  .legtext{fill:var(--ink);font-size:12px;}
+  .caption{font-family:var(--f-ui);font-size:0.82rem;color:var(--ink-faint);margin-top:0.3rem;}
+  details.reveal{margin:1.2rem 0 0;border:1px solid var(--rule);border-radius:4px;background:var(--surface);overflow:hidden;}
+  details.reveal>summary{font-family:var(--f-ui);font-size:0.9rem;font-weight:600;padding:0.8rem 1.1rem;cursor:pointer;color:var(--accent);list-style:none;}
+  details.reveal>summary::-webkit-details-marker{display:none;}
+  details.reveal>summary::before{content:"▸ ";}
+  details.reveal[open]>summary::before{content:"▾ ";}
+  .rbody{padding:0.8rem 1.1rem 1.1rem;border-top:1px solid var(--rule);}
+  .model p{margin:0 0 0.8rem;}
+  .model .wc{font-family:var(--f-ui);font-size:0.8rem;color:var(--ink-faint);}
+  .lang{font-family:var(--f-ui);font-size:0.9rem;}
+  .lang dt{font-weight:600;color:var(--accent);margin-top:0.7rem;}
+  .lang dd{margin:0.2rem 0 0;color:var(--ink-soft);}
+  .tip{font-family:var(--f-ui);font-size:0.9rem;border-left:3px solid var(--amber);background:var(--amber-soft);padding:0.85rem 1.1rem;border-radius:0 3px 3px 0;margin:1.2rem 0;}
+  .tip .label{color:var(--amber);display:block;margin-bottom:0.3rem;}
+  .foot{padding:2rem 0 3rem;color:var(--ink-faint);font-family:var(--f-ui);font-size:0.8rem;}
+  @media print{details.reveal{display:none;}}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <span class="label">IELTS Academic · Writing Task 1</span>
+    <h1>Bar Chart &amp; Line Graph — Set 2</h1>
+    <p class="subtitle">A second pair of practice questions, each with a worked model answer.</p>
+    <div class="meta">
+      <div><span>Exam</span><b>IELTS Academic</b></div>
+      <div><span>Section</span><b>Writing, Task 1</b></div>
+      <div><span>Question types</span><b>Bar chart · Line graph</b></div>
+      <div><span>Target band</span><b>5.0 – 6.0</b></div>
+      <div><span>Time per task</span><b>20 minutes</b></div>
+      <div><span>Minimum length</span><b>150 words</b></div>
+    </div>
+  </div>
+</header>
+
+<div class="wrap">
+
+<section>
+  <div class="sec-head">
+    <span class="label">Quick reminder</span>
+    <h2>The four-paragraph plan</h2>
+    <p>Describe the data in your own words. No opinions, no reasons. About 20 minutes, at least 150 words.</p>
+  </div>
+  <div class="rubric">
+    <b>1 · Introduction</b> — one sentence rewriting the question.<br>
+    <b>2 · Overview</b> — 2 sentences on the main trends or biggest differences. No numbers.<br>
+    <b>3 · Details</b> — the highest / largest figures, with data.<br>
+    <b>4 · Details</b> — the rest, grouped sensibly.
+  </div>
+  <div class="tip">
+    <span class="label">Check your overview</span>
+    It should contain no specific numbers, and it should be true of the whole chart — not just one bar or one line.
+  </div>
+</section>
+
+<section>
+  <div class="sec-head">
+    <span class="label">Question 1</span>
+    <h2>Bar chart</h2>
+  </div>
+  <div class="prompt">
+    The bar chart below shows the percentage of adults who did regular physical activity in four age groups, in 2005 and 2019. Summarise the information by selecting and reporting the main features, and make comparisons where relevant.
+  </div>
+
+  <div class="chartwrap">
+    <svg viewBox="0 0 640 400" role="img" aria-label="Bar chart: percentage of adults doing regular physical activity in the age groups 18-29, 30-44, 45-59 and 60 plus, in 2005 and 2019.">
+      <line class="grid" x1="70" y1="40" x2="610" y2="40"></line>
+      <line class="grid" x1="70" y1="115" x2="610" y2="115"></line>
+      <line class="grid" x1="70" y1="190" x2="610" y2="190"></line>
+      <line class="grid" x1="70" y1="265" x2="610" y2="265"></line>
+      <line class="axis" x1="70" y1="340" x2="610" y2="340"></line>
+      <line class="axis" x1="70" y1="40" x2="70" y2="340"></line>
+      <text class="tick" x="60" y="44" text-anchor="end">80</text>
+      <text class="tick" x="60" y="119" text-anchor="end">60</text>
+      <text class="tick" x="60" y="194" text-anchor="end">40</text>
+      <text class="tick" x="60" y="269" text-anchor="end">20</text>
+      <text class="tick" x="60" y="344" text-anchor="end">0</text>
+      <text class="axlabel" x="24" y="195" text-anchor="middle" transform="rotate(-90 24 195)">% of adults</text>
+
+      <rect class="b2010" x="100.5" y="145" width="34" height="195"></rect>
+      <rect class="b2020" x="140.5" y="111.25" width="34" height="228.75"></rect>
+      <text class="axlabel" x="137.5" y="360" text-anchor="middle">18–29</text>
+
+      <rect class="b2010" x="235.5" y="171.25" width="34" height="168.75"></rect>
+      <rect class="b2020" x="275.5" y="122.5" width="34" height="217.5"></rect>
+      <text class="axlabel" x="272.5" y="360" text-anchor="middle">30–44</text>
+
+      <rect class="b2010" x="370.5" y="197.5" width="34" height="142.5"></rect>
+      <rect class="b2020" x="410.5" y="156.25" width="34" height="183.75"></rect>
+      <text class="axlabel" x="407.5" y="360" text-anchor="middle">45–59</text>
+
+      <rect class="b2010" x="505.5" y="257.5" width="34" height="82.5"></rect>
+      <rect class="b2020" x="545.5" y="186.25" width="34" height="153.75"></rect>
+      <text class="axlabel" x="542.5" y="360" text-anchor="middle">60 and over</text>
+
+      <rect class="leg-a" x="210" y="382" width="13" height="13"></rect>
+      <text class="legtext" x="229" y="393">2005</text>
+      <rect class="leg-b" x="290" y="382" width="13" height="13"></rect>
+      <text class="legtext" x="309" y="393">2019</text>
+    </svg>
+  </div>
+  <p class="caption">Figures (%): 18–29: 52 → 61 · 30–44: 45 → 58 · 45–59: 38 → 49 · 60 and over: 22 → 41.</p>
+
+  <details class="reveal">
+    <summary>Show a band 6 model answer</summary>
+    <div class="rbody model">
+      <p>The bar chart shows the percentage of adults who did regular physical activity in four age groups, in 2005 and 2019.</p>
+      <p>Overall, the proportion of adults doing regular exercise rose in every age group over the period. In both years, younger adults were more active than older adults, but the difference between the groups became smaller by 2019.</p>
+      <p>In 2005, just over half of people aged 18 to 29 exercised regularly, at 52%, and this figure increased to 61% in 2019. The 30 to 44 group followed a similar pattern, rising from 45% to 58%. Among people aged 45 to 59, the figure went up more modestly, from 38% to 49%.</p>
+      <p>The biggest change was in the oldest group. In 2005, only 22% of adults aged 60 and over did regular physical activity, but this almost doubled to 41% by 2019. As a result, the gap between the youngest and oldest groups fell from 30 percentage points in 2005 to 20 points in 2019.</p>
+      <p class="wc">176 words</p>
+    </div>
+  </details>
+
+  <details class="reveal">
+    <summary>Show useful language for this chart</summary>
+    <div class="rbody">
+      <dl class="lang">
+        <dt>Talking about proportions</dt>
+        <dd>the proportion of… / the percentage of… / just over half / almost a quarter / nearly two in five</dd>
+        <dt>Small vs large increases</dt>
+        <dd>rose modestly / increased slightly · almost doubled / rose sharply / saw the biggest change</dd>
+        <dt>Comparing across groups</dt>
+        <dd>younger adults were more active than older adults · the gap became smaller / narrowed · followed a similar pattern</dd>
+        <dt>Percentage points</dt>
+        <dd>fell from 30 percentage points to 20 points (use "percentage points" for the difference between two percentages, not "%")</dd>
+      </dl>
+    </div>
+  </details>
+</section>
+
+<section>
+  <div class="sec-head">
+    <span class="label">Question 2</span>
+    <h2>Line graph</h2>
+  </div>
+  <div class="prompt">
+    The line graph below shows the amount of electricity generated from wind, solar and hydropower in one country between 2000 and 2020, measured in terawatt-hours (TWh). Summarise the information by selecting and reporting the main features, and make comparisons where relevant.
+  </div>
+
+  <div class="chartwrap">
+    <svg viewBox="0 0 640 400" role="img" aria-label="Line graph: electricity in terawatt-hours generated from wind, solar and hydropower from 2000 to 2020.">
+      <line class="grid" x1="60" y1="40" x2="610" y2="40"></line>
+      <line class="grid" x1="60" y1="115" x2="610" y2="115"></line>
+      <line class="grid" x1="60" y1="190" x2="610" y2="190"></line>
+      <line class="grid" x1="60" y1="265" x2="610" y2="265"></line>
+      <line class="axis" x1="60" y1="340" x2="610" y2="340"></line>
+      <line class="axis" x1="60" y1="40" x2="60" y2="340"></line>
+      <text class="tick" x="50" y="44" text-anchor="end">80</text>
+      <text class="tick" x="50" y="119" text-anchor="end">60</text>
+      <text class="tick" x="50" y="194" text-anchor="end">40</text>
+      <text class="tick" x="50" y="269" text-anchor="end">20</text>
+      <text class="tick" x="50" y="344" text-anchor="end">0</text>
+      <text class="axlabel" x="20" y="190" text-anchor="middle" transform="rotate(-90 20 190)">electricity (TWh)</text>
+
+      <text class="tick" x="60" y="360" text-anchor="middle">2000</text>
+      <text class="tick" x="197.5" y="360" text-anchor="middle">2005</text>
+      <text class="tick" x="335" y="360" text-anchor="middle">2010</text>
+      <text class="tick" x="472.5" y="360" text-anchor="middle">2015</text>
+      <text class="tick" x="610" y="360" text-anchor="middle">2020</text>
+
+      <polyline class="ln1" points="60,227.5 197.5,220 335,216.25 472.5,212.5 610,208.75"></polyline>
+      <polyline class="ln2" points="60,325 197.5,295 335,235 472.5,171.25 610,107.5"></polyline>
+      <polyline class="ln3" points="60,338.1 197.5,332.5 335,310 472.5,246.25 610,133.75"></polyline>
+
+      <g>
+        <circle class="dot1" cx="60" cy="227.5" r="3"></circle><circle class="dot1" cx="197.5" cy="220" r="3"></circle><circle class="dot1" cx="335" cy="216.25" r="3"></circle><circle class="dot1" cx="472.5" cy="212.5" r="3"></circle><circle class="dot1" cx="610" cy="208.75" r="3"></circle>
+        <circle class="dot2" cx="60" cy="325" r="3"></circle><circle class="dot2" cx="197.5" cy="295" r="3"></circle><circle class="dot2" cx="335" cy="235" r="3"></circle><circle class="dot2" cx="472.5" cy="171.25" r="3"></circle><circle class="dot2" cx="610" cy="107.5" r="3"></circle>
+        <circle class="dot3" cx="60" cy="338.1" r="3"></circle><circle class="dot3" cx="197.5" cy="332.5" r="3"></circle><circle class="dot3" cx="335" cy="310" r="3"></circle><circle class="dot3" cx="472.5" cy="246.25" r="3"></circle><circle class="dot3" cx="610" cy="133.75" r="3"></circle>
+      </g>
+
+      <rect class="leg-a" x="120" y="382" width="13" height="13"></rect>
+      <text class="legtext" x="139" y="393">Hydropower</text>
+      <rect class="leg-b" x="270" y="382" width="13" height="13"></rect>
+      <text class="legtext" x="289" y="393">Wind</text>
+      <rect x="370" y="382" width="13" height="13" fill="var(--s3)"></rect>
+      <text class="legtext" x="389" y="393">Solar</text>
+    </svg>
+  </div>
+  <p class="caption">Figures (TWh): Hydropower 30 → 35 · Wind 4 → 62 · Solar under 1 → 55.</p>
+
+  <details class="reveal">
+    <summary>Show a band 6 model answer</summary>
+    <div class="rbody model">
+      <p>The line graph shows the amount of electricity, in terawatt-hours (TWh), generated from wind, solar and hydropower in one country between 2000 and 2020.</p>
+      <p>Overall, electricity from all three sources increased over the period, but the growth in wind and solar power was far greater than in hydropower. By 2020, wind had become the largest source, while solar, which started from almost nothing, had risen to second place.</p>
+      <p>In 2000, hydropower was by far the most important renewable source, producing about 30 TWh. However, it grew only slightly and reached just 35 TWh in 2020. Wind power, in contrast, rose steadily from only 4 TWh in 2000 to 62 TWh in 2020, overtaking hydropower at around 2010.</p>
+      <p>Solar power showed the most dramatic change. It generated less than 1 TWh in 2000 and stayed very low until about 2010. After that it climbed sharply, reaching 55 TWh by 2020, almost the same amount as wind.</p>
+      <p class="wc">165 words</p>
+    </div>
+  </details>
+
+  <details class="reveal">
+    <summary>Show useful language for this graph</summary>
+    <div class="rbody">
+      <dl class="lang">
+        <dt>Very small starting values</dt>
+        <dd>started from almost nothing / less than 1 TWh · remained very low / stayed close to zero</dd>
+        <dt>Strong steady growth</dt>
+        <dd>rose steadily · climbed sharply · increased dramatically · showed the most dramatic change</dd>
+        <dt>One line passing another</dt>
+        <dd>overtaking hydropower at around 2010 · rose to second place · became the largest source</dd>
+        <dt>Almost equal</dt>
+        <dd>almost the same amount as · nearly caught up with · close to the level of</dd>
+        <dt>Approximate figures</dt>
+        <dd>about 30 TWh · just 35 TWh · at around 2010</dd>
+      </dl>
+    </div>
+  </details>
+</section>
+
+<section>
+  <div class="sec-head">
+    <span class="label">Now you try</span>
+    <h2>Write your own</h2>
+    <p>Pick one question, set a 20-minute timer, and write at least 150 words with the four-paragraph plan. Then check against the model: is your overview number-free, and is every figure accurate?</p>
+  </div>
+</section>
+
+<div class="foot">
+  IELTS Academic Writing Task 1 · Bar chart &amp; line graph (Set 2) · Target band 5.0–6.0 · Created 2026-08-28
+</div>
+
+</div>
+</body>
+</html>

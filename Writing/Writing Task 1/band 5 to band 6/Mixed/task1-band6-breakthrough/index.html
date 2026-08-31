@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Offline teaching webpage for IELTS Academic Writing Task 1 — for students stuck below Band 6 who need to reach Band 6+.">
+<title>IELTS Writing Task 1 — Band 6 Breakthrough</title>
+<link rel="stylesheet" href="css/styles.css">
+<!-- set theme before first paint so there is no flash -->
+<script>
+  (function () {
+    try {
+      var t = JSON.parse(localStorage.getItem("t1bb.theme"));
+      if (t === "dark" || t === "light") document.documentElement.setAttribute("data-theme", t);
+    } catch (e) {}
+  })();
+</script>
+</head>
+<body data-teacher="off">
+
+<a class="skip-link" href="#main">Skip to content</a>
+
+<!-- ============================ HEADER / NAV ============================ -->
+<header class="site-header">
+  <div class="wrap--wide site-header__inner">
+    <span class="brand">Task 1 &middot; <span>Band 6 Breakthrough</span></span>
+
+    <button id="nav-toggle" class="btn btn--soft btn--sm nav-toggle" type="button"
+            aria-expanded="false" aria-controls="site-nav">Menu</button>
+
+    <nav id="site-nav" class="site-nav" aria-label="Sections">
+      <ul>
+        <li><a href="#battlefield">Know the Battlefield</a></li>
+        <li><a href="#types">6 Question Types</a></li>
+        <li><a href="#skeleton">4-Paragraph Skeleton</a></li>
+        <li><a href="#vocab">Vocabulary Bank</a></li>
+        <li><a href="#sins">7 Deadly Sins</a></li>
+        <li><a href="#compare">Band 6 vs 8</a></li>
+        <li><a href="#tools">Practice Tools</a></li>
+      </ul>
+    </nav>
+
+    <div class="header-tools">
+      <button id="theme-toggle" class="btn btn--soft btn--sm" type="button" aria-pressed="false">
+        Theme: <span class="label">Light</span>
+      </button>
+      <button id="teacher-toggle" class="btn btn--ghost btn--sm" type="button" aria-pressed="false"
+              aria-controls="teacher-panel">Teacher mode</button>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+
+  <!-- ============================ HERO ============================ -->
+  <section class="hero wrap">
+    <span class="eyebrow">IELTS Academic &middot; Writing Task 1 &middot; target Band 6+</span>
+    <h1>You are one habit away from Band 6.</h1>
+    <p>Most students stay on Band 5 for the same six reasons: no overview, listing every number,
+      copying the question, the same five linkers, mechanical writing, and no paragraphs.
+      This page attacks each one. Read the sections in order, then use the practice tools.
+      Everything works offline.</p>
+  </section>
+
+  <!-- ============================ 1. KNOW THE BATTLEFIELD ============================ -->
+  <section id="battlefield" class="section">
+    <div class="wrap">
+      <div class="section__head">
+        <span class="eyebrow">Section 1</span>
+        <h2>Know the Battlefield</h2>
+        <p class="lead">The rules of the task, and exactly what the examiner is looking for.</p>
+      </div>
+
+      <div id="fact-row" class="fact-row"><!-- facts injected by app.js --></div>
+
+      <h3>The four criteria &mdash; each worth 25%</h3>
+      <p>Your Task 1 band is the average of these four. Here is the plain-English gap between
+        Band 6 and Band 7 for each one.</p>
+      <div id="criteria-grid" class="grid grid--2"><!-- criteria cards injected by app.js --></div>
+
+      <div id="overview-klaxon" class="klaxon" role="note">
+        <h3>The one rule you cannot break</h3>
+        <p><!-- overview rule injected by app.js --></p>
+      </div>
+
+      <div class="teacher-note teacher-only">
+        Open with the 3 facts. Ask the class what happens at 140 words. Spend real time on the
+        red box &mdash; it is the thesis of the whole lesson.
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================ 2. THE 6 QUESTION TYPES ============================ -->
+  <section id="types" class="section">
+    <div class="wrap">
+      <div class="section__head">
+        <span class="eyebrow">Section 2</span>
+        <h2>The 6 Question Types</h2>
+        <p class="lead">Same skeleton every time &mdash; but what you look for first, and the traps, change.</p>
+      </div>
+
+      <div class="tabs">
+        <div id="qt-tablist" class="tabs__list" role="tablist" aria-label="Question types"><!-- tabs injected --></div>
+        <div id="qt-panels"><!-- panels injected --></div>
+      </div>
+
+      <div class="teacher-note teacher-only">
+        Jigsaw: one pair per tab, 60-second report to the class on "look at first + biggest trap".
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================ 3. THE 4-PARAGRAPH SKELETON ============================ -->
+  <section id="skeleton" class="section">
+    <div class="wrap">
+      <div class="section__head">
+        <span class="eyebrow">Section 3</span>
+        <h2>The 4-Paragraph Skeleton</h2>
+        <p class="lead">Use this structure for every Task 1, whatever the visual. Word budgets included.</p>
+      </div>
+
+      <div id="skeleton-list"><!-- paragraphs injected by app.js --></div>
+
+      <div class="teacher-note teacher-only">
+        Model P1 live on the board. Then send students to the Paraphrase Lab (Tool D) for P1 practice.
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================ 4. VOCABULARY BANK ============================ -->
+  <section id="vocab" class="section">
+    <div class="wrap">
+      <div class="section__head">
+        <span class="eyebrow">Section 4</span>
+        <h2>Vocabulary Bank</h2>
+        <p class="lead">Click any cell to copy it. Filter by function or search. Stop repeating "shows" and "increased".</p>
+      </div>
+
+      <div class="vocab-controls">
+        <label class="visually-hidden" for="vocab-search">Search the vocabulary bank</label>
+        <input id="vocab-search" type="search" placeholder="Search e.g. 'sharp', 'whereas', 'demolished'">
+        <div id="vocab-filters" role="group" aria-label="Filter vocabulary by function"><!-- filter buttons injected --></div>
+      </div>
+
+      <div id="vocab-tables"><!-- tables injected by app.js --></div>
+
+      <div class="teacher-note teacher-only">
+        Give each student a target of 5 personal replacements before the Writing Arena.
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================ 5. THE 7 DEADLY SINS ============================ -->
+  <section id="sins" class="section">
+    <div class="wrap">
+      <div class="section__head">
+        <span class="eyebrow">Section 5</span>
+        <h2>The 7 Deadly Sins of Task 1</h2>
+        <p class="lead">The Band-5 habits, why each one costs marks, and the fix. Tap to open.</p>
+      </div>
+
+      <div id="sins-accordion"><!-- accordion injected by app.js --></div>
+
+      <div class="teacher-note teacher-only">
+        Diagnostic: students privately tick the sins they commit. That becomes their goal in the Arena.
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================ 6. BAND 6 vs BAND 8 ============================ -->
+  <section id="compare" class="section">
+    <div class="wrap">
+      <div class="section__head">
+        <span class="eyebrow">Section 6</span>
+        <h2>Band 6 vs Band 8 &mdash; Spot the Difference</h2>
+        <p class="lead">The same task, answered twice. Turn on the annotations to see what earns the higher band.</p>
+      </div>
+
+      <p class="plab__prompt" id="bvb-task"><!-- task injected --></p>
+
+      <div class="bvb__toolbar">
+        <button id="bvb-toggle" class="btn" type="button" aria-pressed="false">
+          <span class="label">Show what earns Band 8</span>
+        </button>
+      </div>
+
+      <div class="bvb__cols">
+        <div class="bvb__col six card">
+          <h4>Band 6 answer <span class="tag">~Band 6</span></h4>
+          <div id="bvb-six" class="bvb__essay"><!-- injected --></div>
+        </div>
+        <div class="bvb__col eight card">
+          <h4>Band 8 answer <span class="tag">~Band 8</span></h4>
+          <div id="bvb-eight" class="bvb__essay"><!-- injected --></div>
+        </div>
+      </div>
+
+      <div class="teacher-note teacher-only">
+        Ask: "Which single change would raise your own writing the most?" before revealing annotations.
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================ PRACTICE TOOLS ============================ -->
+  <section id="tools" class="section">
+    <div class="wrap">
+      <div class="section__head">
+        <span class="eyebrow">Practice</span>
+        <h2>Practice Tools</h2>
+        <p class="lead">Your progress in the Arena, Rubric and Quiz is saved on this device only.</p>
+      </div>
+
+      <!-- Tool A: Writing Arena -->
+      <div id="tool-arena" class="tool">
+        <h3><span class="tool__letter" aria-hidden="true">A</span> Writing Arena</h3>
+        <p>Write a full Task 1 answer under exam conditions. Tick each box as you complete it.</p>
+
+        <div class="arena__bar">
+          <span id="arena-counter" class="counter" role="status" aria-live="polite">0 words</span>
+          <span id="arena-timer" class="timer" role="timer" aria-live="off">20:00</span>
+          <button id="arena-start" class="btn" type="button">Start 20:00</button>
+          <button id="arena-reset" class="btn btn--soft" type="button">Reset timer</button>
+        </div>
+
+        <div class="field">
+          <label for="arena-text">Your answer</label>
+          <textarea id="arena-text" rows="12" placeholder="Paragraph 1: paraphrase the prompt&#10;Paragraph 2: Overall, ... (no numbers)&#10;Paragraph 3: first group of detail + figures&#10;Paragraph 4: second group of detail + figures"></textarea>
+        </div>
+
+        <h4>Structure checklist</h4>
+        <ul class="checklist">
+          <li><input type="checkbox" id="chk-1"><label for="chk-1">I paraphrased the prompt (no more than 3 words copied)</label></li>
+          <li><input type="checkbox" id="chk-2"><label for="chk-2">I wrote an overview paragraph with no numbers</label></li>
+          <li><input type="checkbox" id="chk-3"><label for="chk-3">I grouped the details into 2 paragraphs</label></li>
+          <li><input type="checkbox" id="chk-4"><label for="chk-4">I included specific figures to support each point</label></li>
+        </ul>
+
+        <p style="margin-top:1rem">
+          <button id="arena-save" class="btn" type="button">Save this draft</button>
+        </p>
+        <h4>Saved drafts</h4>
+        <ul id="arena-drafts" class="draft-list"></ul>
+      </div>
+
+      <!-- Tool B: Self-Assessment Rubric -->
+      <div id="tool-rubric" class="tool">
+        <h3><span class="tool__letter" aria-hidden="true">B</span> Self-Assessment Rubric</h3>
+        <p>Score your draft honestly against the four criteria. The tool estimates your band and
+          tells you the one thing to fix next.</p>
+
+        <div id="rubric-sliders"><!-- sliders injected by rubric.js --></div>
+
+        <div class="rubric__result">
+          Estimated overall band
+          <span id="rubric-band" class="rubric__band" role="status" aria-live="polite">6.0</span>
+        </div>
+
+        <div id="rubric-tips" aria-live="polite"><!-- tips injected --></div>
+
+        <p style="margin:1rem 0 0.5rem">
+          <button id="rubric-save" class="btn" type="button">Save to progress chart</button>
+          <button id="rubric-clear" class="btn btn--soft" type="button">Clear history</button>
+        </p>
+        <svg id="rubric-chart" class="progress-chart" viewBox="0 0 640 220" role="img"
+             aria-label="Your overall band score over time"></svg>
+      </div>
+
+      <!-- Tool C: Overview Trainer -->
+      <div class="tool">
+        <h3><span class="tool__letter" aria-hidden="true">C</span> Overview Trainer</h3>
+        <p>The overview is the paragraph that decides your band. Practise it three times.
+          Write two sentences, no numbers, starting with "Overall".</p>
+        <div id="overview-trainer"><!-- 3 trainer cards injected by overview-trainer.js --></div>
+      </div>
+
+      <!-- Tool D: Paraphrase Lab -->
+      <div id="tool-plab" class="tool">
+        <h3><span class="tool__letter" aria-hidden="true">D</span> Paraphrase Lab</h3>
+        <p>Rewrite the first sentence of each prompt. Change the nouns, the verbs and the structure.
+          Then reveal the model to compare.</p>
+
+        <p class="plab__prompt" id="plab-prompt"><!-- prompt injected --></p>
+
+        <div class="field">
+          <label for="plab-input">Your paraphrase of sentence 1</label>
+          <textarea id="plab-input" rows="3" placeholder="The line graph compares..."></textarea>
+        </div>
+
+        <p id="plab-warn" class="tip" hidden></p>
+
+        <p>
+          <button id="plab-reveal" class="btn btn--ghost btn--sm" type="button" aria-expanded="false">
+            Reveal model paraphrase
+          </button>
+        </p>
+        <div id="plab-model" class="plab__model" hidden><!-- model injected --></div>
+
+        <div class="plab__nav">
+          <button id="plab-prev" class="btn btn--soft btn--sm" type="button">&larr; Previous</button>
+          <button id="plab-next" class="btn btn--soft btn--sm" type="button">Next &rarr;</button>
+          <span id="plab-count" class="plab__count">1 / 5</span>
+        </div>
+      </div>
+
+      <!-- Tool E: Vocabulary Quiz -->
+      <div id="tool-quiz" class="tool">
+        <h3><span class="tool__letter" aria-hidden="true">E</span> Vocabulary Quiz</h3>
+        <p>15 questions on trend verbs, comparison, approximation and the overview rule.
+          Wrong answers are explained. Your best score is saved.</p>
+
+        <div class="quiz__bar">
+          <span id="quiz-best">Best score: &mdash;</span>
+        </div>
+        <p><button id="quiz-start" class="btn" type="button">Start quiz</button></p>
+        <div id="quiz-stage" aria-live="polite"></div>
+      </div>
+
+    </div>
+  </section>
+
+</main>
+
+<!-- ============================ TEACHER PANEL ============================ -->
+<aside id="teacher-panel" class="teacher-panel" aria-label="Teacher notes" aria-hidden="true">
+  <button id="teacher-close" class="btn btn--soft btn--sm close" type="button">Close</button>
+  <h3>Teacher notes</h3>
+  <div id="teacher-panel-body"><!-- lesson plan injected by app.js --></div>
+</aside>
+
+<!-- ============================ FOOTER ============================ -->
+<footer class="site-footer">
+  <div class="wrap">
+    <p>IELTS Academic Writing Task 1 &mdash; Band 6 Breakthrough. Target: Band 5 &rarr; Band 6+.
+      Self-contained, offline. &copy; <span id="year">2026</span>. For classroom and self-study use.</p>
+  </div>
+</footer>
+
+<!-- data first, then shell, then one script per tool -->
+<script src="js/data.js" defer></script>
+<script src="js/app.js" defer></script>
+<script src="js/arena.js" defer></script>
+<script src="js/rubric.js" defer></script>
+<script src="js/overview-trainer.js" defer></script>
+<script src="js/paraphrase-lab.js" defer></script>
+<script src="js/vocab-quiz.js" defer></script>
+
+</body>
+</html>

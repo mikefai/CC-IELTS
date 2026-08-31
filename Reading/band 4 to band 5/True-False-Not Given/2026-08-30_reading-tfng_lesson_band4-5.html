@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IELTS Reading: True/False/Not Given - Band 4-5</title>
+    <style>
+        :root {
+            --primary: #2563eb;
+            --primary-dark: #1e40af;
+            --success: #16a34a;
+            --warning: #ea580c;
+            --bg: #ffffff;
+            --surface: #f8fafc;
+            --text: #1e293b;
+            --text-muted: #64748b;
+            --border: #e2e8f0;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background-color: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        header {
+            margin-bottom: 30px;
+            border-bottom: 2px solid var(--border);
+            padding-bottom: 20px;
+        }
+
+        h1 {
+            font-size: 28px;
+            margin-bottom: 8px;
+            color: var(--primary-dark);
+        }
+
+        .subtitle {
+            font-size: 16px;
+            color: var(--text-muted);
+            margin-bottom: 8px;
+        }
+
+        .target-level {
+            display: inline-block;
+            background: var(--surface);
+            padding: 6px 12px;
+            border-radius: 4px;
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--primary);
+            margin-top: 10px;
+        }
+
+        section {
+            margin-bottom: 40px;
+        }
+
+        h2 {
+            font-size: 20px;
+            margin-bottom: 16px;
+            color: var(--primary-dark);
+            padding-bottom: 8px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 16px;
+        }
+
+        .question-block {
+            margin-bottom: 20px;
+        }
+
+        .question-text {
+            font-size: 16px;
+            font-weight: 600;
+            color: var(--primary);
+            margin-bottom: 12px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px;
+            background: white;
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            transition: all 0.2s;
+        }
+
+        .question-text:hover {
+            background: var(--surface);
+            border-color: var(--primary);
+        }
+
+        .toggle-icon {
+            font-size: 18px;
+            transition: transform 0.3s;
+        }
+
+        .question-text.open .toggle-icon {
+            transform: rotate(180deg);
+        }
+
+        .explanation {
+            display: none;
+            background: white;
+            padding: 12px;
+            border-left: 3px solid var(--primary);
+            margin-top: 8px;
+            font-size: 15px;
+            line-height: 1.8;
+        }
+
+        .explanation.visible {
+            display: block;
+        }
+
+        .tips-box {
+            background: #f0f9ff;
+            border-left: 4px solid var(--primary);
+            padding: 16px;
+            margin-top: 16px;
+            border-radius: 4px;
+        }
+
+        .tips-box strong {
+            color: var(--primary-dark);
+        }
+
+        .tips-box ul {
+            margin-left: 20px;
+            margin-top: 8px;
+            font-size: 14px;
+            color: var(--text-muted);
+        }
+
+        .tips-box li {
+            margin-bottom: 6px;
+        }
+
+        .band-info {
+            background: #fef3c7;
+            border-left: 4px solid var(--warning);
+            padding: 16px;
+            border-radius: 4px;
+            margin-bottom: 20px;
+            font-size: 14px;
+        }
+
+        .example-text {
+            background: white;
+            border: 1px solid var(--border);
+            padding: 16px;
+            border-radius: 6px;
+            margin-top: 12px;
+            font-style: italic;
+            color: var(--text-muted);
+        }
+
+        .statement {
+            background: white;
+            border: 1px solid var(--border);
+            padding: 12px;
+            border-radius: 4px;
+            margin: 8px 0;
+            font-size: 14px;
+        }
+
+        button {
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 6px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.2s;
+            margin-right: 8px;
+            margin-top: 16px;
+        }
+
+        button:hover {
+            background: var(--primary-dark);
+        }
+
+        footer {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid var(--border);
+            font-size: 13px;
+            color: var(--text-muted);
+            text-align: center;
+        }
+
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 12px;
+        }
+
+        .comparison-table td {
+            border: 1px solid var(--border);
+            padding: 10px;
+            font-size: 13px;
+        }
+
+        .comparison-table td:first-child {
+            font-weight: 600;
+            background: var(--surface);
+            width: 30%;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>IELTS Reading: True/False/Not Given</h1>
+            <p class="subtitle">Understanding Explicit Information, Contradiction, and Missing Information</p>
+            <span class="target-level">Target: Band 4.0 – 5.5</span>
+        </header>
+
+        <div class="band-info">
+            <strong>Band 4-5 Focus:</strong> Distinguish between what the passage says (TRUE), what it contradicts (FALSE), and what it doesn't mention (NOT GIVEN). This is the hardest reading question type.
+        </div>
+
+        <section>
+            <h2>Understanding True/False/Not Given</h2>
+            <div class="card">
+                <p><strong>Format:</strong> You receive statements. Judge whether each statement is True (matches the passage), False (contradicts the passage), or Not Given (not mentioned).</p>
+                <p><strong>Challenge:</strong> Distinguishing between FALSE and NOT GIVEN. Both mean "no," but for different reasons.</p>
+                <p><strong>Key Skills:</strong> Finding information, recognizing contradiction, understanding what is NOT stated.</p>
+            </div>
+        </section>
+
+        <section>
+            <h2>The Three Differences Explained</h2>
+            <div class="card">
+                <table class="comparison-table">
+                    <tr>
+                        <td>TRUE</td>
+                        <td>The passage directly says this, or clearly implies it. You can point to evidence.</td>
+                    </tr>
+                    <tr>
+                        <td>FALSE</td>
+                        <td>The passage says something DIFFERENT or opposite. The statement contradicts the text.</td>
+                    </tr>
+                    <tr>
+                        <td>NOT GIVEN</td>
+                        <td>The passage does not mention this information at all. It could be true in real life, but the text doesn't say.</td>
+                    </tr>
+                </table>
+            </div>
+        </section>
+
+        <section>
+            <h2>Why Students Lose Marks</h2>
+            <div class="card">
+                <ul style="margin-left: 20px;">
+                    <li>Choosing FALSE when the answer is NOT GIVEN (or vice versa)</li>
+                    <li>Using general knowledge instead of only the passage</li>
+                    <li>Not finding the exact location of information in the text</li>
+                    <li>Misreading "not" in statements (e.g., "is not" vs. "is")</li>
+                </ul>
+            </div>
+        </section>
+
+        <section>
+            <h2>Band 4-5 Strategies</h2>
+
+            <div class="question-block">
+                <div class="question-text" onclick="toggleExplanation(this)">
+                    <span>Strategy 1: Find the Information in the Passage First</span>
+                    <span class="toggle-icon">▼</span>
+                </div>
+                <div class="explanation">
+                    <strong>What to do:</strong> Scan the passage for keywords from the statement. If you find the information, continue. If you don't find it, it's likely NOT GIVEN.<br><br>
+                    <strong>Example:</strong><br>
+                    Statement: "The population of Tokyo is 15 million."<br>
+                    Scan for: "Tokyo," "15 million," "population"<br>
+                    If not found: → NOT GIVEN (even if you know it's true in reality)
+                </div>
+            </div>
+
+            <div class="question-block">
+                <div class="question-text" onclick="toggleExplanation(this)">
+                    <span>Strategy 2: Read for Exact Meaning and Negation</span>
+                    <span class="toggle-icon">▼</span>
+                </div>
+                <div class="explanation">
+                    <strong>What to do:</strong> Pay close attention to words like "not," "no," "never," "cannot."<br><br>
+                    <strong>Example:</strong><br>
+                    Statement: "Cats cannot digest dairy."<br>
+                    Passage: "Cats can digest dairy with difficulty."<br>
+                    Result: FALSE (passage says they CAN, statement says they CANNOT)<br><br>
+                    <strong>Band 4-5 tip:</strong> Always circle negation words. They change meaning completely.
+                </div>
+            </div>
+
+            <div class="question-block">
+                <div class="question-text" onclick="toggleExplanation(this)">
+                    <span>Strategy 3: Ask "Is This Exact or Implied?"</span>
+                    <span class="toggle-icon">▼</span>
+                </div>
+                <div class="explanation">
+                    <strong>What to do:</strong> TRUE answers can be:<br>
+                    • Exact: "The passage says exactly this"<br>
+                    • Implied: "The passage doesn't use these exact words, but the meaning is clear"<br><br>
+                    <strong>Example:</strong><br>
+                    Passage: "The company invested 10 million dollars in research."<br>
+                    Statement: "The company spent a large amount of money on research."<br>
+                    TRUE (implied: 10 million = large amount)
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <h2>Practice Example</h2>
+
+            <div class="card">
+                <p style="margin-bottom: 12px;"><strong>Passage:</strong></p>
+                <div class="example-text">
+                    Electric vehicles (EVs) are becoming increasingly popular in many developed countries. Several cities in Europe have announced plans to ban gasoline cars by 2030. However, the infrastructure for charging stations remains limited in most areas. Battery technology has improved significantly, with modern EVs now capable of traveling 300 kilometers on a single charge. The cost of EVs is still higher than traditional cars, though government subsidies are making them more affordable.
+                </div>
+
+                <div class="question-block">
+                    <div class="question-text" onclick="toggleExplanation(this)">
+                        <span>Statement 1: Electric vehicles can travel more than 250 kilometers on a single charge.</span>
+                        <span class="toggle-icon">▼</span>
+                    </div>
+                    <div class="explanation">
+                        <strong>Answer: TRUE</strong><br><br>
+                        <strong>Why:</strong> The passage says "modern EVs now capable of traveling 300 kilometers on a single charge." 300 km is more than 250 km, so this statement is true.<br><br>
+                        <strong>Reading skill:</strong> The passage doesn't use the number 250, but it says 300, which is MORE than 250. Therefore: TRUE (implied).
+                    </div>
+                </div>
+
+                <div class="question-block">
+                    <div class="question-text" onclick="toggleExplanation(this)">
+                        <span>Statement 2: Charging stations are widely available throughout all areas.</span>
+                        <span class="toggle-icon">▼</span>
+                    </div>
+                    <div class="explanation">
+                        <strong>Answer: FALSE</strong><br><br>
+                        <strong>Why:</strong> The passage explicitly says "the infrastructure for charging stations remains limited in most areas." The statement says they are "widely available," which CONTRADICTS this.<br><br>
+                        <strong>Important:</strong> "Limited" and "widely available" mean opposite things → FALSE.
+                    </div>
+                </div>
+
+                <div class="question-block">
+                    <div class="question-text" onclick="toggleExplanation(this)">
+                        <span>Statement 3: Battery technology for EVs was invented in Germany.</span>
+                        <span class="toggle-icon">▼</span>
+                    </div>
+                    <div class="explanation">
+                        <strong>Answer: NOT GIVEN</strong><br><br>
+                        <strong>Why:</strong> The passage talks about battery technology improving, but NEVER mentions where it was invented or which country developed it. It's not mentioned at all, so: NOT GIVEN.<br><br>
+                        <strong>Even if you know:</strong> Germany did contribute to battery tech, it doesn't matter. The passage doesn't say this, so the answer is NOT GIVEN.
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <h2>Practice Tips</h2>
+            <div class="card">
+                <div class="tips-box">
+                    <strong>Decision tree (How to choose):</strong>
+                    <ul>
+                        <li><strong>Step 1:</strong> Find the key information in the statement</li>
+                        <li><strong>Step 2:</strong> Scan the passage for this information</li>
+                        <li><strong>Step 3a:</strong> If NOT FOUND → NOT GIVEN</li>
+                        <li><strong>Step 3b:</strong> If FOUND, does it match the statement exactly?</li>
+                        <li>—Yes → TRUE</li>
+                        <li>—No, it says the opposite → FALSE</li>
+                    </ul>
+                </div>
+
+                <div class="tips-box" style="margin-top: 12px;">
+                    <strong>Red flag: Confusing FALSE and NOT GIVEN</strong>
+                    <ul>
+                        <li><strong>FALSE:</strong> You found contradictory information in the passage</li>
+                        <li><strong>NOT GIVEN:</strong> The passage says nothing about this topic</li>
+                        <li>If you're unsure, ask: "Is there ANYTHING about this in the passage?"</li>
+                    </ul>
+                </div>
+
+                <div class="tips-box" style="margin-top: 12px;">
+                    <strong>Time management:</strong>
+                    <ul>
+                        <li>Spend 12 minutes on this task (8-10 statements)</li>
+                        <li>Read statement, scan for info (1 minute per statement)</li>
+                        <li>If confused between FALSE and NOT GIVEN, move on and return</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <footer>
+            <p>IELTS Academic Reading - Band 4.0–5.5 | Created 2026-08-30</p>
+            <p>Remember: FALSE means contradiction; NOT GIVEN means missing information. Always find evidence in the passage.</p>
+        </footer>
+    </div>
+
+    <script>
+        function toggleExplanation(element) {
+            const explanation = element.nextElementSibling;
+            explanation.classList.toggle('visible');
+            element.classList.toggle('open');
+        }
+    </script>
+</body>
+</html>

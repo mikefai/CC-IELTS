@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Master skill — IELTS Task 1 Mastery</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=Instrument+Serif&family=JetBrains+Mono:wght@400;500;700&family=Literata:opsz,wght@7..72,400;7..72,600&display=swap">
+<link rel="stylesheet" href="../css/tokens.css">
+<link rel="stylesheet" href="../css/app.css">
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+<div data-shell data-shell-role="topbar" data-depth="1"></div>
+<div class="app">
+  <div data-shell data-shell-role="sidenav" data-depth="1"></div>
+  <main class="main" id="main">
+    <div class="page">
+      <div id="lesson" data-coll="skills"></div>
+    </div>
+  </main>
+</div>
+<script>
+  (function () {
+    var slug = new URLSearchParams(location.search).get("slug") || "data-selection";
+    window.IT1M_ACTIVE = slug;
+    document.title = slug.replace(/-/g, " ").replace(/\b\w/g, function (c) { return c.toUpperCase(); }) + " — IELTS Task 1 Mastery";
+  })();
+</script>
+<script src="../js/store.js"></script>
+<script src="../js/shell.js"></script>
+<script src="../js/content-skills.js"></script>
+<script src="../js/lesson.js"></script>
+</body>
+</html>

@@ -1,0 +1,1267 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Trend Language &amp; Time Frames — IELTS Task 1 Grammar Lab</title>
+<style>
+  :root{
+    --ground:#F5F6F5; --surface:#FFFFFF; --sunk:#ECEEEC;
+    --ink:#1C2321; --ink-soft:#535D59; --ink-faint:#84908B;
+    --accent:#2C5A56; --accent-soft:#E0EAE8; --accent-line:#B9D4CF;
+    --amber:#8C5A1B; --amber-soft:#F3E9DA;
+    --good:#2A6B47; --good-soft:#E2EFE7;
+    --bad:#993126; --bad-soft:#F5E5E2;
+    --rule:#D8DDDA;
+    --f-display:"Iowan Old Style","Palatino Linotype","URW Palladio L",P052,Palatino,Georgia,serif;
+    --f-body:Charter,"Bitstream Charter","Sitka Text",Cambria,Georgia,"Times New Roman",serif;
+    --f-ui:system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+    --s--1:.86rem; --s-0:1.05rem; --s-1:1.2rem; --s-2:1.5rem; --s-3:1.95rem; --s-4:2.5rem;
+    --maxw:840px;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  @media (prefers-reduced-motion:reduce){ html{scroll-behavior:auto} *{transition:none!important;animation:none!important} }
+  body{margin:0;background:var(--ground);color:var(--ink);font-family:var(--f-body);font-size:var(--s-0);line-height:1.65;-webkit-text-size-adjust:100%}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 clamp(1rem,5vw,2rem)}
+  h1,h2,h3,h4{margin:0;line-height:1.15;font-weight:600;text-wrap:balance}
+  h1{font-family:var(--f-display);font-size:var(--s-4);letter-spacing:-.01em}
+  h2{font-family:var(--f-display);font-size:var(--s-3)}
+  h3{font-family:var(--f-ui);font-size:var(--s-1)}
+  h4{font-family:var(--f-ui);font-size:var(--s-0)}
+  p{max-width:66ch}
+  a{color:var(--accent)}
+  .eyebrow{font-family:var(--f-ui);font-size:.72rem;font-weight:700;letter-spacing:.13em;text-transform:uppercase;color:var(--accent)}
+  .muted{color:var(--ink-soft)} .small{font-size:var(--s--1)} .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
+  .skip{position:absolute;left:-999px;top:0;background:var(--ink);color:#fff;padding:.6rem 1rem;z-index:200;border-radius:0 0 6px 0;font-family:var(--f-ui)}
+  .skip:focus{left:0}
+  :focus-visible{outline:3px solid var(--accent);outline-offset:2px;border-radius:3px}
+
+  .hero{background:var(--surface);border-bottom:1px solid var(--rule);padding:clamp(2.2rem,7vw,4rem) 0 clamp(1.6rem,4vw,2.4rem)}
+  .hero .eyebrow{display:block;margin-bottom:.6rem}
+  .hero h1{margin-bottom:.9rem}
+  .lede{font-size:var(--s-1);color:var(--ink-soft);max-width:60ch}
+  .outcomes{list-style:none;margin:1.6rem 0 0;padding:0;display:grid;gap:.55rem}
+  .outcomes li{display:grid;grid-template-columns:1.6rem 1fr;gap:.6rem;font-family:var(--f-ui);font-size:var(--s--1)}
+  .outcomes li b{color:var(--accent);font-weight:700}
+  .herobar{display:flex;flex-wrap:wrap;gap:.8rem;align-items:center;margin-top:1.7rem}
+  .btn{font-family:var(--f-ui);font-size:.9rem;font-weight:600;cursor:pointer;min-height:44px;padding:.6rem 1.1rem;border-radius:7px;border:1px solid var(--accent);background:var(--accent);color:#fff;transition:filter .15s ease,background .15s ease}
+  .btn:hover{filter:brightness(1.08)}
+  .btn.ghost{background:var(--surface);color:var(--ink);border-color:var(--rule)}
+  .btn.ghost:hover{background:var(--sunk);filter:none}
+  .btn.mini{min-height:44px;padding:.45rem .8rem;font-size:.8rem;font-weight:500}
+  .btn[disabled]{opacity:.5;cursor:default;filter:none}
+  .pill{font-family:var(--f-ui);font-size:.78rem;color:var(--ink-soft);background:var(--sunk);border:1px solid var(--rule);border-radius:999px;padding:.35rem .8rem}
+  .disclaimer{font-family:var(--f-ui);font-size:.78rem;color:var(--ink-soft);border:1px dashed var(--rule);background:var(--surface);border-radius:8px;padding:.7rem .95rem;margin-top:1.5rem;max-width:60ch}
+
+  section{padding:clamp(2.2rem,6vw,3.6rem) 0;border-bottom:1px solid var(--rule)}
+  .sec-head{margin-bottom:1.5rem}
+  .sec-head .eyebrow{display:block;margin-bottom:.5rem}
+  .sec-head p{color:var(--ink-soft);margin-top:.7rem}
+  .set-label{font-family:var(--f-ui);font-size:.7rem;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--amber);background:var(--amber-soft);border-radius:4px;padding:.14rem .5rem;display:inline-block}
+
+  .teach-block{background:var(--surface);border:1px solid var(--rule);border-radius:10px;padding:1.1rem 1.3rem;margin:.9rem 0}
+  .teach-block h3{margin-bottom:.6rem;color:var(--ink)}
+  .tbl-scroll{overflow-x:auto}
+  table.grid{width:100%;border-collapse:collapse;font-size:var(--s--1);margin:.5rem 0;font-family:var(--f-ui)}
+  table.grid th,table.grid td{border:1px solid var(--rule);padding:.5rem .65rem;text-align:left;vertical-align:top}
+  table.grid th{background:var(--sunk);font-weight:600}
+  .pair{display:grid;gap:.3rem;margin:.5rem 0;font-family:var(--f-ui);font-size:var(--s--1)}
+  .pair .no{color:var(--bad)} .pair .no::before{content:"\2717  ";font-weight:700}
+  .pair .yes{color:var(--good)} .pair .yes::before{content:"\2713  ";font-weight:700}
+  .pair .rn{color:var(--ink-soft)}
+  .callout{border-left:4px solid var(--accent);background:var(--accent-soft);border-radius:0 8px 8px 0;padding:.85rem 1.1rem;margin:1rem 0;font-family:var(--f-ui);font-size:var(--s--1)}
+  .callout.l1{border-left-color:var(--amber);background:var(--amber-soft)}
+  .callout .eyebrow{display:block;margin-bottom:.3rem}
+  .callout.l1 .eyebrow{color:var(--amber)}
+
+  .conf-grid{display:grid;gap:.5rem;margin-top:.5rem}
+  .conf-row{display:grid;grid-template-columns:1fr auto;gap:.6rem;align-items:center;font-family:var(--f-ui);font-size:var(--s--1);border:1px solid var(--rule);border-radius:8px;padding:.5rem .7rem;background:var(--surface)}
+  .conf-btns{display:flex;gap:.3rem}
+  .conf-btns button{font-family:var(--f-ui);font-weight:600;font-size:.76rem;min-height:44px;min-width:44px;padding:.35rem .6rem;border:1px solid var(--rule);border-radius:6px;background:var(--surface);cursor:pointer}
+  .conf-btns button[aria-pressed="true"]{border-color:var(--accent);background:var(--accent-soft)}
+  @media (max-width:520px){ .conf-row{grid-template-columns:1fr} }
+
+  .item{background:var(--surface);border:1px solid var(--rule);border-radius:10px;padding:1rem 1.2rem;margin:.8rem 0}
+  .item.hide{display:none}
+  .item-head{display:flex;align-items:baseline;gap:.55rem;flex-wrap:wrap;margin-bottom:.5rem}
+  .item .qn{font-family:var(--f-ui);font-weight:700;color:var(--accent);font-size:.82rem}
+  .item .topic{font-family:var(--f-ui);font-size:.7rem;text-transform:uppercase;letter-spacing:.05em;color:var(--ink-faint)}
+  .item .tags{margin-left:auto;display:flex;gap:.3rem}
+  .item .tag{font-family:var(--f-ui);font-size:.66rem;font-weight:700;color:var(--ink-soft);background:var(--sunk);border:1px solid var(--rule);border-radius:4px;padding:.05rem .4rem}
+  .item .tag.tcode{color:var(--accent)}
+  .stem{font-weight:600;margin:.3rem 0 .6rem}
+  .stem .gap{font-family:var(--f-ui);font-weight:700;color:var(--accent);border-bottom:2px solid var(--accent-line);padding:0 1.2rem}
+  .faulty{font-family:var(--f-ui);font-size:var(--s--1);background:var(--bad-soft);border:1px solid var(--rule);border-left:3px solid var(--bad);border-radius:0 8px 8px 0;padding:.55rem .8rem;margin:.3rem 0 .6rem}
+  .data{font-family:var(--f-ui);font-size:var(--s--1);background:var(--sunk);border:1px solid var(--rule);border-radius:8px;padding:.55rem .8rem;margin:.3rem 0 .5rem}
+  fieldset{border:0;margin:0;padding:0;min-width:0}
+  .opts{display:grid;gap:.4rem;margin-top:.3rem}
+  .opt{display:grid;grid-template-columns:1.7rem 1fr;gap:.5rem;align-items:start;text-align:left;font-family:var(--f-body);font-size:var(--s-0);line-height:1.5;min-height:44px;padding:.55rem .7rem;border:1px solid var(--rule);border-radius:8px;background:var(--surface);color:var(--ink);cursor:pointer;transition:background .12s ease}
+  .opt:hover{background:var(--sunk)}
+  .opt .ol{font-family:var(--f-ui);font-weight:700;color:var(--accent)}
+  .opt[aria-checked="true"]{border-color:var(--accent);background:var(--accent-soft);box-shadow:inset 3px 0 0 var(--accent)}
+  .opt.correct{border-color:var(--good);background:var(--good-soft);box-shadow:inset 3px 0 0 var(--good)}
+  .opt.wrong{border-color:var(--bad);background:var(--bad-soft);box-shadow:inset 3px 0 0 var(--bad)}
+  .opt .why{display:none;font-family:var(--f-ui);font-size:.82rem;color:var(--ink-soft)}
+  .opt.revealed .why{display:inline}
+  .opt[disabled]{cursor:default}
+
+  textarea{width:100%;min-height:4.4rem;resize:vertical;font-family:var(--f-body);font-size:var(--s-0);line-height:1.5;padding:.65rem .8rem;border:1px solid var(--rule);border-radius:8px;background:var(--surface);color:var(--ink)}
+  textarea:focus-visible{border-color:var(--accent)}
+  .btn-row{display:flex;flex-wrap:wrap;gap:.5rem;margin-top:.55rem;align-items:center}
+  .fb{display:none;margin-top:.65rem;padding:.65rem .85rem;border-radius:8px;font-family:var(--f-ui);font-size:var(--s--1);line-height:1.5}
+  .fb.show{display:block}
+  .fb.ok{background:var(--good-soft);border:1px solid var(--good)}
+  .fb.no{background:var(--bad-soft);border:1px solid var(--bad)}
+  .fb.info{background:var(--accent-soft);border:1px solid var(--accent-line)}
+  .fb .model{font-family:var(--f-body);font-size:var(--s-0);background:var(--surface);border-radius:6px;padding:.4rem .6rem;margin:.35rem 0}
+  .fb .say{color:var(--ink-soft);font-style:italic}
+  .rubric{display:grid;gap:.4rem;margin-top:.6rem}
+  .rubric .rb-row{display:grid;grid-template-columns:1fr auto auto;gap:.4rem;align-items:center;font-family:var(--f-ui);font-size:var(--s--1);border:1px solid var(--rule);border-radius:8px;padding:.5rem .65rem;background:var(--surface)}
+  .rubric .rb-btn{font-family:var(--f-ui);font-weight:600;font-size:.76rem;min-height:44px;min-width:44px;padding:.3rem .6rem;border:1px solid var(--rule);border-radius:6px;background:var(--surface);cursor:pointer}
+  .rubric .rb-btn[aria-pressed="true"].y{border-color:var(--good);background:var(--good-soft)}
+  .rubric .rb-btn[aria-pressed="true"].n{border-color:var(--bad);background:var(--bad-soft)}
+  @media (max-width:520px){ .rubric .rb-row{grid-template-columns:1fr} }
+
+  .filters{display:flex;flex-wrap:wrap;gap:.6rem;align-items:end;background:var(--surface);border:1px solid var(--rule);border-radius:10px;padding:.8rem 1rem;margin:1rem 0}
+  .filters label{display:grid;gap:.2rem;font-family:var(--f-ui);font-size:.72rem;font-weight:700;text-transform:uppercase;letter-spacing:.04em;color:var(--ink-soft)}
+  .filters select{font-family:var(--f-ui);font-size:.85rem;min-height:44px;padding:.4rem .6rem;border:1px solid var(--rule);border-radius:7px;background:var(--surface);color:var(--ink)}
+  .route-note{font-family:var(--f-ui);font-size:var(--s--1);background:var(--accent-soft);border:1px solid var(--accent-line);border-radius:8px;padding:.7rem .9rem;margin:1rem 0}
+  .resume-note{font-family:var(--f-ui);font-size:var(--s--1);background:var(--amber-soft);border:1px solid var(--rule);border-radius:8px;padding:.6rem .9rem;margin:.8rem 0;display:flex;flex-wrap:wrap;gap:.6rem;align-items:center}
+  .bank-count{font-family:var(--f-ui);font-size:var(--s--1);color:var(--ink-soft);margin:.4rem 0 .8rem}
+
+  .fig{background:var(--surface);border:1px solid var(--rule);border-radius:10px;padding:1rem 1.2rem;margin:1rem 0}
+  .fig .figlabel{font-family:var(--f-ui);font-size:.72rem;text-transform:uppercase;letter-spacing:.05em;color:var(--ink-soft);margin-bottom:.5rem}
+  .fig svg{display:block;width:100%;height:auto;max-width:640px}
+
+  .dash{display:grid;gap:.55rem}
+  .dash-row{display:grid;grid-template-columns:13rem 1fr 3.4rem;gap:.7rem;align-items:center;font-family:var(--f-ui);font-size:var(--s--1)}
+  .dash-row .dl{font-weight:600}
+  .dash-row .dl span{display:block;font-weight:400;color:var(--ink-soft);font-size:.76rem}
+  .dash-track{background:var(--sunk);border-radius:4px;height:.85rem;overflow:hidden}
+  .dash-fill{height:100%;background:var(--accent);border-radius:4px}
+  .dash-fill.low{background:var(--bad)} .dash-fill.mid{background:var(--amber)}
+  .dash-frac{text-align:right;font-variant-numeric:tabular-nums}
+  @media (max-width:560px){ .dash-row{grid-template-columns:1fr 3.4rem} .dash-track{grid-column:1/-1} }
+  .dash-note{font-family:var(--f-ui);font-size:var(--s--1);color:var(--ink-soft);margin-top:.9rem}
+
+  #nextsteps .ns-card{border-left:4px solid var(--accent);background:var(--accent-soft);border-radius:0 8px 8px 0;padding:1rem 1.2rem}
+  #nextsteps ul{margin:.5rem 0 0;padding-left:1.2rem;font-family:var(--f-ui);font-size:var(--s--1)}
+  #nextsteps li{margin:.3rem 0}
+
+  #teacher h3{margin:1.3rem 0 .5rem;color:var(--ink-soft)}
+  .ak{border:1px solid var(--rule);border-radius:8px;background:var(--surface);padding:.7rem .9rem;margin:.5rem 0;font-family:var(--f-ui);font-size:var(--s--1)}
+  .ak .akq{font-weight:700;color:var(--ink)}
+  .ak dl{display:grid;grid-template-columns:8rem 1fr;gap:.25rem .6rem;margin:.4rem 0 0}
+  .ak dt{font-weight:700;color:var(--ink-soft)}
+  .ak dd{margin:0}
+  @media (max-width:520px){ .ak dl{grid-template-columns:1fr} .ak dt{margin-top:.3rem} }
+  .interp{border:1px solid var(--rule);border-radius:8px;background:var(--surface);padding:.7rem .9rem;margin:.4rem 0;font-family:var(--f-ui);font-size:var(--s--1)}
+  .interp b{color:var(--accent)}
+
+  .toolbar{position:sticky;bottom:0;z-index:120;background:var(--surface);border-top:1px solid var(--rule);padding:.55rem 0;box-shadow:0 -2px 12px rgba(20,24,31,.06)}
+  .toolbar .wrap{display:flex;flex-wrap:wrap;align-items:center;gap:.55rem}
+  .toolbar .prog{font-family:var(--f-ui);font-size:.78rem;color:var(--ink-soft);margin-right:auto}
+  .toolbar .prog b{color:var(--ink)}
+  .ptrack{display:inline-block;width:7rem;height:.5rem;background:var(--sunk);border-radius:3px;overflow:hidden;vertical-align:middle;margin-left:.5rem}
+  .pfill{height:100%;background:var(--accent)}
+  footer{padding:2rem 0 5.5rem;font-family:var(--f-ui);font-size:.75rem;color:var(--ink-faint);text-align:center}
+
+  @media print{
+    body{background:#fff;color:#000;font-size:11pt}
+    .no-print,.toolbar,.hero .herobar,.skip,.filters,.resume-note,.btn-row{display:none!important}
+    section{border-color:#bbb;padding:.7rem 0;break-inside:avoid}
+    .item,.teach-block,.fig,.callout,.ak{border-color:#999;break-inside:avoid}
+    .item.hide{display:block!important}
+    .opt .why{display:inline!important}
+    .fb{display:block!important;border-color:#999}
+    a{color:#000;text-decoration:none}
+    h1{font-size:20pt}
+  }
+</style>
+</head>
+<body>
+<a href="#s-entry" class="skip">Skip to the lab</a>
+
+<header class="hero">
+  <div class="wrap">
+    <span class="eyebrow">IELTS Academic &middot; Writing Task 1 &middot; Grammar Lab</span>
+    <h1>Trend Language &amp; Time Frames</h1>
+    <p class="lede">A diagnostic-first lab for describing change over time in a line graph or forecast: prepositions with figures, tense across past and projected frames, adverb placement, and staying inside the data.</p>
+    <ul class="outcomes" id="outcomeList" aria-label="Learning outcomes"></ul>
+    <div class="herobar no-print">
+      <button class="btn" id="startBtn">Start lab</button>
+      <span class="pill">45-minute core path &middot; 30+ item exercise bank for extended practice</span>
+      <button class="btn ghost mini" id="printBtn">Print / teacher key</button>
+      <button class="btn ghost mini" id="resetBtn">Reset all progress</button>
+    </div>
+    <p class="disclaimer">Independent practice resource — not an official IELTS product or score.</p>
+  </div>
+</header>
+
+<main>
+
+<section id="s-entry">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">Section 2 &middot; Entry check</span>
+      <h2>Where are you now?</h2>
+      <p><span class="set-label">Teaching set &middot; about 5 minutes</span></p>
+      <p>Six sentences, one for each error pattern. Answer, rate your confidence per area, then check. Your score sets the exercise bank&rsquo;s starting difficulty and puts your weakest pattern first — you can change every filter afterwards.</p>
+    </div>
+    <div id="entryItems"></div>
+    <h3 style="font-family:var(--f-ui);margin-top:1.4rem">Confidence per area</h3>
+    <p class="small muted">Before checking, rate how sure you feel about each pattern. Shown next to your results later.</p>
+    <div class="conf-grid" id="confGrid" role="group" aria-label="Confidence ratings"></div>
+    <div class="btn-row no-print">
+      <button class="btn" id="entryCheckBtn">Check &amp; route me</button>
+      <button class="btn ghost mini" id="entryResetBtn">Reset this section</button>
+    </div>
+    <div class="route-note" id="routeNote" hidden aria-live="polite"></div>
+  </div>
+</section>
+
+<section id="s-teach">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">Section 3 &middot; Teaching</span>
+      <h2>Form, meaning, use</h2>
+      <p>Five patterns. The exercise bank tests each one at three levels of support.</p>
+    </div>
+    <div id="teachBody"></div>
+  </div>
+</section>
+
+<section id="s-bank">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">Section 4 &middot; Exercise bank</span>
+      <h2>Scaffolded practice — notice &rarr; choose &rarr; repair &rarr; produce</h2>
+      <p><span class="set-label">Teaching sets</span> Filter by error code, band or stage. Answers save automatically and the bank resumes where you left off next time.</p>
+    </div>
+    <div class="filters no-print" role="group" aria-label="Exercise bank filters">
+      <label>Error code
+        <select id="fCode"><option value="all">All codes</option><option value="T1">T1 preposition</option><option value="T2">T2 tense / time frame</option><option value="T3">T3 adverb placement</option><option value="T4">T4 invented cause</option><option value="T5">T5 collocation / article</option></select>
+      </label>
+      <label>Band
+        <select id="fBand"><option value="all">All bands</option><option value="5.5-support">5.5 support</option><option value="6.0-core">6.0 core</option><option value="7.0-stretch">7.0 stretch</option></select>
+      </label>
+      <label>Stage
+        <select id="fStage"><option value="all">All stages</option><option value="notice">Notice</option><option value="choose">Choose</option><option value="repair">Repair</option><option value="produce">Produce</option></select>
+      </label>
+      <button class="btn ghost mini" id="fClear">Clear filters</button>
+    </div>
+    <div class="resume-note no-print" id="resumeNote" hidden></div>
+    <p class="bank-count" id="bankCount" aria-live="polite"></p>
+    <div id="bankItems"></div>
+  </div>
+</section>
+
+<section id="s-transfer">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">Section 5 &middot; Task 1 transfer</span>
+      <h2>Apply it to a mixed-time visual</h2>
+      <p>One original graph with actual figures to 2020 and projections to 2040. Four short writing sub-tasks, each self-checked against a rubric. This is a <span class="set-label">teaching set</span> — not a full 20-minute, 150-word Task 1 response.</p>
+    </div>
+    <div id="transferBody"></div>
+  </div>
+</section>
+
+<section id="s-dash">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">Section 6 &middot; Review dashboard</span>
+      <h2>Accuracy by error type</h2>
+      <p>Correct out of attempted for each pattern, across every section. No band-score simulation.</p>
+    </div>
+    <div class="dash" id="dashGrid" aria-live="polite"></div>
+    <p class="dash-note" id="dashNote"></p>
+  </div>
+</section>
+
+<section id="nextsteps">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">Section 7 &middot; Next steps</span>
+      <h2>Your weakest pattern</h2>
+    </div>
+    <div class="ns-card" id="nsCard" aria-live="polite"><p class="muted">Work through the entry check and some bank items — your weakest pattern and a targeted drill will appear here.</p></div>
+  </div>
+</section>
+
+<section id="teacher">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">Section 8 &middot; Teacher panel (printable)</span>
+      <h2>Full answer key &amp; interpretation notes</h2>
+      <p class="no-print">Use <strong>Print / teacher key</strong> for a black-on-white copy with every item, rationale and the learner&rsquo;s current results.</p>
+    </div>
+    <div id="keyBody"></div>
+    <h3>Interpretation notes — error pattern &rarr; feedback language</h3>
+    <div id="interpBody"></div>
+    <p class="small muted" id="keyDist" style="margin-top:1rem"></p>
+  </div>
+</section>
+
+</main>
+
+<div class="toolbar no-print">
+  <div class="wrap">
+    <span class="prog">Progress: <b id="progText">0 / 43</b> interactions<span class="ptrack"><span class="pfill" id="pFill" style="width:0%"></span></span></span>
+    <button class="btn ghost mini" id="tbPrint">Print</button>
+    <button class="btn ghost mini" id="tbTop">Top</button>
+  </div>
+</div>
+
+<footer><div class="wrap">LBEnglishCo &middot; IELTS Academic Writing &middot; Task 1 &middot; Grammar &middot; 2026-08-30<br>Independent practice resource — not an official IELTS product or score.</div></footer>
+
+<script>
+"use strict";
+var LAB_CONTENT = {
+  outcomes: [
+    "Select the correct preposition with figures and dates (by / to / at / of) in at least 4 of 5 timed bank items.",
+    "Keep every clause in the right time frame — past simple for closed periods, present perfect for periods running to now, projection language for forecasts — across the transfer task.",
+    "Describe a trend with a correctly placed manner adverb and no invented cause, verified against the self-check rubric on all four transfer sub-tasks."
+  ],
+  taxonomy: {
+    T1: { label: "Preposition with figures / dates", short: "preposition", tip: "by = size of the change; to = end point; at = level at a point in time; of = after a noun (a rise of 5%)" },
+    T2: { label: "Tense / time-frame mismatch", short: "tense", tip: "closed past period = past simple; period running to now = present perfect; forecast = is expected/projected to / will" },
+    T3: { label: "Adverb placement", short: "adverb", tip: "manner adverb sits mid-position (before the verb) or straight after it; never between verb and object; never stranded after a long phrase" },
+    T4: { label: "Invented cause / unsupported speculation", short: "no invented cause", tip: "Task 1 reports what the visual shows; remove because / due to / as a result of, and any claim about people's motives" },
+    T5: { label: "Trend collocation and article use", short: "collocation", tip: "a rise / an increase (countable, take an article); growth (uncountable, no article); rise = verb with no object, raise = verb with an object" }
+  },
+  teaching: [
+    { heading: "T1 &middot; Prepositions with figures and dates",
+      html:
+        '<div class="tbl-scroll"><table class="grid"><caption class="sr-only">Preposition uses</caption>'+
+        '<thead><tr><th>Preposition</th><th>Use</th><th>Example</th></tr></thead><tbody>'+
+        '<tr><td><b>by</b></td><td>the <em>size</em> of a change</td><td>rose <b>by</b> 12%; fell <b>by</b> 3 million</td></tr>'+
+        '<tr><td><b>to</b></td><td>the <em>end point</em> of a movement</td><td>rose <b>to</b> 80%; fell <b>to</b> its lowest level; climbed <b>to</b> a peak</td></tr>'+
+        '<tr><td><b>at</b></td><td>the <em>level</em> at a point in time</td><td>stood <b>at</b> 45% in 2010; peaked <b>at</b> 1.2 million; remained <b>at</b> around 30</td></tr>'+
+        '<tr><td><b>of</b></td><td>after a <em>noun</em> + a figure</td><td>a peak <b>of</b> 90,000; a decline <b>of</b> 15%; a rate <b>of</b> 6%</td></tr>'+
+        '<tr><td><b>from &hellip; to</b></td><td>start value and end value</td><td>grew <b>from</b> 8% <b>to</b> 27% between 2001 and 2019</td></tr>'+
+        '</tbody></table></div>'+
+        '<div class="pair"><span class="no">Sales increased <em>of</em> 30% / peaked <em>to</em> 1.2m / stood <em>to</em> 45%.</span>'+
+        '<span class="yes">Sales increased <em>by</em> 30% / peaked <em>at</em> 1.2m / stood <em>at</em> 45%.</span>'+
+        '<span class="rn">Verb + <em>by</em> for the amount; verb + <em>at</em> for a static level; noun + <em>of</em> for a value.</span></div>'
+    },
+    { heading: "T2 &middot; Tense and time frames",
+      html:
+        '<div class="tbl-scroll"><table class="grid"><caption class="sr-only">Time frames</caption>'+
+        '<thead><tr><th>The period is&hellip;</th><th>Tense</th><th>Signal words</th><th>Example</th></tr></thead><tbody>'+
+        '<tr><td>finished, both dates given</td><td>past simple</td><td>between 2000 and 2015; in the 1990s; from X to Y</td><td>the figure <b>rose</b> steadily</td></tr>'+
+        '<tr><td>started in the past, still true now</td><td>present perfect</td><td>since 2010; over the past decade; so far</td><td>the figure <b>has risen</b> by ten points</td></tr>'+
+        '<tr><td>a current state or general pattern</td><td>present simple</td><td>currently; today; typically</td><td>most journeys <b>are</b> under 30 minutes</td></tr>'+
+        '<tr><td>a forecast / projection</td><td><em>is expected / projected / forecast to</em> + base verb; or <em>will</em> + base verb</td><td>by 2035; according to projections; is set to</td><td>demand <b>is projected to</b> double; capacity <b>will</b> reach 200 GW</td></tr>'+
+        '<tr><td>change completed by a future date</td><td><em>will have</em> + past participle</td><td>by 2030 &hellip; since 2020</td><td>renewable capacity <b>will have more than doubled</b></td></tr>'+
+        '</tbody></table></div>'+
+        '<div class="pair"><span class="no">The figure rose until 2015 and then <em>will fall</em>. / <em>has risen</em> until 2015.</span>'+
+        '<span class="yes">The figure rose until 2015 and then <em>fell</em>. (one closed period, one tense)</span>'+
+        '<span class="rn">Shift tense only when a time marker justifies it: &ldquo;&hellip;and <b>is then expected to</b> fall.&rdquo;</span></div>'
+    },
+    { heading: "T3 &middot; Adverb placement",
+      html:
+        '<div class="tbl-scroll"><table class="grid"><caption class="sr-only">Adverb positions</caption>'+
+        '<thead><tr><th>Position</th><th>Pattern</th><th>Example</th></tr></thead><tbody>'+
+        '<tr><td>Mid (before the main verb / after an auxiliary or <em>be</em>)</td><td>subject + <b>adverb</b> + verb</td><td>prices <b>gradually</b> increased; output has <b>steadily</b> risen</td></tr>'+
+        '<tr><td>End (straight after the verb, before a long phrase)</td><td>verb + <b>adverb</b> + (time phrase)</td><td>increased <b>gradually</b> from 2000 to 2010; fell <b>sharply</b> after 2015</td></tr>'+
+        '<tr><td>Noun form (inside the noun phrase)</td><td><b>adjective</b> + trend noun</td><td>a <b>gradual</b> increase; a <b>steady</b> rise; a <b>sharp</b> decline</td></tr>'+
+        '</tbody></table></div>'+
+        '<div class="pair"><span class="no">increased <em>dramatically the sales</em> / <em>dramatic</em> fell / fell more <em>sharp</em>.</span>'+
+        '<span class="yes">sales increased <em>dramatically</em> / fell <em>dramatically</em> / fell more <em>sharply</em>.</span>'+
+        '<span class="rn">Never put the adverb between the verb and its object; use <em>-ly</em> to modify a verb, not the adjective form.</span></div>'
+    },
+    { heading: "T4 &middot; Describe, don&rsquo;t explain",
+      html:
+        '<p style="font-family:var(--f-ui);font-size:var(--s--1)">A Task 1 line graph or forecast shows <em>numbers over time</em> and nothing else. If a cause is not in the visual, it cannot go in your answer.</p>'+
+        '<div class="pair"><span class="no">Sales fell <em>because</em> fuel prices rose. / <em>probably due to</em> the downturn. / people <em>lost interest</em> in driving.</span>'+
+        '<span class="yes">Sales fell by 15% between 2018 and 2020.</span>'+
+        '<span class="rn">Ban these in Task 1: <em>because, due to, as a result of, thanks to, this shows that people&hellip;</em> unless the driver is itself plotted.</span></div>'+
+        '<div class="callout"><span class="eyebrow">Still allowed</span>Cautious language <em>about the data itself</em>: &ldquo;the upward trend continued&rdquo;, &ldquo;figures are projected to level off&rdquo;, &ldquo;the gap widened&rdquo;.</div>'
+    },
+    { heading: "T5 &middot; Trend collocations and articles",
+      html:
+        '<div class="tbl-scroll"><table class="grid"><caption class="sr-only">Verb and noun forms</caption>'+
+        '<thead><tr><th>Verb</th><th>Noun</th><th>Article / preposition</th></tr></thead><tbody>'+
+        '<tr><td>rise / rose (no object)</td><td>a rise</td><td><b>a</b> sharp rise <b>in</b> X; a rise <b>of</b> 5% (amount)</td></tr>'+
+        '<tr><td>increase / decrease</td><td>an increase / a decrease</td><td><b>an</b> increase <b>in</b> X, <b>of</b> 5%</td></tr>'+
+        '<tr><td>grow / grew (no object)</td><td>growth (<em>uncountable</em>)</td><td><b>no article</b>: strong growth; growth <b>of</b> 3%</td></tr>'+
+        '<tr><td>fall / fell, decline, drop</td><td>a fall / a decline / a drop</td><td><b>a</b> steep fall <b>in</b> X</td></tr>'+
+        '<tr><td><b>raise</b> (needs an object)</td><td>&mdash;</td><td>the bank <b>raised</b> rates — rarely used in Task 1</td></tr>'+
+        '</tbody></table></div>'+
+        '<div class="pair"><span class="no">a sharp <em>raise</em> / <em>sharp rise</em> (no article) / a rise <em>of</em> prices / a <em>growth</em> of 5%.</span>'+
+        '<span class="yes">a sharp <em>rise</em> / <em>a</em> sharp rise / a rise <em>in</em> prices / <em>growth</em> of 5%.</span>'+
+        '<span class="rn"><em>rise</em> is the noun; <em>raise</em> is a transitive verb. Trend nouns link to the topic with <em>in</em>, to a figure with <em>of</em>.</span></div>'+
+        '<div class="callout l1"><span class="eyebrow">Turkish L1 focus</span>Turkish builds these with case endings and one verb (<em>art&#305;&#351; / artmak</em>), so learners often (a) drop the English article — <em>&#10007; sharp rise</em>; (b) reuse one word for the noun and the verb; and (c) attach a Turkish-style genitive — <em>&#10007; rise of prices</em> instead of <em>rise in prices</em>. Fix: learn each pattern as a chunk — <em>a rise in ____</em>, <em>growth of ____%</em>.</div>'
+    }
+  ],
+  entry: [
+    { id:"EC-01", stage:"entry-check", error_type:"T1", band:"6.0-core", domain:"Employment",
+      prompt:"In 2015, the unemployment rate stood <span class=\"gap\" aria-hidden=\"true\"></span> just under 6%.",
+      options:[
+        {t:"by", why:"expresses the size of a change, not a static level at one point in time."},
+        {t:"at", correct:true, why:"&ldquo;stand at&rdquo; + a figure gives the level on the axis at a point in time."},
+        {t:"to", why:"goes with a verb of movement (rose to, fell to), not with the static verb &ldquo;stood&rdquo;."},
+        {t:"of", why:"follows a noun (&ldquo;a rate of 6%&rdquo;), not the verb &ldquo;stood&rdquo;."}
+      ],
+      rationale:"Use &ldquo;at&rdquo; for the level at a moment in time; &ldquo;by&rdquo; for the amount of a change; &ldquo;of&rdquo; only after a noun." },
+
+    { id:"EC-02", stage:"entry-check", error_type:"T1", band:"5.5-support", domain:"Transport",
+      prompt:"The share of adults commuting by car fell <span class=\"gap\" aria-hidden=\"true\"></span> 12 percentage points over the decade.",
+      options:[
+        {t:"from", why:"needs a starting figure (&ldquo;from 40%&rdquo;), not the amount of the fall."},
+        {t:"to", why:"&ldquo;fell to&rdquo; names the end value; 12 points is the size of the fall, not the end value."},
+        {t:"by", correct:true, why:"&ldquo;by&rdquo; + a quantity is the standard way to express how much a figure changed."},
+        {t:"at", why:"marks a static level; it does not combine with a change expressed by &ldquo;fell&rdquo;."}
+      ],
+      rationale:"&ldquo;fell / rose / grew by&rdquo; + amount of change; &ldquo;percentage points&rdquo; for the gap between two percentages." },
+
+    { id:"EC-03", stage:"entry-check", error_type:"T2", band:"6.0-core", domain:"Demographics",
+      prompt:"Between 1990 and 2010, average household size <span class=\"gap\" aria-hidden=\"true\"></span> steadily.",
+      options:[
+        {t:"has fallen", why:"present perfect suits an unfinished period (&ldquo;since 1990&rdquo;); a closed range with both dates takes the past simple."},
+        {t:"falls", why:"present simple describes a current or habitual state, not a completed past change."},
+        {t:"fell", correct:true, why:"a finished past period with both end dates given takes the past simple."},
+        {t:"is falling", why:"present continuous describes a change in progress now, not one across 1990&ndash;2010."}
+      ],
+      rationale:"Closed period, both dates stated &rarr; past simple." },
+
+    { id:"EC-04", stage:"entry-check", error_type:"T2", band:"7.0-stretch", domain:"Demographics",
+      prompt:"According to the forecast, the population of the city <span class=\"gap\" aria-hidden=\"true\"></span> 3 million by 2035.",
+      options:[
+        {t:"has exceeded", why:"present perfect places the event in the past-to-now span, not in the future."},
+        {t:"will exceed", correct:true, why:"a forecast about a future point takes &ldquo;will&rdquo; + base verb (or &ldquo;is expected to exceed&rdquo;)."},
+        {t:"exceeded", why:"past simple contradicts &ldquo;forecast&rdquo; and &ldquo;by 2035&rdquo;."},
+        {t:"exceeds", why:"present simple cannot carry a future-point meaning without a future marker."}
+      ],
+      rationale:"Forecast + future date &rarr; &ldquo;will&rdquo; / &ldquo;is expected to&rdquo; + base verb." },
+
+    { id:"EC-05", stage:"entry-check", error_type:"T3", band:"6.0-core", domain:"Demographics",
+      prompt:"Which sentence places the adverb where a reader expects it?",
+      options:[
+        {t:"The birth rate declined sharply after 2008.", correct:true, why:"a manner adverb sits directly after the intransitive verb (or in mid-position) — the neutral choice."},
+        {t:"The birth rate sharply the figure declined after 2008.", why:"the adverb plus &ldquo;the figure&rdquo; separate the subject from its verb; the word order breaks."},
+        {t:"The birth rate declined the figure sharply after 2008.", why:"&ldquo;decline&rdquo; is intransitive and takes no object (&ldquo;the figure&rdquo;); the adverb is also stranded."},
+        {t:"Sharply the birth rate declined after 2008.", why:"front position is possible for emphasis but reads as unnatural here and is not the neutral form IELTS expects."}
+      ],
+      rationale:"Manner adverb: mid-position or straight after the verb; never between verb and object." },
+
+    { id:"EC-06", stage:"entry-check", error_type:"T4", band:"6.0-core", domain:"Transport",
+      prompt:"In a Task 1 report on a line graph of car sales only, which sentence is appropriate?",
+      options:[
+        {t:"Car sales fell because fuel prices rose sharply.", why:"the graph shows sales only; attributing a cause the data does not contain is unsupported speculation."},
+        {t:"Car sales fell, probably due to the economic downturn.", why:"&ldquo;probably due to&rdquo; still introduces an external cause absent from the visual."},
+        {t:"Car sales fell by 15% between 2018 and 2020.", correct:true, why:"this reports what the data shows, using a figure and trend language."},
+        {t:"The fall in car sales shows that people lost interest in driving.", why:"this infers a motivation the data does not provide."}
+      ],
+      rationale:"Describe the plotted figures; do not add causes or motives." }
+  ],
+  bank: [
+
+  { id:"NO-01", stage:"notice", error_type:"T1", band:"5.5-support", domain:"Trade",
+    prompt:"One sentence uses the preposition correctly. Which one?",
+    options:[
+      {t:"Sales increased of 30% in the first quarter.", why:"after the verb &ldquo;increased&rdquo; use &ldquo;by&rdquo; for the amount; &ldquo;of&rdquo; goes with the noun (&ldquo;an increase of 30%&rdquo;)."},
+      {t:"Sales increased at 30% in the first quarter.", why:"&ldquo;at&rdquo; marks a static level (&ldquo;stood at 30%&rdquo;), not a change produced by &ldquo;increased&rdquo;."},
+      {t:"Sales increased by 30% than the previous quarter.", why:"&ldquo;than&rdquo; has no role here; use &ldquo;compared with the previous quarter&rdquo;."},
+      {t:"Sales increased by 30% in the first quarter.", correct:true, why:"&ldquo;increase by&rdquo; + the amount of change is the standard collocation."}
+    ], rationale:"Verb &ldquo;increase / rise / fall&rdquo; + &ldquo;by&rdquo; + the amount." },
+
+  { id:"NO-02", stage:"notice", error_type:"T2", band:"6.0-core", domain:"Demographics",
+    prompt:"Both clauses describe the same finished period. Which sentence keeps one time frame?",
+    options:[
+      {t:"The figure rose until 2015 and then it will fall.", why:"&ldquo;rose&rdquo; (past) and &ldquo;will fall&rdquo; (future) clash inside one described period."},
+      {t:"The figure has risen until 2015 and then fell.", why:"&ldquo;has risen&rdquo; implies a link to now, but &ldquo;until 2015&rdquo; closes the period; past simple is needed."},
+      {t:"The figure rises until 2015 and then fell.", why:"present then past is an unmotivated shift with no time marker to justify it."},
+      {t:"The figure rose until 2015 and then fell gradually.", correct:true, why:"both verbs are past simple, matching the completed period."}
+    ], rationale:"Closed period &rarr; past simple in every clause." },
+
+  { id:"NO-03", stage:"notice", error_type:"T3", band:"6.0-core", domain:"Tourism",
+    prompt:"Which sentence places the adverb where a reader expects it?",
+    options:[
+      {t:"Tourist numbers increased steadily from 2000 to 2010.", correct:true, why:"end position, straight after the verb and before the time phrase — natural for a manner adverb."},
+      {t:"Tourist numbers increased from 2000 to 2010 steadily.", why:"placing &ldquo;steadily&rdquo; after the long time phrase strands it and weakens the link to the verb."},
+      {t:"Tourist numbers steadily from 2000 to 2010 increased.", why:"the adverb plus the time phrase split the subject from its verb; word order breaks."},
+      {t:"Tourist steadily numbers increased from 2000 to 2010.", why:"the adverb cannot sit inside the noun phrase &ldquo;tourist numbers&rdquo;."}
+    ], rationale:"Manner adverb: before the verb, or straight after it — not after a long phrase, not inside the subject." },
+
+  { id:"NO-04", stage:"notice", error_type:"T4", band:"5.5-support", domain:"Energy",
+    prompt:"A line graph shows only electricity output by source. Which sentence stays within the data?",
+    options:[
+      {t:"Output from coal declined after 2012 as renewables became cheaper.", why:"&ldquo;as renewables became cheaper&rdquo; is a cause the graph does not show."},
+      {t:"Coal output declined because governments introduced carbon taxes.", why:"policy is external information not present in the visual."},
+      {t:"Output from coal declined after 2012.", correct:true, why:"reports the visible trend with no added explanation."},
+      {t:"The drop in coal output proves that coal is no longer viable.", why:"&ldquo;proves&rdquo; draws a conclusion the data cannot support."}
+    ], rationale:"State the plotted trend only." },
+
+  { id:"NO-05", stage:"notice", error_type:"T5", band:"6.0-core", domain:"Education",
+    prompt:"Which sentence uses the trend noun and its article correctly?",
+    options:[
+      {t:"There was sharp rise in the number of graduates.", why:"the countable noun &ldquo;rise&rdquo; needs an article: &ldquo;a sharp rise&rdquo;."},
+      {t:"There was a sharp rise of the number of graduates.", why:"the trend noun links to its topic with &ldquo;in&rdquo;, not &ldquo;of&rdquo;."},
+      {t:"There was a sharp raise in the number of graduates.", why:"&ldquo;raise&rdquo; is a verb needing an object; the noun for an upward trend is &ldquo;rise&rdquo;."},
+      {t:"There was a sharp rise in the number of graduates.", correct:true, why:"&ldquo;a rise&rdquo; (countable, with its article) + &ldquo;in&rdquo; linking it to the topic."}
+    ], rationale:"a + rise + in + topic." },
+
+  { id:"NO-06", stage:"notice", error_type:"T5", band:"7.0-stretch", domain:"Economy",
+    prompt:"Which sentence handles the uncountable noun correctly?",
+    options:[
+      {t:"The country experienced a rapid economic growth in this period.", why:"&ldquo;growth&rdquo; is uncountable here and takes no article."},
+      {t:"The country experienced rapid economic growth in this period.", correct:true, why:"uncountable &ldquo;growth&rdquo; with no article."},
+      {t:"The country experienced rapid economic growths in this period.", why:"&ldquo;growth&rdquo; in this sense has no plural."},
+      {t:"The country experienced a rapid economic growth of the period.", why:"both the article and &ldquo;of the period&rdquo; are wrong; use &ldquo;during this period&rdquo;."}
+    ], rationale:"growth = uncountable: no article, no plural." },
+
+  { id:"CH-01", stage:"choose", error_type:"T1", band:"5.5-support", domain:"Energy",
+    prompt:"Between 2001 and 2019, the share of energy from renewables grew <span class=\"gap\" aria-hidden=\"true\"></span> 8% <span class=\"gap\" aria-hidden=\"true\"></span> 27%.",
+    stemText:"Between 2001 and 2019, renewables' share of energy grew ___ 8% ___ 27%.",
+    options:[
+      {t:"by … to", why:"&ldquo;by&rdquo; needs the size of the change, not the starting figure."},
+      {t:"from … to", correct:true, why:"&ldquo;grow from X to Y&rdquo; gives the start and end points of the change."},
+      {t:"at … by", why:"&ldquo;at&rdquo; marks a static level and &ldquo;by&rdquo; an amount — neither fills the &lsquo;starting figure&rsquo; slot."},
+      {t:"of … to", why:"&ldquo;of&rdquo; follows a noun (&ldquo;a growth of 8 points&rdquo;), not the &lsquo;from&rsquo; slot."}
+    ], rationale:"grow / rise / fall from [start] to [end]." },
+
+  { id:"CH-02", stage:"choose", error_type:"T2", band:"5.5-support", domain:"Housing",
+    prompt:"Over the past twenty years, the average age of first-time home buyers <span class=\"gap\" aria-hidden=\"true\"></span>.",
+    stemText:"Over the past twenty years, the average age of first-time home buyers ___.",
+    options:[
+      {t:"has risen", correct:true, why:"&ldquo;over the past twenty years&rdquo; is a period running up to now &rarr; present perfect."},
+      {t:"rose", why:"past simple needs a finished period detached from now (e.g. &ldquo;in the 1990s&rdquo;)."},
+      {t:"will rise", why:"&ldquo;will rise&rdquo; is future; the period described ends now."},
+      {t:"is rising", why:"present continuous describes a change happening at this moment, not across twenty years."}
+    ], rationale:"&ldquo;over the past …&rdquo; / &ldquo;since …&rdquo; &rarr; present perfect." },
+
+  { id:"CH-03", stage:"choose", error_type:"T3", band:"5.5-support", domain:"Housing",
+    prompt:"House prices <span class=\"gap\" aria-hidden=\"true\"></span> between 2013 and 2018.",
+    stemText:"House prices ___ between 2013 and 2018.",
+    options:[
+      {t:"rose sharply", correct:true, why:"manner adverb straight after the intransitive verb — the neutral position."},
+      {t:"sharply rose", why:"mid-position, before the verb, is also correct and common with trend verbs (accepted here)."},
+      {t:"rose the market sharply", why:"&ldquo;rise&rdquo; takes no object, so &ldquo;the market&rdquo; is ungrammatical."},
+      {t:"sharply the prices rose", why:"&ldquo;the prices&rdquo; repeats the subject and the clause breaks."}
+    ], acceptableIdx:[1], rationale:"&ldquo;rose sharply&rdquo; or &ldquo;sharply rose&rdquo; — both fine; no object after &ldquo;rose&rdquo;." },
+
+  { id:"CH-04", stage:"choose", error_type:"T4", band:"6.0-core", domain:"Tourism",
+    prompt:"A bar chart shows visitor numbers at three museums, 2015–2020. Which sentence is a safe Task 1 statement?",
+    options:[
+      {t:"Museum A was the most popular, probably because of its central location.", why:"&ldquo;because of its central location&rdquo; adds an unshown cause."},
+      {t:"Visitors preferred Museum A because it had better exhibitions.", why:"invents both a motivation and a reason."},
+      {t:"Museum A's success was driven by increased tourism.", why:"attributes the trend to an external factor not in the chart."},
+      {t:"Museum A received the most visitors in every year shown.", correct:true, why:"reports the chart's comparison using only the plotted figures."}
+    ], rationale:"Compare the numbers; add no cause." },
+
+  { id:"CH-05", stage:"choose", error_type:"T5", band:"6.0-core", domain:"Health",
+    prompt:"The data reveals a steady <span class=\"gap\" aria-hidden=\"true\"></span> in life expectancy across all five countries.",
+    stemText:"The data reveals a steady ___ in life expectancy across all five countries.",
+    options:[
+      {t:"increasing", why:"&ldquo;increasing&rdquo; is a participle; &ldquo;a steady increasing&rdquo; is not a noun phrase."},
+      {t:"increase", correct:true, why:"after &ldquo;a steady&rdquo; you need the noun &ldquo;increase&rdquo;."},
+      {t:"raise", why:"&ldquo;raise&rdquo; as a noun means a pay rise (informal); the trend noun is &ldquo;increase&rdquo; or &ldquo;rise&rdquo;."},
+      {t:"increased", why:"&ldquo;increased&rdquo; is a past-tense verb or an adjective, not the noun needed after &ldquo;a steady&rdquo;."}
+    ], rationale:"article / adjective + trend NOUN (increase / rise)." },
+
+  { id:"CH-06", stage:"choose", error_type:"T1", band:"6.0-core", domain:"Education",
+    prompt:"The number of international students reached a peak <span class=\"gap\" aria-hidden=\"true\"></span> around 90,000 in 2016 before declining.",
+    stemText:"The number of international students reached a peak ___ around 90,000 in 2016.",
+    options:[
+      {t:"by", why:"&ldquo;by&rdquo; would express how much the peak exceeded an earlier point, not the peak value."},
+      {t:"to", why:"&ldquo;reached … to&rdquo; is not used; say &ldquo;reached a peak of&rdquo; or &ldquo;peaked at&rdquo;."},
+      {t:"of", correct:true, why:"&ldquo;a peak of&rdquo; + figure — &ldquo;of&rdquo; links the noun &ldquo;peak&rdquo; to its value."},
+      {t:"at", why:"&ldquo;at&rdquo; pairs with the verb (&ldquo;peaked at 90,000&rdquo;), not with the noun &ldquo;a peak&rdquo;."}
+    ], rationale:"noun &ldquo;a peak / a rise&rdquo; + OF + figure; verb &ldquo;peaked&rdquo; + AT + figure." },
+
+  { id:"CH-07", stage:"choose", error_type:"T2", band:"6.0-core", domain:"Public finance",
+    prompt:"The graph shows expenditure from 2010 to 2020, with projections to 2030. Between 2020 and 2030, spending <span class=\"gap\" aria-hidden=\"true\"></span> to double.",
+    stemText:"… Between 2020 and 2030, spending ___ to double.",
+    options:[
+      {t:"was expected", why:"past &ldquo;was expected&rdquo; suits a forecast made and reported in the past, not one shown as current."},
+      {t:"has been expected", why:"present perfect adds a past-to-now framing the simple projection does not need."},
+      {t:"expected", why:"&ldquo;spending expected to double&rdquo; is missing the verb &ldquo;is&rdquo;."},
+      {t:"is expected", correct:true, why:"the projection is a current expectation about the future &rarr; present simple &ldquo;is expected&rdquo;."}
+    ], rationale:"Forecast &rarr; &ldquo;is expected / projected to&rdquo; + base verb." },
+
+  { id:"CH-08", stage:"choose", error_type:"T3", band:"6.0-core", domain:"Environment",
+    prompt:"After 2015, the rate of deforestation <span class=\"gap\" aria-hidden=\"true\"></span>.",
+    stemText:"After 2015, the rate of deforestation ___.",
+    options:[
+      {t:"fell dramatically", correct:true, why:"adverb straight after the verb — a correct end / mid alternative."},
+      {t:"dramatically fell", why:"mid-position before the verb is also acceptable."},
+      {t:"fell dramatical", why:"&ldquo;dramatical&rdquo; is not a word; the adverb is &ldquo;dramatically&rdquo;."},
+      {t:"dramatic fell", why:"&ldquo;dramatic&rdquo; is an adjective and cannot modify the verb &ldquo;fell&rdquo;."}
+    ], acceptableIdx:[1], rationale:"-ly adverb modifies the verb: &ldquo;fell dramatically&rdquo; / &ldquo;dramatically fell&rdquo;." },
+
+  { id:"CH-09", stage:"choose", error_type:"T4", band:"7.0-stretch", domain:"Demographics",
+    prompt:"Which sentence describes a projection without over-claiming?",
+    options:[
+      {t:"The population is projected to reach 10 million by 2040.", correct:true, why:"&ldquo;is projected to&rdquo; reports the forecast and its uncertainty accurately."},
+      {t:"The population will definitely reach 10 million by 2040.", why:"&ldquo;definitely&rdquo; overstates the certainty of a forecast."},
+      {t:"The population is going to reach 10 million because of migration.", why:"&ldquo;because of migration&rdquo; supplies a cause the visual does not contain."},
+      {t:"The population must reach 10 million by 2040.", why:"&ldquo;must&rdquo; expresses obligation or logical necessity, not a projection."}
+    ], rationale:"&ldquo;is projected / expected to&rdquo; keeps the right level of certainty; no cause." },
+
+  { id:"CH-10", stage:"choose", error_type:"T5", band:"5.5-support", domain:"Employment",
+    prompt:"There was a significant <span class=\"gap\" aria-hidden=\"true\"></span> in unemployment during the recession.",
+    stemText:"There was a significant ___ in unemployment during the recession.",
+    options:[
+      {t:"raise", why:"&ldquo;raise&rdquo; is a transitive verb / informal noun; not the trend noun here."},
+      {t:"rose", why:"&ldquo;rose&rdquo; is the past-tense verb, not a noun."},
+      {t:"rising", why:"&ldquo;rising&rdquo; cannot follow &ldquo;a significant&rdquo; as a noun."},
+      {t:"rise", correct:true, why:"&ldquo;a significant rise&rdquo; — countable trend noun with its article, + &ldquo;in&rdquo;."}
+    ], rationale:"a + rise + in + topic." },
+
+  { id:"CH-11", stage:"choose", error_type:"T1", band:"7.0-stretch", domain:"Transport",
+    prompt:"Car ownership increased <span class=\"gap\" aria-hidden=\"true\"></span> 200 vehicles per 1,000 people <span class=\"gap\" aria-hidden=\"true\"></span> 2005 <span class=\"gap\" aria-hidden=\"true\"></span> nearly 400 by 2020.",
+    stemText:"Car ownership increased ___ 200 vehicles per 1,000 people ___ 2005 ___ nearly 400 by 2020.",
+    options:[
+      {t:"by … in … to", why:"&ldquo;by&rdquo; needs the size of the increase, not the 2005 value."},
+      {t:"from … in … to", correct:true, why:"&ldquo;from [figure] in [year] to [figure]&rdquo; — start value, its year, and end value."},
+      {t:"from … at … to", why:"use &ldquo;in 2005&rdquo;, not &ldquo;at 2005&rdquo;, for a year."},
+      {t:"at … in … to", why:"&ldquo;at 200 vehicles&rdquo; is a static level and does not combine with &ldquo;increased … to&rdquo;."}
+    ], rationale:"from [start] in [year] to [end]; years take &ldquo;in&rdquo;." },
+
+  { id:"CH-12", stage:"choose", error_type:"T2", band:"7.0-stretch", domain:"Energy",
+    prompt:"By 2030, according to the model, renewable capacity <span class=\"gap\" aria-hidden=\"true\"></span> since 2020.",
+    stemText:"By 2030, according to the model, renewable capacity ___ since 2020.",
+    options:[
+      {t:"will have more than doubled", correct:true, why:"&ldquo;by 2030 … since 2020&rdquo; frames a change completed by a future point &rarr; future perfect."},
+      {t:"will more than double", why:"acceptable in practice; the fuller &ldquo;will have more than doubled&rdquo; matches &lsquo;by 2030 … since 2020&rsquo; more precisely (accepted)."},
+      {t:"has more than doubled", why:"present perfect stops at the present; the endpoint here is 2030."},
+      {t:"more than doubled", why:"past simple places the whole change before now, contradicting &ldquo;by 2030&rdquo;."}
+    ], acceptableIdx:[1], rationale:"&ldquo;by [future year] … since [past year]&rdquo; &rarr; &ldquo;will have + past participle&rdquo;." },
+
+  { id:"CH-13", stage:"choose", error_type:"T3", band:"7.0-stretch", domain:"Manufacturing",
+    prompt:"Which sentence positions both adverbs naturally?",
+    options:[
+      {t:"Output rose initially slowly, then sharply climbed after 2010.", why:"&ldquo;rose initially slowly&rdquo; stacks two adverbs awkwardly; &ldquo;climbed sharply&rdquo; is more natural here."},
+      {t:"Output rose slowly initially, then after 2010 sharply climbed.", why:"&ldquo;after 2010 sharply climbed&rdquo; separates the time phrase and adverb from the verb clumsily."},
+      {t:"Initially output slowly rose, then climbed after 2010 sharply.", why:"sentence-final &ldquo;sharply&rdquo; is stranded far from &ldquo;climbed&rdquo;."},
+      {t:"Output initially rose slowly, then climbed sharply after 2010.", correct:true, why:"&ldquo;initially&rdquo; in mid-position sets the phase; &ldquo;slowly&rdquo; and &ldquo;sharply&rdquo; sit straight after each verb."}
+    ], rationale:"Time adverb mid-position; manner adverb straight after its verb." },
+
+  { id:"RE-01", stage:"repair", error_type:"T1", band:"5.5-support", domain:"Employment",
+    faulty:"The unemployment rate increased of 3% between 2008 and 2010.",
+    model:"The unemployment rate increased by 3% between 2008 and 2010.",
+    acceptable:["the unemployment rate rose by 3% between 2008 and 2010","unemployment increased by 3% between 2008 and 2010","the unemployment rate increased by 3 percentage points between 2008 and 2010"],
+    rationale:"After the verb &ldquo;increase / rise&rdquo;, use &ldquo;by&rdquo; + the size of the change. &ldquo;of&rdquo; goes with the noun form (&ldquo;an increase of 3%&rdquo;).",
+    say:"The verb takes &lsquo;by&rsquo;. Save &lsquo;of&rsquo; for &lsquo;an increase of …&rsquo;." },
+
+  { id:"RE-02", stage:"repair", error_type:"T2", band:"5.5-support", domain:"Transport",
+    faulty:"Since 2015, the average commute time in the capital rose by ten minutes.",
+    model:"Since 2015, the average commute time in the capital has risen by ten minutes.",
+    acceptable:["since 2015 the average commute time in the capital has increased by ten minutes","the average commute time in the capital has risen by ten minutes since 2015"],
+    rationale:"&ldquo;Since + year&rdquo; marks a period continuing to the present &rarr; present perfect (&ldquo;has risen&rdquo;), not past simple.",
+    say:"&lsquo;Since 2015&rsquo; runs to now — that means &lsquo;has risen&rsquo;." },
+
+  { id:"RE-03", stage:"repair", error_type:"T3", band:"5.5-support", domain:"Housing",
+    faulty:"The proportion of renters increased dramatical over the period.",
+    model:"The proportion of renters increased dramatically over the period.",
+    acceptable:["the proportion of renters rose dramatically over the period","the proportion of renters dramatically increased over the period"],
+    rationale:"Modify a verb with an adverb (&ldquo;dramatically&rdquo;), not an adjective (&ldquo;dramatical&rdquo;, which is not standard).",
+    say:"&lsquo;-ly&rsquo; on the verb: &lsquo;increased dramatically&rsquo;." },
+
+  { id:"RE-04", stage:"repair", error_type:"T4", band:"6.0-core", domain:"Transport",
+    faulty:"Sales of electric cars surged after 2016 because charging stations became widespread.",
+    model:"Sales of electric cars surged after 2016.",
+    acceptable:["sales of electric cars rose sharply after 2016","electric car sales surged after 2016"],
+    rationale:"A sales graph contains no information about charging stations, so the cause must be removed.",
+    say:"Cut everything after &lsquo;because&rsquo; — it is not in the graph." },
+
+  { id:"RE-05", stage:"repair", error_type:"T5", band:"6.0-core", domain:"Environment",
+    faulty:"The chart shows a steady raise in average temperatures since 1950.",
+    model:"The chart shows a steady rise in average temperatures since 1950.",
+    acceptable:["the chart shows a steady increase in average temperatures since 1950"],
+    rationale:"The noun for an upward trend is &ldquo;rise&rdquo; (or &ldquo;increase&rdquo;). &ldquo;Raise&rdquo; is a transitive verb (&ldquo;to raise prices&rdquo;).",
+    say:"Noun = &lsquo;rise&rsquo;. &lsquo;Raise&rsquo; always needs an object." },
+
+  { id:"RE-06", stage:"repair", error_type:"T1", band:"6.0-core", domain:"Tourism",
+    faulty:"Visitor numbers peaked to 1.2 million in 2018.",
+    model:"Visitor numbers peaked at 1.2 million in 2018.",
+    acceptable:["visitor numbers reached a peak of 1.2 million in 2018","the number of visitors peaked at 1.2 million in 2018"],
+    rationale:"&ldquo;Peak&rdquo; as a verb takes &ldquo;at&rdquo; + the figure. &ldquo;To&rdquo; goes with directional verbs like &ldquo;rose to&rdquo; / &ldquo;fell to&rdquo;.",
+    say:"&lsquo;peaked at&rsquo;, or &lsquo;reached a peak of&rsquo;." },
+
+  { id:"RE-07", stage:"repair", error_type:"T2", band:"6.0-core", domain:"Demographics",
+    faulty:"The population grew until 2000 and then it starts to decline.",
+    model:"The population grew until 2000 and then started to decline.",
+    acceptable:["the population grew until 2000 and then began to decline","the population increased until 2000 and then started to decline"],
+    rationale:"Both clauses describe one completed past sequence &rarr; keep the past simple throughout (&ldquo;grew … started&rdquo;).",
+    say:"One past period, one tense: &lsquo;grew … started&rsquo;." },
+
+  { id:"RE-08", stage:"repair", error_type:"T3", band:"7.0-stretch", domain:"Demographics",
+    faulty:"Between 2010 and 2015 the birth rate declined slightly, and after that it fell more sharp.",
+    model:"Between 2010 and 2015 the birth rate declined slightly, and after that it fell more sharply.",
+    acceptable:["between 2010 and 2015 the birth rate fell slightly, and after that it declined more sharply"],
+    rationale:"The comparative of the adverb &ldquo;sharply&rdquo; is &ldquo;more sharply&rdquo;. &ldquo;More sharp&rdquo; is the adjective comparative and cannot modify &ldquo;fell&rdquo;.",
+    say:"Adverb comparative: &lsquo;more sharply&rsquo;, not &lsquo;more sharp&rsquo;." },
+
+  { id:"RE-09", stage:"repair", error_type:"T4", band:"7.0-stretch", domain:"Agriculture",
+    faulty:"The number of farms fell steadily, which was clearly caused by rising land prices.",
+    model:"The number of farms fell steadily over the period.",
+    acceptable:["the number of farms declined steadily over the period","the number of farms fell steadily"],
+    rationale:"&ldquo;Clearly caused by rising land prices&rdquo; introduces an explanation the chart does not provide. State only the observed decline.",
+    say:"Delete the &lsquo;caused by&rsquo; clause — the chart shows farms, not prices." },
+
+  { id:"PR-01", stage:"produce", error_type:"T3", band:"6.0-core", domain:"Technology",
+    prompt:"Write ONE sentence describing the whole trend, using two different manner adverbs (e.g. &ldquo;gradually&rdquo;, &ldquo;sharply&rdquo;) in natural positions.",
+    data:"Website visits — 2018: 1.2m · 2019: 1.4m · 2020: 3.9m (steep jump)",
+    model:"Website visits rose gradually between 2018 and 2019, before increasing sharply to 3.9 million in 2020.",
+    acceptable:["&ldquo;climbed slowly at first, then jumped sharply to 3.9 million&rdquo;","&ldquo;grew steadily, then rose dramatically in 2020&rdquo;"],
+    rubric:["Both adverbs modify a verb, not a noun.","Each adverb sits before its verb or straight after it — not between verb and object, not stranded at the end.","The sentence stays in the past simple throughout (closed period, all dates given)."] },
+
+  { id:"PR-02", stage:"produce", error_type:"T1", band:"5.5-support", domain:"Environment",
+    prompt:"Write ONE sentence using both &ldquo;from … to&rdquo; and one figure for the size of the change (&ldquo;by …&rdquo; or the noun form &ldquo;an increase of …&rdquo;).",
+    data:"Recycling rate — rose from 24% in 2010 to 52% in 2020",
+    model:"The recycling rate rose from 24% in 2010 to 52% in 2020, an increase of 28 percentage points.",
+    acceptable:["&ldquo;climbed from 24% to 52%, up by 28 points&rdquo;","&ldquo;grew by 28 percentage points, from 24% to 52%&rdquo;"],
+    rubric:["&ldquo;from&rdquo; and &ldquo;to&rdquo; each attach to a figure (start and end).","The size of the change uses &ldquo;by&rdquo; + amount, or the noun form &ldquo;an increase of&rdquo;.","&ldquo;percentage points&rdquo; (not &ldquo;%&rdquo;) is used for the difference between two percentages."] },
+
+  { id:"PR-03", stage:"produce", error_type:"T2", band:"7.0-stretch", domain:"Energy",
+    prompt:"Write TWO sentences: one for the past period, one for the projection, each in the correct time frame.",
+    data:"Energy demand — actual 2000–2020: rose steadily · projection 2020–2040: expected to level off",
+    model:"Energy demand rose steadily between 2000 and 2020. It is then projected to level off, remaining broadly stable to 2040.",
+    acceptable:["&ldquo;… is expected to plateau …&rdquo;","&ldquo;… will level off and stay flat until 2040&rdquo;"],
+    rubric:["The first sentence is past simple (closed 2000–2020 period).","The projection uses &ldquo;is projected / expected to&rdquo; + base verb, or &ldquo;will&rdquo; + base verb.","No cause is given for either the past rise or the future plateau."] },
+
+  { id:"PR-04", stage:"produce", error_type:"T4", band:"6.0-core", domain:"Household finance",
+    prompt:"Write ONE sentence describing this change. Do NOT explain why it happened.",
+    data:"Household spending on housing — 1995: 18% of the budget · 2020: 31%",
+    model:"The share of household spending devoted to housing rose sharply, from 18% in 1995 to 31% in 2020.",
+    acceptable:["&ldquo;Housing went from under a fifth of spending to almost a third.&rdquo;","&ldquo;The proportion spent on housing nearly doubled, reaching 31% in 2020.&rdquo;"],
+    rubric:["The sentence reports figures and a trend word only.","No cause (&ldquo;because…&rdquo;, &ldquo;due to…&rdquo;, &ldquo;as a result of…&rdquo;) appears.","No claim about people's choices or motivations appears."] },
+
+  { id:"PR-05", stage:"produce", error_type:"T5", band:"6.0-core", domain:"Economy",
+    prompt:"Write ONE sentence using the noun &ldquo;growth&rdquo; correctly (article and countability).",
+    data:"GDP growth — 2015: 3.1% · 2016: 3.4% · 2017: 2.9%",
+    model:"Economic growth remained fairly stable over the three years, staying between 2.9% and 3.4%.",
+    acceptable:["&ldquo;GDP growth held steady at around 3% a year&rdquo;","&ldquo;There was steady growth of roughly 3% annually&rdquo;"],
+    rubric:["&ldquo;growth&rdquo; has no article and no plural (&ldquo;a growth&rdquo; / &ldquo;growths&rdquo; are both wrong).","If a figure follows, it is &ldquo;growth of X%&rdquo; — not &ldquo;growth in X%&rdquo;.","The sentence describes the numbers without inventing a reason."] }
+
+  ],
+  transfer: {
+    intro: "The graph shows the average amount of water used per person per day in the City of Aldermoor and in the surrounding region, with actual figures to 2020 and projected figures to 2040.",
+    figLabel: "Average water use per person per day (litres) — Aldermoor and regional average",
+    city:   [ ["2000",165], ["2010",150], ["2020",138], ["2030 (proj.)",130], ["2040 (proj.)",128] ],
+    region: [ ["2000",155], ["2010",150], ["2020",145], ["2030 (proj.)",142], ["2040 (proj.)",140] ],
+    projFrom: 3,
+    subtasks: [
+      { id:"TR-01a", stage:"apply", error_type:"T2", band:"6.0-core",
+        prompt:"Write ONE sentence describing how water use in Aldermoor changed between 2000 and 2020, in the correct tense.",
+        model:"Between 2000 and 2020, water use per person in Aldermoor fell steadily, from 165 litres a day to 138.",
+        acceptable:["&ldquo;&hellip;declined gradually from 165 to 138 litres per day.&rdquo;","&ldquo;Aldermoor&rsquo;s figure dropped from 165 litres in 2000 to 138 in 2020.&rdquo;"],
+        rubric:["The verb is past simple (2000&ndash;2020 is a closed period with both dates given).","&ldquo;from &hellip; to&rdquo; attaches to the two figures (start and end).","No cause is given for the fall."] },
+      { id:"TR-01b", stage:"apply", error_type:"T2", band:"7.0-stretch",
+        prompt:"Write ONE sentence about the PROJECTED Aldermoor figures for 2030 and 2040, using projection language and &ldquo;to&rdquo; with the end figure.",
+        model:"Water use is projected to continue falling, reaching around 128 litres per person per day by 2040.",
+        acceptable:["&ldquo;The figure is expected to decline further, to about 128 litres by 2040.&rdquo;","&ldquo;Consumption is forecast to drop to roughly 130 litres in 2030 and 128 in 2040.&rdquo;"],
+        rubric:["The verb uses projection language: &ldquo;is projected / expected / forecast to&rdquo; + base verb, or &ldquo;will&rdquo; + base verb.","The end figure is introduced with &ldquo;to&rdquo; (&ldquo;to around 128 litres&rdquo;) or &ldquo;reaching&rdquo;.","The tense is not past simple and not present perfect."] },
+      { id:"TR-01c", stage:"apply", error_type:"T3", band:"6.0-core",
+        prompt:"Write ONE sentence comparing the pace of change in Aldermoor before and after 2020, using at least one correctly placed manner adverb.",
+        model:"Water use fell fairly quickly up to 2020 but is expected to decline only slightly thereafter.",
+        acceptable:["&ldquo;The figure dropped sharply before 2020 and is projected to fall more gradually afterwards.&rdquo;","&ldquo;Consumption decreased steadily until 2020, then levels off almost completely in the projection.&rdquo;"],
+        rubric:["Each adverb modifies a verb (&ldquo;fell quickly&rdquo;, &ldquo;decline slightly&rdquo;) — not a noun, and not stranded after a long phrase.","The two time frames are handled correctly (past for pre-2020, projection for post-2020).","No cause is given."] },
+      { id:"TR-01d", stage:"apply", error_type:"T4", band:"6.0-core",
+        prompt:"Write ONE overview sentence for the whole graph. Do NOT explain why water use is falling.",
+        model:"Overall, per-person water use is falling in both Aldermoor and the wider region, and is projected to keep declining to 2040, with Aldermoor consistently below the regional average from 2010 onwards.",
+        acceptable:["&ldquo;In general, both figures show a downward trend across the whole period, actual and projected, with the city lower than the region for most years.&rdquo;"],
+        rubric:["It states the main trend (downward, both lines, actual + projected).","It makes a comparison the graph supports (city vs region).","It contains no &ldquo;because / due to / as a result of&rdquo; and no claim about behaviour or policy."] }
+    ]
+  },
+  interpretation: {
+    T1:"If prepositions are the pattern: the learner usually knows the trend verb but reaches for the wrong particle. Feed back with the pairing, not the error: &ldquo;<b>by</b> for how much it moved, <b>to</b> for where it ended, <b>at</b> for where it sat, <b>of</b> after a noun.&rdquo; Give a ten-item substitution drill on one graph.",
+    T2:"If tense is the pattern: the learner can describe a single period but loses control when the visual mixes actual and projected data. Feed back by drawing the timeline and labelling each segment with its tense before they write. Target the join: &ldquo;&hellip;rose until 2020 and <b>is then projected to</b> fall.&rdquo;",
+    T3:"If adverb placement is the pattern: the learner is often translating an adjective directly (&ldquo;dramatic&rdquo;) or dropping the adverb between verb and object. Feed back with the two safe slots (before the verb, or straight after it) and the noun alternative (&ldquo;a sharp fall&rdquo;) as an escape hatch.",
+    T4:"If invented cause is the pattern: the learner writes like a Task 2 essay, explaining rather than reporting. Feed back by covering everything after &ldquo;because&rdquo; with a finger and asking &ldquo;is that in the picture?&rdquo; Set a rewrite task: delete every clause that answers &lsquo;why&rsquo;.",
+    T5:"If collocation and articles are the pattern: usually L1 transfer &mdash; a missing article, &lsquo;raise&rsquo; for &lsquo;rise&rsquo;, or &lsquo;of&rsquo; for &lsquo;in&rsquo;. Feed back with fixed chunks to memorise: &lsquo;a sharp rise in ___&rsquo;, &lsquo;growth of ___%&rsquo;, &lsquo;an increase in ___&rsquo;."
+  }
+};
+(function(){
+  "use strict";
+  var KEY = "trendlab:state:v1";
+  var TX = LAB_CONTENT.taxonomy, CODES = Object.keys(TX);
+  var ENTRY = LAB_CONTENT.entry, BANK = LAB_CONTENT.bank, TR = LAB_CONTENT.transfer;
+  var STAGE_ORDER = { notice:0, choose:1, repair:2, produce:3 };
+  var LET = "ABCD";
+  var TOTAL = ENTRY.length + BANK.length + TR.subtasks.length;
+
+  function base(){ return { ans:{}, conf:{}, rep:{}, prod:{}, entryChecked:false, route:null, weakest:null, filter:{code:"all",band:"all",stage:"all"}, revealAll:false }; }
+  var S = base();
+  try { var j = JSON.parse(localStorage.getItem(KEY)); if (j && typeof j === "object") { S = Object.assign(base(), j); S.filter = Object.assign({code:"all",band:"all",stage:"all"}, j.filter || {}); } } catch(e){}
+  function save(){ try { localStorage.setItem(KEY, JSON.stringify(S)); } catch(e){} }
+
+  function $(id){ return document.getElementById(id); }
+  function esc(s){ return String(s==null?"":s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;"); }
+  function strip(s){ return String(s||"").replace(/<[^>]+>/g,""); }
+  function norm(s){ return String(s||"").toLowerCase().replace(/[“”]/g,'"').replace(/[‘’]/g,"'").replace(/\bper ?cent\b/g,"%").replace(/\bpercent\b/g,"%").replace(/[–—]/g,"-").replace(/\s+/g," ").trim().replace(/[.!?;:,]+$/,""); }
+  function bandShort(b){ return b.split("-")[0]; }
+  function corr(it){ for (var i=0;i<it.options.length;i++) if (it.options[i].correct) return i; return -1; }
+  function accept(it){ return (it.acceptableIdx||[]).concat(corr(it)); }
+  function repDone(id){ var r = S.rep[id]||{}; return !!(r.checked || r.override); }
+  function repOk(id){ var r = S.rep[id]||{}; return !!(r.auto || r.override); }
+  function rubItem(it){ var d = S.prod[it.id]; if (!d || !d.rubric) return {full:false,all:false}; var full = it.rubric.every(function(_,ci){ return d.rubric[ci]; }); var all = full && it.rubric.every(function(_,ci){ return d.rubric[ci]==="y"; }); return {full:full,all:all}; }
+
+  function headHTML(it){
+    return '<div class="item-head"><span class="qn">'+it.id+'</span>'
+      + (it.domain?'<span class="topic">'+esc(it.domain)+'</span>':'')
+      + '<span class="tags"><span class="tag tcode">'+it.error_type+'</span><span class="tag tband">'+bandShort(it.band)+'</span></span></div>';
+  }
+  function shell(it, inner){
+    return '<div class="item" id="item-'+it.id+'" data-code="'+it.error_type+'" data-band="'+it.band+'" data-stage="'+it.stage+'">'+headHTML(it)+inner+'</div>';
+  }
+
+  /* ---------- OBJECTIVE (entry / notice / choose) ---------- */
+  function objHTML(it){
+    var opts = it.options.map(function(o,i){
+      return '<button type="button" class="opt" role="radio" aria-checked="'+(S.ans[it.id]===i?"true":"false")+'" data-i="'+i+'">'
+        + '<span class="ol">'+LET[i]+'</span><span class="ot">'+esc(o.t)+'<span class="why" data-i="'+i+'"></span></span></button>';
+    }).join("");
+    return shell(it,
+      '<p class="stem">'+it.prompt+'</p>'
+      + '<fieldset><legend class="sr-only">Options for '+it.id+'</legend>'
+      + '<div class="opts" role="radiogroup" aria-label="'+esc(strip(it.stemText||it.prompt))+'">'+opts+'</div></fieldset>'
+      + '<div class="fb" role="status" aria-live="polite"></div>');
+  }
+  function objWire(it, entry){
+    var card = $("item-"+it.id); if (!card) return;
+    var grp = card.querySelector(".opts");
+    grp.querySelectorAll(".opt").forEach(function(b){
+      b.addEventListener("click", function(){
+        if (entry ? S.entryChecked : (S.ans[it.id]!=null)) return;
+        var i = +b.dataset.i;
+        S.ans[it.id] = i;
+        grp.querySelectorAll(".opt").forEach(function(x){ x.setAttribute("aria-checked","false"); });
+        b.setAttribute("aria-checked","true");
+        save();
+        if (!entry) { objPaint(it); refresh(); }
+        else refreshProgress();
+      });
+    });
+  }
+  function objPaint(it){
+    var card = $("item-"+it.id); if (!card) return;
+    var picked = S.ans[it.id]; if (picked==null) return;
+    var ci = corr(it), acc = accept(it);
+    card.querySelectorAll(".opt").forEach(function(b){
+      var i = +b.dataset.i;
+      b.classList.add("revealed"); b.disabled = true;
+      b.setAttribute("aria-checked", i===picked ? "true":"false");
+      b.querySelector(".why").innerHTML = " &mdash; " + it.options[i].why;
+      b.classList.toggle("correct", i===ci);
+      b.classList.toggle("wrong", i===picked && acc.indexOf(i)<0);
+    });
+    var ok = acc.indexOf(picked)>-1;
+    var fb = card.querySelector(".fb");
+    fb.className = "fb show " + (ok?"ok":"no");
+    fb.innerHTML = '<b>'+(ok?"Correct":"Not quite")+'.</b> Answer: '+LET[ci]+') '+esc(it.options[ci].t)
+      + (it.rationale ? '<br><span class="muted">'+it.rationale+'</span>' : '');
+  }
+
+  /* ---------- REPAIR ---------- */
+  function repHTML(it){
+    var st = S.rep[it.id]||{};
+    return shell(it,
+      '<p class="stem">Correct this sentence:</p><p class="faulty">'+esc(it.faulty)+'</p>'
+      + '<label class="sr-only" for="ta-'+it.id+'">Your correction for '+it.id+'</label>'
+      + '<textarea id="ta-'+it.id+'">'+esc(st.text||"")+'</textarea>'
+      + '<div class="btn-row no-print"><button type="button" class="btn mini" data-a="check">Check</button>'
+      + '<button type="button" class="btn ghost mini" data-a="override"'+((st.checked && !st.auto && !st.override)?'':' hidden')+'>My answer also fixes it</button></div>'
+      + '<div class="fb" role="status" aria-live="polite"></div>');
+  }
+  function repWire(it){
+    var card = $("item-"+it.id); if (!card) return;
+    var ta = card.querySelector("textarea");
+    var checkB = card.querySelector('[data-a="check"]');
+    var overB = card.querySelector('[data-a="override"]');
+    ta.addEventListener("input", function(){ S.rep[it.id] = Object.assign({}, S.rep[it.id], {text:ta.value}); save(); });
+    checkB.addEventListener("click", function(){
+      var v = norm(ta.value);
+      var st = S.rep[it.id] = Object.assign({}, S.rep[it.id], {text:ta.value, checked:true});
+      if (!v) { var fb = card.querySelector(".fb"); fb.className="fb show info"; fb.innerHTML="<b>Type a correction first.</b>"; st.checked=false; save(); return; }
+      var pool = [norm(strip(it.model))].concat((it.acceptable||[]).map(function(a){ return norm(strip(a)); }));
+      st.auto = pool.indexOf(v) > -1;
+      save(); repPaint(it);
+      overB.hidden = st.auto;
+      refresh();
+    });
+    overB.addEventListener("click", function(){
+      S.rep[it.id] = Object.assign({}, S.rep[it.id], {override:true, checked:true});
+      save(); repPaint(it); overB.hidden = true; refresh();
+    });
+  }
+  function repPaint(it){
+    var card = $("item-"+it.id); if (!card) return;
+    var st = S.rep[it.id]||{};
+    if (!st.checked) return;
+    var ok = !!(st.auto || st.override);
+    var fb = card.querySelector(".fb");
+    fb.className = "fb show " + (ok?"ok":"no");
+    var acc = (it.acceptable||[]).length ? '<div style="margin-top:.35rem"><b>Also accepted:</b> '+it.acceptable.join("; ")+'</div>' : '';
+    fb.innerHTML = '<b>'+(st.override?"Counted correct (you marked it)":(st.auto?"Correct":"Not matched — read the model"))+'.</b>'
+      + '<div class="model">'+esc(it.model)+'</div>' + acc
+      + '<div style="margin-top:.35rem"><b>Rule:</b> '+it.rationale+'</div>'
+      + '<div class="say">Feedback language: &ldquo;'+it.say+'&rdquo;</div>';
+    var overB = card.querySelector('[data-a="override"]');
+    if (overB) overB.hidden = !!(st.auto || st.override);
+  }
+
+  /* ---------- PRODUCE / TRANSFER ---------- */
+  function prodHTML(it){
+    var st = S.prod[it.id]||{rubric:{}};
+    var rub = it.rubric.map(function(c,ci){
+      var v = (st.rubric||{})[ci];
+      return '<div class="rb-row"><span>'+c+'</span>'
+        + '<button type="button" class="rb-btn y" data-ci="'+ci+'" data-v="y" aria-pressed="'+(v==="y"?"true":"false")+'">Yes</button>'
+        + '<button type="button" class="rb-btn n" data-ci="'+ci+'" data-v="n" aria-pressed="'+(v==="n"?"true":"false")+'">Not yet</button></div>';
+    }).join("");
+    return shell(it,
+      '<p class="stem">'+it.prompt+'</p>'
+      + (it.data ? '<p class="data">'+it.data+'</p>' : '')
+      + '<label class="sr-only" for="ta-'+it.id+'">Your answer for '+it.id+'</label>'
+      + '<textarea id="ta-'+it.id+'">'+esc(st.text||"")+'</textarea>'
+      + '<div class="btn-row no-print"><button type="button" class="btn ghost mini" data-a="model">Show model answer</button></div>'
+      + '<div class="fb" role="status" aria-live="polite"></div>'
+      + '<p class="small muted" style="margin:.6rem 0 .2rem">Self-check — mark each honestly (feeds your dashboard):</p>'
+      + '<div class="rubric">'+rub+'</div>');
+  }
+  function prodWire(it){
+    var card = $("item-"+it.id); if (!card) return;
+    var ta = card.querySelector("textarea");
+    ta.addEventListener("input", function(){ S.prod[it.id] = Object.assign({rubric:{}}, S.prod[it.id], {text:ta.value}); save(); });
+    card.querySelector('[data-a="model"]').addEventListener("click", function(){
+      var d = S.prod[it.id] = Object.assign({rubric:{}}, S.prod[it.id], {revealed:true}); save(); prodPaint(it);
+    });
+    card.querySelectorAll(".rb-btn").forEach(function(b){
+      b.addEventListener("click", function(){
+        var ci = +b.dataset.ci, v = b.dataset.v;
+        var d = S.prod[it.id] = Object.assign({rubric:{}}, S.prod[it.id]);
+        d.rubric = Object.assign({}, d.rubric); d.rubric[ci] = v;
+        b.parentNode.querySelectorAll(".rb-btn").forEach(function(x){ x.setAttribute("aria-pressed","false"); });
+        b.setAttribute("aria-pressed","true");
+        save(); refresh();
+      });
+    });
+  }
+  function prodPaint(it){
+    var card = $("item-"+it.id); if (!card) return;
+    var d = S.prod[it.id]||{};
+    if (!d.revealed) return;
+    var fb = card.querySelector(".fb");
+    var acc = (it.acceptable||[]).length ? '<div style="margin-top:.35rem"><b>Also fine:</b> '+it.acceptable.join("; ")+'</div>' : '';
+    fb.className = "fb show info";
+    fb.innerHTML = '<b>One model answer</b> (not the only correct version):<div class="model">'+esc(it.model)+'</div>'+acc;
+  }
+
+  /* ---------- BANK ORDER + RENDER ---------- */
+  function bankOrder(){
+    return BANK.slice().sort(function(a,b){
+      var aw = (S.weakest && a.error_type===S.weakest) ? 0 : 1;
+      var bw = (S.weakest && b.error_type===S.weakest) ? 0 : 1;
+      if (aw!==bw) return aw-bw;
+      if (STAGE_ORDER[a.stage]!==STAGE_ORDER[b.stage]) return STAGE_ORDER[a.stage]-STAGE_ORDER[b.stage];
+      return a.id < b.id ? -1 : 1;
+    });
+  }
+  function itemHTML(it){ return it.stage==="repair" ? repHTML(it) : it.stage==="produce" ? prodHTML(it) : objHTML(it); }
+  function itemWire(it){ if (it.stage==="repair") repWire(it); else if (it.stage==="produce") prodWire(it); else objWire(it,false); }
+  function itemPaint(it){ if (it.stage==="repair") repPaint(it); else if (it.stage==="produce") prodPaint(it); else objPaint(it); }
+
+  function renderBank(){
+    var host = $("bankItems");
+    var ord = bankOrder();
+    host.innerHTML = ord.map(itemHTML).join("");
+    ord.forEach(itemWire);
+    ord.forEach(itemPaint);
+    applyFilter();
+  }
+
+  function applyFilter(){
+    var f = S.filter, shown = 0;
+    BANK.forEach(function(it){
+      var el = $("item-"+it.id); if (!el) return;
+      var vis = (f.code==="all"||it.error_type===f.code) && (f.band==="all"||it.band===f.band) && (f.stage==="all"||it.stage===f.stage);
+      el.classList.toggle("hide", !vis);
+      if (vis) shown++;
+    });
+    var filtered = f.code!=="all"||f.band!=="all"||f.stage!=="all";
+    $("bankCount").textContent = shown + " of " + BANK.length + " items shown" + (filtered ? " (filtered)" : "");
+  }
+
+  /* ---------- TRANSFER FIGURE ---------- */
+  function figHTML(){
+    var W=560,H=290,L=46,R=14,T=14,B=34, PF=2;
+    var n = TR.city.length;
+    function X(i){ return L + i*(W-L-R)/(n-1); }
+    function Y(v){ return T + (170-v)*(H-T-B)/(170-120); }
+    function poly(rows, cls){
+      var s = rows.slice(0,PF+1).map(function(r,i){ return (i?"L":"M")+X(i).toFixed(1)+" "+Y(r[1]).toFixed(1); }).join(" ");
+      var d = rows.slice(PF).map(function(r,i){ var gi=i+PF; return (i?"L":"M")+X(gi).toFixed(1)+" "+Y(r[1]).toFixed(1); }).join(" ");
+      var dots = rows.map(function(r,i){ return '<circle cx="'+X(i).toFixed(1)+'" cy="'+Y(r[1]).toFixed(1)+'" r="3" fill="'+cls+'"/>'; }).join("");
+      return '<path d="'+s+'" fill="none" stroke="'+cls+'" stroke-width="2.5"/><path d="'+d+'" fill="none" stroke="'+cls+'" stroke-width="2.5" stroke-dasharray="5 4"/>'+dots;
+    }
+    var grid = "";
+    [120,130,140,150,160,170].forEach(function(v){
+      grid += '<line x1="'+L+'" y1="'+Y(v).toFixed(1)+'" x2="'+(W-R)+'" y2="'+Y(v).toFixed(1)+'" stroke="#D8DDDA" stroke-width="1"/>'
+        + '<text x="'+(L-6)+'" y="'+(Y(v)+3).toFixed(1)+'" text-anchor="end" font-size="10" fill="#535D59">'+v+'</text>';
+    });
+    var xl = "";
+    TR.city.forEach(function(r,i){ xl += '<text x="'+X(i).toFixed(1)+'" y="'+(H-B+16)+'" text-anchor="middle" font-size="9.5" fill="#535D59">'+esc(r[0])+'</text>'; });
+    var vline = '<line x1="'+X(PF).toFixed(1)+'" y1="'+T+'" x2="'+X(PF).toFixed(1)+'" y2="'+(H-B)+'" stroke="#84908B" stroke-width="1" stroke-dasharray="2 3"/>'
+      + '<text x="'+(X(PF)+4).toFixed(1)+'" y="'+(T+11)+'" font-size="9" fill="#84908B">projection &rarr;</text>';
+    return '<div class="fig"><div class="figlabel">'+esc(TR.figLabel)+' &mdash; illustrative data</div>'
+      + '<svg viewBox="0 0 '+W+' '+H+'" role="img" aria-label="Line graph. Aldermoor water use per person per day: 165 litres in 2000, 150 in 2010, 138 in 2020 (actual), then projected 130 in 2030 and 128 in 2040. Regional average: 155 in 2000, 150 in 2010, 145 in 2020, projected 142 in 2030 and 140 in 2040. Projected values shown as dashed lines.">'
+      + '<rect x="0" y="0" width="'+W+'" height="'+H+'" fill="#FFFFFF"/>'
+      + grid
+      + '<line x1="'+L+'" y1="'+T+'" x2="'+L+'" y2="'+(H-B)+'" stroke="#535D59" stroke-width="1.2"/>'
+      + '<line x1="'+L+'" y1="'+(H-B)+'" x2="'+(W-R)+'" y2="'+(H-B)+'" stroke="#535D59" stroke-width="1.2"/>'
+      + vline
+      + poly(TR.region, "#8C5A1B")
+      + poly(TR.city, "#2C5A56")
+      + xl
+      + '</svg>'
+      + '<p class="small" style="font-family:var(--f-ui);margin:.4rem 0 0"><span style="color:#2C5A56;font-weight:700">&#9644;</span> Aldermoor &nbsp; <span style="color:#8C5A1B;font-weight:700">&#9644;</span> Regional average &nbsp; &middot; &nbsp; dashed = projected (2020&ndash;2040)</p>'
+      + '<p class="small muted" style="font-family:var(--f-ui);margin:.3rem 0 0">'+esc(TR.intro)+'</p></div>';
+  }
+  function renderTransfer(){
+    var host = $("transferBody");
+    host.innerHTML = figHTML() + TR.subtasks.map(prodHTML).join("");
+    TR.subtasks.forEach(prodWire);
+    TR.subtasks.forEach(prodPaint);
+  }
+
+  /* ---------- CONFIDENCE ---------- */
+  function renderConf(){
+    var host = $("confGrid");
+    host.innerHTML = CODES.map(function(c){
+      var v = S.conf[c];
+      return '<div class="conf-row"><span><b>'+c+'</b> — '+TX[c].label+'</span>'
+        + '<span class="conf-btns" role="group" aria-label="Confidence with '+c+'">'
+        + ['low','med','high'].map(function(k){
+            return '<button type="button" data-c="'+c+'" data-k="'+k+'" aria-pressed="'+(v===k?"true":"false")+'">'+({low:"Low",med:"Medium",high:"High"})[k]+'</button>';
+          }).join("")
+        + '</span></div>';
+    }).join("");
+    host.querySelectorAll("button").forEach(function(b){
+      b.addEventListener("click", function(){
+        S.conf[b.dataset.c] = b.dataset.k;
+        b.parentNode.querySelectorAll("button").forEach(function(x){ x.setAttribute("aria-pressed","false"); });
+        b.setAttribute("aria-pressed","true");
+        save(); updateDash();
+      });
+    });
+  }
+
+  /* ---------- DASHBOARD ---------- */
+  function stats(){
+    var st = {}; CODES.forEach(function(c){ st[c] = {c:0,a:0}; });
+    function add(code, att, ok){ if (!att) return; st[code].a++; if (ok) st[code].c++; }
+    if (S.entryChecked) ENTRY.forEach(function(it){ var p = S.ans[it.id]; add(it.error_type, p!=null, p!=null && accept(it).indexOf(p)>-1); });
+    BANK.forEach(function(it){
+      if (it.stage==="notice" || it.stage==="choose"){ var p = S.ans[it.id]; add(it.error_type, p!=null, p!=null && accept(it).indexOf(p)>-1); }
+      else if (it.stage==="repair"){ add(it.error_type, repDone(it.id), repDone(it.id) && repOk(it.id)); }
+      else { var r = rubItem(it); add(it.error_type, r.full, r.all); }
+    });
+    TR.subtasks.forEach(function(it){ var r = rubItem(it); add(it.error_type, r.full, r.all); });
+    return st;
+  }
+  function updateDash(){
+    var st = stats();
+    $("dashGrid").innerHTML = CODES.map(function(c){
+      var s = st[c], ratio = s.a ? s.c/s.a : 0, pct = Math.round(ratio*100);
+      var cls = !s.a ? "" : ratio<0.5 ? "low" : ratio<0.8 ? "mid" : "";
+      var conf = S.conf[c] ? '<span class="dash-conf"> &middot; you rated confidence: '+({low:"low",med:"medium",high:"high"})[S.conf[c]]+'</span>' : '';
+      return '<div class="dash-row"><span class="dl">'+c+' <span>'+TX[c].label+conf+'</span></span>'
+        + '<span class="dash-track"><span class="dash-fill '+cls+'" style="width:'+(s.a?pct:0)+'%"></span></span>'
+        + '<span class="dash-frac">'+(s.a ? s.c+"/"+s.a : "&mdash;")+'</span></div>';
+    }).join("");
+    var over = 0; Object.keys(S.rep).forEach(function(id){ if (S.rep[id] && S.rep[id].override) over++; });
+    $("dashNote").innerHTML = "Updated as you work. Not an IELTS band; there is no total score." + (over>=3 ? " You have self-marked "+over+" written answers correct — ask a teacher to check those." : "");
+    updateNext(st);
+    renderTeachFlags();
+  }
+  function renderTeachFlags(){}
+
+  function updateNext(st){
+    var attempted = CODES.filter(function(c){ return st[c].a>0; });
+    var card = $("nsCard");
+    if (attempted.length < 2){ card.innerHTML = '<p class="muted">Work through the entry check and some bank items — your weakest pattern and a targeted drill will appear here.</p>'; return; }
+    var weak = attempted.slice().sort(function(a,b){
+      var ra = st[a].c/st[a].a, rb = st[b].c/st[b].a;
+      if (ra!==rb) return ra-rb;
+      if (st[b].a!==st[a].a) return st[b].a-st[a].a;
+      return CODES.indexOf(a)-CODES.indexOf(b);
+    })[0];
+    var s = st[weak];
+    card.innerHTML = '<h3 style="font-family:var(--f-ui)">Weakest pattern: '+weak+' &mdash; '+TX[weak].label+'</h3>'
+      + '<p class="small muted">Accuracy so far: '+s.c+' / '+s.a+' &nbsp;&middot;&nbsp; rule of thumb: '+TX[weak].tip+'</p>'
+      + '<p>'+LAB_CONTENT.interpretation[weak].replace(/<b>/g,"<strong>").replace(/<\/b>/g,"</strong>")+'</p>'
+      + '<p><button type="button" class="btn mini" id="nsJump">Practise '+weak+' in the bank now</button></p>';
+    var jb = $("nsJump");
+    if (jb) jb.addEventListener("click", function(){
+      S.filter.code = weak; S.filter.stage = "all"; save();
+      $("fCode").value = weak; applyFilter();
+      $("s-bank").scrollIntoView({block:"start"});
+    });
+  }
+
+  /* ---------- TEACHER KEY ---------- */
+  function keyEntryRow(it){
+    var ci = corr(it);
+    return '<div class="ak"><div class="akq">'+it.id+' &middot; '+it.error_type+' &middot; '+bandShort(it.band)+' &middot; '+it.stage+'</div>'
+      + '<dl><dt>Prompt</dt><dd>'+it.prompt+'</dd>'
+      + '<dt>Answer</dt><dd><b>'+LET[ci]+')</b> '+esc(it.options[ci].t)+(it.acceptableIdx?' &nbsp;(also accept '+it.acceptableIdx.map(function(x){return LET[x];}).join(", ")+')':'')+'</dd>'
+      + '<dt>Rule</dt><dd>'+it.rationale+'</dd>'
+      + '<dt>Distractors</dt><dd>'+it.options.map(function(o,i){ return i===ci?'':('<b>'+LET[i]+')</b> '+o.why); }).filter(Boolean).join('<br>')+'</dd></dl></div>';
+  }
+  function keyRepRow(it){
+    return '<div class="ak"><div class="akq">'+it.id+' &middot; '+it.error_type+' &middot; '+bandShort(it.band)+' &middot; repair</div>'
+      + '<dl><dt>Faulty</dt><dd>'+esc(it.faulty)+'</dd>'
+      + '<dt>Model</dt><dd>'+esc(it.model)+'</dd>'
+      + '<dt>Also accept</dt><dd>'+((it.acceptable||[]).join("; ")||"&mdash;")+'</dd>'
+      + '<dt>Rule</dt><dd>'+it.rationale+'</dd>'
+      + '<dt>Feedback</dt><dd>&ldquo;'+it.say+'&rdquo;</dd></dl></div>';
+  }
+  function keyProdRow(it){
+    return '<div class="ak"><div class="akq">'+it.id+' &middot; '+it.error_type+' &middot; '+bandShort(it.band)+' &middot; '+it.stage+'</div>'
+      + '<dl><dt>Task</dt><dd>'+it.prompt+(it.data?' <span class="muted">['+it.data+']</span>':'')+'</dd>'
+      + '<dt>Model</dt><dd>'+esc(it.model)+'</dd>'
+      + '<dt>Also fine</dt><dd>'+((it.acceptable||[]).join("; ")||"&mdash;")+'</dd>'
+      + '<dt>Accept if</dt><dd>'+it.rubric.map(function(r){ return "&bull; "+r; }).join("<br>")+'</dd></dl></div>';
+  }
+  function renderKey(){
+    var groups = [
+      ["Entry check", ENTRY],
+      ["Bank &mdash; Notice", BANK.filter(function(x){return x.stage==="notice";})],
+      ["Bank &mdash; Choose", BANK.filter(function(x){return x.stage==="choose";})],
+      ["Bank &mdash; Repair", BANK.filter(function(x){return x.stage==="repair";})],
+      ["Bank &mdash; Produce", BANK.filter(function(x){return x.stage==="produce";})],
+      ["Task 1 transfer", TR.subtasks]
+    ];
+    $("keyBody").innerHTML = groups.map(function(g){
+      return '<h3>'+g[0]+' ('+g[1].length+')</h3>' + g[1].map(function(it){
+        return it.stage==="repair" ? keyRepRow(it) : (it.stage==="produce"||it.stage==="apply") ? keyProdRow(it) : keyEntryRow(it);
+      }).join("");
+    }).join("");
+    $("interpBody").innerHTML = CODES.map(function(c){
+      return '<div class="interp"><b>'+c+' &mdash; '+TX[c].label+'.</b> '+LAB_CONTENT.interpretation[c]+'</div>';
+    }).join("");
+    var mcq = ENTRY.concat(BANK.filter(function(x){ return x.stage==="notice"||x.stage==="choose"; }));
+    var dist = {A:0,B:0,C:0,D:0}, seq = mcq.map(function(it){ var L=LET[corr(it)]; dist[L]++; return L; });
+    $("keyDist").textContent = "MCQ correct-answer distribution (" + mcq.length + " items) — A:"+dist.A+" B:"+dist.B+" C:"+dist.C+" D:"+dist.D+"  ·  sequence: "+seq.join(" ");
+  }
+
+  /* ---------- ROUTE ---------- */
+  function applyRoute(){
+    var ok = 0, byc = {}; CODES.forEach(function(c){ byc[c] = {c:0,a:0}; });
+    ENTRY.forEach(function(it){
+      var p = S.ans[it.id]; if (p==null) return;
+      var good = accept(it).indexOf(p)>-1; if (good) ok++;
+      byc[it.error_type].a++; if (good) byc[it.error_type].c++;
+    });
+    var pct = ok / ENTRY.length;
+    var route = pct < 0.5 ? "foundation" : pct < 0.8 ? "standard" : "challenge";
+    var bandFor = { foundation:"5.5-support", standard:"6.0-core", challenge:"7.0-stretch" };
+    var weak = null, wr = 2;
+    CODES.forEach(function(c){ if (byc[c].a){ var r = byc[c].c/byc[c].a; if (r < wr){ wr = r; weak = c; } } });
+    S.entryChecked = true; S.route = route; S.weakest = weak;
+    S.filter.band = bandFor[route];
+    save();
+    $("fBand").value = S.filter.band;
+    ENTRY.forEach(objPaint);
+    var rn = $("routeNote"); rn.hidden = false;
+    rn.innerHTML = '<b>Entry check: '+ok+' / '+ENTRY.length+'.</b> Path: <b>'+({foundation:"Foundation",standard:"Standard",challenge:"Challenge"})[route]
+      + '</b> — the exercise bank now starts at the <b>'+bandShort(S.filter.band)+'</b> band'
+      + (weak ? ', with your weakest pattern first (<b>'+weak+' — '+TX[weak].label+'</b>)' : '')
+      + '. Every filter below stays changeable.';
+    renderBank();
+    updateDash();
+  }
+
+  /* ---------- PROGRESS ---------- */
+  function progCount(){
+    var n = 0;
+    ENTRY.forEach(function(it){ if (S.ans[it.id]!=null) n++; });
+    BANK.forEach(function(it){
+      if (it.stage==="notice"||it.stage==="choose"){ if (S.ans[it.id]!=null) n++; }
+      else if (it.stage==="repair"){ if (repDone(it.id)) n++; }
+      else { if (rubItem(it).full) n++; }
+    });
+    TR.subtasks.forEach(function(it){ if (rubItem(it).full) n++; });
+    return n;
+  }
+  function refreshProgress(){
+    var n = progCount();
+    $("progText").textContent = n + " / " + TOTAL;
+    $("pFill").style.width = Math.round(n/TOTAL*100) + "%";
+  }
+  function refresh(){ refreshProgress(); updateDash(); checkResume(); }
+
+  /* ---------- RESUME ---------- */
+  function checkResume(){
+    var any = Object.keys(S.ans).length || Object.keys(S.rep).length || Object.keys(S.prod).length;
+    var rn = $("resumeNote");
+    if (!any){ rn.hidden = true; rn.innerHTML = ""; return; }
+    rn.hidden = false;
+    rn.innerHTML = '<span>Your progress is saved on this device. </span>';
+    var b = document.createElement("button");
+    b.type = "button"; b.className = "btn ghost mini"; b.textContent = "Jump to first unanswered";
+    b.addEventListener("click", function(){
+      var t = bankOrder().filter(function(it){
+        if (it.stage==="notice"||it.stage==="choose") return S.ans[it.id]==null;
+        if (it.stage==="repair") return !repDone(it.id);
+        return !rubItem(it).full;
+      }).filter(function(it){ var el = $("item-"+it.id); return el && !el.classList.contains("hide"); })[0];
+      var el = t ? $("item-"+t.id) : $("s-bank");
+      el.scrollIntoView({ block:"start" });
+    });
+    rn.appendChild(b);
+  }
+
+  /* ---------- WIRING ---------- */
+  function renderOutcomes(){ $("outcomeList").innerHTML = LAB_CONTENT.outcomes.map(function(o,i){ return '<li><b>'+(i+1)+'</b><span>'+esc(o)+'</span></li>'; }).join(""); }
+  function renderTeaching(){ $("teachBody").innerHTML = LAB_CONTENT.teaching.map(function(t){ return '<article class="teach-block"><h3>'+t.heading+'</h3>'+t.html+'</article>'; }).join(""); }
+  function renderEntry(){ $("entryItems").innerHTML = ENTRY.map(objHTML).join(""); ENTRY.forEach(function(it){ objWire(it,true); }); if (S.entryChecked) ENTRY.forEach(objPaint); }
+
+  renderOutcomes(); renderTeaching(); renderEntry(); renderConf(); renderBank(); renderTransfer(); renderKey();
+
+  $("fCode").value = S.filter.code; $("fBand").value = S.filter.band; $("fStage").value = S.filter.stage;
+  ["fCode","fBand","fStage"].forEach(function(id){
+    $(id).addEventListener("change", function(){
+      S.filter[id.slice(1).toLowerCase()] = $(id).value; save(); applyFilter();
+    });
+  });
+  $("fClear").addEventListener("click", function(){
+    S.filter = {code:"all",band:"all",stage:"all"}; save();
+    $("fCode").value="all"; $("fBand").value="all"; $("fStage").value="all"; applyFilter();
+  });
+
+  $("startBtn").addEventListener("click", function(){ $("s-entry").scrollIntoView({block:"start"}); });
+  $("entryCheckBtn").addEventListener("click", function(){ applyRoute(); refreshProgress(); $("routeNote").scrollIntoView({block:"nearest"}); });
+  $("entryResetBtn").addEventListener("click", function(){
+    ENTRY.forEach(function(it){ delete S.ans[it.id]; });
+    S.entryChecked = false; S.route = null; S.weakest = null; save(); location.reload();
+  });
+  function doReset(){ try { localStorage.removeItem(KEY); } catch(e){} location.reload(); }
+  $("resetBtn").addEventListener("click", doReset);
+  function doPrint(){ window.print(); }
+  $("printBtn").addEventListener("click", doPrint);
+  $("tbPrint").addEventListener("click", doPrint);
+  $("tbTop").addEventListener("click", function(){ window.scrollTo({top:0}); });
+
+  document.addEventListener("keydown", function(e){
+    if (["ArrowDown","ArrowRight","ArrowUp","ArrowLeft"].indexOf(e.key) === -1) return;
+    var f = document.activeElement;
+    if (!f || !f.classList || !f.classList.contains("opt")) return;
+    var opts = Array.prototype.slice.call(f.parentNode.querySelectorAll(".opt"));
+    var i = opts.indexOf(f); if (i===-1) return;
+    e.preventDefault();
+    var nx = (e.key==="ArrowDown"||e.key==="ArrowRight") ? i+1 : i-1;
+    if (nx<0) nx = opts.length-1; if (nx>=opts.length) nx = 0;
+    opts[nx].focus();
+  });
+
+  refreshProgress(); updateDash(); checkResume();
+})();
+</script>
+</body>
+</html>

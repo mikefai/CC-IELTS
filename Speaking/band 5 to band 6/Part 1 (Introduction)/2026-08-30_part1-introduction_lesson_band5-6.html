@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IELTS Speaking Part 1: Introduction - Band 5-6</title>
+    <style>
+        :root {
+            --primary: #2563eb;
+            --primary-dark: #1e40af;
+            --success: #16a34a;
+            --warning: #ea580c;
+            --bg: #ffffff;
+            --surface: #f8fafc;
+            --text: #1e293b;
+            --text-muted: #64748b;
+            --border: #e2e8f0;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background-color: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        header {
+            margin-bottom: 30px;
+            border-bottom: 2px solid var(--border);
+            padding-bottom: 20px;
+        }
+
+        h1 {
+            font-size: 28px;
+            margin-bottom: 8px;
+            color: var(--primary-dark);
+        }
+
+        .subtitle {
+            font-size: 16px;
+            color: var(--text-muted);
+            margin-bottom: 8px;
+        }
+
+        .target-level {
+            display: inline-block;
+            background: var(--surface);
+            padding: 6px 12px;
+            border-radius: 4px;
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--primary);
+            margin-top: 10px;
+        }
+
+        .timer {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: var(--warning);
+            color: white;
+            padding: 12px 16px;
+            border-radius: 6px;
+            font-weight: 600;
+            font-size: 14px;
+            min-width: 80px;
+            text-align: center;
+            z-index: 100;
+        }
+
+        .timer.inactive {
+            background: var(--text-muted);
+        }
+
+        section {
+            margin-bottom: 40px;
+        }
+
+        h2 {
+            font-size: 20px;
+            margin-bottom: 16px;
+            color: var(--primary-dark);
+            padding-bottom: 8px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 16px;
+        }
+
+        .question-block {
+            margin-bottom: 20px;
+        }
+
+        .question-text {
+            font-size: 16px;
+            font-weight: 600;
+            color: var(--primary);
+            margin-bottom: 12px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px;
+            background: white;
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            transition: all 0.2s;
+        }
+
+        .question-text:hover {
+            background: var(--surface);
+            border-color: var(--primary);
+        }
+
+        .toggle-icon {
+            font-size: 18px;
+            transition: transform 0.3s;
+        }
+
+        .question-text.open .toggle-icon {
+            transform: rotate(180deg);
+        }
+
+        .sample-answer {
+            display: none;
+            background: white;
+            padding: 12px;
+            border-left: 3px solid var(--primary);
+            margin-top: 8px;
+            font-size: 15px;
+            line-height: 1.8;
+        }
+
+        .sample-answer.visible {
+            display: block;
+        }
+
+        .tips-box {
+            background: #f0f9ff;
+            border-left: 4px solid var(--primary);
+            padding: 16px;
+            margin-top: 16px;
+            border-radius: 4px;
+        }
+
+        .tips-box strong {
+            color: var(--primary-dark);
+        }
+
+        .tips-box ul {
+            margin-left: 20px;
+            margin-top: 8px;
+            font-size: 14px;
+            color: var(--text-muted);
+        }
+
+        .tips-box li {
+            margin-bottom: 6px;
+        }
+
+        button {
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 6px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.2s;
+            margin-right: 8px;
+            margin-top: 16px;
+        }
+
+        button:hover {
+            background: var(--primary-dark);
+        }
+
+        .band-info {
+            background: #fef3c7;
+            border-left: 4px solid var(--warning);
+            padding: 16px;
+            border-radius: 4px;
+            margin-bottom: 20px;
+            font-size: 14px;
+        }
+
+        .progress-bar {
+            background: var(--border);
+            height: 4px;
+            border-radius: 2px;
+            margin-top: 20px;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            background: var(--success);
+            height: 100%;
+            width: 0%;
+            transition: width 0.3s;
+        }
+
+        footer {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid var(--border);
+            font-size: 13px;
+            color: var(--text-muted);
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="timer inactive" id="timer">Ready</div>
+
+    <div class="container">
+        <header>
+            <h1>IELTS Speaking Part 1: Introduction</h1>
+            <p class="subtitle">Personal Questions & General Topics</p>
+            <span class="target-level">Target: Band 5.0 – 6.5</span>
+        </header>
+
+        <div class="band-info">
+            <strong>Band 5-6 Focus:</strong> Answer questions clearly with relevant details. Use simple past and present tenses correctly. Speak naturally without long pauses. Aim for 30-60 seconds per answer.
+        </div>
+
+        <section>
+            <h2>Understanding Part 1</h2>
+            <div class="card">
+                <p><strong>Duration:</strong> 4-5 minutes</p>
+                <p><strong>Format:</strong> Examiner asks 10-12 questions about yourself, your home, your work/studies, or familiar topics.</p>
+                <p><strong>Key Skills:</strong> Fluency, grammar accuracy, vocabulary range, pronunciation.</p>
+            </div>
+        </section>
+
+        <section>
+            <h2>Sample Questions & Answers</h2>
+
+            <div class="question-block">
+                <div class="question-text" onclick="toggleAnswer(this)">
+                    <span>1. What's your name?</span>
+                    <span class="toggle-icon">▼</span>
+                </div>
+                <div class="sample-answer">
+                    <strong>Sample (Band 5-6):</strong> My name's Ahmed. I'm from Saudi Arabia, but I've been living in London for about two years for my studies. My friends usually call me by my full name or sometimes just "A" for short.
+                </div>
+            </div>
+
+            <div class="question-block">
+                <div class="question-text" onclick="toggleAnswer(this)">
+                    <span>2. Where are you from?</span>
+                    <span class="toggle-icon">▼</span>
+                </div>
+                <div class="sample-answer">
+                    <strong>Sample (Band 5-6):</strong> I'm from Riyadh, which is the capital of Saudi Arabia. It's a big, modern city with lots of shopping malls and business centers. The weather is quite hot most of the year, especially in summer. I grew up there with my family.
+                </div>
+            </div>
+
+            <div class="question-block">
+                <div class="question-text" onclick="toggleAnswer(this)">
+                    <span>3. Do you work or study?</span>
+                    <span class="toggle-icon">▼</span>
+                </div>
+                <div class="sample-answer">
+                    <strong>Sample (Band 5-6):</strong> I'm currently studying Business Management at university. I'm in my second year, so I have quite a lot of coursework and assignments. Apart from that, I do some part-time work in a café on weekends to earn pocket money and gain work experience.
+                </div>
+            </div>
+
+            <div class="question-block">
+                <div class="question-text" onclick="toggleAnswer(this)">
+                    <span>4. What's your favorite type of food?</span>
+                    <span class="toggle-icon">▼</span>
+                </div>
+                <div class="sample-answer">
+                    <strong>Sample (Band 5-6):</strong> I really enjoy Mediterranean food, especially Italian pasta. The flavors are quite simple but really delicious. I also like cooking at home because it's cheaper and healthier than eating out all the time. My favorite dish is probably pasta carbonara.
+                </div>
+            </div>
+
+            <div class="question-block">
+                <div class="question-text" onclick="toggleAnswer(this)">
+                    <span>5. How do you usually spend your free time?</span>
+                    <span class="toggle-icon">▼</span>
+                </div>
+                <div class="sample-answer">
+                    <strong>Sample (Band 5-6):</strong> I spend a lot of time with my friends, usually going to the cinema or just hanging out at cafés. I'm also quite into sports, especially football. I play in a university team on Thursday evenings. In the evenings, I like to relax by watching films or reading books online.
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <h2>Band 5-6 Language Focus</h2>
+            <div class="card">
+                <div class="tips-box">
+                    <strong>✓ Use these strategies to reach Band 5-6:</strong>
+                    <ul>
+                        <li><strong>Simple past & present:</strong> "I'm from..." "I've been living..." "I usually go..."</li>
+                        <li><strong>Connectors:</strong> Use "but," "however," "although," "because" to link ideas</li>
+                        <li><strong>Elaborate:</strong> Give 2-3 relevant details per answer, not just one-word replies</li>
+                        <li><strong>Pronunciation:</strong> Speak clearly and at natural speed; pause briefly between thoughts</li>
+                        <li><strong>Natural phrases:</strong> "kind of," "quite a lot," "I'd say," "to be honest"</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="tips-box">
+                <strong>⚠ Avoid Band 4-5 errors:</strong>
+                <ul>
+                    <li>Long silences or "um/uh" every few words</li>
+                    <li>Repeating the same words: good, nice, interesting</li>
+                    <li>Short, disconnected answers: "Yes. I like it. It's nice."</li>
+                    <li>Grammatical errors: "I am living here since 2 years"</li>
+                </ul>
+            </div>
+        </section>
+
+        <section>
+            <h2>Practice Tips</h2>
+            <div class="card">
+                <p><strong>Before you practice:</strong></p>
+                <ul style="margin-left: 20px; margin-top: 10px;">
+                    <li>Prepare 2-3 sentences for common questions (name, home, work/study)</li>
+                    <li>Record yourself and listen for fluency gaps</li>
+                    <li>Speak for 30-60 seconds per question—time yourself</li>
+                </ul>
+
+                <button onclick="startTimer()">Start 5-Min Practice Timer</button>
+                <button onclick="resetProgress()">Reset</button>
+            </div>
+        </section>
+
+        <div class="progress-bar">
+            <div class="progress-fill" id="progress"></div>
+        </div>
+
+        <footer>
+            <p>IELTS Academic Speaking - Band 5.0–6.5 | Created 2026-08-30</p>
+            <p>Practice regularly and record yourself to improve fluency and accuracy.</p>
+        </footer>
+    </div>
+
+    <script>
+        function toggleAnswer(element) {
+            const answer = element.nextElementSibling;
+            answer.classList.toggle('visible');
+            element.classList.toggle('open');
+        }
+
+        function startTimer() {
+            const timerEl = document.getElementById('timer');
+            const progressEl = document.getElementById('progress');
+            let seconds = 300; // 5 minutes
+            timerEl.classList.remove('inactive');
+            timerEl.textContent = '5:00';
+
+            const interval = setInterval(() => {
+                seconds--;
+                const mins = Math.floor(seconds / 60);
+                const secs = seconds % 60;
+                timerEl.textContent = `${mins}:${secs.toString().padStart(2, '0')}`;
+                progressEl.style.width = ((300 - seconds) / 300 * 100) + '%';
+
+                if (seconds <= 0) {
+                    clearInterval(interval);
+                    timerEl.classList.add('inactive');
+                    timerEl.textContent = 'Finished!';
+                    progressEl.style.width = '100%';
+                }
+            }, 1000);
+        }
+
+        function resetProgress() {
+            document.getElementById('timer').classList.add('inactive');
+            document.getElementById('timer').textContent = 'Ready';
+            document.getElementById('progress').style.width = '0%';
+        }
+    </script>
+</body>
+</html>

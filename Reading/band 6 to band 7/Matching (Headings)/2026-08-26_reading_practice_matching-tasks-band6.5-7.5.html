@@ -1,0 +1,637 @@
+<title>The Learned Song</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=IBM+Plex+Sans:wght@400;500;600&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&display=swap">
+
+<style>
+  :root {
+    --ground: #F7F8F7;
+    --surface: #FFFFFF;
+    --surface-sunk: #EEF1EF;
+    --ink: #1B2422;
+    --ink-soft: #5A6663;
+    --ink-faint: #8A9591;
+    --accent: #2E5E58;
+    --accent-soft: #E3EDEA;
+    --amber: #A9662B;
+    --amber-soft: #F6ECE0;
+    --rule: #DDE3E0;
+    --good: #2F6B45;
+    --bad: #9B3A32;
+
+    --f-display: "Fraunces", Georgia, "Times New Roman", serif;
+    --f-body: "Source Serif 4", Georgia, "Times New Roman", serif;
+    --f-ui: "IBM Plex Sans", "Segoe UI", system-ui, sans-serif;
+
+    --step-0: 1rem;
+    --step-1: 1.15rem;
+    --step-2: 1.45rem;
+    --step-3: 1.9rem;
+    --step-4: 2.6rem;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --ground: #121716;
+      --surface: #1A211F;
+      --surface-sunk: #232C2A;
+      --ink: #E8EDEA;
+      --ink-soft: #9AA8A3;
+      --ink-faint: #6E7C77;
+      --accent: #6FB3A6;
+      --accent-soft: #22322F;
+      --amber: #D69A5E;
+      --amber-soft: #2E2820;
+      --rule: #2A3532;
+      --good: #6DBF8E;
+      --bad: #E08A80;
+    }
+  }
+
+  :root[data-theme="dark"] {
+    --ground: #121716;
+    --surface: #1A211F;
+    --surface-sunk: #232C2A;
+    --ink: #E8EDEA;
+    --ink-soft: #9AA8A3;
+    --ink-faint: #6E7C77;
+    --accent: #6FB3A6;
+    --accent-soft: #22322F;
+    --amber: #D69A5E;
+    --amber-soft: #2E2820;
+    --rule: #2A3532;
+    --good: #6DBF8E;
+    --bad: #E08A80;
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    margin: 0;
+    background: var(--ground);
+    color: var(--ink);
+    font-family: var(--f-body);
+    font-size: var(--step-0);
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  h1, h2, h3 { font-family: var(--f-display); text-wrap: balance; margin: 0; line-height: 1.15; }
+
+  .label {
+    font-family: var(--f-ui);
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+  }
+
+  /* ---------- header ---------- */
+  header {
+    border-bottom: 1px solid var(--rule);
+    background: var(--surface);
+    padding: 1.75rem clamp(1rem, 4vw, 2.5rem) 1.25rem;
+  }
+  .head-inner { max-width: 1400px; margin: 0 auto; display: flex; flex-wrap: wrap; gap: 1.5rem; align-items: flex-end; justify-content: space-between; }
+  header h1 { font-size: var(--step-4); font-weight: 600; font-variation-settings: "SOFT" 20, "WONK" 1; letter-spacing: -0.015em; }
+  .subtitle { font-family: var(--f-ui); color: var(--ink-soft); font-size: 0.95rem; margin-top: 0.4rem; }
+
+  .meta-strip { display: flex; flex-wrap: wrap; gap: 0 1.75rem; margin-top: 1rem; }
+  .meta-strip div { display: flex; flex-direction: column; gap: 0.15rem; }
+  .meta-strip strong { font-family: var(--f-ui); font-size: 0.9rem; font-weight: 500; color: var(--ink); }
+
+  /* ---------- timer ---------- */
+  .timer-box { display: flex; align-items: center; gap: 0.75rem; }
+  .clock {
+    font-family: var(--f-ui);
+    font-variant-numeric: tabular-nums;
+    font-size: 1.9rem;
+    font-weight: 500;
+    letter-spacing: -0.02em;
+    min-width: 4.2ch;
+    color: var(--accent);
+  }
+  .clock.over { color: var(--bad); }
+
+  button {
+    font-family: var(--f-ui);
+    font-size: 0.85rem;
+    font-weight: 500;
+    padding: 0.5rem 0.9rem;
+    border-radius: 3px;
+    border: 1px solid var(--rule);
+    background: var(--surface);
+    color: var(--ink);
+    cursor: pointer;
+    transition: background 0.15s ease, border-color 0.15s ease;
+  }
+  button:hover { background: var(--surface-sunk); border-color: var(--ink-faint); }
+  button.primary { background: var(--accent); border-color: var(--accent); color: var(--surface); }
+  button.primary:hover { filter: brightness(1.1); }
+  :focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+  /* ---------- split pane ---------- */
+  .pane { max-width: 1400px; margin: 0 auto; padding: 0 clamp(1rem, 4vw, 2.5rem); }
+
+  @media (min-width: 980px) {
+    .pane {
+      display: grid;
+      grid-template-columns: 1.08fr 1fr;
+      gap: 0;
+      height: calc(100vh - 190px);
+      min-height: 560px;
+    }
+    .pane > section { overflow-y: auto; padding-block: 2rem; }
+    .pane > .passage-col { padding-right: 2.5rem; border-right: 1px solid var(--rule); }
+    .pane > .quest-col { padding-left: 2.5rem; }
+  }
+  @media (max-width: 979px) {
+    .pane > section { padding-block: 2rem; }
+    .pane > .quest-col { border-top: 1px solid var(--rule); }
+  }
+
+  .col-head { display: flex; align-items: baseline; justify-content: space-between; gap: 1rem; padding-bottom: 0.75rem; margin-bottom: 1.5rem; border-bottom: 2px solid var(--ink); }
+  .col-head h2 { font-size: var(--step-2); font-weight: 600; }
+
+  /* ---------- passage ---------- */
+  .passage-title { font-family: var(--f-display); font-size: var(--step-3); font-weight: 600; font-variation-settings: "SOFT" 20, "WONK" 1; margin-bottom: 0.35rem; }
+  .passage-standfirst { color: var(--ink-soft); font-style: italic; margin: 0 0 2rem; max-width: 62ch; }
+
+  .para { display: grid; grid-template-columns: 2.6rem 1fr; gap: 0 1rem; margin-bottom: 1.6rem; scroll-margin-top: 1rem; border-radius: 4px; }
+  .para p { margin: 0; max-width: 66ch; }
+  .para-letter {
+    font-family: var(--f-ui);
+    font-size: 1.05rem;
+    font-weight: 600;
+    color: var(--accent);
+    background: var(--accent-soft);
+    border-radius: 3px;
+    height: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .para.flash { animation: flash 1.6s ease; }
+  @keyframes flash {
+    0%, 15% { background: var(--amber-soft); }
+    100% { background: transparent; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .para.flash { animation: none; outline: 2px solid var(--amber); outline-offset: 6px; }
+  }
+  .wordcount { font-family: var(--f-ui); font-size: 0.75rem; color: var(--ink-faint); border-top: 1px solid var(--rule); padding-top: 0.75rem; margin-top: 2rem; }
+
+  /* ---------- questions ---------- */
+  .task { margin-bottom: 2.5rem; }
+  .task-head { background: var(--surface-sunk); border-left: 3px solid var(--accent); padding: 0.85rem 1rem; margin-bottom: 1.1rem; border-radius: 0 3px 3px 0; }
+  .task-head h3 { font-family: var(--f-ui); font-size: 0.95rem; font-weight: 600; letter-spacing: 0.01em; }
+  .task-head p { font-family: var(--f-ui); font-size: 0.85rem; color: var(--ink-soft); margin: 0.35rem 0 0; }
+  .nb { font-family: var(--f-ui); font-size: 0.8rem; color: var(--amber); margin-top: 0.4rem; font-weight: 500; }
+
+  .optbox { border: 1px solid var(--rule); border-radius: 3px; padding: 0.9rem 1.1rem; margin-bottom: 1.1rem; background: var(--surface); }
+  .optbox .label { display: block; margin-bottom: 0.5rem; }
+  .optbox ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 0.3rem; }
+  .optbox li { font-family: var(--f-ui); font-size: 0.9rem; }
+  .optbox li b { color: var(--accent); font-weight: 600; display: inline-block; width: 1.4rem; }
+
+  .q { display: grid; grid-template-columns: 2.2rem 1fr 3.4rem; gap: 0 0.75rem; align-items: start; padding: 0.6rem 0; border-bottom: 1px dotted var(--rule); }
+  .q-num { font-family: var(--f-ui); font-size: 0.9rem; font-weight: 600; color: var(--ink-faint); font-variant-numeric: tabular-nums; padding-top: 0.3rem; }
+  .q-text { font-size: 0.98rem; }
+  .q input[type="text"] {
+    font-family: var(--f-ui);
+    font-size: 1rem;
+    font-weight: 600;
+    text-align: center;
+    text-transform: uppercase;
+    width: 100%;
+    padding: 0.35rem 0;
+    border: 1px solid var(--rule);
+    border-radius: 3px;
+    background: var(--surface);
+    color: var(--ink);
+  }
+  .q input.right { border-color: var(--good); color: var(--good); background: color-mix(in srgb, var(--good) 8%, var(--surface)); }
+  .q input.wrong { border-color: var(--bad); color: var(--bad); background: color-mix(in srgb, var(--bad) 8%, var(--surface)); }
+
+  .multi-inputs { display: flex; gap: 0.5rem; margin-top: 0.75rem; }
+  .multi-inputs input { width: 3.4rem; font-family: var(--f-ui); font-size: 1rem; font-weight: 600; text-align: center; text-transform: uppercase; padding: 0.35rem 0; border: 1px solid var(--rule); border-radius: 3px; background: var(--surface); color: var(--ink); }
+
+  .actions { display: flex; flex-wrap: wrap; gap: 0.6rem; align-items: center; margin: 1.5rem 0; }
+  .score { font-family: var(--f-ui); font-weight: 600; font-size: 0.95rem; color: var(--accent); }
+
+  /* ---------- key + strategy ---------- */
+  .lower { border-top: 1px solid var(--rule); background: var(--surface); margin-top: 2rem; }
+  .lower-inner { max-width: 900px; margin: 0 auto; padding: 3rem clamp(1rem, 4vw, 2.5rem) 4rem; }
+  .lower h2 { font-size: var(--step-3); font-weight: 600; font-variation-settings: "SOFT" 20, "WONK" 1; margin-bottom: 0.4rem; }
+  .lower h3 { font-family: var(--f-ui); font-size: 1rem; font-weight: 600; margin: 2rem 0 0.75rem; padding-bottom: 0.4rem; border-bottom: 1px solid var(--rule); }
+  .lower p { max-width: 66ch; }
+
+  details { border: 1px solid var(--rule); border-radius: 3px; margin-top: 1rem; background: var(--ground); }
+  details summary { font-family: var(--f-ui); font-size: 0.9rem; font-weight: 600; padding: 0.8rem 1rem; cursor: pointer; color: var(--accent); }
+  details summary::marker { color: var(--ink-faint); }
+  details[open] summary { border-bottom: 1px solid var(--rule); }
+  .details-body { padding: 1.25rem; }
+
+  .keytable { width: 100%; border-collapse: collapse; font-size: 0.92rem; }
+  .keytable th, .keytable td { text-align: left; padding: 0.6rem 0.7rem; border-bottom: 1px solid var(--rule); vertical-align: top; }
+  .keytable th { font-family: var(--f-ui); font-size: 0.72rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-faint); font-weight: 600; }
+  .keytable td.ans { font-family: var(--f-ui); font-weight: 600; color: var(--accent); white-space: nowrap; }
+  .jump {
+    font-family: var(--f-ui); font-size: 0.75rem; font-weight: 600;
+    background: var(--accent-soft); color: var(--accent);
+    border: none; border-radius: 3px; padding: 0.2rem 0.45rem; cursor: pointer;
+  }
+  .jump:hover { filter: brightness(0.95); }
+  .ev { color: var(--amber); font-style: italic; }
+  .table-scroll { overflow-x: auto; }
+
+  .trap { border-left: 3px solid var(--amber); background: var(--amber-soft); padding: 0.9rem 1.1rem; margin: 1rem 0; border-radius: 0 3px 3px 0; }
+  .trap p { margin: 0; font-size: 0.93rem; }
+  .trap .label { color: var(--amber); }
+
+  ol.strat { padding-left: 1.3rem; }
+  ol.strat > li { margin-bottom: 1rem; max-width: 66ch; }
+  ol.strat b { font-family: var(--f-ui); font-size: 0.95rem; }
+
+  footer { font-family: var(--f-ui); font-size: 0.78rem; color: var(--ink-faint); border-top: 1px solid var(--rule); padding: 1.25rem clamp(1rem, 4vw, 2.5rem); text-align: center; }
+</style>
+
+<header>
+  <div class="head-inner">
+    <div>
+      <span class="label">IELTS Academic · Reading Passage 1</span>
+      <h1>The Learned Song</h1>
+      <p class="subtitle">Matching information · Matching statements to researchers · Multiple-answer matching</p>
+      <div class="meta-strip">
+        <div><span class="label">Target</span><strong>Band 6.5–7.5</strong></div>
+        <div><span class="label">Questions</span><strong>15</strong></div>
+        <div><span class="label">Passage</span><strong>919 words</strong></div>
+        <div><span class="label">Time</span><strong>20 minutes</strong></div>
+      </div>
+    </div>
+    <div class="timer-box">
+      <span class="clock" id="clock">20:00</span>
+      <button id="startBtn" class="primary">Start</button>
+      <button id="resetBtn">Reset</button>
+    </div>
+  </div>
+</header>
+
+<div class="pane">
+
+  <!-- ================= PASSAGE ================= -->
+  <section class="passage-col">
+    <div class="col-head">
+      <h2>Reading Passage</h2>
+      <span class="label">Paragraphs A–H</span>
+    </div>
+
+    <div class="passage-title">The Learned Song</div>
+    <p class="passage-standfirst">Why a bird raised in silence can never sing properly — and what six decades of research has revealed about how song is passed from one generation to the next.</p>
+
+    <div class="para" id="para-A">
+      <span class="para-letter">A</span>
+      <p>To a casual listener, the dawn chorus sounds like pure instinct — an automatic performance requiring no more thought than breathing. In reality, for a large proportion of the world's birds, song is a skill that must be acquired, rehearsed and refined. Of the roughly 10,000 known bird species, close to half belong to the group known as oscine songbirds, and it is these birds — thrushes, finches, sparrows and their relatives — that must learn what they sing. A young songbird removed from its own kind at hatching will still produce sound, but the result is thin, disordered and unrecognisable to members of its species. Something essential is missing, and for six decades researchers have been trying to establish precisely what.</p>
+    </div>
+
+    <div class="para" id="para-B">
+      <span class="para-letter">B</span>
+      <p>The most influential account of how that gap is filled is the template model, developed and extended by Professor Halvor Lindqvist at Uppsala. In this view, a young bird passes through a sensitive phase early in life during which it listens to adults of its own species and stores a memorised model, or template, of the song. Only later does it begin to sing, and its first efforts bear little resemblance to the target. Lindqvist describes a progression from subsong — a quiet, rambling output comparable to human babbling — through a plastic stage of gradual approximation, to crystallised song, the fixed adult form that in many species will not change again.</p>
+    </div>
+
+    <div class="para" id="para-C">
+      <span class="para-letter">C</span>
+      <p>Lindqvist's strongest evidence came from depriving birds of sound. Nestlings raised in acoustic isolation, hearing no adult of their species, developed songs that retained the rough species-typical rhythm but lacked its detailed structure. More striking still were birds that were surgically deafened before they began to sing: unable to hear even their own output, they produced sound that bore almost no resemblance to normal song. The conclusion was that hearing serves two distinct purposes at two distinct moments — first to acquire the model, and second to allow the bird to compare its own performance against that stored model and correct the difference. Learning, in other words, requires feedback as well as exposure.</p>
+    </div>
+
+    <div class="para" id="para-D">
+      <span class="para-letter">D</span>
+      <p>Not everyone has been persuaded that the young bird arrives as a blank slate. Professor Niall Corrigan of Galway has argued that the template model understates how much is fixed before any learning begins. In his experiments, nestlings exposed simultaneously to recordings of their own species and of several unrelated species learned their own species' song overwhelmingly, even when the foreign songs were played far more frequently. For Corrigan this indicates an inherited perceptual bias — a rough sketch of what the species' song should sound like, present from hatching, which determines what the bird is willing to treat as a model in the first place. Learning, on this account, is guided rather than open.</p>
+    </div>
+
+    <div class="para" id="para-E">
+      <span class="para-letter">E</span>
+      <p>A third line of work has questioned whether recordings are an adequate substitute for a living teacher. Dr Amara Osei, working in Cape Town, compared young zebra finches tutored by adult males with birds given identical songs through loudspeakers. Those with a live tutor learned faster and copied more accurately, and the difference did not disappear when the recordings were made louder or more frequent. Osei found that adult birds respond to a youngster's attempts — shifting position, calling back, ceasing to sing — and that these reactions appear to mark which attempts are closer to the target. Song learning, she concluded, is not merely acoustic but social, shaped by an interaction between two individuals.</p>
+    </div>
+
+    <div class="para" id="para-F">
+      <span class="para-letter">F</span>
+      <p>If song is learned locally, it should vary from place to place, and it does. Professor Ren Takahashi of Kyoto has spent much of his career mapping the regional song variants known as dialects. In some sparrow populations, birds living only a few kilometres apart sing versions distinct enough that a trained listener can identify a bird's home valley from a single recording. Takahashi's long-term recordings show that these boundaries can remain stable for thirty years or more, far longer than the lifespan of any individual singer, because each generation copies the local version. Dialects, he argues, are cultural traditions in the strict sense: information transmitted socially and preserved across generations.</p>
+    </div>
+
+    <div class="para" id="para-G">
+      <span class="para-letter">G</span>
+      <p>Cities have provided an unplanned experiment in how quickly such traditions can shift. Dr Beatriz Ferreira, working across São Paulo, has documented that birds in noisy districts sing at a higher pitch, in shorter phrases, and more often at dawn before traffic builds. Low-frequency engine noise masks the lower notes of many songs, and the birds that are heard are those that avoid that range. Ferreira is careful to note that some of this is immediate adjustment rather than learning — an individual bird can raise its pitch within minutes. But where young birds copy already-adapted adults, the change is inherited culturally, and Takahashi has suggested that some urban populations may now be forming dialects of their own.</p>
+    </div>
+
+    <div class="para" id="para-H">
+      <span class="para-letter">H</span>
+      <p>The appeal of birdsong to researchers outside ornithology lies in its parallels with human speech. Both are learned from adults during a limited early window, both pass through a babbling stage, and both depend on hearing one's own output. A gene implicated in vocal learning in songbirds has a close counterpart associated with speech difficulties in humans. Yet Corrigan and Osei, from very different positions, agree that the comparison can be pushed too far: birdsong conveys identity, territory and fitness, but it does not combine elements to generate new meanings as sentences do. What songbirds share with us may be the machinery of vocal imitation rather than language itself.</p>
+    </div>
+
+    <p class="wordcount">919 words · Written for practice purposes. The researchers named are fictional composites; the findings described reflect established results in the vocal-learning literature.</p>
+  </section>
+
+  <!-- ================= QUESTIONS ================= -->
+  <section class="quest-col">
+    <div class="col-head">
+      <h2>Questions 1–15</h2>
+      <span class="label">20 minutes</span>
+    </div>
+
+    <!-- TASK 1 -->
+    <div class="task">
+      <div class="task-head">
+        <h3>Questions 1–6 · Matching information to paragraphs</h3>
+        <p>The passage has eight paragraphs, <b>A–H</b>. Which paragraph contains the following information? Write the correct letter in the box.</p>
+        <p class="nb">NB Not every paragraph is used.</p>
+      </div>
+
+      <div class="q"><span class="q-num">1</span><span class="q-text">a comparison of two groups of birds given the same songs by different means</span><input type="text" maxlength="1" data-q="1" aria-label="Question 1 answer"></div>
+      <div class="q"><span class="q-num">2</span><span class="q-text">an explanation of why a bird needs to hear itself as well as its tutors</span><input type="text" maxlength="1" data-q="2" aria-label="Question 2 answer"></div>
+      <div class="q"><span class="q-num">3</span><span class="q-text">a reference to song variation that persists longer than the birds producing it</span><input type="text" maxlength="1" data-q="3" aria-label="Question 3 answer"></div>
+      <div class="q"><span class="q-num">4</span><span class="q-text">the proportion of bird species for which singing must be acquired</span><input type="text" maxlength="1" data-q="4" aria-label="Question 4 answer"></div>
+      <div class="q"><span class="q-num">5</span><span class="q-text">an admission that not all of an observed change is the result of learning</span><input type="text" maxlength="1" data-q="5" aria-label="Question 5 answer"></div>
+      <div class="q"><span class="q-num">6</span><span class="q-text">a description of the stages leading to a permanent adult song</span><input type="text" maxlength="1" data-q="6" aria-label="Question 6 answer"></div>
+    </div>
+
+    <!-- TASK 2 -->
+    <div class="task">
+      <div class="task-head">
+        <h3>Questions 7–12 · Matching statements to researchers</h3>
+        <p>Look at the following statements and the list of researchers below. Match each statement with the correct researcher, <b>A–E</b>.</p>
+        <p class="nb">NB You may use any letter more than once. Not every researcher is used.</p>
+      </div>
+
+      <div class="optbox">
+        <span class="label">List of researchers</span>
+        <ul>
+          <li><b>A</b> Halvor Lindqvist</li>
+          <li><b>B</b> Niall Corrigan</li>
+          <li><b>C</b> Amara Osei</li>
+          <li><b>D</b> Ren Takahashi</li>
+          <li><b>E</b> Beatriz Ferreira</li>
+        </ul>
+      </div>
+
+      <div class="q"><span class="q-num">7</span><span class="q-text">Young birds are selective about which songs they are willing to imitate.</span><input type="text" maxlength="1" data-q="7" aria-label="Question 7 answer"></div>
+      <div class="q"><span class="q-num">8</span><span class="q-text">Regional differences in song qualify as genuine cultural traditions.</span><input type="text" maxlength="1" data-q="8" aria-label="Question 8 answer"></div>
+      <div class="q"><span class="q-num">9</span><span class="q-text">Birds measure their own singing against a remembered version and adjust it.</span><input type="text" maxlength="1" data-q="9" aria-label="Question 9 answer"></div>
+      <div class="q"><span class="q-num">10</span><span class="q-text">The presence of a responsive adult improves how accurately young birds copy.</span><input type="text" maxlength="1" data-q="10" aria-label="Question 10 answer"></div>
+      <div class="q"><span class="q-num">11</span><span class="q-text">Some city populations may be developing regional variants of their own.</span><input type="text" maxlength="1" data-q="11" aria-label="Question 11 answer"></div>
+      <div class="q"><span class="q-num">12</span><span class="q-text">Removing sound at different points produces different degrees of abnormality.</span><input type="text" maxlength="1" data-q="12" aria-label="Question 12 answer"></div>
+    </div>
+
+    <!-- TASK 3 -->
+    <div class="task">
+      <div class="task-head">
+        <h3>Questions 13–15 · Multiple-answer matching</h3>
+        <p>Which <b>THREE</b> of the following are mentioned in the passage as features of birdsong in noisy urban areas? Choose <b>THREE</b> letters, <b>A–G</b>.</p>
+        <p class="nb">The three answers may be given in any order.</p>
+      </div>
+
+      <div class="optbox">
+        <ul>
+          <li><b>A</b> a raised pitch</li>
+          <li><b>B</b> an increase in overall loudness</li>
+          <li><b>C</b> shorter phrases</li>
+          <li><b>D</b> singing earlier in the day</li>
+          <li><b>E</b> a fall in the number of singing birds</li>
+          <li><b>F</b> imitation of mechanical sounds</li>
+          <li><b>G</b> longer gaps between songs</li>
+        </ul>
+      </div>
+
+      <div class="multi-inputs">
+        <input type="text" maxlength="1" data-q="13" aria-label="Question 13 answer">
+        <input type="text" maxlength="1" data-q="14" aria-label="Question 14 answer">
+        <input type="text" maxlength="1" data-q="15" aria-label="Question 15 answer">
+      </div>
+    </div>
+
+    <div class="actions">
+      <button class="primary" id="checkBtn">Check answers</button>
+      <button id="clearBtn">Clear</button>
+      <span class="score" id="score"></span>
+    </div>
+  </section>
+</div>
+
+<!-- ================= KEY + STRATEGY ================= -->
+<div class="lower">
+  <div class="lower-inner">
+    <span class="label">Teacher &amp; self-study section</span>
+    <h2>Answer key and evidence</h2>
+    <p>Every answer below is tied to the exact wording that justifies it. In matching tasks the answer is never the sentence that shares the most words with the question — it is the sentence that carries the same <em>meaning</em>. Use the paragraph buttons to jump back and confirm.</p>
+
+    <details>
+      <summary>Reveal answers 1–6 · Matching information to paragraphs</summary>
+      <div class="details-body table-scroll">
+        <table class="keytable">
+          <thead><tr><th>Q</th><th>Answer</th><th>Evidence in the passage</th></tr></thead>
+          <tbody>
+            <tr><td>1</td><td class="ans">E <button class="jump" data-go="E">go</button></td><td>&ldquo;<span class="ev">compared young zebra finches tutored by adult males with birds given identical songs through loudspeakers</span>&rdquo; — two groups, same songs, different delivery.</td></tr>
+            <tr><td>2</td><td class="ans">C <button class="jump" data-go="C">go</button></td><td>&ldquo;<span class="ev">to allow the bird to compare its own performance against that stored model and correct the difference</span>&rdquo;.</td></tr>
+            <tr><td>3</td><td class="ans">F <button class="jump" data-go="F">go</button></td><td>&ldquo;<span class="ev">these boundaries can remain stable for thirty years or more, far longer than the lifespan of any individual singer</span>&rdquo;.</td></tr>
+            <tr><td>4</td><td class="ans">A <button class="jump" data-go="A">go</button></td><td>&ldquo;<span class="ev">close to half belong to the group known as oscine songbirds … it is these birds … that must learn what they sing</span>&rdquo;.</td></tr>
+            <tr><td>5</td><td class="ans">G <button class="jump" data-go="G">go</button></td><td>&ldquo;<span class="ev">some of this is immediate adjustment rather than learning — an individual bird can raise its pitch within minutes</span>&rdquo;.</td></tr>
+            <tr><td>6</td><td class="ans">B <button class="jump" data-go="B">go</button></td><td>&ldquo;<span class="ev">a progression from subsong … through a plastic stage of gradual approximation, to crystallised song, the fixed adult form</span>&rdquo;.</td></tr>
+          </tbody>
+        </table>
+        <p style="font-family:var(--f-ui);font-size:0.85rem;color:var(--ink-soft);margin-top:1rem;">Paragraphs <b>D</b> and <b>H</b> are not used.</p>
+      </div>
+    </details>
+
+    <details>
+      <summary>Reveal answers 7–12 · Matching statements to researchers</summary>
+      <div class="details-body table-scroll">
+        <table class="keytable">
+          <thead><tr><th>Q</th><th>Answer</th><th>Evidence in the passage</th></tr></thead>
+          <tbody>
+            <tr><td>7</td><td class="ans">B <button class="jump" data-go="D">go</button></td><td>Corrigan: &ldquo;<span class="ev">an inherited perceptual bias … which determines what the bird is willing to treat as a model in the first place</span>&rdquo;. <em>Willing to treat as a model</em> = selective about what it imitates.</td></tr>
+            <tr><td>8</td><td class="ans">D <button class="jump" data-go="F">go</button></td><td>Takahashi: &ldquo;<span class="ev">Dialects, he argues, are cultural traditions in the strict sense</span>&rdquo;.</td></tr>
+            <tr><td>9</td><td class="ans">A <button class="jump" data-go="C">go</button></td><td>Lindqvist: &ldquo;<span class="ev">compare its own performance against that stored model and correct the difference</span>&rdquo;.</td></tr>
+            <tr><td>10</td><td class="ans">C <button class="jump" data-go="E">go</button></td><td>Osei: &ldquo;<span class="ev">Those with a live tutor learned faster and copied more accurately</span>&rdquo; plus &ldquo;<span class="ev">adult birds respond to a youngster's attempts</span>&rdquo;.</td></tr>
+            <tr><td>11</td><td class="ans">D <button class="jump" data-go="G">go</button></td><td>&ldquo;<span class="ev">Takahashi has suggested that some urban populations may now be forming dialects of their own</span>&rdquo;. Note this sits inside Ferreira's paragraph.</td></tr>
+            <tr><td>12</td><td class="ans">A <button class="jump" data-go="C">go</button></td><td>Lindqvist: isolated birds &ldquo;<span class="ev">retained the rough species-typical rhythm but lacked its detailed structure</span>&rdquo;; deafened birds produced sound that &ldquo;<span class="ev">bore almost no resemblance to normal song</span>&rdquo; — two deprivations, two severities.</td></tr>
+          </tbody>
+        </table>
+        <p style="font-family:var(--f-ui);font-size:0.85rem;color:var(--ink-soft);margin-top:1rem;"><b>Repeated:</b> A (Lindqvist) ×2, D (Takahashi) ×2. <b>Unused:</b> E (Ferreira).</p>
+
+        <div class="trap">
+          <span class="label">The designed trap — Question 11</span>
+          <p>Q11 is about cities, and Ferreira is the city researcher, so <b>E</b> feels right. But the passage attributes the dialect claim to <b>Takahashi</b>, inside Ferreira's paragraph. Matching-to-researcher questions test <em>who said it</em>, never <em>whose paragraph it appears in</em>. Always read to the end of the sentence for the attribution verb.</p>
+        </div>
+      </div>
+    </details>
+
+    <details>
+      <summary>Reveal answers 13–15 · Multiple-answer matching</summary>
+      <div class="details-body">
+        <p style="font-family:var(--f-ui);font-weight:600;color:var(--accent);font-size:1.05rem;">A, C, D — in any order</p>
+        <p>All three come from a single sentence in paragraph <b>G</b> <button class="jump" data-go="G">go</button>: &ldquo;<span class="ev">birds in noisy districts sing at a higher pitch, in shorter phrases, and more often at dawn before traffic builds</span>&rdquo;.</p>
+        <div class="table-scroll">
+          <table class="keytable">
+            <thead><tr><th>Option</th><th>Verdict</th><th>Why</th></tr></thead>
+            <tbody>
+              <tr><td class="ans">B</td><td>Not mentioned</td><td>The passage says low notes are <em>masked</em> by engine noise. It never claims the birds sing more loudly — a plausible inference, but inference is not what this task rewards.</td></tr>
+              <tr><td class="ans">E</td><td>Not mentioned</td><td>Nothing is said about how many birds sing in cities.</td></tr>
+              <tr><td class="ans">F</td><td>Not mentioned</td><td>Some species do imitate machinery, but this passage does not say so. Outside knowledge is a trap in IELTS Reading.</td></tr>
+              <tr><td class="ans">G</td><td>Not mentioned</td><td>The passage mentions shorter <em>phrases</em>, not longer <em>gaps</em>. Close, and deliberately so.</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </details>
+
+    <h2 style="margin-top:3rem;">Strategy guide</h2>
+    <p>These three task types are the ones that most often stop a Band 6.5 candidate reaching 7.0, because all three punish the same habit: hunting for matching words instead of matching meaning.</p>
+
+    <h3>Matching information to paragraphs (Q1–6)</h3>
+    <ol class="strat">
+      <li><b>Do this task last, not first.</b> It requires scanning the whole passage, so answering the other tasks first means you already know where things are. Candidates who work in printed order lose four to five minutes here.</li>
+      <li><b>Underline the abstract noun in the question.</b> Q1 says <em>a comparison</em>, Q5 says <em>an admission</em>, Q6 says <em>a description</em>. That word tells you what kind of sentence to look for, which is far more efficient than hunting the topic.</li>
+      <li><b>Remember that letters can repeat and paragraphs can go unused.</b> Here D and H are unused. Never assume a tidy one-to-one distribution — that assumption alone causes wrong answers.</li>
+      <li><b>Do not eliminate a paragraph because you already used it</b> unless the instructions say each letter is used once. Read the rubric every time; it changes between tests.</li>
+    </ol>
+
+    <h3>Matching statements to researchers (Q7–12)</h3>
+    <ol class="strat">
+      <li><b>Mark every name in the passage before you read a single question.</b> Thirty seconds spent circling Lindqvist, Corrigan, Osei, Takahashi and Ferreira converts the whole task into targeted checking.</li>
+      <li><b>Watch for names appearing outside their own paragraph.</b> Takahashi is introduced in F but is quoted again in G, and that second appearance is the answer to Q11. This is the single most common way this task type is made difficult.</li>
+      <li><b>Attach the claim to the attribution verb.</b> <em>argues, concluded, indicates, has suggested, is careful to note</em> — the name attached to that verb owns the claim, regardless of whose research the paragraph is about.</li>
+      <li><b>Expect overlapping positions.</b> Osei and Ferreira both point to environmental influence; Lindqvist and Corrigan both discuss what is present before learning. Overlap is deliberate, so a statement that sounds like two researchers means you have not yet found the distinguishing detail.</li>
+      <li><b>An unused option is normal.</b> Ferreira answers nothing here. If you have used every name once and have a question left, do not force a redistribution — check for a repeat instead.</li>
+    </ol>
+
+    <h3>Multiple-answer matching (Q13–15)</h3>
+    <ol class="strat">
+      <li><b>The answers usually cluster.</b> All three sit in one sentence of paragraph G. Once you find the first, read the rest of that sentence before searching elsewhere.</li>
+      <li><b>Reject anything requiring an inference.</b> Option B (louder singing) follows logically from masking noise, but the passage never states it. These tasks reward literal presence only.</li>
+      <li><b>Watch for near-miss vocabulary.</b> Option G swaps <em>shorter phrases</em> for <em>longer gaps</em>. Same semantic field, different claim.</li>
+      <li><b>Three answers score three marks.</b> There is no partial credit per question, but each correct letter earns its mark independently — so guess the third letter rather than leaving it blank.</li>
+    </ol>
+
+    <h3>Timing for a 20-minute passage</h3>
+    <div class="table-scroll">
+      <table class="keytable">
+        <thead><tr><th>Minutes</th><th>Action</th></tr></thead>
+        <tbody>
+          <tr><td class="ans">0–2</td><td>Skim all eight paragraphs. Write a two-word summary beside each. Circle every proper name.</td></tr>
+          <tr><td class="ans">2–9</td><td>Questions 7–12. You already know where the names are.</td></tr>
+          <tr><td class="ans">9–13</td><td>Questions 13–15. Locate the urban-noise paragraph and read it closely.</td></tr>
+          <tr><td class="ans">13–19</td><td>Questions 1–6, using the summaries written at the start.</td></tr>
+          <tr><td class="ans">19–20</td><td>Transfer and check. Never leave a box empty — there is no penalty for a wrong answer.</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<footer>IELTS Academic Reading practice · LBEnglishCo · Created 2026-08-26</footer>
+
+<script>
+(function () {
+  var KEY = {1:"E",2:"C",3:"F",4:"A",5:"G",6:"B",7:"B",8:"D",9:"A",10:"C",11:"D",12:"A"};
+  var MULTI = ["A","C","D"];
+  var STORE = "learned-song-answers";
+  var inputs = Array.prototype.slice.call(document.querySelectorAll("input[data-q]"));
+
+  /* ---- restore saved answers ---- */
+  try {
+    var saved = JSON.parse(localStorage.getItem(STORE) || "{}");
+    inputs.forEach(function (el) {
+      if (saved[el.dataset.q]) el.value = saved[el.dataset.q];
+    });
+  } catch (e) { /* private mode or blocked storage — start empty */ }
+
+  function persist() {
+    try {
+      var out = {};
+      inputs.forEach(function (el) { if (el.value) out[el.dataset.q] = el.value.toUpperCase(); });
+      localStorage.setItem(STORE, JSON.stringify(out));
+    } catch (e) { /* non-fatal */ }
+  }
+
+  inputs.forEach(function (el, i) {
+    el.addEventListener("input", function () {
+      el.value = el.value.toUpperCase().replace(/[^A-H]/g, "");
+      el.classList.remove("right", "wrong");
+      persist();
+      if (el.value && inputs[i + 1]) inputs[i + 1].focus();
+    });
+  });
+
+  /* ---- checking ---- */
+  document.getElementById("checkBtn").addEventListener("click", function () {
+    var correct = 0;
+
+    for (var q in KEY) {
+      var el = document.querySelector('input[data-q="' + q + '"]');
+      var ok = el.value.toUpperCase() === KEY[q];
+      el.classList.toggle("right", ok);
+      el.classList.toggle("wrong", !ok);
+      if (ok) correct++;
+    }
+
+    var given = [13, 14, 15].map(function (q) {
+      return document.querySelector('input[data-q="' + q + '"]');
+    });
+    var pool = MULTI.slice();
+    given.forEach(function (el) {
+      var v = el.value.toUpperCase();
+      var idx = pool.indexOf(v);
+      if (v && idx > -1) { pool.splice(idx, 1); el.classList.add("right"); el.classList.remove("wrong"); correct++; }
+      else { el.classList.add("wrong"); el.classList.remove("right"); }
+    });
+
+    var band = correct >= 14 ? "on track for 7.5+" : correct >= 11 ? "on track for 7.0" : correct >= 8 ? "around 6.0–6.5" : "below 6.0 — review the strategy guide";
+    document.getElementById("score").textContent = correct + " / 15 — " + band;
+  });
+
+  document.getElementById("clearBtn").addEventListener("click", function () {
+    inputs.forEach(function (el) { el.value = ""; el.classList.remove("right", "wrong"); });
+    document.getElementById("score").textContent = "";
+    persist();
+  });
+
+  /* ---- jump to paragraph ---- */
+  document.querySelectorAll(".jump").forEach(function (btn) {
+    btn.addEventListener("click", function () {
+      var target = document.getElementById("para-" + btn.dataset.go);
+      if (!target) return;
+      target.scrollIntoView({ behavior: "smooth", block: "center" });
+      target.classList.remove("flash");
+      void target.offsetWidth;
+      target.classList.add("flash");
+    });
+  });
+
+  /* ---- timer ---- */
+  var total = 20 * 60, left = total, running = false, tick = null;
+  var clock = document.getElementById("clock");
+  var startBtn = document.getElementById("startBtn");
+
+  function paint() {
+    var m = Math.floor(Math.abs(left) / 60), s = Math.abs(left) % 60;
+    clock.textContent = (left < 0 ? "-" : "") + m + ":" + (s < 10 ? "0" : "") + s;
+    clock.classList.toggle("over", left <= 0);
+  }
+
+  startBtn.addEventListener("click", function () {
+    running = !running;
+    startBtn.textContent = running ? "Pause" : "Start";
+    if (running) { tick = setInterval(function () { left--; paint(); }, 1000); }
+    else { clearInterval(tick); }
+  });
+
+  document.getElementById("resetBtn").addEventListener("click", function () {
+    clearInterval(tick); running = false; left = total;
+    startBtn.textContent = "Start";
+    paint();
+  });
+
+  paint();
+})();
+</script>

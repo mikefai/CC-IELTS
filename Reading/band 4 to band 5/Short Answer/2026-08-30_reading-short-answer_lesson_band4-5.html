@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IELTS Reading: Short Answer - Band 4-5</title>
+    <style>
+        :root {
+            --primary: #2563eb;
+            --primary-dark: #1e40af;
+            --success: #16a34a;
+            --warning: #ea580c;
+            --bg: #ffffff;
+            --surface: #f8fafc;
+            --text: #1e293b;
+            --text-muted: #64748b;
+            --border: #e2e8f0;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background-color: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        header {
+            margin-bottom: 30px;
+            border-bottom: 2px solid var(--border);
+            padding-bottom: 20px;
+        }
+
+        h1 {
+            font-size: 28px;
+            margin-bottom: 8px;
+            color: var(--primary-dark);
+        }
+
+        .subtitle {
+            font-size: 16px;
+            color: var(--text-muted);
+            margin-bottom: 8px;
+        }
+
+        .target-level {
+            display: inline-block;
+            background: var(--surface);
+            padding: 6px 12px;
+            border-radius: 4px;
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--primary);
+            margin-top: 10px;
+        }
+
+        section {
+            margin-bottom: 40px;
+        }
+
+        h2 {
+            font-size: 20px;
+            margin-bottom: 16px;
+            color: var(--primary-dark);
+            padding-bottom: 8px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 16px;
+        }
+
+        .question-block {
+            margin-bottom: 20px;
+        }
+
+        .question-text {
+            font-size: 16px;
+            font-weight: 600;
+            color: var(--primary);
+            margin-bottom: 12px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px;
+            background: white;
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            transition: all 0.2s;
+        }
+
+        .question-text:hover {
+            background: var(--surface);
+            border-color: var(--primary);
+        }
+
+        .toggle-icon {
+            font-size: 18px;
+            transition: transform 0.3s;
+        }
+
+        .question-text.open .toggle-icon {
+            transform: rotate(180deg);
+        }
+
+        .explanation {
+            display: none;
+            background: white;
+            padding: 12px;
+            border-left: 3px solid var(--primary);
+            margin-top: 8px;
+            font-size: 15px;
+            line-height: 1.8;
+        }
+
+        .explanation.visible {
+            display: block;
+        }
+
+        .tips-box {
+            background: #f0f9ff;
+            border-left: 4px solid var(--primary);
+            padding: 16px;
+            margin-top: 16px;
+            border-radius: 4px;
+        }
+
+        .tips-box strong {
+            color: var(--primary-dark);
+        }
+
+        .tips-box ul {
+            margin-left: 20px;
+            margin-top: 8px;
+            font-size: 14px;
+            color: var(--text-muted);
+        }
+
+        .tips-box li {
+            margin-bottom: 6px;
+        }
+
+        .band-info {
+            background: #fef3c7;
+            border-left: 4px solid var(--warning);
+            padding: 16px;
+            border-radius: 4px;
+            margin-bottom: 20px;
+            font-size: 14px;
+        }
+
+        .example-text {
+            background: white;
+            border: 1px solid var(--border);
+            padding: 16px;
+            border-radius: 6px;
+            margin-top: 12px;
+            font-style: italic;
+            color: var(--text-muted);
+        }
+
+        .answer-example {
+            background: #f0fdf4;
+            border: 1px solid var(--success);
+            padding: 12px;
+            border-radius: 4px;
+            margin-top: 8px;
+            font-size: 14px;
+            color: var(--success);
+        }
+
+        button {
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 6px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.2s;
+            margin-right: 8px;
+            margin-top: 16px;
+        }
+
+        button:hover {
+            background: var(--primary-dark);
+        }
+
+        footer {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid var(--border);
+            font-size: 13px;
+            color: var(--text-muted);
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>IELTS Reading: Short Answer</h1>
+            <p class="subtitle">Writing Brief Answers to Specific Questions</p>
+            <span class="target-level">Target: Band 4.0 – 5.5</span>
+        </header>
+
+        <div class="band-info">
+            <strong>Band 4-5 Focus:</strong> Find specific information. Write clear, brief answers. Use words from the passage or your own words appropriately.
+        </div>
+
+        <section>
+            <h2>Understanding Short Answer</h2>
+            <div class="card">
+                <p><strong>Format:</strong> You receive questions. Write answers in 1-3 words, NO MORE. You must use only information from the passage.</p>
+                <p><strong>Challenge:</strong> Knowing what to write and how much. The answer must be complete but concise.</p>
+                <p><strong>Key Skills:</strong> Finding specific information, writing concisely, understanding question words (Who? What? Why? Where?)</p>
+            </div>
+        </section>
+
+        <section>
+            <h2>Critical Rules for Short Answer</h2>
+            <div class="card">
+                <ul style="margin-left: 20px;">
+                    <li><strong>Word limit:</strong> NEVER write more than 3 words (examiners will mark extra words as wrong)</li>
+                    <li><strong>Use the passage:</strong> Do NOT use general knowledge</li>
+                    <li><strong>Capitalization & spelling:</strong> Write normally. Proper nouns should be capitalized</li>
+                    <li><strong>Answering the question:</strong> Make sure your answer directly answers the question asked</li>
+                </ul>
+            </div>
+        </section>
+
+        <section>
+            <h2>Why Students Lose Marks</h2>
+            <div class="card">
+                <ul style="margin-left: 20px;">
+                    <li>Writing more than 3 words (automatic marks lost)</li>
+                    <li>Not finding the exact location in the passage</li>
+                    <li>Answering a different question than what was asked</li>
+                    <li>Using information not in the passage</li>
+                    <li>Spelling mistakes (examiners penalize spelling errors)</li>
+                </ul>
+            </div>
+        </section>
+
+        <section>
+            <h2>Band 4-5 Strategies</h2>
+
+            <div class="question-block">
+                <div class="question-text" onclick="toggleExplanation(this)">
+                    <span>Strategy 1: Find the Key Words in the Question</span>
+                    <span class="toggle-icon">▼</span>
+                </div>
+                <div class="explanation">
+                    <strong>What to do:</strong> Identify the QUESTION WORD (Who/What/Where/When/Why/How) and the KEY NOUN. Scan for these in the passage.<br><br>
+                    <strong>Example:</strong><br>
+                    Question: "Where was the university founded?"<br>
+                    Question word: "Where" (location)<br>
+                    Key noun: "university," "founded"<br>
+                    Find in passage: "University X was founded in Tokyo in 1950"<br>
+                    Answer: "Tokyo" (1 word)
+                </div>
+            </div>
+
+            <div class="question-block">
+                <div class="question-text" onclick="toggleExplanation(this)">
+                    <span>Strategy 2: Understand Each Question Type</span>
+                    <span class="toggle-icon">▼</span>
+                </div>
+                <div class="explanation">
+                    <strong>What to do:</strong> Different questions need different answer types:<br><br>
+                    • <strong>What/Which</strong> → Often a noun or noun phrase<br>
+                    • <strong>Where</strong> → Location (place, city, country)<br>
+                    • <strong>When</strong> → Time (date, year, month)<br>
+                    • <strong>Who</strong> → Person's name or role<br>
+                    • <strong>Why/How</strong> → Reason or method (usually needs to copy from passage)<br><br>
+                    <strong>Example:</strong><br>
+                    Q: "When did the war end?" → Answer: "1945" (date)<br>
+                    Q: "Who invented the telephone?" → Answer: "Alexander Graham Bell" (person)
+                </div>
+            </div>
+
+            <div class="question-block">
+                <div class="question-text" onclick="toggleExplanation(this)">
+                    <span>Strategy 3: Copy vs. Paraphrase Wisely</span>
+                    <span class="toggle-icon">▼</span>
+                </div>
+                <div class="explanation">
+                    <strong>What to do:</strong> You can copy from the passage (easiest, safest). Or paraphrase if it makes your answer shorter.<br><br>
+                    <strong>Copy (SAFE):</strong><br>
+                    Passage: "The company was founded in Silicon Valley in 1998."<br>
+                    Q: "Where was the company founded?"<br>
+                    Answer: "Silicon Valley" ✓ (copied, 2 words)<br><br>
+                    <strong>Paraphrase (RISKY at Band 4-5):</strong><br>
+                    Answer: "The Valley" ✗ (unclear, might be marked wrong)<br><br>
+                    <strong>Rule:</strong> At Band 4-5, copy when you can. Paraphrase only if it saves you words.
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <h2>Practice Example</h2>
+
+            <div class="card">
+                <p style="margin-bottom: 12px;"><strong>Passage:</strong></p>
+                <div class="example-text">
+                    The Amazon rainforest covers an area of 5.5 million square kilometers across nine countries, with Brazil containing about 60 percent of it. Scientists estimate that this vast ecosystem is home to approximately 10 percent of all species on Earth. However, deforestation poses a serious threat. Every year, roughly 10,000 hectares of rainforest are lost due to logging, agriculture, and cattle ranching. Environmental organizations are working to protect the remaining forest through conservation programs and indigenous land rights.
+                </div>
+
+                <div class="question-block">
+                    <div class="question-text" onclick="toggleExplanation(this)">
+                        <span>Q1: How many square kilometers does the Amazon rainforest cover?</span>
+                        <span class="toggle-icon">▼</span>
+                    </div>
+                    <div class="explanation">
+                        <strong>Answer: 5.5 million</strong><br><br>
+                        <strong>Why:</strong> The passage states exactly "5.5 million square kilometers." We copy this directly (2 words).<br><br>
+                        <strong>Word count check:</strong> "5.5 million" = 2 words ✓ (within limit)<br>
+                        <strong>Not:</strong> "5.5 million square kilometers" = 4 words ✗ (too long)
+                    </div>
+                </div>
+
+                <div class="question-block">
+                    <div class="question-text" onclick="toggleExplanation(this)">
+                        <span>Q2: Which country contains the largest portion of the Amazon rainforest?</span>
+                        <span class="toggle-icon">▼</span>
+                    </div>
+                    <div class="explanation">
+                        <strong>Answer: Brazil</strong><br><br>
+                        <strong>Why:</strong> The passage says "Brazil containing about 60 percent of it" (the rainforest). Brazil is the answer (1 word).<br><br>
+                        <strong>Word count check:</strong> "Brazil" = 1 word ✓ (within limit)<br>
+                        <strong>Not:</strong> "Brazil contains it" = 3 words, but incomplete
+                    </div>
+                </div>
+
+                <div class="question-block">
+                    <div class="question-text" onclick="toggleExplanation(this)">
+                        <span>Q3: What are three causes of deforestation mentioned?</span>
+                        <span class="toggle-icon">▼</span>
+                    </div>
+                    <div class="explanation">
+                        <strong>Answer: logging, agriculture, cattle ranching</strong><br><br>
+                        <strong>Why:</strong> The passage lists "logging, agriculture, and cattle ranching." These are the three causes mentioned (3 words, exactly).<br><br>
+                        <strong>Word count check:</strong> "logging, agriculture, cattle ranching" = 3 words ✓ (at limit)<br>
+                        <strong>Capitalization:</strong> Normal lowercase is fine here
+                    </div>
+                </div>
+
+                <div class="question-block">
+                    <div class="question-text" onclick="toggleExplanation(this)">
+                        <span>Q4: Why is deforestation a serious threat?</span>
+                        <span class="toggle-icon">▼</span>
+                    </div>
+                    <div class="explanation">
+                        <strong>Answer: It destroys species habitat</strong><br><br>
+                        <strong>Why:</strong> The passage doesn't explicitly explain WHY it's a threat—just that 10% of Earth's species live there (implied reason). This question is tricky. The best answer based on the passage would be to reference that species live there, or that forest is being lost.<br><br>
+                        <strong>Alternative answer:</strong> "10,000 hectares lost yearly" (copying the fact about loss)<br><br>
+                        <strong>Note:</strong> Questions asking "why" are often hardest because you must find or infer the reason from the passage.
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <h2>Practice Tips</h2>
+            <div class="card">
+                <div class="tips-box">
+                    <strong>Step-by-step approach:</strong>
+                    <ul>
+                        <li>Read the question carefully</li>
+                        <li>Identify the question word and key terms</li>
+                        <li>Scan the passage for this information</li>
+                        <li>Find the exact sentence(s) with the answer</li>
+                        <li>Write your answer in 1-3 words MAXIMUM</li>
+                        <li>Check: Does my answer answer the question? Is it clear?</li>
+                        <li>Check spelling and word count</li>
+                    </ul>
+                </div>
+
+                <div class="tips-box" style="margin-top: 12px;">
+                    <strong>Common mistakes to avoid:</strong>
+                    <ul>
+                        <li>Writing MORE than 3 words (instant loss of marks)</li>
+                        <li>Answering a different question than asked</li>
+                        <li>Writing vague answers: "Yes," "maybe," "good" (too unclear)</li>
+                        <li>Spelling errors (be careful!)</li>
+                    </ul>
+                </div>
+
+                <div class="tips-box" style="margin-top: 12px;">
+                    <strong>Time management:</strong>
+                    <ul>
+                        <li>Spend 10 minutes on this task (4-6 questions)</li>
+                        <li>Read each question (30 seconds)</li>
+                        <li>Find and write answer (1-2 minutes per question)</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <h2>Quick Reference: Question Words</h2>
+            <div class="card">
+                <ul style="margin-left: 20px;">
+                    <li><strong>What</strong> = Noun, idea, thing, event</li>
+                    <li><strong>Which</strong> = Choose from options (similar to "what")</li>
+                    <li><strong>Who</strong> = Person's name or title</li>
+                    <li><strong>Where</strong> = Place, location</li>
+                    <li><strong>When</strong> = Date, year, time</li>
+                    <li><strong>Why</strong> = Reason, cause (often needs to infer from passage)</li>
+                    <li><strong>How</strong> = Method, process (often needs to copy exact method from passage)</li>
+                </ul>
+            </div>
+        </section>
+
+        <footer>
+            <p>IELTS Academic Reading - Band 4.0–5.5 | Created 2026-08-30</p>
+            <p>Remember: Find the information in the passage, answer directly, keep it to 3 words max, and check your spelling.</p>
+        </footer>
+    </div>
+
+    <script>
+        function toggleExplanation(element) {
+            const explanation = element.nextElementSibling;
+            explanation.classList.toggle('visible');
+            element.classList.toggle('open');
+        }
+    </script>
+</body>
+</html>

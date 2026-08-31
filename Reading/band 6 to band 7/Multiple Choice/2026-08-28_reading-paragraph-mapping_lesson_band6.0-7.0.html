@@ -1,0 +1,1039 @@
+<meta charset="utf-8">
+<title>Paragraph Mapping</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500;700&family=Literata:opsz,wght@7..72,400;7..72,600&display=swap">
+
+<style>
+  :root {
+    --ground: #F4F5F8;
+    --surface: #FFFFFF;
+    --sunk: #E9ECF2;
+    --ink: #16202E;
+    --ink-soft: #5C6A7D;
+    --ink-faint: #8E99A8;
+    --accent: #33456B;
+    --accent-soft: #E2E7F1;
+    --kill: #B0413E;
+    --kill-soft: #F7E9E8;
+    --keep: #3B7A57;
+    --keep-soft: #E6F0EA;
+    --rule: #D8DDE6;
+
+    --f-display: "Instrument Serif", Georgia, serif;
+    --f-body: "Literata", Georgia, "Times New Roman", serif;
+    --f-mono: "JetBrains Mono", ui-monospace, "Cascadia Mono", Consolas, monospace;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --ground: #14181F;
+      --surface: #1C222C;
+      --sunk: #242C38;
+      --ink: #E6EAF0;
+      --ink-soft: #9AA6B6;
+      --ink-faint: #6B7788;
+      --accent: #8FA6D4;
+      --accent-soft: #232D42;
+      --kill: #E08A85;
+      --kill-soft: #2E2020;
+      --keep: #7FC49C;
+      --keep-soft: #1B2A22;
+      --rule: #2C3542;
+    }
+  }
+  :root[data-theme="dark"] {
+    --ground: #14181F;
+    --surface: #1C222C;
+    --sunk: #242C38;
+    --ink: #E6EAF0;
+    --ink-soft: #9AA6B6;
+    --ink-faint: #6B7788;
+    --accent: #8FA6D4;
+    --accent-soft: #232D42;
+    --kill: #E08A85;
+    --kill-soft: #2E2020;
+    --keep: #7FC49C;
+    --keep-soft: #1B2A22;
+    --rule: #2C3542;
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    margin: 0;
+    background: var(--ground);
+    color: var(--ink);
+    font-family: var(--f-body);
+    font-size: 1.02rem;
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .wrap { max-width: 780px; margin: 0 auto; padding: 0 clamp(1rem, 5vw, 2rem); }
+  .wide { max-width: 1000px; }
+
+  h1, h2, h3 { margin: 0; line-height: 1.15; text-wrap: balance; }
+  h1 { font-family: var(--f-display); font-size: clamp(2.8rem, 7vw, 4.4rem); font-weight: 400; letter-spacing: -0.01em; }
+  h2 { font-family: var(--f-display); font-size: clamp(1.9rem, 4vw, 2.5rem); font-weight: 400; }
+  h3 { font-family: var(--f-mono); font-size: 0.92rem; font-weight: 700; letter-spacing: 0.02em; }
+
+  .eyebrow {
+    font-family: var(--f-mono); font-size: 0.7rem; font-weight: 500;
+    letter-spacing: 0.16em; text-transform: uppercase; color: var(--accent);
+  }
+  p { max-width: 68ch; }
+
+  /* ---------- hero ---------- */
+  .hero { padding: clamp(3rem, 9vw, 6rem) 0 clamp(2rem, 5vw, 3.5rem); border-bottom: 1px solid var(--rule); }
+  .hero .lede { font-size: 1.2rem; color: var(--ink-soft); margin-top: 1.25rem; }
+  .hero .lede em { font-style: italic; color: var(--ink); }
+  .facts { display: flex; flex-wrap: wrap; gap: 0 2.25rem; row-gap: 0.6rem; margin-top: 2rem; font-family: var(--f-mono); font-size: 0.78rem; }
+  .facts div { display: flex; flex-direction: column; gap: 0.1rem; }
+  .facts span { color: var(--ink-faint); letter-spacing: 0.08em; text-transform: uppercase; font-size: 0.66rem; }
+  .facts b { font-weight: 500; color: var(--ink); }
+
+  /* ---------- sections ---------- */
+  section { padding: clamp(2.75rem, 7vw, 4.5rem) 0; border-bottom: 1px solid var(--rule); }
+  .sec-head { margin-bottom: 2rem; }
+  .sec-head .eyebrow { display: block; margin-bottom: 0.6rem; }
+  .sec-head p { color: var(--ink-soft); margin-top: 0.9rem; }
+
+  /* ---------- the seven fields ---------- */
+  .fields { display: grid; gap: 0.9rem; }
+  @media (min-width: 720px) { .fields { grid-template-columns: 1fr 1fr; } }
+  .fld { background: var(--surface); border: 1px solid var(--rule); border-radius: 4px; padding: 1.15rem 1.3rem; }
+  .fld .n { font-family: var(--f-mono); font-size: 0.7rem; font-weight: 700; color: var(--accent); letter-spacing: 0.1em; }
+  .fld h3 { margin: 0.3rem 0 0.4rem; font-family: var(--f-body); font-size: 1.1rem; font-weight: 600; letter-spacing: 0; }
+  .fld p { font-size: 0.92rem; margin: 0; color: var(--ink-soft); }
+  .fld .ask { display: block; margin-top: 0.6rem; font-family: var(--f-mono); font-size: 0.73rem; color: var(--ink); background: var(--accent-soft); padding: 0.4rem 0.55rem; border-radius: 3px; }
+
+  /* ---------- demonstration paragraph ---------- */
+  .demo-para {
+    background: var(--surface); border: 1px solid var(--rule); border-radius: 4px;
+    padding: clamp(1.2rem, 4vw, 2rem); margin-bottom: 1.5rem;
+  }
+  .demo-para p { margin: 0; font-size: 1.02rem; }
+  .demo-para .src { font-family: var(--f-mono); font-size: 0.7rem; color: var(--ink-faint); margin-top: 0.9rem; }
+
+  /* ---------- map (demo + blank + model share this) ---------- */
+  .map-para { background: var(--surface); border: 1px solid var(--rule); border-radius: 4px; margin-bottom: 0.9rem; overflow: hidden; }
+  .map-para > summary, .map-para > .map-head {
+    font-family: var(--f-mono); font-size: 0.85rem; font-weight: 700; color: var(--accent);
+    padding: 0.8rem 1.1rem; cursor: pointer; list-style: none; letter-spacing: 0.04em;
+  }
+  .map-para > summary::-webkit-details-marker { display: none; }
+  .map-para > summary::after { content: " ▸"; color: var(--ink-faint); }
+  .map-para[open] > summary::after { content: " ▾"; }
+  .map-para[open] > summary { border-bottom: 1px solid var(--rule); }
+  .map-body { padding: 0.5rem 1.1rem 1.1rem; }
+  .map-row { display: grid; grid-template-columns: 8.5rem 1fr; gap: 0.5rem 0.9rem; padding: 0.55rem 0; border-top: 1px solid var(--rule); align-items: start; }
+  .map-row:first-child { border-top: none; }
+  .map-row .fl { font-family: var(--f-mono); font-size: 0.72rem; font-weight: 700; color: var(--ink-soft); text-transform: uppercase; letter-spacing: 0.04em; padding-top: 0.5rem; }
+  @media (max-width: 560px) { .map-row { grid-template-columns: 1fr; } .map-row .fl { padding-top: 0; } }
+  .map-row textarea {
+    width: 100%; min-height: 2.9rem; resize: vertical;
+    font-family: var(--f-body); font-size: 0.92rem; line-height: 1.5; color: var(--ink);
+    background: var(--ground); border: 1px solid var(--rule); border-radius: 3px; padding: 0.45rem 0.55rem;
+  }
+  .map-row textarea:focus-visible { outline: 2px solid var(--accent); outline-offset: 1px; background: var(--surface); }
+  .map-row textarea:disabled { opacity: 0.7; }
+  .map-row .modeltext { font-size: 0.92rem; color: var(--ink-soft); }
+  .map-row .modeltext.thin { color: var(--ink-faint); font-style: italic; }
+  .map-row .why { display: block; margin-top: 0.3rem; font-family: var(--f-mono); font-size: 0.72rem; color: var(--accent); }
+
+  /* ---------- passage ---------- */
+  .passage { background: var(--surface); border: 1px solid var(--rule); border-radius: 4px; padding: clamp(1.25rem, 4vw, 2.25rem); }
+  .passage-title { font-family: var(--f-display); font-size: 1.9rem; margin-bottom: 1.5rem; }
+  .para { display: grid; grid-template-columns: 1.9rem 1fr; gap: 0 0.9rem; margin-bottom: 1.35rem; scroll-margin-top: 1rem; border-radius: 3px; }
+  .para p { margin: 0; max-width: 64ch; }
+  .para-letter { font-family: var(--f-mono); font-size: 0.85rem; font-weight: 700; color: var(--accent); padding-top: 0.28rem; }
+  .para.flash { animation: fl 1.6s ease; }
+  @keyframes fl { 0%,15% { background: var(--accent-soft); } 100% { background: transparent; } }
+  @media (prefers-reduced-motion: reduce) { .para.flash { animation: none; outline: 2px solid var(--accent); outline-offset: 5px; } }
+
+  /* ---------- controls / timer ---------- */
+  .bar {
+    position: sticky; top: 0; z-index: 5;
+    background: var(--surface); border: 1px solid var(--rule); border-radius: 4px;
+    padding: 0.75rem 1rem; margin-bottom: 1.25rem;
+    display: flex; flex-wrap: wrap; gap: 0.6rem; align-items: center;
+  }
+  .clock { font-family: var(--f-mono); font-variant-numeric: tabular-nums; font-size: 1.3rem; font-weight: 700; color: var(--accent); min-width: 5ch; }
+  .clock.idle { color: var(--ink-faint); }
+  .clock.over { color: var(--kill); }
+  button {
+    font-family: var(--f-mono); font-size: 0.78rem; font-weight: 500;
+    padding: 0.45rem 0.8rem; border-radius: 3px; border: 1px solid var(--rule);
+    background: var(--surface); color: var(--ink); cursor: pointer;
+    transition: background 0.15s ease, border-color 0.15s ease;
+  }
+  button:hover { background: var(--sunk); border-color: var(--ink-faint); }
+  button.primary { background: var(--accent); border-color: var(--accent); color: var(--surface); }
+  button.primary:hover { filter: brightness(1.12); }
+  :focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+  .timer-note { font-family: var(--f-mono); font-size: 0.76rem; color: var(--ink-soft); margin-left: auto; max-width: 30ch; text-align: right; }
+
+  /* ---------- questions ---------- */
+  .heading-box { background: var(--sunk); border: 1px solid var(--rule); border-radius: 4px; padding: 1rem 1.2rem; margin-bottom: 1.4rem; }
+  .heading-box h3 { color: var(--ink-soft); margin-bottom: 0.6rem; }
+  .heading-box ol { margin: 0; padding-left: 1.7rem; }
+  .heading-box li { font-size: 0.93rem; margin-bottom: 0.3rem; }
+  .heading-box li::marker { font-family: var(--f-mono); color: var(--accent); font-size: 0.85rem; }
+
+  .qrow { display: grid; grid-template-columns: 1fr auto; gap: 0.6rem 1rem; align-items: start; background: var(--surface); border: 1px solid var(--rule); border-radius: 4px; padding: 0.9rem 1.1rem; margin-bottom: 0.7rem; }
+  .qrow .qtext { font-size: 0.97rem; }
+  .qrow .qtext .qn { font-family: var(--f-mono); font-size: 0.78rem; font-weight: 700; color: var(--ink-faint); margin-right: 0.5rem; }
+  select {
+    font-family: var(--f-mono); font-size: 0.85rem; padding: 0.4rem 0.5rem;
+    border: 1px solid var(--rule); border-radius: 3px; background: var(--surface); color: var(--ink);
+    min-width: 4.5rem;
+  }
+  select.ok { border-color: var(--keep); background: var(--keep-soft); }
+  select.bad { border-color: var(--kill); background: var(--kill-soft); }
+
+  .qcard { background: var(--surface); border: 1px solid var(--rule); border-radius: 4px; padding: 1.1rem 1.3rem; margin-bottom: 0.8rem; }
+  .qcard .qs { font-weight: 600; font-size: 1rem; margin-bottom: 0.7rem; }
+  .qcard .qs .qn { font-family: var(--f-mono); font-size: 0.78rem; font-weight: 700; color: var(--ink-faint); margin-right: 0.5rem; }
+  .opt { display: grid; grid-template-columns: 1.5rem 1fr; gap: 0.55rem; align-items: start; padding: 0.4rem 0.45rem; border-radius: 3px; cursor: pointer; }
+  .opt:hover { background: var(--sunk); }
+  .opt .ol { font-family: var(--f-mono); font-size: 0.8rem; font-weight: 700; color: var(--accent); }
+  .opt .ot { font-size: 0.95rem; }
+  .opt.picked { background: var(--accent-soft); }
+  .opt.correct { background: var(--keep-soft); box-shadow: inset 3px 0 0 var(--keep); }
+  .opt.mistake { background: var(--kill-soft); box-shadow: inset 3px 0 0 var(--kill); }
+
+  .score { font-family: var(--f-mono); font-size: 0.85rem; font-weight: 700; color: var(--accent); margin-left: 0.4rem; }
+
+  /* ---------- answer key ---------- */
+  details.key { border: 1px solid var(--rule); border-radius: 4px; margin-bottom: 0.7rem; background: var(--surface); }
+  details.key > summary { font-family: var(--f-mono); font-size: 0.82rem; font-weight: 500; padding: 0.75rem 1rem; cursor: pointer; color: var(--accent); }
+  details.key[open] > summary { border-bottom: 1px solid var(--rule); }
+  .dbody { padding: 1.25rem; }
+  .dbody p { margin: 0 0 0.8rem; font-size: 0.95rem; }
+  .ansline { font-family: var(--f-mono); font-size: 0.85rem; font-weight: 700; color: var(--keep); margin-bottom: 0.6rem; }
+  .ev { background: var(--accent-soft); padding: 0.75rem 0.9rem; border-radius: 3px; font-size: 0.92rem; font-style: italic; margin-bottom: 0.9rem; }
+  .field-tag { display: inline-block; font-family: var(--f-mono); font-size: 0.68rem; font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase; background: var(--sunk); color: var(--ink-soft); padding: 0.15rem 0.4rem; border-radius: 2px; }
+  .jump { font-family: var(--f-mono); font-size: 0.7rem; font-weight: 700; background: var(--accent-soft); color: var(--accent); border: none; border-radius: 2px; padding: 0.15rem 0.4rem; cursor: pointer; }
+  .miss { display: grid; grid-template-columns: 2.2rem 1fr; gap: 0.5rem; padding: 0.5rem 0; border-top: 1px dotted var(--rule); font-size: 0.9rem; }
+  .miss .ml { font-family: var(--f-mono); font-weight: 700; color: var(--kill); }
+
+  ol.steps { padding-left: 1.3rem; }
+  ol.steps > li { margin-bottom: 0.9rem; max-width: 66ch; }
+  ol.steps b { font-family: var(--f-mono); font-size: 0.85rem; }
+
+  ol.reflect { padding-left: 1.3rem; }
+  ol.reflect > li { margin-bottom: 1rem; max-width: 66ch; }
+
+  .note { border-left: 3px solid var(--accent); background: var(--sunk); padding: 0.9rem 1.1rem; border-radius: 0 3px 3px 0; margin: 1.25rem 0; }
+  .note p { margin: 0; font-size: 0.93rem; }
+  .note .eyebrow { display: block; margin-bottom: 0.35rem; }
+
+  .cards { display: grid; gap: 0.9rem; }
+  @media (min-width: 720px) { .cards { grid-template-columns: 1fr 1fr; } }
+  .card { background: var(--surface); border: 1px solid var(--rule); border-radius: 4px; padding: 1.25rem 1.35rem; }
+  .card .num { font-family: var(--f-mono); font-size: 0.7rem; font-weight: 700; color: var(--accent); letter-spacing: 0.1em; }
+  .card h3 { margin: 0.35rem 0 0.5rem; font-family: var(--f-body); font-size: 1.12rem; font-weight: 600; letter-spacing: 0; }
+  .card p { font-size: 0.92rem; margin: 0; color: var(--ink-soft); }
+  .card .tell { display: block; margin-top: 0.7rem; font-family: var(--f-mono); font-size: 0.75rem; color: var(--ink); background: var(--accent-soft); padding: 0.4rem 0.55rem; border-radius: 3px; }
+
+  footer { font-family: var(--f-mono); font-size: 0.72rem; color: var(--ink-faint); text-align: center; padding: 2rem 1rem 3rem; }
+
+  @media print {
+    .bar { position: static; }
+    .map-para, details.key { break-inside: avoid; }
+  }
+</style>
+
+<!-- ============ HERO ============ -->
+<div class="hero">
+  <div class="wrap">
+    <span class="eyebrow">IELTS Academic Reading · Lesson</span>
+    <h1>Paragraph Mapping</h1>
+    <p class="lede">Strong readers do not re-read a passage for every question. They read it <em>once</em>, leaving behind a short record of what each paragraph did — and then answer from the record. This lesson gives you a seven-part template for that record and drills it on a full passage.</p>
+    <div class="facts">
+      <div><span>Target</span><b>Band 6.0–7.0</b></div>
+      <div><span>Skill</span><b>Reading for structure</b></div>
+      <div><span>Passage</span><b>8 paragraphs · ~840 words</b></div>
+      <div><span>Questions</span><b>12</b></div>
+      <div><span>Timed map</span><b>12:00</b></div>
+    </div>
+  </div>
+</div>
+
+<!-- ============ PART 1 : THE SEVEN FIELDS ============ -->
+<section>
+  <div class="wrap wide">
+    <div class="sec-head">
+      <span class="eyebrow">Part 1</span>
+      <h2>What to record for every paragraph</h2>
+      <p>A map is not a summary. A summary retells the paragraph; a map records what the paragraph is <em>for</em> and pins the facts a question is likely to ask about. Seven fields. Keep every entry under about eight words — notes, never sentences.</p>
+    </div>
+
+    <div class="fields">
+      <div class="fld">
+        <span class="n">FIELD 1</span>
+        <h3>Main idea</h3>
+        <p>The one point the paragraph is making, in your own words. If you can only quote the passage, you have not understood it yet.</p>
+        <span class="ask">Ask: if I could keep one sentence, which?</span>
+      </div>
+      <div class="fld">
+        <span class="n">FIELD 2</span>
+        <h3>Function</h3>
+        <p>The paragraph's job in the text: introduces, defines, gives an example, contrasts, explains a cause, evaluates, concludes. This is what List of Headings and matching questions test.</p>
+        <span class="ask">Ask: what is this paragraph doing, not saying?</span>
+      </div>
+      <div class="fld">
+        <span class="n">FIELD 3</span>
+        <h3>Key names</h3>
+        <p>People, places, organisations, titles of works. Proper nouns are the fastest thing to relocate in a passage, so they are worth noting even when they seem minor.</p>
+        <span class="ask">Ask: which capital letters would I scan for?</span>
+      </div>
+      <div class="fld">
+        <span class="n">FIELD 4</span>
+        <h3>Dates</h3>
+        <p>Years, centuries, periods, sequence words (<em>then, later, by 1970</em>). Questions love chronology, and a wrong date is the commonest trap in a wrong option.</p>
+        <span class="ask">Ask: what happened when, and in what order?</span>
+      </div>
+      <div class="fld">
+        <span class="n">FIELD 5</span>
+        <h3>Examples</h3>
+        <p>The concrete cases the writer uses to support the main idea. Note the example <em>and</em> what it is an example of.</p>
+        <span class="ask">Ask: what is "for instance" attached to here?</span>
+      </div>
+      <div class="fld">
+        <span class="n">FIELD 6</span>
+        <h3>Contrasts</h3>
+        <p>Any X-versus-Y in the paragraph: old vs new, claim vs counter-claim, expected vs actual. Signalled by <em>but, however, whereas, unlike, rather than</em>.</p>
+        <span class="ask">Ask: what is being set against what?</span>
+      </div>
+      <div class="fld">
+        <span class="n">FIELD 7</span>
+        <h3>Causes &amp; effects</h3>
+        <p>What led to what. Signalled by <em>because, so, as a result, led to, meant that</em>. Write it as an arrow: <span style="font-family:var(--f-mono);font-size:0.8rem;">cause &rarr; effect</span>.</p>
+        <span class="ask">Ask: what is the chain of consequence?</span>
+      </div>
+      <div class="fld" style="background:var(--accent-soft);border-color:var(--accent);">
+        <span class="n" style="color:var(--accent);">THE HABIT</span>
+        <h3>Map as you read, once</h3>
+        <p>Fill the fields the moment you finish each paragraph — not at the end, not on a second pass. A field can be blank if the paragraph genuinely has nothing for it. Blank is information too.</p>
+        <span class="ask" style="background:var(--surface);">Not every paragraph fills all seven.</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PART 2 : DEMONSTRATION ============ -->
+<section>
+  <div class="wrap wide">
+    <div class="sec-head">
+      <span class="eyebrow">Part 2</span>
+      <h2>One paragraph, fully mapped</h2>
+      <p>Read the paragraph below, then look at the completed map. The right-hand notes in <span style="color:var(--accent);font-family:var(--f-mono);font-size:0.8rem;">mono</span> explain the choice — they are not part of the map itself.</p>
+    </div>
+
+    <div class="demo-para">
+      <p>Before 1840, sending a letter in Britain was expensive, and the recipient, not the sender, usually paid. Charges depended on distance and on the number of sheets, so a single letter travelling the length of the country could cost a labourer a day's wage. In 1837 Rowland Hill, a schoolteacher and civil servant, published a pamphlet arguing that high prices actually <em>reduced</em> the Post Office's income, because they discouraged people from writing at all. He proposed a flat charge of one penny for any letter under half an ounce, paid in advance by means of an adhesive stamp. The reform was introduced in 1840. Letter volumes doubled within a year and had trebled by 1850, and other countries copied the system within a decade.</p>
+      <p class="src">Demonstration text · not part of the assessed passage · historically accurate</p>
+    </div>
+
+    <div id="demoMap"></div>
+  </div>
+</section>
+
+<!-- ============ PART 3 : PASSAGE ============ -->
+<section>
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">Part 3 · Reading passage</span>
+      <h2>The Unglamorous Revolution</h2>
+      <p>Read the passage once. Paragraphs are labelled <b>A&ndash;H</b>. Do not answer any questions yet &mdash; you will map it first.</p>
+    </div>
+
+    <div class="passage">
+      <div class="passage-title">The Unglamorous Revolution</div>
+
+      <div class="para" id="p-A"><span class="para-letter">A</span><p>For most of maritime history, loading a ship was slow, expensive and dangerous. Cargo arrived at the docks as a jumble of barrels, sacks, crates and loose machinery, and gangs of dockworkers stowed each item by hand, fitting it into the hold like the pieces of a puzzle. A medium-sized freighter might spend a week or more in port for every few days at sea. Labour accounted for much of the total cost of shipping, pilferage from opened crates was routine, and a manufacturer in the American Midwest could rarely calculate in advance what it would cost to send goods to Europe. Ocean transport was a bottleneck that shaped what was worth trading at all.</p></div>
+
+      <div class="para" id="p-B"><span class="para-letter">B</span><p>The person usually credited with changing this was Malcom McLean, the owner of a large American trucking company. McLean was not an engineer and had no background in shipping. His interest was practical: his trucks wasted hours waiting on congested piers while their loads were transferred by hand. In 1955 he bought a small shipping line, and in April 1956 a converted tanker named the <em>Ideal-X</em> sailed from Newark, New Jersey, to Houston, Texas, carrying fifty-eight sealed metal boxes on a reinforced deck. The boxes were lifted straight onto waiting truck chassis. The cost of loading loose cargo, McLean later calculated, fell from several dollars a ton to a few cents.</p></div>
+
+      <div class="para" id="p-C"><span class="para-letter">C</span><p>The metal box itself was not the invention. Railway companies in Britain and the United States had moved goods in wooden containers since the nineteenth century, and the American army used standard boxes during the Second World War. What McLean grasped was that the container was useless on its own. Savings came only when the box, the ship, the crane, the truck trailer and the loading dock were all redesigned around one another as a single system. A box that did not fit the cranes, or that road-transport rules would not allow onto a highway, saved nobody anything. This systemic view, rather than the container, was the real break with the past.</p></div>
+
+      <div class="para" id="p-D"><span class="para-letter">D</span><p>For the system to work beyond a single company, the boxes had to be identical everywhere. Through the 1960s, shipping lines, railways and governments argued over dimensions, corner fittings and locking mechanisms, each favouring the standard that matched its own existing equipment. Agreement came slowly, through the International Organization for Standardization, which by 1970 had settled on the twenty- and forty-foot lengths still in use today. Only then could a container from any manufacturer be stacked on any ship and lifted by any crane. The economic value of a standard, in other words, lay less in its technical merits than in the fact that everyone accepted the same one.</p></div>
+
+      <div class="para" id="p-E"><span class="para-letter">E</span><p>Containers also broke the world of dock labour. A traditional pier employed hundreds of men to carry cargo; a container terminal needed a handful of crane operators and clerks. Dockworkers' unions in New York, London and elsewhere fought the change through strikes and negotiation. In the United States, a 1960 agreement traded acceptance of mechanisation for guaranteed wages and a fund financed by a fee on every container. Employment on the New York waterfront nonetheless fell by more than two-thirds within fifteen years. The old riverside districts that had lived off the docks declined sharply as the work moved elsewhere.</p></div>
+
+      <div class="para" id="p-F"><span class="para-letter">F</span><p>An unexpected boost came from war. In 1967 the United States military, struggling to supply its forces in Vietnam through a single overwhelmed port, awarded McLean's company a contract to run a container service to Cam Ranh Bay. The operation worked so well that the ships would otherwise have crossed the Pacific empty on the return leg. Instead, McLean's vessels called at Japan on the way home and picked up cargo from its rapidly growing electronics industry. A trade route that had been an afterthought became one of the busiest in the world, and containerised goods from Asia began arriving in American stores in quantity.</p></div>
+
+      <div class="para" id="p-G"><span class="para-letter">G</span><p>The container also remade the geography of ports. The cramped finger-piers of Manhattan and the enclosed docks of inner London had no room for the acres of paved yard that stacking containers required, nor the deep water that ever-larger ships demanded. Traffic shifted to sites with space and depth: Newark rather than New York, the small Suffolk harbour of Felixstowe rather than London, Rotterdam rather than the older Dutch ports. Cities that had been shipping centres for centuries lost their working waterfronts within a generation, while places few people had heard of became gateways for entire national economies.</p></div>
+
+      <div class="para" id="p-H"><span class="para-letter">H</span><p>The wider consequences are still debated. Sea freight became so cheap that its cost almost dropped out of companies' decisions about where to make things, and manufacturing spread to wherever labour was cheapest, linked back to consumers by long supply chains. One study, by the economists Daniel Bernhofen, Zouheir El-Beze and David Kneller, estimated that containerisation did more to increase trade among industrialised countries between 1962 and 1990 than all the trade agreements signed in the same period. The box is now so ordinary that it has become invisible, which is perhaps the clearest sign of how completely it succeeded.</p></div>
+    </div>
+    <p style="font-family:var(--f-mono);font-size:0.72rem;color:var(--ink-faint);margin-top:0.9rem;">~840 words · The people, dates and the study described are historically accurate.</p>
+  </div>
+</section>
+
+<!-- ============ PART 4 : BLANK MAP ============ -->
+<section>
+  <div class="wrap wide">
+    <div class="sec-head">
+      <span class="eyebrow">Part 4</span>
+      <h2>Blank mapping table</h2>
+      <p>One block per paragraph. Fill the seven fields from memory and a quick glance back &mdash; not by copying. Your notes are saved in this browser as you type. Expand a block to open it.</p>
+    </div>
+
+    <div class="bar">
+      <button id="expandAll">Expand all</button>
+      <button id="collapseAll">Collapse all</button>
+      <button id="clearMap">Clear my notes</button>
+    </div>
+
+    <div id="blankMap"></div>
+  </div>
+</section>
+
+<!-- ============ PART 5 : TIMED MAP ============ -->
+<section>
+  <div class="wrap wide">
+    <div class="sec-head">
+      <span class="eyebrow">Part 5</span>
+      <h2>Timed mapping task</h2>
+      <p>Now under pressure. Start the clock and complete <b>all eight</b> blocks above in <b>12:00</b> &mdash; about ninety seconds a paragraph. When you stop, reveal the model map and compare, field by field. Do not aim to match the wording; aim to have caught the same things.</p>
+    </div>
+
+    <div class="bar">
+      <span class="clock idle" id="clock">12:00</span>
+      <button class="primary" id="startTimed">Start timed map</button>
+      <button id="stopTimed">Stop</button>
+      <button id="revealBtn">Reveal model map</button>
+      <span class="timer-note" id="timerNote">Not started.</span>
+    </div>
+
+    <div class="note">
+      <span class="eyebrow">Why ninety seconds</span>
+      <p>That is training pace. In the real test you get roughly twenty minutes for a whole passage <em>and</em> its questions, so nobody writes a seven-field grid under exam conditions. The grid trains your eye now; on test day it shrinks to a three-to-five word note in the margin. Part 5 is where you find out which fields you can fill fast.</p>
+    </div>
+
+    <div id="modelMap" hidden>
+      <h3 style="margin:2rem 0 1rem;color:var(--ink-soft);">Model map</h3>
+      <div id="modelMapBody"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PART 6 : QUESTIONS ============ -->
+<section>
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">Part 6 · Questions 1&ndash;12</span>
+      <h2>Answer from your map</h2>
+      <p>Try to answer each question by looking at your map first, and only then at the passage. Note in the margin which field gave you the answer.</p>
+    </div>
+
+    <h3 style="color:var(--ink-soft);margin-bottom:1rem;">Questions 1&ndash;5 &middot; List of Headings</h3>
+    <p style="font-size:0.95rem;">The passage has eight paragraphs, <b>A&ndash;H</b>. Choose the correct heading for paragraphs <b>B, C, D, F</b> and <b>G</b> from the list of headings below.</p>
+
+    <div class="heading-box">
+      <h3>List of headings</h3>
+      <ol type="i">
+        <li>A second-hand idea made powerful</li>
+        <li>Slow, costly and unpredictable</li>
+        <li>An outsider's practical solution</li>
+        <li>Everyone agreeing to the same rules</li>
+        <li>A new map of the world's ports</li>
+        <li>War as an accident of progress</li>
+        <li>Fewer hands on the quayside</li>
+        <li>Trying to measure the change</li>
+      </ol>
+    </div>
+
+    <div id="headingQs"></div>
+
+    <h3 style="color:var(--ink-soft);margin:2.25rem 0 1rem;">Questions 6&ndash;10 &middot; Which paragraph contains the following information?</h3>
+    <p style="font-size:0.95rem;">Write the correct letter, <b>A&ndash;H</b>. You may use any letter more than once (though here each is used once).</p>
+
+    <div id="infoQs"></div>
+
+    <h3 style="color:var(--ink-soft);margin:2.25rem 0 1rem;">Questions 11&ndash;12 &middot; Multiple choice</h3>
+    <p style="font-size:0.95rem;">Choose the correct letter, <b>A</b>, <b>B</b>, <b>C</b> or <b>D</b>.</p>
+
+    <div id="mcqQs"></div>
+
+    <div class="bar" style="margin-top:1.4rem;">
+      <button class="primary" id="checkQs">Check answers</button>
+      <button id="clearQs">Clear</button>
+      <span class="score" id="qScore"></span>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PART 7 : ANSWER KEY ============ -->
+<section>
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">Part 7 · Answer key</span>
+      <h2>Answers, evidence and the field that found them</h2>
+      <p>Each entry gives the answer, the exact line of evidence with a jump to its paragraph, and the map field that should have pointed you there. If a field was blank in your map, that is the field to work on.</p>
+    </div>
+    <div id="keyHost"></div>
+
+    <div class="note">
+      <span class="eyebrow">Marking note</span>
+      <p>Twelve questions is a technique check, not a band score &mdash; a full Academic Reading paper is three passages and forty questions in sixty minutes. Read the misses diagnostically: headings wrong &rarr; work the <b>Function</b> field; matching-information wrong &rarr; work <b>Key names</b>, <b>Dates</b>, <b>Examples</b>; the multiple-choice wrong &rarr; work <b>Contrasts</b> and <b>Causes &amp; effects</b>.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ REFLECTION ============ -->
+<section>
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">Reflection</span>
+      <h2>Six questions about your own reading</h2>
+      <p>Answer these before you move on. They matter more than the score.</p>
+    </div>
+    <ol class="reflect">
+      <li>Which of the seven fields did you leave blank most often? What does that suggest about what you notice and what you skip while reading?</li>
+      <li>Look at your <b>Main idea</b> notes. Are they in your own words, or phrases lifted straight from the passage? Lifted phrases usually mean you were copying, not understanding.</li>
+      <li>For which paragraphs was <b>Function</b> hard to name? Those are exactly the paragraphs a List of Headings question would catch you on.</li>
+      <li>Did filling <b>Contrasts</b> and <b>Causes &amp; effects</b> change how fast you found the answers to Questions 11 and 12? Compare with how you normally do multiple choice.</li>
+      <li>Could you map one paragraph in ninety seconds? If not, which fields slowed you down &mdash; and which two or three would you keep if you had only forty seconds?</li>
+      <li>Where did your map disagree with the model map? For each disagreement, decide: did you miss it, or did you record something the passage does not actually say?</li>
+    </ol>
+  </div>
+</section>
+
+<!-- ============ TEACHER ============ -->
+<section>
+  <div class="wrap wide">
+    <div class="sec-head">
+      <span class="eyebrow">For the teacher</span>
+      <h2>How to run this</h2>
+      <p>Paragraph mapping is <em>one</em> technique, but its template has seven fields &mdash; more than working memory can deploy at once. Do not teach all seven in a single lesson: students will produce seven shallow columns and consolidate none of them. Stage it across three sessions, adding fields in the order they pay off.</p>
+    </div>
+
+    <div class="cards">
+      <div class="card">
+        <span class="num">SESSION 1</span>
+        <h3>Main idea + Function</h3>
+        <p>These two drive List of Headings and matching-information &mdash; the highest-value question types. Map all eight paragraphs with just these two fields, then do Questions 1&ndash;5 with the key open.</p>
+        <span class="tell">Homework: write a one-line function label for every paragraph of any Cambridge passage.</span>
+      </div>
+      <div class="card">
+        <span class="num">SESSION 2</span>
+        <h3>Add Key names, Dates, Examples</h3>
+        <p>Retrieval warm-up: name the function of each paragraph from memory. Then re-map adding the three "locate fast" fields, and do Questions 6&ndash;10, noting which field found each answer.</p>
+        <span class="tell">Homework: for one passage, list every proper noun and every date. Five minutes.</span>
+      </div>
+      <div class="card">
+        <span class="num">SESSION 3</span>
+        <h3>Add Contrasts, Causes &amp; effects</h3>
+        <p>Warm-up: the five fields so far, from memory. Then the two inference fields, the full timed map (Part 5), and Questions 11&ndash;12 plus the reflection questions as the closing task.</p>
+        <span class="tell">Pair with any Cambridge IELTS 15&ndash;20 Academic passage that carries a headings block.</span>
+      </div>
+      <div class="card" style="background:var(--kill-soft);border-color:var(--kill);">
+        <span class="num" style="color:var(--kill);">TURKISH L1 SPOTLIGHT</span>
+        <h3>&ldquo;Function&rdquo; vs &ldquo;main idea&rdquo;</h3>
+        <p>Turkish reading instruction leans hard on <em>ana fikir</em> (main idea) and rarely asks what a paragraph's job in the argument is. Students hand you a content summary when a heading needs a functional label &mdash; <em>example</em>, <em>counter-argument</em>, <em>consequence</em>.</p>
+        <span class="tell">Drill: before any content notes, force a label from a fixed list &mdash; introduces / defines / exemplifies / contrasts / explains cause / evaluates / concludes.</span>
+      </div>
+    </div>
+
+    <h3 style="margin:2.5rem 0 0.9rem;color:var(--ink-soft);">Anticipated problems &amp; solutions</h3>
+    <ol class="steps">
+      <li><b>Students copy whole sentences into the cells.</b> This defeats the purpose &mdash; the value is in compressing. Cap each cell at eight words; ban any <b>Main idea</b> entry that could be pasted verbatim from the passage.</li>
+      <li><b>Every field gets filled, even when the paragraph has nothing for it.</b> Padding hides the signal. Praise a well-judged blank: paragraph A has no <b>Key names</b>, and noticing that is correct reading.</li>
+      <li><b>Mapping takes fifteen minutes and there is no time for questions.</b> Expected at first. Speed comes from the staged fields, not from rushing. By session 3 the map is a margin scribble, not a grid.</li>
+      <li><b>Students map after reading the questions.</b> Then they only record what they were already looking for. Insist the map is done first, questions covered.</li>
+    </ol>
+
+    <h3 style="margin:2.5rem 0 0.9rem;color:var(--ink-soft);">Coaching script</h3>
+    <div class="card">
+      <p style="font-family:var(--f-mono);font-size:0.72rem;color:var(--ink-faint);margin:0 0 0.9rem;letter-spacing:0.08em;">CONFIDENCE ANCHOR &mdash; SAY THIS FIRST</p>
+      <p style="margin:0 0 1.25rem;">&ldquo;You lose time on Reading because you read the passage again for every single question. Good candidates read it once and take notes. We are going to build the notes. Your English is fine &mdash; this is about a system.&rdquo;</p>
+      <p style="font-family:var(--f-mono);font-size:0.72rem;color:var(--ink-faint);margin:0 0 0.9rem;letter-spacing:0.08em;">THE MAIN EXPLANATION</p>
+      <p style="margin:0 0 1.25rem;">&ldquo;After each paragraph, stop for fifteen seconds. Ask two things: what is this paragraph <em>doing</em> in the text, and what one point is it making? Write both in three or four words. Then, if they are there, grab the names, the dates, the example. That note is what you answer from &mdash; not your memory, and not a fourth re-read.&rdquo;</p>
+      <p style="font-family:var(--f-mono);font-size:0.72rem;color:var(--ink-faint);margin:0 0 0.9rem;letter-spacing:0.08em;">IF THE STUDENT IS STUCK ON &ldquo;FUNCTION&rdquo;</p>
+      <p style="margin:0 0 1.25rem;">&ldquo;Do not tell me what it says. Tell me why the writer put it here. Is it an example of the paragraph before? A problem? The writer's opinion? Pick one word.&rdquo;</p>
+      <p style="font-family:var(--f-mono);font-size:0.72rem;color:var(--ink-faint);margin:0 0 0.9rem;letter-spacing:0.08em;">ONE NEXT STEP &middot; QUICK CHECK</p>
+      <p style="margin:0;">&ldquo;This week, every Reading passage you do, write a function label beside each paragraph before you look at the questions. Just the label.&rdquo; &mdash; then check: <em>&ldquo;Give me the seven fields in order, no notes.&rdquo;</em></p>
+    </div>
+  </div>
+</section>
+
+<footer>IELTS Academic Reading &middot; Paragraph mapping &middot; LBEnglishCo &middot; 2026-08-28</footer>
+
+<script>
+(function () {
+  "use strict";
+
+  var FIELDS = [
+    ["main", "Main idea"],
+    ["func", "Function"],
+    ["names", "Key names"],
+    ["dates", "Dates"],
+    ["egs", "Examples"],
+    ["contrast", "Contrasts"],
+    ["cause", "Causes & effects"]
+  ];
+  var LETTERS = ["A", "B", "C", "D", "E", "F", "G", "H"];
+
+  /* ---------------- demonstration map ---------------- */
+  var DEMO = {
+    main: ["Britain replaced costly distance-based postage with a flat 1d prepaid rate (1840); use of the post grew fast.",
+           "Own words. Not “Rowland Hill wrote a pamphlet” — that is a detail, not the point."],
+    func: ["Introduces a reform and its effect — a case of a price cut raising demand.",
+           "The paragraph's job: it sets up a worked example of an idea, not just a story."],
+    names: ["Rowland Hill (schoolteacher, civil servant); the Post Office.",
+            "One person, one institution. Both are scannable capitals."],
+    dates: ["before 1840; 1837 pamphlet; 1840 reform; doubled within a year; trebled by 1850; copied “within a decade”.",
+            "A full chronology — five time points in one paragraph. Prime question material."],
+    egs: ["a letter costing a labourer a day's wage; the adhesive stamp; volumes doubling then trebling.",
+          "Concrete cases that show the before and the after."],
+    contrast: ["recipient pays → sender pays; distance/sheets → flat rate; high price/low volume → low price/high volume.",
+               "Three contrasts, all old-vs-new. The paragraph is built on them."],
+    cause: ["high prices → fewer letters → lower Post Office income (Hill's argument); cheap prepaid rate → volumes trebled → other countries copied.",
+            "Two chains. The first is counter-intuitive, which is exactly why a question would target it."]
+  };
+
+  /* ---------------- model map for the passage ---------------- */
+  var MODEL = {
+    A: {
+      main: "Before containers, hand-loading ships was slow, costly, risky — a bottleneck on trade.",
+      func: "Sets up the problem the rest of the passage solves.",
+      names: "— (none; “dockworkers”, “American Midwest” only)",
+      dates: "— (“most of maritime history”; no specific date)",
+      egs: "barrels/sacks/crates stowed by hand; a week in port per few days at sea; a Midwest maker cannot predict the cost to Europe.",
+      contrast: "week in port vs days at sea.",
+      cause: "hand-loading → high labour cost + pilferage + unpredictable price → limits what is worth trading."
+    },
+    B: {
+      main: "McLean, a trucking owner, launched container shipping; first voyage 1956; loading cost collapsed.",
+      func: "Introduces the key figure and the founding event.",
+      names: "Malcom McLean; Ideal-X; Newark, New Jersey; Houston, Texas.",
+      dates: "1955 bought a shipping line; April 1956 the Ideal-X sailed.",
+      egs: "converted tanker, 58 boxes on a reinforced deck; boxes lifted onto truck chassis.",
+      contrast: "not an engineer / no shipping background vs the man who changed shipping; several dollars a ton → a few cents.",
+      cause: "trucks waiting on piers (frustration) → McLean's idea; containers → loading cost from dollars to cents."
+    },
+    C: {
+      main: "The box was not new; McLean's real insight was redesigning box + ship + crane + truck + dock as one system.",
+      func: "Corrects a likely misconception; contrasts McLean with earlier users of boxes.",
+      names: "railway companies (Britain, USA); the American army; the Second World War.",
+      dates: "since the nineteenth century; the Second World War.",
+      egs: "railway wooden containers; army standard boxes; a box that will not fit the cranes or is barred from highways.",
+      contrast: "the container alone (useless) vs the integrated system (savings); “the box” vs “the system” as the real break.",
+      cause: "only whole-system redesign → savings; box/crane/road mismatch → no benefit at all."
+    },
+    D: {
+      main: "Boxes had to be identical everywhere; after 1960s disputes, ISO fixed 20- and 40-foot sizes by 1970.",
+      func: "Explains a necessary condition — standardisation — for the system to scale.",
+      names: "International Organization for Standardization (ISO).",
+      dates: "through the 1960s; by 1970.",
+      egs: "arguments over dimensions, corner fittings, locking mechanisms; the 20- and 40-foot lengths.",
+      contrast: "each firm's preferred standard vs one shared standard; technical merit vs universal acceptance.",
+      cause: "no common standard → no interoperability; agreed standard → any maker's box works on any ship / any crane."
+    },
+    E: {
+      main: "Containers destroyed traditional dock labour; unions fought it; a 1960 US deal swapped acceptance for wage guarantees.",
+      func: "Describes a major social cost of the change.",
+      names: "dockworkers' unions in New York and London; (the 1960 US agreement).",
+      dates: "1960 agreement; “within fifteen years”.",
+      egs: "hundreds of men per pier vs a handful at a terminal; a fund financed by a fee per container; decline of riverside districts.",
+      contrast: "traditional pier (hundreds) vs container terminal (a handful).",
+      cause: "mechanisation → far fewer jobs → strikes/negotiation → 1960 compensation deal; work moved → riverside districts declined; NY waterfront jobs fell 2/3+."
+    },
+    F: {
+      main: "The Vietnam War sped adoption: a 1967 military contract; empty return legs filled with Japanese cargo, launching Pacific trade.",
+      func: "Gives an example of an outside event accelerating the technology.",
+      names: "United States military; McLean's company; Vietnam; Cam Ranh Bay; Japan.",
+      dates: "1967.",
+      egs: "a single overwhelmed supply port; ships calling at Japan for electronics; Asian goods reaching US stores in quantity.",
+      contrast: "ships would return empty vs return full of Japanese cargo; an “afterthought” route vs one of the busiest in the world.",
+      cause: "overwhelmed port → military container contract → success → empty return legs → pick up Japan cargo → trans-Pacific trade boom."
+    },
+    G: {
+      main: "Containers relocated ports from cramped old docks to spacious deep-water sites; historic port cities lost their waterfronts.",
+      func: "Describes a consequence for geography and place.",
+      names: "Manhattan; inner London; Newark; New York; Felixstowe (Suffolk); Rotterdam.",
+      dates: "“within a generation”.",
+      egs: "Newark not New York; Felixstowe not London; Rotterdam not the older Dutch ports.",
+      contrast: "cramped finger-piers / enclosed docks vs acres of yard + deep water; centuries-old shipping cities vs previously unknown places.",
+      cause: "stacking needs space + big ships need depth → traffic shifts → old cities lose waterfronts, new gateways rise."
+    },
+    H: {
+      main: "Effects still debated; cheap freight let manufacturing move to the lowest-wage places; a study rates it above trade deals.",
+      func: "Sums up the wider significance; a concluding evaluation.",
+      names: "economists Daniel Bernhofen, Zouheir El-Beze, David Kneller.",
+      dates: "between 1962 and 1990.",
+      egs: "freight cost “drops out” of location decisions; long supply chains; the comparison with all trade agreements of the period.",
+      contrast: "containerisation vs trade agreements (as causes of trade growth); “invisible / ordinary” vs “how completely it succeeded”.",
+      cause: "very cheap sea freight → firms make things wherever labour is cheapest → long global supply chains."
+    }
+  };
+
+  /* ---------------- render: demonstration map ---------------- */
+  (function renderDemo() {
+    var host = document.getElementById("demoMap");
+    var wrap = document.createElement("div");
+    wrap.className = "map-para";
+    wrap.setAttribute("open", "");
+    var rows = '<div class="map-head">DEMONSTRATION · the completed map</div><div class="map-body">';
+    FIELDS.forEach(function (f) {
+      var d = DEMO[f[0]];
+      rows += '<div class="map-row"><span class="fl">' + f[1] + '</span><span class="modeltext">' +
+              d[0] + '<span class="why">' + d[1] + '</span></span></div>';
+    });
+    rows += '</div>';
+    wrap.innerHTML = rows;
+    host.appendChild(wrap);
+  })();
+
+  /* ---------------- render: blank map ---------------- */
+  var STORE = "ielts-paramap-v1";
+  var saved = {};
+  try { saved = JSON.parse(localStorage.getItem(STORE) || "{}"); } catch (e) { saved = {}; }
+
+  var blankHost = document.getElementById("blankMap");
+  LETTERS.forEach(function (L) {
+    var det = document.createElement("details");
+    det.className = "map-para";
+    det.dataset.letter = L;
+    var body = '<summary>Paragraph ' + L + '</summary><div class="map-body">';
+    FIELDS.forEach(function (f) {
+      var key = L + "." + f[0];
+      var val = saved[key] ? String(saved[key]).replace(/</g, "&lt;") : "";
+      body += '<div class="map-row"><span class="fl">' + f[1] + '</span>' +
+              '<textarea data-key="' + key + '" rows="2" spellcheck="false">' + val + '</textarea></div>';
+    });
+    body += '</div>';
+    det.innerHTML = body;
+    blankHost.appendChild(det);
+  });
+
+  function persist() {
+    var out = {};
+    blankHost.querySelectorAll("textarea").forEach(function (t) {
+      if (t.value.trim()) out[t.dataset.key] = t.value;
+    });
+    try { localStorage.setItem(STORE, JSON.stringify(out)); } catch (e) {}
+  }
+  blankHost.addEventListener("input", persist);
+
+  document.getElementById("expandAll").addEventListener("click", function () {
+    blankHost.querySelectorAll("details").forEach(function (d) { d.open = true; });
+  });
+  document.getElementById("collapseAll").addEventListener("click", function () {
+    blankHost.querySelectorAll("details").forEach(function (d) { d.open = false; });
+  });
+  document.getElementById("clearMap").addEventListener("click", function () {
+    if (!confirm("Clear all your mapping notes? This cannot be undone.")) return;
+    blankHost.querySelectorAll("textarea").forEach(function (t) { t.value = ""; });
+    persist();
+  });
+
+  /* ---------------- render: model map ---------------- */
+  (function renderModel() {
+    var host = document.getElementById("modelMapBody");
+    LETTERS.forEach(function (L) {
+      var det = document.createElement("details");
+      det.className = "map-para";
+      det.open = true;
+      var body = '<summary>Paragraph ' + L + '</summary><div class="map-body">';
+      FIELDS.forEach(function (f) {
+        var v = MODEL[L][f[0]];
+        var thin = v.charAt(0) === "—" ? " thin" : "";
+        body += '<div class="map-row"><span class="fl">' + f[1] + '</span>' +
+                '<span class="modeltext' + thin + '">' + v + '</span></div>';
+      });
+      body += '</div>';
+      det.innerHTML = body;
+      host.appendChild(det);
+    });
+  })();
+
+  /* ---------------- timed map ---------------- */
+  var TOTAL = 12 * 60, left = TOTAL, tick = null, running = false;
+  var clock = document.getElementById("clock");
+  var noteEl = document.getElementById("timerNote");
+
+  function paint() {
+    var m = Math.floor(Math.abs(left) / 60), s = Math.abs(left) % 60;
+    clock.textContent = (left < 0 ? "-" : "") + m + ":" + (s < 10 ? "0" : "") + s;
+    clock.classList.toggle("over", left <= 0);
+  }
+  function stopClock() {
+    clearInterval(tick); tick = null; running = false;
+  }
+
+  /* -- helpers available to handleTimeUp() -- */
+  function lockMap() {
+    blankHost.querySelectorAll("textarea").forEach(function (t) { t.disabled = true; });
+  }
+  function unlockMap() {
+    blankHost.querySelectorAll("textarea").forEach(function (t) { t.disabled = false; });
+  }
+  function revealModel() {
+    var mm = document.getElementById("modelMap");
+    mm.hidden = false;
+    mm.scrollIntoView({ behavior: "smooth", block: "start" });
+  }
+  function setTimerNote(text) { noteEl.textContent = text; }
+
+  /* ===========================================================
+     YOUR CONTRIBUTION  --  file: this lesson, function handleTimeUp()
+     -----------------------------------------------------------
+     Called ONCE, automatically, the moment the timed map hits 0:00.
+
+     This is a skill-building drill, not a mock exam. Two defensible designs:
+
+       (A) HARD STOP  -- lockMap(), then revealModel(), then a firm
+           setTimerNote(...). Students live with what they produced in
+           the time. Builds exam-time discipline; can feel punishing early on.
+
+       (B) SOFT STOP  -- leave inputs editable (do nothing to the map),
+           just setTimerNote(...) telling them time is up and to reveal
+           the model when ready. Lower pressure; better for first attempts.
+
+     Helpers you can call: lockMap(), unlockMap(), revealModel(), setTimerNote(text).
+     Return nothing. 3-8 lines.
+     =========================================================== */
+  function handleTimeUp() {
+    // TODO(you): replace this placeholder with design (A) or (B) above.
+    setTimerNote("Time is up.");
+  }
+  /* =========================================================== */
+
+  document.getElementById("startTimed").addEventListener("click", function () {
+    if (running) return;
+    unlockMap();
+    document.getElementById("modelMap").hidden = true;
+    blankHost.querySelectorAll("details").forEach(function (d) { d.open = true; });
+    left = TOTAL; running = true;
+    clock.classList.remove("idle");
+    setTimerNote("Mapping — all eight paragraphs.");
+    paint();
+    stopClock();
+    running = true;
+    tick = setInterval(function () {
+      left--;
+      paint();
+      if (left === 0) { stopClock(); handleTimeUp(); }
+    }, 1000);
+    blankHost.scrollIntoView({ behavior: "smooth", block: "start" });
+  });
+
+  document.getElementById("stopTimed").addEventListener("click", function () {
+    if (!tick && !running) { return; }
+    stopClock();
+    setTimerNote("Stopped at " + clock.textContent + ". Reveal the model map to compare.");
+  });
+
+  document.getElementById("revealBtn").addEventListener("click", revealModel);
+
+  paint();
+
+  /* ---------------- questions ---------------- */
+  var HEAD = [
+    { n: 1, para: "B", ans: "iii" },
+    { n: 2, para: "C", ans: "i" },
+    { n: 3, para: "D", ans: "iv" },
+    { n: 4, para: "F", ans: "vi" },
+    { n: 5, para: "G", ans: "v" }
+  ];
+  var ROMAN = ["i", "ii", "iii", "iv", "v", "vi", "vii", "viii"];
+
+  var INFO = [
+    { n: 6, ans: "B", prompt: "a specific figure for how far the cost of loading fell" },
+    { n: 7, ans: "A", prompt: "a reference to the theft of goods" },
+    { n: 8, ans: "E", prompt: "a financial arrangement that compensated workers for accepting new technology" },
+    { n: 9, ans: "H", prompt: "a reference to a named academic study" },
+    { n: 10, ans: "F", prompt: "an example of goods carried on a route that had previously been unimportant" }
+  ];
+
+  var MCQ = [
+    {
+      n: 11, ans: "B",
+      stem: "What does the writer suggest was Malcom McLean's key realisation?",
+      opts: {
+        A: "that metal boxes were more durable than wooden ones",
+        B: "that the container only produced savings as part of a wider system",
+        C: "that trucking was a more profitable business than shipping",
+        D: "that container sizes would have to be agreed internationally"
+      }
+    },
+    {
+      n: 12, ans: "A",
+      stem: "In the final paragraph, the writer implies that the container's ordinariness",
+      opts: {
+        A: "has caused its importance to be underestimated",
+        B: "explains why trade agreements had little effect",
+        C: "proves that it was a technically simple device",
+        D: "makes its economic effects impossible to measure"
+      }
+    }
+  ];
+
+  var hHost = document.getElementById("headingQs");
+  HEAD.forEach(function (q) {
+    var row = document.createElement("div");
+    row.className = "qrow";
+    var sel = '<select data-h="' + q.n + '"><option value="">—</option>' +
+      ROMAN.map(function (r) { return '<option value="' + r + '">' + r + '</option>'; }).join("") +
+      '</select>';
+    row.innerHTML = '<span class="qtext"><span class="qn">' + q.n + '</span>Paragraph ' + q.para + '</span>' + sel;
+    hHost.appendChild(row);
+  });
+
+  var iHost = document.getElementById("infoQs");
+  INFO.forEach(function (q) {
+    var row = document.createElement("div");
+    row.className = "qrow";
+    var sel = '<select data-i="' + q.n + '"><option value="">—</option>' +
+      LETTERS.map(function (l) { return '<option value="' + l + '">' + l + '</option>'; }).join("") +
+      '</select>';
+    row.innerHTML = '<span class="qtext"><span class="qn">' + q.n + '</span>' + q.prompt + '</span>' + sel;
+    iHost.appendChild(row);
+  });
+
+  var mHost = document.getElementById("mcqQs");
+  var mPicks = {};
+  MCQ.forEach(function (q) {
+    var card = document.createElement("div");
+    card.className = "qcard";
+    var body = '<div class="qs"><span class="qn">' + q.n + '</span>' + q.stem + '</div>';
+    ["A", "B", "C", "D"].forEach(function (L) {
+      body += '<div class="opt" data-m="' + q.n + '" data-o="' + L + '">' +
+              '<span class="ol">' + L + '</span><span class="ot">' + q.opts[L] + '</span></div>';
+    });
+    card.innerHTML = body;
+    mHost.appendChild(card);
+  });
+  mHost.addEventListener("click", function (e) {
+    var row = e.target.closest(".opt");
+    if (!row) return;
+    var qn = row.dataset.m;
+    mPicks[qn] = row.dataset.o;
+    mHost.querySelectorAll('.opt[data-m="' + qn + '"]').forEach(function (o) { o.classList.remove("picked"); });
+    row.classList.add("picked");
+  });
+
+  document.getElementById("checkQs").addEventListener("click", function () {
+    var score = 0, total = 12;
+
+    hHost.querySelectorAll("select").forEach(function (s) {
+      var q = HEAD.filter(function (x) { return String(x.n) === s.dataset.h; })[0];
+      s.classList.remove("ok", "bad");
+      if (!s.value) return;
+      if (s.value === q.ans) { s.classList.add("ok"); score++; }
+      else s.classList.add("bad");
+    });
+    iHost.querySelectorAll("select").forEach(function (s) {
+      var q = INFO.filter(function (x) { return String(x.n) === s.dataset.i; })[0];
+      s.classList.remove("ok", "bad");
+      if (!s.value) return;
+      if (s.value === q.ans) { s.classList.add("ok"); score++; }
+      else s.classList.add("bad");
+    });
+    MCQ.forEach(function (q) {
+      mHost.querySelectorAll('.opt[data-m="' + q.n + '"]').forEach(function (o) {
+        o.classList.remove("correct", "mistake");
+        if (o.dataset.o === q.ans) o.classList.add("correct");
+        else if (mPicks[q.n] === o.dataset.o) o.classList.add("mistake");
+      });
+      if (mPicks[q.n] === q.ans) score++;
+    });
+
+    document.getElementById("qScore").textContent = score + " / " + total + " correct";
+  });
+
+  document.getElementById("clearQs").addEventListener("click", function () {
+    hHost.querySelectorAll("select").forEach(function (s) { s.value = ""; s.classList.remove("ok", "bad"); });
+    iHost.querySelectorAll("select").forEach(function (s) { s.value = ""; s.classList.remove("ok", "bad"); });
+    mHost.querySelectorAll(".opt").forEach(function (o) { o.classList.remove("picked", "correct", "mistake"); });
+    mPicks = {};
+    document.getElementById("qScore").textContent = "";
+  });
+
+  /* ---------------- answer key ---------------- */
+  var KEY = [
+    { n: 1, ans: "iii", para: "B", field: "Function + Main idea",
+      ev: "“McLean was not an engineer and had no background in shipping. His interest was practical…”",
+      note: "An outsider solving a practical problem. Heading (i) describes paragraph C (the borrowed idea); (vii) describes paragraph E." },
+    { n: 2, ans: "i", para: "C", field: "Function + Contrasts",
+      ev: "“The metal box itself was not the invention… What McLean grasped was that the container was useless on its own.”",
+      note: "The idea already existed; its power came from the system. (iii) is paragraph B; (iv) is paragraph D." },
+    { n: 3, ans: "iv", para: "D", field: "Function + Causes & effects",
+      ev: "“the boxes had to be identical everywhere… everyone accepted the same one.”",
+      note: "The paragraph is about reaching a shared standard. (i) is paragraph C; (viii) is paragraph H." },
+    { n: 4, ans: "vi", para: "F", field: "Function + Causes & effects",
+      ev: "“An unexpected boost came from war… a contract to run a container service to Cam Ranh Bay.”",
+      note: "War accidentally advances the technology. (v) is paragraph G; (vii) is paragraph E." },
+    { n: 5, ans: "v", para: "G", field: "Function + Examples",
+      ev: "“The container also remade the geography of ports… Newark rather than New York…”",
+      note: "A redrawn map of which ports matter. (vi) is paragraph F; (ii) is paragraph A." },
+    { n: 6, ans: "B", para: "B", field: "Examples / Dates",
+      ev: "“fell from several dollars a ton to a few cents.”",
+      note: "A specific figure for the drop in loading cost. Paragraph D also discusses cost, but in general terms, with no number." },
+    { n: 7, ans: "A", para: "A", field: "Examples",
+      ev: "“pilferage from opened crates was routine”",
+      note: "“Pilferage” = petty theft. Only paragraph A mentions goods being stolen." },
+    { n: 8, ans: "E", para: "E", field: "Examples / Causes & effects",
+      ev: "“a 1960 agreement traded acceptance of mechanisation for guaranteed wages and a fund financed by a fee on every container.”",
+      note: "Money paid so that workers would accept the new technology. This is the only financial-compensation detail in the passage." },
+    { n: 9, ans: "H", para: "H", field: "Key names",
+      ev: "“One study, by the economists Daniel Bernhofen, Zouheir El-Beze and David Kneller…”",
+      note: "Three named researchers and a study. The Key names field for paragraph H should have caught this immediately." },
+    { n: 10, ans: "F", para: "F", field: "Contrasts / Examples",
+      ev: "“A trade route that had been an afterthought became one of the busiest in the world…”",
+      note: "The Japan–US Pacific route: previously minor, then dominant. Paragraph G is about ports, not routes." },
+    { n: 11, ans: "B", para: "C", field: "Contrasts",
+      ev: "“the container was useless on its own. Savings came only when the box, the ship, the crane, the truck trailer and the loading dock were all redesigned around one another as a single system.”",
+      misses: {
+        A: "Durability is never discussed. The nineteenth-century boxes were wooden, but the passage draws no comparison of strength.",
+        C: "Reverses the point — McLean left trucking for shipping, and the passage makes no claim about which is more profitable.",
+        D: "True of paragraph D, and a real part of the story, but not McLean's own realisation — the ISO standard came years later, decided by committee."
+      } },
+    { n: 12, ans: "A", para: "H", field: "Contrasts",
+      ev: "“The box is now so ordinary that it has become invisible, which is perhaps the clearest sign of how completely it succeeded.”",
+      misses: {
+        B: "The study says containerisation did more than trade agreements — it does not say the agreements failed, and ordinariness is not given as the reason.",
+        C: "“Invisible” refers to how little attention the box gets, not to its engineering. Paragraph C shows the system built around it was far from simple.",
+        D: "The opposite — the paragraph cites an economic estimate of the effect, so it is measurable."
+      } }
+  ];
+
+  var keyHost = document.getElementById("keyHost");
+  KEY.forEach(function (k) {
+    var d = document.createElement("details");
+    d.className = "key";
+    var misses = "";
+    if (k.misses) {
+      Object.keys(k.misses).forEach(function (L) {
+        misses += '<div class="miss"><span class="ml">' + L + '</span><span>' + k.misses[L] + '</span></div>';
+      });
+    }
+    d.innerHTML =
+      '<summary>Q' + k.n + '</summary>' +
+      '<div class="dbody">' +
+        '<div class="ansline">ANSWER: ' + k.ans + '</div>' +
+        '<div class="ev">' + k.ev + ' <button class="jump" data-go="' + k.para + '">¶ ' + k.para + '</button></div>' +
+        '<p><span class="field-tag">Map field: ' + k.field + '</span></p>' +
+        '<p>' + k.note + '</p>' +
+        (misses ? '<p style="font-family:var(--f-mono);font-size:0.72rem;color:var(--ink-faint);margin-bottom:0.2rem;">WHY THE OTHERS FAIL</p>' + misses : '') +
+      '</div>';
+    keyHost.appendChild(d);
+  });
+
+  document.addEventListener("click", function (e) {
+    var b = e.target.closest(".jump");
+    if (!b) return;
+    var t = document.getElementById("p-" + b.dataset.go);
+    if (!t) return;
+    t.scrollIntoView({ behavior: "smooth", block: "center" });
+    t.classList.remove("flash");
+    void t.offsetWidth;
+    t.classList.add("flash");
+  });
+})();
+</script>

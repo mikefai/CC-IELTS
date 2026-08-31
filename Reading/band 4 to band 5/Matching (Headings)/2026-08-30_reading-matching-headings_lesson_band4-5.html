@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IELTS Reading: Matching Headings - Band 4-5</title>
+    <style>
+        :root {
+            --primary: #2563eb;
+            --primary-dark: #1e40af;
+            --success: #16a34a;
+            --warning: #ea580c;
+            --bg: #ffffff;
+            --surface: #f8fafc;
+            --text: #1e293b;
+            --text-muted: #64748b;
+            --border: #e2e8f0;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background-color: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        header {
+            margin-bottom: 30px;
+            border-bottom: 2px solid var(--border);
+            padding-bottom: 20px;
+        }
+
+        h1 {
+            font-size: 28px;
+            margin-bottom: 8px;
+            color: var(--primary-dark);
+        }
+
+        .subtitle {
+            font-size: 16px;
+            color: var(--text-muted);
+            margin-bottom: 8px;
+        }
+
+        .target-level {
+            display: inline-block;
+            background: var(--surface);
+            padding: 6px 12px;
+            border-radius: 4px;
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--primary);
+            margin-top: 10px;
+        }
+
+        section {
+            margin-bottom: 40px;
+        }
+
+        h2 {
+            font-size: 20px;
+            margin-bottom: 16px;
+            color: var(--primary-dark);
+            padding-bottom: 8px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 16px;
+        }
+
+        .question-block {
+            margin-bottom: 20px;
+        }
+
+        .question-text {
+            font-size: 16px;
+            font-weight: 600;
+            color: var(--primary);
+            margin-bottom: 12px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px;
+            background: white;
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            transition: all 0.2s;
+        }
+
+        .question-text:hover {
+            background: var(--surface);
+            border-color: var(--primary);
+        }
+
+        .toggle-icon {
+            font-size: 18px;
+            transition: transform 0.3s;
+        }
+
+        .question-text.open .toggle-icon {
+            transform: rotate(180deg);
+        }
+
+        .explanation {
+            display: none;
+            background: white;
+            padding: 12px;
+            border-left: 3px solid var(--primary);
+            margin-top: 8px;
+            font-size: 15px;
+            line-height: 1.8;
+        }
+
+        .explanation.visible {
+            display: block;
+        }
+
+        .tips-box {
+            background: #f0f9ff;
+            border-left: 4px solid var(--primary);
+            padding: 16px;
+            margin-top: 16px;
+            border-radius: 4px;
+        }
+
+        .tips-box strong {
+            color: var(--primary-dark);
+        }
+
+        .tips-box ul {
+            margin-left: 20px;
+            margin-top: 8px;
+            font-size: 14px;
+            color: var(--text-muted);
+        }
+
+        .tips-box li {
+            margin-bottom: 6px;
+        }
+
+        .band-info {
+            background: #fef3c7;
+            border-left: 4px solid var(--warning);
+            padding: 16px;
+            border-radius: 4px;
+            margin-bottom: 20px;
+            font-size: 14px;
+        }
+
+        .example-text {
+            background: white;
+            border: 1px solid var(--border);
+            padding: 16px;
+            border-radius: 6px;
+            margin-top: 12px;
+            font-style: italic;
+            color: var(--text-muted);
+        }
+
+        .heading-list {
+            background: white;
+            border: 1px solid var(--border);
+            padding: 12px;
+            border-radius: 6px;
+            margin-top: 8px;
+            font-size: 14px;
+        }
+
+        .heading-list p {
+            margin: 8px 0;
+        }
+
+        button {
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 6px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.2s;
+            margin-right: 8px;
+            margin-top: 16px;
+        }
+
+        button:hover {
+            background: var(--primary-dark);
+        }
+
+        footer {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid var(--border);
+            font-size: 13px;
+            color: var(--text-muted);
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>IELTS Reading: Matching Headings</h1>
+            <p class="subtitle">Finding the Main Idea of Each Paragraph</p>
+            <span class="target-level">Target: Band 4.0 – 5.5</span>
+        </header>
+
+        <div class="band-info">
+            <strong>Band 4-5 Focus:</strong> Understand main ideas, not details. Match the overall topic of each paragraph. Learn to ignore minor information.
+        </div>
+
+        <section>
+            <h2>Understanding Matching Headings</h2>
+            <div class="card">
+                <p><strong>Format:</strong> You receive 7-8 headings. Each paragraph needs one heading. Some headings are NOT used.</p>
+                <p><strong>Challenge:</strong> Headings are often general (main idea) while paragraphs contain specific details. You must ignore details.</p>
+                <p><strong>Key Skills:</strong> Finding main ideas, recognizing paraphrasing, avoiding false matches.</p>
+            </div>
+        </section>
+
+        <section>
+            <h2>Why Students Lose Marks</h2>
+            <div class="card">
+                <ul style="margin-left: 20px;">
+                    <li>Matching based on ONE detail instead of the main idea</li>
+                    <li>Not reading all headings before deciding</li>
+                    <li>Choosing headings that are partly correct but too narrow</li>
+                    <li>Confusing similar headings (e.g., "Benefits of X" vs. "Dangers of X")</li>
+                </ul>
+            </div>
+        </section>
+
+        <section>
+            <h2>Band 4-5 Strategies</h2>
+
+            <div class="question-block">
+                <div class="question-text" onclick="toggleExplanation(this)">
+                    <span>Strategy 1: Read Only the First and Last Sentence</span>
+                    <span class="toggle-icon">▼</span>
+                </div>
+                <div class="explanation">
+                    <strong>What to do:</strong> The main idea is usually in the first sentence (topic sentence) or last sentence (conclusion). Skip the middle details at first.<br><br>
+                    <strong>Example:</strong><br>
+                    First sentence: "Climate change threatens coral reefs worldwide."<br>
+                    → Main idea is THREATS or DANGERS, not specific data about temperature.
+                </div>
+            </div>
+
+            <div class="question-block">
+                <div class="question-text" onclick="toggleExplanation(this)">
+                    <span>Strategy 2: Ask "What is This Paragraph About?" Not "What Details Are Here?"</span>
+                    <span class="toggle-icon">▼</span>
+                </div>
+                <div class="explanation">
+                    <strong>What to do:</strong> After reading, think of the BIG picture, not specific facts.<br><br>
+                    Paragraph details: "Scientists used X method. They measured Y. Results showed Z percentage."<br>
+                    Big picture (main idea): "Research Methods" or "Finding Solutions"<br>
+                    This is what the heading should match.
+                </div>
+            </div>
+
+            <div class="question-block">
+                <div class="question-text" onclick="toggleExplanation(this)">
+                    <span>Strategy 3: Use Keyword Matching Carefully</span>
+                    <span class="toggle-icon">▼</span>
+                </div>
+                <div class="explanation">
+                    <strong>What to do:</strong> If a heading uses the same key word as the paragraph, that's a CLUE, not proof. The main idea must match, too.<br><br>
+                    Heading: "The Benefits of Urban Gardens"<br>
+                    Paragraph: "Urban gardens require little water..." (talks about requirements, not benefits)<br>
+                    ✗ Wrong match (same topic, different idea)
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <h2>Practice Example</h2>
+
+            <div class="card">
+                <p style="margin-bottom: 12px;"><strong>Headings:</strong></p>
+                <div class="heading-list">
+                    <p>A) How bees communicate with other bees</p>
+                    <p>B) The importance of bees to human food production</p>
+                    <p>C) Different species of bees around the world</p>
+                    <p>D) What plants bees visit most often</p>
+                    <p>E) The threats facing bee populations today</p>
+                </div>
+
+                <p style="margin-top: 20px; margin-bottom: 12px;"><strong>Paragraph 1:</strong></p>
+                <div class="example-text">
+                    One-third of the food we eat depends on pollination by bees. From almonds to cucumbers, apples to cherries, many crops cannot produce fruit without bees visiting their flowers. Without bees, supermarket shelves would look very different, and food prices would rise dramatically. This is why protecting bee populations is a global priority.
+                </div>
+
+                <div class="question-block">
+                    <div class="question-text" onclick="toggleExplanation(this)">
+                        <span>Which heading matches this paragraph?</span>
+                        <span class="toggle-icon">▼</span>
+                    </div>
+                    <div class="explanation">
+                        <strong>Answer: B) The importance of bees to human food production</strong><br><br>
+                        <strong>Why:</strong> The paragraph talks about how much food depends on bees. It lists crops (almonds, apples, etc.) as examples, but the MAIN idea is that bees are essential for food.<br><br>
+                        <strong>Why not A:</strong> The paragraph doesn't explain HOW bees communicate.<br>
+                        <strong>Why not D:</strong> Specific plants are mentioned, but that's not the main point.
+                    </div>
+                </div>
+
+                <p style="margin-top: 20px; margin-bottom: 12px;"><strong>Paragraph 2:</strong></p>
+                <div class="example-text">
+                    Over the past decade, bee populations have declined by 25% in many regions. Habitat loss, pesticides, and climate change are the primary causes. Scientists warn that if this trend continues, the ecological consequences could be severe. Several conservation programs are now active in Europe and North America to reverse this decline.
+                </div>
+
+                <div class="question-block">
+                    <div class="question-text" onclick="toggleExplanation(this)">
+                        <span>Which heading matches this paragraph?</span>
+                        <span class="toggle-icon">▼</span>
+                    </div>
+                    <div class="explanation">
+                        <strong>Answer: E) The threats facing bee populations today</strong><br><br>
+                        <strong>Why:</strong> The main idea is PROBLEMS (pesticides, habitat loss) and DECLINE. The paragraph explains what is threatening bees.<br><br>
+                        <strong>Important:</strong> The paragraph mentions conservation programs, but that's not the main focus—it's just additional context. The focus is on the THREATS.
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <h2>Practice Tips</h2>
+            <div class="card">
+                <div class="tips-box">
+                    <strong>Step-by-step approach:</strong>
+                    <ul>
+                        <li>Read the heading list FIRST to understand the topics available</li>
+                        <li>Read paragraph 1 (first and last sentence only initially)</li>
+                        <li>Ask: "What is the MAIN topic?" in one phrase</li>
+                        <li>Match to the heading that fits that main topic</li>
+                        <li>Cross out the heading (you can only use each once)</li>
+                        <li>Move to the next paragraph</li>
+                    </ul>
+                </div>
+
+                <div class="tips-box" style="margin-top: 12px;">
+                    <strong>Red flags (often WRONG matches):</strong>
+                    <ul>
+                        <li>The heading uses the same word but wrong context</li>
+                        <li>The heading matches only ONE detail, not the overall idea</li>
+                        <li>The heading is too narrow (focuses on minor information)</li>
+                    </ul>
+                </div>
+
+                <div class="tips-box" style="margin-top: 12px;">
+                    <strong>Time management:</strong>
+                    <ul>
+                        <li>Spend 15 minutes on this task (5-7 paragraphs)</li>
+                        <li>Read headings first (1 minute)</li>
+                        <li>Match each paragraph (2 minutes per paragraph)</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <footer>
+            <p>IELTS Academic Reading - Band 4.0–5.5 | Created 2026-08-30</p>
+            <p>Focus on finding the main idea, not the details. Ask yourself: "What is this paragraph mainly about?"</p>
+        </footer>
+    </div>
+
+    <script>
+        function toggleExplanation(element) {
+            const explanation = element.nextElementSibling;
+            explanation.classList.toggle('visible');
+            element.classList.toggle('open');
+        }
+    </script>
+</body>
+</html>

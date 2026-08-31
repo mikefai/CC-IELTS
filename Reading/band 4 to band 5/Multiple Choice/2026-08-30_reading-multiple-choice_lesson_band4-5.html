@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IELTS Reading: Multiple Choice - Band 4-5</title>
+    <style>
+        :root {
+            --primary: #2563eb;
+            --primary-dark: #1e40af;
+            --success: #16a34a;
+            --warning: #ea580c;
+            --bg: #ffffff;
+            --surface: #f8fafc;
+            --text: #1e293b;
+            --text-muted: #64748b;
+            --border: #e2e8f0;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background-color: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        header {
+            margin-bottom: 30px;
+            border-bottom: 2px solid var(--border);
+            padding-bottom: 20px;
+        }
+
+        h1 {
+            font-size: 28px;
+            margin-bottom: 8px;
+            color: var(--primary-dark);
+        }
+
+        .subtitle {
+            font-size: 16px;
+            color: var(--text-muted);
+            margin-bottom: 8px;
+        }
+
+        .target-level {
+            display: inline-block;
+            background: var(--surface);
+            padding: 6px 12px;
+            border-radius: 4px;
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--primary);
+            margin-top: 10px;
+        }
+
+        section {
+            margin-bottom: 40px;
+        }
+
+        h2 {
+            font-size: 20px;
+            margin-bottom: 16px;
+            color: var(--primary-dark);
+            padding-bottom: 8px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 16px;
+        }
+
+        .question-block {
+            margin-bottom: 20px;
+        }
+
+        .question-text {
+            font-size: 16px;
+            font-weight: 600;
+            color: var(--primary);
+            margin-bottom: 12px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px;
+            background: white;
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            transition: all 0.2s;
+        }
+
+        .question-text:hover {
+            background: var(--surface);
+            border-color: var(--primary);
+        }
+
+        .toggle-icon {
+            font-size: 18px;
+            transition: transform 0.3s;
+        }
+
+        .question-text.open .toggle-icon {
+            transform: rotate(180deg);
+        }
+
+        .explanation {
+            display: none;
+            background: white;
+            padding: 12px;
+            border-left: 3px solid var(--primary);
+            margin-top: 8px;
+            font-size: 15px;
+            line-height: 1.8;
+        }
+
+        .explanation.visible {
+            display: block;
+        }
+
+        .tips-box {
+            background: #f0f9ff;
+            border-left: 4px solid var(--primary);
+            padding: 16px;
+            margin-top: 16px;
+            border-radius: 4px;
+        }
+
+        .tips-box strong {
+            color: var(--primary-dark);
+        }
+
+        .tips-box ul {
+            margin-left: 20px;
+            margin-top: 8px;
+            font-size: 14px;
+            color: var(--text-muted);
+        }
+
+        .tips-box li {
+            margin-bottom: 6px;
+        }
+
+        .band-info {
+            background: #fef3c7;
+            border-left: 4px solid var(--warning);
+            padding: 16px;
+            border-radius: 4px;
+            margin-bottom: 20px;
+            font-size: 14px;
+        }
+
+        .example-question {
+            background: white;
+            border: 1px solid var(--border);
+            padding: 16px;
+            border-radius: 6px;
+            margin-top: 12px;
+        }
+
+        .example-question p {
+            margin-bottom: 8px;
+        }
+
+        button {
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 6px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.2s;
+            margin-right: 8px;
+            margin-top: 16px;
+        }
+
+        button:hover {
+            background: var(--primary-dark);
+        }
+
+        footer {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid var(--border);
+            font-size: 13px;
+            color: var(--text-muted);
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>IELTS Reading: Multiple Choice</h1>
+            <p class="subtitle">Finding the Correct Answer Among Options</p>
+            <span class="target-level">Target: Band 4.0 – 5.5</span>
+        </header>
+
+        <div class="band-info">
+            <strong>Band 4-5 Focus:</strong> Identify main ideas and specific details. Understand synonyms and paraphrasing. Read carefully to avoid false answers.
+        </div>
+
+        <section>
+            <h2>Understanding Multiple Choice</h2>
+            <div class="card">
+                <p><strong>Format:</strong> Read a passage. Answer questions by choosing from A, B, C, or D.</p>
+                <p><strong>Challenge:</strong> Multiple answers may seem correct—you must find the BEST answer based on the text.</p>
+                <p><strong>Key Skills:</strong> Scanning for information, understanding paraphrasing, avoiding distractors.</p>
+            </div>
+        </section>
+
+        <section>
+            <h2>Why Students Lose Marks</h2>
+            <div class="card">
+                <ul style="margin-left: 20px;">
+                    <li>Choosing answers that sound true but aren't in the text</li>
+                    <li>Misreading question words (not, best, main)</li>
+                    <li>Selecting partially correct answers when another is more complete</li>
+                    <li>Not reading all options before deciding</li>
+                </ul>
+            </div>
+        </section>
+
+        <section>
+            <h2>Band 4-5 Strategies</h2>
+
+            <div class="question-block">
+                <div class="question-text" onclick="toggleExplanation(this)">
+                    <span>Strategy 1: Find Keywords in the Question</span>
+                    <span class="toggle-icon">▼</span>
+                </div>
+                <div class="explanation">
+                    <strong>What to do:</strong> Underline the main noun and verb in the question. Then scan the passage for the same words (or synonyms).<br><br>
+                    <strong>Example:</strong><br>
+                    Question: "Why did scientists study the migration?"<br>
+                    Keywords: "scientists," "why," "migration"<br>
+                    Scan the text for these words or similar meanings like "researchers," "reason," "movement."
+                </div>
+            </div>
+
+            <div class="question-block">
+                <div class="question-text" onclick="toggleExplanation(this)">
+                    <span>Strategy 2: Eliminate Wrong Answers</span>
+                    <span class="toggle-icon">▼</span>
+                </div>
+                <div class="explanation">
+                    <strong>What to do:</strong> Cross out answers that are:<br>
+                    • Not mentioned in the text<br>
+                    • Opposite to the passage<br>
+                    • True but not relevant to the question<br><br>
+                    This leaves 1-2 options to choose between carefully.
+                </div>
+            </div>
+
+            <div class="question-block">
+                <div class="question-text" onclick="toggleExplanation(this)">
+                    <span>Strategy 3: Understand Paraphrasing</span>
+                    <span class="toggle-icon">▼</span>
+                </div>
+                <div class="explanation">
+                    <strong>What to do:</strong> The correct answer often uses different words but the same meaning as the passage.<br><br>
+                    Text: "The company expanded rapidly between 2010 and 2015."<br>
+                    Question: "What happened to the company during this period?"<br>
+                    Correct answer: "It grew quickly" (not the exact words, but same meaning)
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <h2>Practice Questions</h2>
+
+            <div class="card">
+                <p style="margin-bottom: 16px;"><strong>Passage:</strong></p>
+                <p style="margin-bottom: 16px; background: #f8fafc; padding: 12px; border-radius: 4px;">
+                    Coffee was first introduced to Europe in the 17th century through trade routes from the Middle East. Unlike tea, which was already familiar, coffee was entirely new to Europeans. At first, only wealthy merchants could afford it. However, by the 1700s, coffeehouses became popular meeting places where people discussed business, politics, and ideas. This social aspect made coffee drinking more than just a beverage—it became a symbol of social status and intellectual culture.
+                </p>
+
+                <div class="question-block">
+                    <div class="question-text" onclick="toggleExplanation(this)">
+                        <span>Q1: Why was coffee initially available only to wealthy people?</span>
+                        <span class="toggle-icon">▼</span>
+                    </div>
+                    <div class="explanation">
+                        <strong>A) Because coffeehouses refused to serve poor customers</strong><br>
+                        B) Because it was expensive and imported from distant places<br>
+                        C) Because the government restricted its sale<br>
+                        D) Because coffee was not popular in Europe yet<br><br>
+                        <strong>Answer: B</strong><br>
+                        <strong>Why:</strong> The passage says "only wealthy merchants could afford it," implying it was expensive. The text mentions trade routes (import) and limited availability support this.<br>
+                        <strong>Why not A:</strong> The text doesn't mention coffeehouses restricting service; it only says wealthy people could afford it (price issue).
+                    </div>
+                </div>
+
+                <div class="question-block">
+                    <div class="question-text" onclick="toggleExplanation(this)">
+                        <span>Q2: What does "symbol of social status" mean in this context?</span>
+                        <span class="toggle-icon">▼</span>
+                    </div>
+                    <div class="explanation">
+                        <strong>A) Coffee was only consumed by the government</strong><br>
+                        B) Drinking coffee showed a person's wealth and importance<br>
+                        C) Coffee was used only in religious ceremonies<br>
+                        D) The symbol of coffee was displayed on all European flags<br><br>
+                        <strong>Answer: B</strong><br>
+                        <strong>Why:</strong> "Social status" refers to a person's rank or position in society. Drinking coffee showed wealth (it was expensive) and sophistication (discussed in intellectual coffeehouses).<br>
+                        <strong>Band 4-5 tip:</strong> Look for synonyms: "status" = rank, position, importance.
+                    </div>
+                </div>
+
+                <div class="question-block">
+                    <div class="question-text" onclick="toggleExplanation(this)">
+                        <span>Q3: The passage suggests that coffeehouses were important for which reason?</span>
+                        <span class="toggle-icon">▼</span>
+                    </div>
+                    <div class="explanation">
+                        <strong>A) They were cheaper than buying coffee at home</strong><br>
+                        B) They served tea and coffee equally<br>
+                        C) They became places where important discussions and ideas were shared<br>
+                        D) They were only open to wealthy merchants<br><br>
+                        <strong>Answer: C</strong><br>
+                        <strong>Why:</strong> The text says coffeehouses were "meeting places where people discussed business, politics, and ideas." This shows their social and intellectual importance.<br>
+                        <strong>Reading skill:</strong> Paraphrase—the passage uses "meeting places" and "discussed," while the answer uses "where important discussions."
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <h2>Practice Tips</h2>
+            <div class="card">
+                <div class="tips-box">
+                    <strong>Before you answer:</strong>
+                    <ul>
+                        <li>Read the question first (before the passage if time allows)</li>
+                        <li>Underline keywords</li>
+                        <li>Find the relevant part of the passage</li>
+                        <li>Read all four options</li>
+                        <li>Choose the BEST answer, not just a correct-sounding one</li>
+                    </ul>
+                </div>
+
+                <div class="tips-box" style="margin-top: 12px;">
+                    <strong>Time management:</strong>
+                    <ul>
+                        <li>Spend 20 minutes on 1 passage (3-4 questions)</li>
+                        <li>Don't re-read the entire passage for every question</li>
+                        <li>Use scanning (quickly find the key sentence) not reading every word</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <footer>
+            <p>IELTS Academic Reading - Band 4.0–5.5 | Created 2026-08-30</p>
+            <p>Practice by reading passages and finding the keywords in questions first. This is the fastest strategy.</p>
+        </footer>
+    </div>
+
+    <script>
+        function toggleExplanation(element) {
+            const explanation = element.nextElementSibling;
+            explanation.classList.toggle('visible');
+            element.classList.toggle('open');
+        }
+    </script>
+</body>
+</html>

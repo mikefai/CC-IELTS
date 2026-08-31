@@ -1,0 +1,2317 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>IELTS Academic Task 1 — Line Graph Training Pack (Band 4→5.5 / Band 5→6)</title>
+<style>
+/* ============================================================
+   IELTS Academic Writing Task 1 — Line Graph Training Pack
+   Single-file, offline, light theme only.
+   ============================================================ */
+
+:root{
+  --ink:#1c1c1a;
+  --ink-soft:#4a4a46;
+  --ink-faint:#6f6f69;
+  --paper:#ffffff;
+  --paper-tint:#f7f6f2;
+  --rule:#dcd8ce;
+  --rule-strong:#b9b3a5;
+  --accent:#1a4d8f;
+  --accent-soft:#eaf0f8;
+  --warm:#8c3b0a;
+  --warm-soft:#fbf0e8;
+  --green:#2e6b34;
+  --green-soft:#edf4ed;
+  --maxw:64rem;
+}
+
+*{box-sizing:border-box;}
+html{-webkit-text-size-adjust:100%;}
+body{
+  margin:0;
+  background:var(--paper-tint);
+  color:var(--ink);
+  font-family:"Iowan Old Style","Palatino Linotype",Palatino,Georgia,"Times New Roman",serif;
+  font-size:17px;
+  line-height:1.55;
+}
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 1.25rem 5rem;}
+
+/* ---------- masthead ---------- */
+.masthead{
+  background:var(--paper);
+  border-bottom:1px solid var(--rule);
+  padding:1.6rem 0 1.1rem;
+}
+.masthead .wrap{padding-bottom:0;}
+.masthead h1{
+  font-size:1.5rem;line-height:1.25;margin:0 0 .35rem;
+  letter-spacing:-.01em;
+}
+.masthead p.sub{
+  margin:0;color:var(--ink-soft);font-size:.95rem;
+  font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+}
+.toolbar{
+  display:flex;flex-wrap:wrap;gap:.5rem;margin-top:.9rem;
+  font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+}
+.toolbar button{
+  font:inherit;font-size:.8rem;padding:.35rem .7rem;
+  background:var(--paper);color:var(--ink-soft);
+  border:1px solid var(--rule-strong);border-radius:.3rem;cursor:pointer;
+}
+.toolbar button:hover{background:var(--accent-soft);color:var(--accent);border-color:var(--accent);}
+.toolbar button:focus-visible{outline:3px solid var(--accent);outline-offset:2px;}
+.save-flag{
+  font-size:.78rem;color:var(--ink-faint);align-self:center;
+  font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+}
+
+/* ---------- tab bar ---------- */
+.tabbar{
+  position:sticky;top:0;z-index:20;
+  background:var(--paper);
+  border-bottom:1px solid var(--rule-strong);
+  box-shadow:0 1px 0 rgba(0,0,0,.03);
+}
+.tablist{
+  max-width:var(--maxw);margin:0 auto;padding:0 1.25rem;
+  display:flex;gap:.25rem;
+}
+.tablist button{
+  font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+  font-size:.9rem;font-weight:600;
+  padding:.85rem 1.1rem;
+  background:transparent;color:var(--ink-faint);
+  border:0;border-bottom:3px solid transparent;
+  cursor:pointer;
+}
+.tablist button:hover{color:var(--ink);}
+.tablist button:focus-visible{outline:3px solid var(--accent);outline-offset:-3px;}
+.tablist button[aria-selected="true"]{
+  color:var(--accent);border-bottom-color:var(--accent);
+}
+.tablist button .tagline{
+  display:block;font-weight:400;font-size:.74rem;color:var(--ink-faint);
+  margin-top:.12rem;
+}
+
+/* ---------- panels & blocks ---------- */
+.panel{padding-top:1.75rem;}
+.panel:focus{outline:none;}
+
+.blockhead{
+  margin:2.5rem 0 1.1rem;
+  padding:.55rem .85rem;
+  border-radius:.35rem;
+  font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+  font-size:.78rem;font-weight:700;letter-spacing:.09em;text-transform:uppercase;
+}
+.blockhead.student{background:var(--accent-soft);color:var(--accent);border-left:4px solid var(--accent);}
+.blockhead.answers{background:var(--warm-soft);color:var(--warm);border-left:4px solid var(--warm);}
+.blockhead.teacher{background:var(--green-soft);color:var(--green);border-left:4px solid var(--green);}
+.blockhead span{display:block;font-size:.74rem;font-weight:400;letter-spacing:0;text-transform:none;margin-top:.2rem;opacity:.85;}
+
+section.sec{
+  background:var(--paper);
+  border:1px solid var(--rule);
+  border-radius:.4rem;
+  padding:1.3rem 1.5rem 1.5rem;
+  margin:0 0 1rem;
+}
+section.sec > h3{
+  margin:0 0 .9rem;
+  font-size:1.06rem;
+  padding-bottom:.5rem;border-bottom:1px solid var(--rule);
+  display:flex;align-items:baseline;gap:.6rem;
+}
+section.sec > h3 .num{
+  font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+  font-size:.7rem;font-weight:700;color:var(--paper);background:var(--ink-soft);
+  border-radius:.25rem;padding:.15rem .42rem;letter-spacing:.05em;
+  position:relative;top:-.1rem;
+}
+h4{font-size:.97rem;margin:1.35rem 0 .5rem;}
+h5{
+  font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+  font-size:.8rem;text-transform:uppercase;letter-spacing:.06em;color:var(--ink-faint);
+  margin:1.2rem 0 .45rem;
+}
+p{margin:0 0 .75rem;}
+ul,ol{margin:0 0 .8rem;padding-left:1.4rem;}
+li{margin-bottom:.35rem;}
+code,.mono{
+  font-family:ui-monospace,"SFMono-Regular",Menlo,Consolas,monospace;
+  font-size:.86em;background:var(--paper-tint);padding:.08em .3em;border-radius:.2rem;
+}
+
+.note{
+  border-left:3px solid var(--rule-strong);
+  padding:.55rem 0 .55rem .9rem;
+  margin:.9rem 0;
+  color:var(--ink-soft);font-size:.94rem;
+}
+.callout{
+  background:var(--paper-tint);border:1px solid var(--rule);
+  border-radius:.35rem;padding:.85rem 1rem;margin:.95rem 0;font-size:.95rem;
+}
+.callout .lbl{
+  display:block;font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+  font-size:.72rem;font-weight:700;letter-spacing:.07em;text-transform:uppercase;
+  color:var(--ink-faint);margin-bottom:.35rem;
+}
+.warn{border-left:3px solid var(--warm);background:var(--warm-soft);}
+.warn .lbl{color:var(--warm);}
+
+/* ---------- tables ---------- */
+table{border-collapse:collapse;width:100%;margin:.9rem 0 1.1rem;font-size:.9rem;}
+caption{
+  text-align:left;font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+  font-size:.78rem;color:var(--ink-faint);padding-bottom:.4rem;
+}
+th,td{border:1px solid var(--rule);padding:.45rem .6rem;text-align:left;vertical-align:top;}
+th{background:var(--paper-tint);font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;font-size:.8rem;}
+td.num,th.num{text-align:right;font-variant-numeric:tabular-nums;}
+.scroller{overflow-x:auto;}
+
+/* ---------- chart ---------- */
+.chartbox{
+  border:1px solid var(--rule-strong);border-radius:.35rem;
+  background:var(--paper);padding:.9rem 1rem 1rem;margin:1rem 0 1.2rem;
+}
+.chartbox .rubric{
+  font-size:.97rem;margin:0 0 .7rem;padding-bottom:.6rem;
+  border-bottom:1px dashed var(--rule);
+}
+.chartbox svg{width:100%;height:auto;display:block;}
+.legend{
+  display:flex;flex-wrap:wrap;gap:.35rem 1.15rem;margin-top:.6rem;
+  font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;font-size:.8rem;
+}
+.legend .k{display:flex;align-items:center;gap:.4rem;}
+.legend svg{width:34px;height:10px;flex:none;}
+
+/* ---------- items / inputs ---------- */
+ol.items{list-style:none;counter-reset:it;padding-left:0;}
+ol.items > li{
+  counter-increment:it;position:relative;
+  padding:.7rem 0 .7rem 2.5rem;border-bottom:1px dotted var(--rule);
+}
+ol.items > li:last-child{border-bottom:0;}
+ol.items > li::before{
+  content:counter(it);position:absolute;left:0;top:.72rem;
+  font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+  font-size:.72rem;font-weight:700;color:var(--paper);background:var(--accent);
+  width:1.5rem;height:1.5rem;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+}
+.scaf{
+  display:inline-block;font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+  font-size:.68rem;font-weight:700;letter-spacing:.05em;text-transform:uppercase;
+  padding:.1rem .4rem;border-radius:.2rem;margin-left:.4rem;
+  vertical-align:.1rem;
+}
+.scaf.full{background:#e6efdd;color:#3c5b28;}
+.scaf.part{background:#fdf0d6;color:#7a5410;}
+.scaf.none{background:#f2e4e4;color:#8a3030;}
+
+input[type="text"],textarea{
+  font-family:inherit;font-size:.95rem;color:var(--ink);
+  background:#fffdf8;border:1px solid var(--rule-strong);border-radius:.25rem;
+  padding:.35rem .5rem;width:100%;
+}
+input[type="text"]{max-width:26rem;}
+input.short{max-width:9rem;}
+textarea{display:block;width:100%;resize:vertical;line-height:1.7;}
+input:focus,textarea:focus{outline:2px solid var(--accent);outline-offset:1px;border-color:var(--accent);}
+label.ck{
+  display:flex;gap:.55rem;align-items:flex-start;
+  padding:.28rem 0;font-size:.94rem;cursor:pointer;
+}
+label.ck input{margin-top:.35rem;flex:none;width:1rem;height:1rem;}
+.fieldrow{display:flex;flex-wrap:wrap;gap:.6rem;align-items:center;margin:.4rem 0;}
+.hint{font-size:.85rem;color:var(--ink-faint);font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;}
+
+/* ---------- timer / counter ---------- */
+.taskbar{
+  display:flex;flex-wrap:wrap;gap:.75rem;align-items:center;
+  background:var(--paper-tint);border:1px solid var(--rule);border-radius:.35rem;
+  padding:.6rem .8rem;margin:.9rem 0;
+  font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;font-size:.85rem;
+}
+.taskbar .clock{
+  font-variant-numeric:tabular-nums;font-size:1.35rem;font-weight:700;
+  min-width:4.4rem;color:var(--accent);
+}
+.taskbar .clock.over{color:var(--warm);}
+.taskbar button{
+  font:inherit;font-size:.8rem;padding:.3rem .65rem;background:var(--paper);
+  border:1px solid var(--rule-strong);border-radius:.25rem;cursor:pointer;color:var(--ink-soft);
+}
+.taskbar button:hover{border-color:var(--accent);color:var(--accent);}
+.wc{margin-left:auto;color:var(--ink-faint);}
+.wc b{color:var(--ink);font-variant-numeric:tabular-nums;}
+.wc.ok b{color:var(--green);}
+.wc.low b{color:var(--warm);}
+
+/* ---------- collapsibles ---------- */
+.collapse{border:1px solid var(--rule);border-radius:.4rem;margin:0 0 1rem;background:var(--paper);overflow:hidden;}
+.collapse > .ctrl{
+  display:flex;width:100%;align-items:center;gap:.6rem;
+  font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+  font-size:.92rem;font-weight:600;text-align:left;
+  background:var(--paper);color:var(--ink);
+  border:0;padding:.85rem 1.1rem;cursor:pointer;
+}
+.collapse > .ctrl:hover{background:var(--paper-tint);}
+.collapse > .ctrl:focus-visible{outline:3px solid var(--accent);outline-offset:-3px;}
+.collapse > .ctrl .chev{
+  flex:none;width:.85rem;height:.85rem;border-right:2px solid var(--ink-faint);
+  border-bottom:2px solid var(--ink-faint);transform:rotate(-45deg);transition:transform .15s;
+}
+.collapse > .ctrl[aria-expanded="true"] .chev{transform:rotate(45deg);}
+.collapse > .ctrl .state{
+  margin-left:auto;font-size:.75rem;font-weight:700;letter-spacing:.06em;
+  text-transform:uppercase;color:var(--paper);background:var(--ink-faint);
+  border-radius:.2rem;padding:.15rem .45rem;
+}
+.collapse > .ctrl[aria-expanded="true"] .state{background:var(--green);}
+.collapse > .body{padding:0 1.1rem 1.1rem;border-top:1px solid var(--rule);}
+.collapse > .body.is-collapsed{display:none;}
+
+/* ---------- model answer ---------- */
+.model{
+  background:#fffdf6;border:1px solid #e3d9bf;border-radius:.35rem;
+  padding:1rem 1.15rem;margin:.9rem 0;
+}
+.model p{margin:0 0 .7rem;}
+.model p:last-child{margin-bottom:0;}
+.model .meta{
+  font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+  font-size:.75rem;color:var(--ink-faint);margin-bottom:.7rem;
+  padding-bottom:.5rem;border-bottom:1px solid #e3d9bf;
+}
+.wrong{color:#8a3030;}
+.right{color:#2e6b34;}
+.wrong::before{content:"\2717 ";font-weight:700;}
+.right::before{content:"\2713 ";font-weight:700;}
+
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:1rem;}
+@media (max-width:44rem){
+  .grid2{grid-template-columns:1fr;}
+  body{font-size:16px;}
+  .wrap{padding:0 .85rem 3rem;}
+  section.sec{padding:1rem 1rem 1.2rem;}
+  .tablist button{padding:.7rem .65rem;font-size:.82rem;}
+}
+
+.footnote{
+  margin-top:2rem;font-size:.82rem;color:var(--ink-faint);
+  font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+  border-top:1px solid var(--rule);padding-top:.9rem;
+}
+
+/* ============================================================
+   PRINT — active tab only, everything expanded, controls hidden
+   ============================================================ */
+@media print{
+  @page{size:A4;margin:16mm 14mm;}
+  html,body{background:#fff;font-size:10.5pt;}
+  .wrap{max-width:none;padding:0;}
+  .tabbar,.toolbar,.save-flag,.taskbar{display:none !important;}
+  .masthead{border-bottom:1.5pt solid #000;padding:0 0 .5rem;margin-bottom:.8rem;}
+  .panel[hidden]{display:none !important;}
+  .collapse > .ctrl{display:none !important;}
+  .collapse > .body,
+  .collapse > .body.is-collapsed{display:block !important;padding:0;border-top:0;}
+  .collapse{border:0;margin:0;}
+  section.sec{
+    border:0;border-top:1pt solid #000;border-radius:0;
+    padding:.5rem 0 .8rem;margin:0 0 .4rem;
+  }
+  section.sec > h3{border-bottom:0;padding-bottom:.2rem;break-after:avoid;}
+  h4,h5{break-after:avoid;}
+  .blockhead{
+    border:0;border-top:2pt solid #000;border-radius:0;
+    background:#fff !important;color:#000 !important;
+    padding:.6rem 0 .2rem;margin:1.1rem 0 .4rem;break-before:page;
+  }
+  .blockhead.student{break-before:auto;}
+  .chartbox{break-inside:avoid;border:1pt solid #555;}
+  table{font-size:9pt;}
+  tr,li{break-inside:avoid;}
+  .model,.callout,.note{break-inside:avoid;}
+  textarea{
+    min-height:0 !important;height:auto;
+    border:0;border-bottom:1pt solid #999;background:#fff;
+  }
+  input[type="text"]{border:0;border-bottom:1pt solid #999;background:#fff;}
+}
+</style>
+</head>
+<body>
+
+<header class="masthead">
+  <div class="wrap">
+    <h1>IELTS Academic Writing Task 1 — Line Graph Training Pack</h1>
+    <p class="sub">Two learner tracks · 10-section pack per track · original tasks · works offline</p>
+    <div class="toolbar">
+      <button type="button" id="btn-print">Print this track</button>
+      <button type="button" id="btn-expand">Expand all sections</button>
+      <button type="button" id="btn-collapse">Collapse answers &amp; notes</button>
+      <button type="button" id="btn-clear">Clear my saved work</button>
+      <span class="save-flag" id="saveflag">Your typing and ticks save automatically in this browser.</span>
+    </div>
+  </div>
+</header>
+
+<div class="tabbar">
+  <div class="tablist" role="tablist" aria-label="Learner tracks">
+    <button type="button" role="tab" id="tab-a" aria-controls="panel-a" aria-selected="true" tabindex="0">
+      Band 4 &rarr; 5.5
+      <span class="tagline">Line graph · sentence control</span>
+    </button>
+    <button type="button" role="tab" id="tab-b" aria-controls="panel-b" aria-selected="false" tabindex="-1">
+      Band 5 &rarr; 6
+      <span class="tagline">Line graph · selection &amp; cohesion</span>
+    </button>
+  </div>
+</div>
+
+<div class="wrap">
+
+<!-- ============================================================
+     TAB 1 — BAND 4 to 5.5
+     ============================================================ -->
+<div class="panel" role="tabpanel" id="panel-a" aria-labelledby="tab-a" tabindex="0">
+
+  <!-- ============ STUDENT MATERIAL ============ -->
+  <div class="blockhead student">Student material
+    <span>Track 1 · Academic Task 1 · line graph · working towards a consistent Band 5.5 performance</span>
+  </div>
+
+  <!-- 1 TARGET -->
+  <section class="sec">
+    <h3><span class="num">01</span> Target &amp; five-minute diagnostic</h3>
+
+    <p>By the end of this pack you should be able to do three things you can check yourself, without a
+    teacher and without a score:</p>
+    <ol>
+      <li><strong>Cover every line.</strong> Write a Task 1 answer in which each line on the graph is
+      mentioned at least once, with the correct unit attached to every figure you quote.</li>
+      <li><strong>Produce an overview on demand.</strong> Write one sentence that names the biggest change
+      in the whole graph, containing no specific figures, within 60 seconds of seeing a new line graph.</li>
+      <li><strong>Reach 150+ words in 20 minutes.</strong> Hit the minimum length inside the time limit on
+      three consecutive attempts, with past simple used consistently throughout.</li>
+    </ol>
+
+    <div class="callout warn">
+      <span class="lbl">An honest limit</span>
+      Nothing in this pack awards a band. A short exercise cannot produce an official score — only a
+      trained examiner working from a full test can. What the checks below <em>can</em> tell you is which
+      specific behaviour is missing, which is the useful information anyway.
+    </div>
+
+    <h4>Diagnostic — 5 minutes, done before any teaching</h4>
+    <p>Look at the graph, then answer the five questions. Do not look anything up. Time yourself.</p>
+
+    <div class="chartbox">
+      <p class="rubric"><strong>Diagnostic graph.</strong> The line graph below shows the number of members
+      at two gyms in the same town between 2018 and 2022.</p>
+      <div data-chart="a-diag"></div>
+    </div>
+
+    <ol class="items">
+      <li><strong>What is measured on the vertical axis, and in what units?</strong>
+        <input type="text" placeholder="Write your answer here">
+      </li>
+      <li><strong>How many members did Sunrise Fitness have in 2020?</strong>
+        <input type="text" class="short" placeholder="Number">
+      </li>
+      <li><strong>In one sentence, say what happened to Sunrise Fitness across the whole period.</strong>
+        <input type="text" placeholder="One sentence">
+      </li>
+      <li><strong>In one sentence, compare the two gyms in 2022.</strong>
+        <input type="text" placeholder="One sentence">
+      </li>
+      <li><strong>Write one sentence that describes the graph as a whole</strong> — both gyms, no figures.
+        <input type="text" placeholder="One sentence, no numbers">
+      </li>
+    </ol>
+
+    <h5>Reading your own result</h5>
+    <table>
+      <caption>Match your weakest answer to the bottleneck it exposes.</caption>
+      <thead><tr><th style="width:26%">Where it broke</th><th>What that tells you</th><th style="width:30%">Start at</th></tr></thead>
+      <tbody>
+        <tr><td>Q1 or Q2 wrong</td><td>You are not reading the axes before writing. Everything downstream will be wrong, however good your English is.</td><td>Section 3, Step 1 — do it aloud on every graph for a week</td></tr>
+        <tr><td>Q3 or Q4 broke down grammatically</td><td>Sentence-level control is the bottleneck, not comprehension. You can see the graph; you cannot yet say it.</td><td>Section 3, Step 3, then items 4–9</td></tr>
+        <tr><td>Q5 empty, or contains figures</td><td>You do not yet have the concept of an overview. This alone holds Task Achievement down.</td><td>Section 3, Step 2, then item 11</td></tr>
+        <tr><td>You ran past 5 minutes</td><td>Processing speed, not knowledge. Reduce the reading, increase the repetitions.</td><td>Section 7, rescue route</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- 2 BAND GAP -->
+  <section class="sec">
+    <h3><span class="num">02</span> The gap, in observable behaviour</h3>
+    <p>The public Writing Task 1 criteria are Task Achievement, Coherence and Cohesion, Lexical Resource,
+    and Grammatical Range and Accuracy. Below, each one is translated into something you can actually
+    watch yourself do or fail to do.</p>
+
+    <div class="scroller">
+    <table>
+      <caption>Track 1 · from a Band 4 pattern towards a Band 5.5 behaviour.</caption>
+      <thead>
+        <tr>
+          <th style="width:17%">Criterion</th>
+          <th style="width:28%">Current pattern</th>
+          <th style="width:28%">Target behaviour</th>
+          <th style="width:27%">Evidence it has changed</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Task Achievement</strong></td>
+          <td>The rubric is copied word for word; only one line gets described; there is no overview; sometimes the wrong axis is described.</td>
+          <td>The rubric is reworded in one sentence; every line appears; one sentence states the overall movement.</td>
+          <td>Three answers in a row that contain an overview sentence with no figures in it, and in which no line is missing.</td>
+        </tr>
+        <tr>
+          <td><strong>Coherence &amp; Cohesion</strong></td>
+          <td>One block of text; sentences follow whatever the eye noticed next.</td>
+          <td>Four visible parts: introduction, overview, then one paragraph per group of lines.</td>
+          <td>The paragraph breaks in the finished answer match the two-line plan written before drafting.</td>
+        </tr>
+        <tr>
+          <td><strong>Lexical Resource</strong></td>
+          <td><em>Go up</em> and <em>go down</em> repeat throughout; <em>increase</em> is used where <em>increased</em> is needed; units are dropped.</td>
+          <td>Six to eight trend words used with the correct part of speech, and the unit stated in every data sentence.</td>
+          <td>Fewer than three word-choice errors in a 160-word answer; no bare number without its unit.</td>
+        </tr>
+        <tr>
+          <td><strong>Grammar</strong></td>
+          <td>Subject–verb agreement fails after <em>the number of…</em>; tense drifts into the present; fragments appear.</td>
+          <td>Simple and compound sentences a reader understands first time, in consistent past simple.</td>
+          <td>At least half the sentences in the answer contain no error at all.</td>
+        </tr>
+        <tr>
+          <td><strong>Length &amp; timing</strong></td>
+          <td>Under 150 words, or 20 minutes pass with the introduction unfinished.</td>
+          <td>150–180 words written inside 20 minutes.</td>
+          <td>Word count written at the bottom of three consecutive attempts, each one 150 or more.</td>
+        </tr>
+      </tbody>
+    </table>
+    </div>
+
+    <div class="note">
+      Notice that nothing in the right-hand column is a matter of taste. Each one can be settled by
+      looking at the page — which is the whole point of writing targets this way.
+    </div>
+  </section>
+
+  <!-- 3 TEACH -->
+  <section class="sec">
+    <h3><span class="num">03</span> Teach — the Start–End–Shape check</h3>
+
+    <p>One decision process, used on every line before you write anything. For each line, in this order:</p>
+    <ol>
+      <li><strong>Start</strong> — what is the value at the left-hand edge?</li>
+      <li><strong>End</strong> — what is the value at the right-hand edge? Is it higher, lower, or about the same?</li>
+      <li><strong>Shape</strong> — how did it get there? Straight and steady, sharp then flat, up then down, or barely moving?</li>
+    </ol>
+
+    <p>Three pieces of information per line. That is all a Band 5.5 body paragraph needs. The
+    <em>Start</em> and <em>End</em> give you the direction, which becomes your overview. The
+    <em>Shape</em> gives you the sentence that follows.</p>
+
+    <h5>When this works</h5>
+    <p>On any line graph where the lines have a recognisable direction — which covers the large majority
+    of Academic Task 1 line graphs. It is especially strong when lines cross, because Start and End
+    alone tell you that the order has changed.</p>
+
+    <h5>When it does not work — and what to do instead</h5>
+    <p>On a line that swings up and down and finishes where it began. Start–End says <em>no change</em>,
+    which is true but misleading, because the line has clearly moved. When the Shape step tells you the
+    line went up <em>and</em> down, abandon the direction sentence and describe the swing instead:
+    <em>it fluctuated between X and Y, reaching a peak of Z in [year]</em>. Recognising this case is
+    part of the skill, not an exception to it.</p>
+
+    <h4>The graph we will work on</h4>
+    <div class="chartbox">
+      <p class="rubric"><strong>Graph A.</strong> The line graph below shows the average number of hours
+      per week that adults in one country spent on three leisure activities between 2000 and 2020.</p>
+      <div data-chart="a-main"></div>
+    </div>
+
+    <h4>Worked example 1 — the internet line</h4>
+    <div class="callout">
+      <span class="lbl">Applying the check</span>
+      <p style="margin-bottom:.4rem"><strong>Start:</strong> 2 hours in 2000.
+      <strong>End:</strong> 24 hours in 2020 — much higher.
+      <strong>Shape:</strong> up at every point, and the steps get bigger.</p>
+      <p style="margin-bottom:0"><strong>Written out:</strong> <em>Adults spent only 2 hours a week online
+      in 2000, but this figure rose at every five-year point and reached 24 hours by 2020. The rise
+      became steeper after 2010.</em></p>
+    </div>
+
+    <h4>Worked example 2 — the printed books line</h4>
+    <div class="callout">
+      <span class="lbl">Applying the check</span>
+      <p style="margin-bottom:.4rem"><strong>Start:</strong> 5 hours.
+      <strong>End:</strong> 3 hours — slightly lower.
+      <strong>Shape:</strong> almost flat, with a small drop.</p>
+      <p style="margin-bottom:0"><strong>Written out:</strong> <em>Time spent reading printed books changed
+      very little. It stayed at around 5 hours a week until 2005 and then fell slowly to 3 hours in 2020,
+      making it the least popular of the three activities throughout.</em></p>
+    </div>
+    <p class="hint">Note what the second example does <em>not</em> do: it does not give you all five
+    figures. Two are enough, because the line barely moves. Selecting is already happening here.</p>
+
+    <h4>The language that carries the check</h4>
+    <p>Three patterns cover almost every Task 1 data sentence. Learn them as whole units, with their
+    prepositions attached.</p>
+    <div class="scroller">
+    <table>
+      <caption>Verb and preposition patterns — the prepositions are not optional decoration.</caption>
+      <thead><tr><th style="width:22%">Pattern</th><th style="width:39%">Example</th><th>Use it when</th></tr></thead>
+      <tbody>
+        <tr><td><code>rose / fell <strong>from</strong> X <strong>to</strong> Y</code></td>
+            <td>Internet use rose from 2 to 24 hours.</td>
+            <td>You want to give both end points.</td></tr>
+        <tr><td><code>rose / fell <strong>by</strong> Z</code></td>
+            <td>Internet use rose by 22 hours.</td>
+            <td>You want the size of the change, not the end points.</td></tr>
+        <tr><td><code>remained / stood <strong>at</strong> X</code></td>
+            <td>Book reading remained at around 5 hours.</td>
+            <td>The line is flat, or you are fixing a single value.</td></tr>
+        <tr><td><code>there was a(n) [adjective] increase / fall <strong>in</strong> X</code></td>
+            <td>There was a sharp increase in internet use.</td>
+            <td>You want to vary the sentence shape and use the noun form.</td></tr>
+      </tbody>
+    </table>
+    </div>
+
+    <div class="callout warn">
+      <span class="lbl">The one that costs marks most often</span>
+      <strong>from … to …</strong> takes two numbers. <strong>by</strong> takes one — the difference.
+      Writing <em class="wrong">rose by 2 to 24 hours</em> when you mean <em class="right">rose from 2 to
+      24 hours</em> changes the meaning: <em>by 2</em> means the rise was two hours, not twenty-two.
+    </div>
+
+    <div class="note">
+      That is three new things in this lesson: the Start–End–Shape check, the verb–preposition patterns,
+      and grouping lines that behave alike. Nothing else is being added today, and that is deliberate.
+    </div>
+  </section>
+
+  <!-- 4 GUIDED PRACTICE -->
+  <section class="sec">
+    <h3><span class="num">04</span> Guided practice — 12 items on Graph A</h3>
+    <p class="hint">The support fades as you go down. Items 1–3 hand you everything; items 10–12 hand you
+    nothing. Scroll back to Graph A whenever you need it.</p>
+
+    <ol class="items">
+      <li><span class="scaf full">Full support</span><br>
+        <strong>Read off the value.</strong> In 2010, how many hours per week were spent watching television?
+        <input type="text" class="short" placeholder="hours">
+      </li>
+      <li><span class="scaf full">Full support</span><br>
+        <strong>Read off the year.</strong> In which year did internet use first pass 10 hours per week?
+        <input type="text" class="short" placeholder="year">
+      </li>
+      <li><span class="scaf full">Full support</span><br>
+        <strong>Find the crossing point.</strong> Between which two years did the internet line cross above the television line?
+        <input type="text" placeholder="between ______ and ______">
+      </li>
+      <li><span class="scaf full">Full support</span><br>
+        <strong>Choose the preposition.</strong> “Time spent watching television fell ______ 18 hours
+        ______ 11 hours.” <span class="hint">(from / to / by / at)</span>
+        <div class="fieldrow">
+          <input type="text" class="short" placeholder="first gap">
+          <input type="text" class="short" placeholder="second gap">
+        </div>
+      </li>
+      <li><span class="scaf full">Full support</span><br>
+        <strong>Choose the preposition.</strong> “Internet use rose ______ 22 hours over the period.”
+        <span class="hint">(from / to / by / at)</span>
+        <input type="text" class="short" placeholder="gap">
+      </li>
+      <li><span class="scaf part">Some support</span><br>
+        <strong>Complete the frame.</strong> “Between 2000 and 2020, the time adults spent on the internet
+        rose ______ hours ______ hours, an increase ______ ______ hours.”
+        <input type="text" placeholder="Write the complete sentence">
+      </li>
+      <li><span class="scaf part">Some support</span><br>
+        <strong>Complete the frame.</strong> “Time spent reading printed books ______ almost unchanged,
+        ______ around 4 hours a week.”
+        <input type="text" placeholder="Write the complete sentence">
+      </li>
+      <li><span class="scaf part">Some support</span><br>
+        <strong>Correct one sentence.</strong> <em class="wrong">The number of hours for television were
+        decrease every year.</em> There are three faults: agreement, verb form, and a claim the graph
+        does not support.
+        <input type="text" placeholder="Your correction">
+      </li>
+      <li><span class="scaf part">Some support</span><br>
+        <strong>Correct one sentence.</strong> <em class="wrong">In 2020, internet use is 24 hours per
+        week, that is more than television.</em> Fix the tense, the linking, and make the comparison
+        precise.
+        <input type="text" placeholder="Your correction">
+      </li>
+      <li><span class="scaf none">No support</span><br>
+        <strong>Write two sentences about the printed books line.</strong> Apply Start–End–Shape. Give at
+        most two figures.
+        <textarea rows="3" placeholder="Two sentences."></textarea>
+      </li>
+      <li><span class="scaf none">No support</span><br>
+        <strong>Write the overview sentence for Graph A.</strong> All three activities, no figures, one or
+        two sentences.
+        <textarea rows="3" placeholder="Overview — no numbers."></textarea>
+      </li>
+      <li><span class="scaf none">No support</span><br>
+        <strong>Write the introduction.</strong> Reword the rubric above Graph A. Do not reuse more than
+        four words in a row from it.
+        <textarea rows="3" placeholder="Introduction."></textarea>
+      </li>
+    </ol>
+  </section>
+
+  <!-- 5 TIMED TRANSFER -->
+  <section class="sec">
+    <h3><span class="num">05</span> Timed transfer — a new graph, 20 minutes</h3>
+
+    <p>This is a different topic with a different shape. Nothing from Graph A can be copied across, but
+    the Start–End–Shape check transfers exactly.</p>
+
+    <div class="chartbox">
+      <p class="rubric"><strong>Task.</strong> The line graph below shows the number of passengers, in
+      millions, using three types of public transport in one city between 2005 and 2025.<br>
+      <em>Summarise the information by selecting and reporting the main features, and make comparisons
+      where relevant. Write at least 150 words.</em></p>
+      <div data-chart="a-transfer"></div>
+    </div>
+
+    <div class="taskbar">
+      <span class="clock" data-timer="a">20:00</span>
+      <button type="button" data-timer-act="start" data-timer-for="a">Start</button>
+      <button type="button" data-timer-act="pause" data-timer-for="a">Pause</button>
+      <button type="button" data-timer-act="reset" data-timer-for="a">Reset</button>
+      <span class="hint">Suggested split: 3 min plan · 14 min write · 3 min check</span>
+      <span class="wc" data-wc-for="a-answer">Words: <b>0</b> / 150 minimum</span>
+    </div>
+
+    <h5>Plan first — two lines only</h5>
+    <div class="fieldrow" style="flex-direction:column;align-items:stretch;gap:.45rem">
+      <label class="hint" for="a-plan1">Paragraph 1 will cover…</label>
+      <input type="text" id="a-plan1" placeholder="e.g. the two lines that changed the most">
+      <label class="hint" for="a-plan2">Paragraph 2 will cover…</label>
+      <input type="text" id="a-plan2" placeholder="e.g. the line that barely moved">
+    </div>
+
+    <h5>Your answer</h5>
+    <textarea id="a-answer" rows="16" placeholder="Write your full answer here. Introduction, overview, then your two body paragraphs."></textarea>
+
+    <h5>Three-minute check before you stop</h5>
+    <label class="ck"><input type="checkbox"> Is there an overview sentence, and does it avoid specific figures?</label>
+    <label class="ck"><input type="checkbox"> Does every one of the three lines appear somewhere in the answer?</label>
+    <label class="ck"><input type="checkbox"> Does every number have its unit — <em>million passengers</em>, not just a bare number?</label>
+    <label class="ck"><input type="checkbox"> Is every verb in the past simple?</label>
+    <label class="ck"><input type="checkbox"> Have I checked each <em>from / to / by / at</em> against the pattern table?</label>
+    <label class="ck"><input type="checkbox"> Is the word count 150 or more?</label>
+  </section>
+
+  <!-- ============ ANSWERS / MODELS ============ -->
+  <div class="blockhead answers">Answers &amp; models
+    <span>Hidden by default. Attempt the section above before opening this.</span>
+  </div>
+
+  <section class="sec" style="padding-bottom:.6rem">
+    <h3><span class="num">06</span> Review — key, model answer, and error patterns</h3>
+
+    <div class="collapse">
+      <button type="button" class="ctrl" aria-expanded="false"><span class="chev"></span>Diagnostic answers (Section 1)<span class="state">Show</span></button>
+      <div class="body is-collapsed">
+        <ol>
+          <li>Number of members (people). The horizontal axis is years, 2018–2022.</li>
+          <li>610 members.</li>
+          <li>Acceptable: <em>Sunrise Fitness grew steadily from 400 to 760 members between 2018 and 2022.</em></li>
+          <li>Acceptable: <em>In 2022, Sunrise Fitness had 760 members, which was more than twice the figure for Riverside Gym at 350.</em></li>
+          <li>Acceptable: <em>Overall, membership rose at one gym and fell at the other, so the two gyms swapped positions during the period.</em> Any figure inside this sentence means the answer is a detail sentence, not an overview.</li>
+        </ol>
+        <p><strong>Diagnostic data, for checking:</strong> Sunrise Fitness 400, 520, 610, 700, 760.
+        Riverside Gym 500, 480, 430, 390, 350. The lines cross between 2018 and 2019.</p>
+      </div>
+    </div>
+
+    <div class="collapse">
+      <button type="button" class="ctrl" aria-expanded="false"><span class="chev"></span>Graph A data table<span class="state">Show</span></button>
+      <div class="body is-collapsed">
+        <div class="scroller">
+        <table>
+          <caption>Graph A — average hours per week per adult.</caption>
+          <thead><tr><th>Activity</th><th class="num">2000</th><th class="num">2005</th><th class="num">2010</th><th class="num">2015</th><th class="num">2020</th></tr></thead>
+          <tbody>
+            <tr><td>Watching television</td><td class="num">18</td><td class="num">17</td><td class="num">15</td><td class="num">13</td><td class="num">11</td></tr>
+            <tr><td>Using the internet</td><td class="num">2</td><td class="num">6</td><td class="num">12</td><td class="num">19</td><td class="num">24</td></tr>
+            <tr><td>Reading printed books</td><td class="num">5</td><td class="num">5</td><td class="num">4</td><td class="num">4</td><td class="num">3</td></tr>
+          </tbody>
+        </table>
+        </div>
+      </div>
+    </div>
+
+    <div class="collapse">
+      <button type="button" class="ctrl" aria-expanded="false"><span class="chev"></span>Guided practice key, items 1–12<span class="state">Show</span></button>
+      <div class="body is-collapsed">
+        <ol>
+          <li><strong>15 hours.</strong></li>
+          <li><strong>2010</strong> (12 hours). In 2005 it was still only 6.</li>
+          <li><strong>Between 2010 and 2015.</strong> At 2010 television was still ahead, 15 to 12; by 2015 the internet led, 19 to 13. The graph gives no reading between those two points, so naming a single year would be inventing data.</li>
+          <li><strong>from … to.</strong> Two figures are given, so <em>from/to</em> is the only fit.</li>
+          <li><strong>by.</strong> 24 − 2 = 22, a single figure describing the size of the change.</li>
+          <li><em>Between 2000 and 2020, the time adults spent on the internet rose <strong>from 2</strong> hours <strong>to 24</strong> hours, an increase <strong>of 22</strong> hours.</em> Note <em>an increase <strong>of</strong></em> — the noun takes <em>of</em>, not <em>by</em>.</li>
+          <li><em>Time spent reading printed books <strong>remained</strong> almost unchanged, <strong>at</strong> around 4 hours a week.</em> <em>stayed</em> also works.</li>
+          <li><em>The number of hours spent watching television <strong>decreased steadily</strong>.</em> Three fixes: <em>the number … was</em>, not <em>were</em>; <em>decreased</em>, not <em>were decrease</em>; and <em>every year</em> must go, because the graph only gives a reading every five years. <em>At every five-year point</em> is defensible; <em>every year</em> is not.</li>
+          <li><em>In 2020, internet use <strong>stood at</strong> 24 hours per week, <strong>which was</strong> more than double the television figure.</em> Past tense, a relative clause instead of a comma splice, and a comparison the data supports (24 against 11).</li>
+          <li>Model: <em>Time spent reading printed books was the lowest of the three activities throughout the period. It stayed at about 5 hours a week until 2005 and then fell slightly, ending at 3 hours in 2020.</em></li>
+          <li>Model: <em>Overall, internet use rose sharply and overtook television, while television viewing fell steadily throughout; time spent reading printed books changed very little and remained the least common of the three activities.</em></li>
+          <li>Model: <em>The line graph shows how many hours per week adults in one country spent on three leisure activities — watching television, using the internet and reading printed books — between 2000 and 2020.</em></li>
+        </ol>
+      </div>
+    </div>
+
+    <div class="collapse">
+      <button type="button" class="ctrl" aria-expanded="false"><span class="chev"></span>Transfer task — data table and model answer<span class="state">Show</span></button>
+      <div class="body is-collapsed">
+        <div class="scroller">
+        <table>
+          <caption>Transfer task — passengers in millions.</caption>
+          <thead><tr><th>Transport</th><th class="num">2005</th><th class="num">2010</th><th class="num">2015</th><th class="num">2020</th><th class="num">2025</th></tr></thead>
+          <tbody>
+            <tr><td>Bus</td><td class="num">60</td><td class="num">55</td><td class="num">48</td><td class="num">40</td><td class="num">34</td></tr>
+            <tr><td>Underground</td><td class="num">30</td><td class="num">38</td><td class="num">45</td><td class="num">55</td><td class="num">66</td></tr>
+            <tr><td>Tram</td><td class="num">10</td><td class="num">12</td><td class="num">12</td><td class="num">14</td><td class="num">15</td></tr>
+          </tbody>
+        </table>
+        </div>
+
+        <div class="model">
+          <p class="meta">Model answer · 176 words · written to demonstrate the target behaviours in Section 2,
+          not to be memorised or reproduced.</p>
+          <p>The line graph shows how many people travelled by bus, underground and tram in one city
+          between 2005 and 2025. All figures are given in millions of passengers.</p>
+          <p>Overall, bus use fell steadily across the whole period, while the underground grew and
+          became the most popular form of transport. Tram passenger numbers changed very little.</p>
+          <p>In 2005, buses carried the most passengers, at 60 million, but this figure dropped at every
+          five-year point and reached 34 million by 2025. The underground moved in the opposite
+          direction. It started at 30 million, which was half the bus figure, and then rose to 45 million
+          in 2015. Between 2015 and 2020 the two lines crossed, and by 2025 the underground was carrying
+          almost twice as many passengers as the bus.</p>
+          <p>Tram use was much lower than the other two throughout. It began at 10 million and increased
+          only slightly, ending at 15 million in 2025. Although this was a rise, the tram remained the
+          least used of the three types of transport.</p>
+        </div>
+
+        <h5>Why the model does what it does</h5>
+        <ul>
+          <li><strong>Paragraph 1</strong> rewords the rubric and states the units separately, which
+          removes the temptation to copy the whole rubric in one lump.</li>
+          <li><strong>Paragraph 2</strong> is the overview: three clauses, one per line, no figures. It is
+          written after the body in practice, but placed second on the page.</li>
+          <li><strong>Paragraph 3</strong> groups the two lines that changed and that interact — the
+          crossing point is the single most reportable feature of this graph, so it is stated precisely
+          as a range of years, not as an invented single year.</li>
+          <li><strong>Paragraph 4</strong> takes the flat line on its own. It gives two figures, not five,
+          because the line does almost nothing.</li>
+          <li><strong>No reasons are given anywhere.</strong> The graph shows what happened, not why.</li>
+        </ul>
+
+        <h5>Eight error patterns to check your own answer against</h5>
+        <div class="scroller">
+        <table>
+          <thead><tr><th style="width:22%">Pattern</th><th style="width:39%">What it looks like</th><th>The correction</th></tr></thead>
+          <tbody>
+            <tr><td><strong>1. Noun / verb confusion</strong></td>
+              <td class="wrong">The passengers increase of 10 million.</td>
+              <td class="right">Passenger numbers increased by 10 million. / There was an increase of 10 million.</td></tr>
+            <tr><td><strong>2. Preposition slip</strong></td>
+              <td class="wrong">Underground use rose by 30 million to 66 million.</td>
+              <td class="right">Underground use rose from 30 million to 66 million. <span class="hint">(The rise was 36, not 30.)</span></td></tr>
+            <tr><td><strong>3. Agreement after “the number of”</strong></td>
+              <td class="wrong">The number of passengers were falling.</td>
+              <td class="right">The number of passengers was falling. <span class="hint">(The subject is <em>number</em>, which is singular.)</span></td></tr>
+            <tr><td><strong>4. Tense drift</strong></td>
+              <td class="wrong">In 2005, buses carry 60 million passengers.</td>
+              <td class="right">In 2005, buses carried 60 million passengers.</td></tr>
+            <tr><td><strong>5. Units mishandled</strong></td>
+              <td class="wrong">34 millions of passenger used the bus.</td>
+              <td class="right">34 million passengers used the bus. <span class="hint">(<em>million</em> stays singular after a number; the noun becomes plural.)</span></td></tr>
+            <tr><td><strong>6. Explaining instead of describing</strong></td>
+              <td class="wrong">Bus use fell because the buses are old and people prefer the metro.</td>
+              <td class="right">Delete the sentence. The graph contains no information about causes, and an invented cause is off-task.</td></tr>
+            <tr><td><strong>7. Missing overview</strong></td>
+              <td class="wrong">Introduction, then straight into figures.</td>
+              <td class="right">Add one sentence naming the overall movement. This is the single highest-value repair available at this level.</td></tr>
+            <tr><td><strong>8. Rubric copied</strong></td>
+              <td class="wrong">The line graph shows the number of passengers, in millions, using three types of public transport…</td>
+              <td class="right">Reword it. Copied stretches are discounted from the word count and hold Lexical Resource down.</td></tr>
+          </tbody>
+        </table>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ TEACHER NOTES ============ -->
+  <div class="blockhead teacher">Teacher notes
+    <span>Staging, feedback priorities, differentiation, homework, and progression rules.</span>
+  </div>
+
+  <section class="sec" style="padding-bottom:.6rem">
+    <h3><span class="num">07</span> Differentiate — rescue route and stretch route</h3>
+    <div class="collapse">
+      <button type="button" class="ctrl" aria-expanded="false"><span class="chev"></span>Both routes<span class="state">Show</span></button>
+      <div class="body is-collapsed">
+        <div class="grid2">
+          <div>
+            <h5>Rescue — if the diagnostic falls below Band 4 behaviour</h5>
+            <p>Symptoms: the learner cannot state the units, or produces no complete sentence in Q3.</p>
+            <ol>
+              <li>Hand over the Graph A data table instead of the graph. Reading the plot is not the skill
+              being trained today; remove it as a variable.</li>
+              <li>Restrict the task to <strong>one line only</strong> — the internet line — and set a
+              target of six sentences, roughly 80 words.</li>
+              <li>Supply all four sentence patterns from the table and require each to be used at least
+              once, in any order.</li>
+              <li>Only when six accurate sentences appear twice in a row, add the second line, then the
+              third, then withdraw the table.</li>
+            </ol>
+            <p class="hint">Expect this to take two or three lessons. Do not move on early; the 150-word
+            target is meaningless while individual sentences are still collapsing.</p>
+          </div>
+          <div>
+            <h5>Stretch — if the diagnostic already looks like Band 5.5</h5>
+            <p>Symptoms: an overview appears unprompted, and Q3 and Q4 are accurate.</p>
+            <ol>
+              <li>Remove every frame and the pattern table from view before the transfer task.</li>
+              <li>Cut the time limit from 20 minutes to <strong>17</strong>.</li>
+              <li>Require the crossing point to be described precisely, as a range of years, with a
+              comparison attached — this is the sentence that separates 5.5 from 6.</li>
+              <li>Require two comparative sentences using different structures, for example
+              <em>almost twice as many … as …</em> and <em>far lower than …</em>.</li>
+              <li>Ban the words <em>increase</em> and <em>decrease</em> after their first use each.</li>
+            </ol>
+            <p class="hint">If the stretch work holds up across two attempts, move the learner to Track 2
+            rather than repeating this track.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" style="padding-bottom:.6rem">
+    <h3><span class="num">08</span> Feedback — the three corrections worth making</h3>
+    <div class="collapse">
+      <button type="button" class="ctrl" aria-expanded="false"><span class="chev"></span>Coaching notes<span class="state">Show</span></button>
+      <div class="body is-collapsed">
+        <p>A Band 4 transfer answer will contain fifteen to thirty errors. Marking all of them produces a
+        page the learner cannot act on and usually will not read. Mark these three, in this order, and
+        leave the rest unmarked this week.</p>
+
+        <ol>
+          <li>
+            <h5 style="margin-top:.3rem">1 · The missing overview — highest leverage by a distance</h5>
+            <p>If there is no overview, write one word in the margin — <em>overview?</em> — and nothing
+            else on that paragraph. Then have the learner add it in the lesson, aloud first, on paper
+            second. This is one sentence of work and it lifts Task Achievement more than any other single
+            change available at this level.</p>
+          </li>
+          <li>
+            <h5>2 · Verb–preposition pairs</h5>
+            <p>Underline every <em>from / to / by / at</em> and its verb, and mark only whether the pair is
+            right. Do not rewrite the sentence. The learner corrects it against the pattern table. Pairs
+            are learnable in a week; scattered vocabulary correction is not.</p>
+          </li>
+          <li>
+            <h5>3 · Past simple, applied consistently</h5>
+            <p>Circle every present-tense verb and write nothing. Consistency here is a single decision
+            made once at the start of the answer, not a hundred small ones, so it is unusually
+            cheap to fix.</p>
+          </li>
+        </ol>
+
+        <div class="callout warn">
+          <span class="lbl">Explicitly not this week</span>
+          Article errors, spelling, word order in longer clauses, and range of vocabulary. All are real,
+          none are the bottleneck, and adding them now costs the learner attention that the three items
+          above need. Say this out loud to the learner — it stops the unmarked errors being read as
+          approval.
+        </div>
+
+        <h5>What to say when returning the work</h5>
+        <p>Name the behaviour, not the person, and give the next observable step:
+        <em>“Your three lines are all covered — that part is working. What's missing is the sentence that
+        describes the whole graph. Add one sentence after your introduction, with no numbers in it.
+        That's the only change I want to see next time.”</em></p>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" style="padding-bottom:.6rem">
+    <h3><span class="num">09</span> Retrieval — spaced homework and next-lesson check</h3>
+    <div class="collapse">
+      <button type="button" class="ctrl" aria-expanded="false"><span class="chev"></span>Homework schedule and 5-minute check<span class="state">Show</span></button>
+      <div class="body is-collapsed">
+        <h5>Spaced homework — 23 minutes total, spread across the week</h5>
+        <div class="scroller">
+        <table>
+          <thead><tr><th style="width:14%">When</th><th style="width:10%">Time</th><th>Task</th></tr></thead>
+          <tbody>
+            <tr><td><strong>Day 1</strong></td><td>8 min</td>
+              <td>Take your corrected transfer answer. Underline every verb–preposition pair and write the
+              pattern it matches beside it. Any pair that matches nothing on the table is an error — fix it.</td></tr>
+            <tr><td><strong>Day 3</strong></td><td>7 min</td>
+              <td>Cover the model answer. Look at the diagnostic gym graph for 30 seconds, then write only
+              the introduction and the overview. Stop. Compare against Section 6.</td></tr>
+            <tr><td><strong>Day 5</strong></td><td>8 min</td>
+              <td>Same gym graph, now write one body paragraph covering both gyms, applying Start–End–Shape.
+              Count your words and write the number at the bottom.</td></tr>
+          </tbody>
+        </table>
+        </div>
+        <p class="hint">The gaps between the days are the active ingredient. Three short sessions on
+        separate days outperform one 23-minute session, and the learner should be told so.</p>
+
+        <h5>Next lesson — 5-minute retrieval check, books closed</h5>
+        <ol>
+          <li>Name the three steps of the check, in order. <span class="hint">(30 seconds)</span></li>
+          <li>Which preposition goes with a single figure showing the size of a change? <span class="hint">(15 seconds)</span></li>
+          <li>Write two sentences about any line, one using <em>from … to …</em> and one using <em>by</em>. <span class="hint">(2 minutes)</span></li>
+          <li>Name two things an overview must not contain. <span class="hint">(30 seconds — figures, and reasons)</span></li>
+          <li>Teacher displays an unseen line graph for 20 seconds, then hides it. Learner writes the
+          overview from memory. <span class="hint">(1 minute 45)</span></li>
+        </ol>
+        <p>Item 5 is the one that matters. If the learner can produce an overview from a 20-second look,
+        the behaviour is automatic and the class can move on.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" style="padding-bottom:.6rem">
+    <h3><span class="num">10</span> Mastery — repeat, advance, or seek feedback</h3>
+    <div class="collapse">
+      <button type="button" class="ctrl" aria-expanded="false"><span class="chev"></span>Decision rules<span class="state">Show</span></button>
+      <div class="body is-collapsed">
+        <p>Apply these to the <strong>most recent three timed attempts</strong>, each on a different line
+        graph. Count, do not estimate.</p>
+
+        <div class="scroller">
+        <table>
+          <thead><tr><th style="width:16%">Decision</th><th>Condition — all must hold</th></tr></thead>
+          <tbody>
+            <tr>
+              <td><strong>Repeat this track</strong></td>
+              <td>Any one of: under 150 words; no overview sentence; a line left out entirely; six or more
+              grammar errors per 150 words; or the 20 minutes ran out before the last paragraph was
+              finished. Repeat on new graphs — not on the same one.</td>
+            </tr>
+            <tr>
+              <td><strong>Advance to Track 2</strong></td>
+              <td>In <strong>two of the last three</strong> attempts: 150 or more words inside 20 minutes;
+              an overview present and figure-free; all lines covered; four or fewer grammar errors per
+              150 words; and consistent past simple.</td>
+            </tr>
+            <tr>
+              <td><strong>Seek feedback</strong></td>
+              <td>Word count, coverage and structure targets are all being met, but you cannot tell
+              whether your sentences are <em>accurate</em>. Self-marking cannot settle this — you have
+              reached the point where a reader is required. Send one full answer, not five.</td>
+            </tr>
+          </tbody>
+        </table>
+        </div>
+
+        <h5>Track your three attempts</h5>
+        <div class="scroller">
+        <table>
+          <thead><tr><th>Attempt</th><th style="width:14%">Words</th><th style="width:14%">Minutes</th><th style="width:16%">Overview?</th><th style="width:16%">All lines?</th><th style="width:16%">Errors / 150</th></tr></thead>
+          <tbody>
+            <tr><td>1</td><td><input type="text" class="short"></td><td><input type="text" class="short"></td><td><input type="text" class="short"></td><td><input type="text" class="short"></td><td><input type="text" class="short"></td></tr>
+            <tr><td>2</td><td><input type="text" class="short"></td><td><input type="text" class="short"></td><td><input type="text" class="short"></td><td><input type="text" class="short"></td><td><input type="text" class="short"></td></tr>
+            <tr><td>3</td><td><input type="text" class="short"></td><td><input type="text" class="short"></td><td><input type="text" class="short"></td><td><input type="text" class="short"></td><td><input type="text" class="short"></td></tr>
+          </tbody>
+        </table>
+        </div>
+
+        <div class="callout warn">
+          <span class="lbl">Not a band score</span>
+          Meeting every condition above means the target <em>behaviours</em> are in place. It does not mean
+          a 5.5 has been awarded, and no exercise on this page can award one.
+        </div>
+      </div>
+    </div>
+  </section>
+
+</div><!-- /panel-a -->
+
+
+<!-- ============================================================
+     TAB 2 — BAND 5 to 6
+     ============================================================ -->
+<div class="panel" role="tabpanel" id="panel-b" aria-labelledby="tab-b" tabindex="0" hidden>
+
+  <!-- ============ STUDENT MATERIAL ============ -->
+  <div class="blockhead student">Student material
+    <span>Track 2 · Academic Task 1 · line graph · working towards a consistent Band 6 performance</span>
+  </div>
+
+  <!-- 1 TARGET -->
+  <section class="sec">
+    <h3><span class="num">01</span> Target &amp; five-minute diagnostic</h3>
+
+    <p>At Band 5 the sentences usually work. What fails is the decision-making <em>above</em> the
+    sentence: what to include, what to leave out, and how to hold a paragraph together. The three
+    outcomes are therefore all decisions, not language items:</p>
+    <ol>
+      <li><strong>Select rather than list.</strong> Cover a four-line graph in 160–200 words by reporting,
+      for each line, its start, its end, and exactly one distinguishing feature — and nothing else.</li>
+      <li><strong>Group before writing.</strong> State a grouping principle in your plan and produce body
+      paragraphs whose contents match it, with no line appearing in both.</li>
+      <li><strong>Paraphrase without drift.</strong> Reword the rubric so that referent, time frame and
+      unit all survive intact, sharing no more than four consecutive words with the original.</li>
+    </ol>
+
+    <div class="callout warn">
+      <span class="lbl">An honest limit</span>
+      These are checkable behaviours, not a score. No single generated exercise — this one included —
+      can award an IELTS band, and any page that claims otherwise is misleading you.
+    </div>
+
+    <h4>Diagnostic — 5 minutes</h4>
+    <p>This graph is deliberately awkward: three lines, and one of them is tiny. Selection pressure
+    starts immediately.</p>
+
+    <div class="chartbox">
+      <p class="rubric"><strong>Diagnostic graph.</strong> The line graph below shows the percentage of one
+      country's population living in urban, rural and suburban areas between 1980 and 2020.</p>
+      <div data-chart="b-diag"></div>
+    </div>
+
+    <ol class="items">
+      <li><strong>Reword the rubric in one sentence</strong>, sharing no more than four consecutive words with it.
+        <input type="text" placeholder="Your paraphrase">
+      </li>
+      <li><strong>Write the overview</strong> — the shape of the whole graph, in one or two sentences.
+        <input type="text" placeholder="Overview">
+      </li>
+      <li><strong>Name the three facts you would report about the suburban line, and nothing more.</strong>
+        <input type="text" placeholder="Three facts, separated by semicolons">
+      </li>
+      <li><strong>State your grouping.</strong> If you wrote two body paragraphs, what would go in each, and why?
+        <input type="text" placeholder="Paragraph 1 = … because … / Paragraph 2 = … because …">
+      </li>
+      <li><strong>One check on the data:</strong> what should the three values in any single year add up to, and does that hold in 2000?
+        <input type="text" placeholder="Your answer">
+      </li>
+    </ol>
+
+    <h5>Reading your own result</h5>
+    <table>
+      <caption>Match your weakest answer to the bottleneck it exposes.</caption>
+      <thead><tr><th style="width:26%">Where it broke</th><th>What that tells you</th><th style="width:28%">Start at</th></tr></thead>
+      <tbody>
+        <tr><td>Q1 reused long stretches, or changed the meaning</td><td>Paraphrase is your ceiling. It is the first thing an examiner reads, and drift there colours everything after it.</td><td>Section 3, Move 3, then items 3–4</td></tr>
+        <tr><td>Q2 described only one line, or contained figures</td><td>You are treating the overview as a first detail sentence rather than as a summary of the whole.</td><td>Section 3, Move 1, then item 5</td></tr>
+        <tr><td>Q3 listed more than three facts</td><td>Selection is the bottleneck. This is what keeps Band 5 answers long, flat and repetitive.</td><td>Section 3, Move 2, then item 1</td></tr>
+        <tr><td>Q4 was vague or empty</td><td>You are writing paragraphs by accident. Cohesion cannot be repaired with linkers if the grouping was never chosen.</td><td>Section 3, Move 1, then items 2 and 6</td></tr>
+        <tr><td>Q5 missed the check</td><td>You are not interrogating the data. Percentages of a whole must total 100 — a free accuracy check you are not using.</td><td>Section 3, note on data checks</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- 2 BAND GAP -->
+  <section class="sec">
+    <h3><span class="num">02</span> The gap, in observable behaviour</h3>
+    <p>The same four public criteria apply — Task Achievement, Coherence and Cohesion, Lexical Resource,
+    Grammatical Range and Accuracy — but the failures at this level sit at paragraph level, not sentence
+    level.</p>
+
+    <div class="scroller">
+    <table>
+      <caption>Track 2 · from a Band 5 pattern towards a Band 6 behaviour.</caption>
+      <thead>
+        <tr>
+          <th style="width:17%">Criterion</th>
+          <th style="width:28%">Current pattern</th>
+          <th style="width:28%">Target behaviour</th>
+          <th style="width:27%">Evidence it has changed</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Task Achievement</strong></td>
+          <td>Every data point is reported in sequence; the overview restates one line rather than the whole graph.</td>
+          <td>Start, end and one distinguishing feature per line; an overview that names contrasting groups.</td>
+          <td>An answer under 200 words that still covers all four lines, whose overview mentions at least two groups moving differently.</td>
+        </tr>
+        <tr>
+          <td><strong>Coherence &amp; Cohesion</strong></td>
+          <td><em>Moreover</em> and <em>Furthermore</em> open most sentences; <em>it</em> and <em>this</em> could refer to two different lines; rising and falling lines share a paragraph.</td>
+          <td>A grouping chosen before drafting; every pronoun with one possible referent; linkers used only where a relationship genuinely needs signalling.</td>
+          <td>Each body paragraph can be given a one-phrase heading. No pronoun in the answer has two candidate antecedents.</td>
+        </tr>
+        <tr>
+          <td><strong>Lexical Resource</strong></td>
+          <td>Either the rubric is copied, or it is over-translated into phrasing no one would write.</td>
+          <td>Paraphrase that keeps referent, time frame and unit; natural collocations preferred over rare words.</td>
+          <td>The introduction shares fewer than five consecutive words with the rubric and no fact has changed.</td>
+        </tr>
+        <tr>
+          <td><strong>Grammar</strong></td>
+          <td>Comparatives break under pressure — <em>more higher</em>, <em>three times bigger than</em> — and long sentences lose their main verb.</td>
+          <td>Accurate comparative and superlative forms, plus at least three complex sentences that hold together.</td>
+          <td>At most one comparative error per answer; every sentence has an identifiable main clause.</td>
+        </tr>
+        <tr>
+          <td><strong>Process</strong></td>
+          <td>Planning and editing are skipped when time is short.</td>
+          <td>3 minutes planning, 14 writing, 3 editing — held even when the graph looks hard.</td>
+          <td>A written plan exists on the page, and the edit pass catches at least two of your own errors.</td>
+        </tr>
+      </tbody>
+    </table>
+    </div>
+  </section>
+
+  <!-- 3 TEACH -->
+  <section class="sec">
+    <h3><span class="num">03</span> Teach — group, select, paraphrase</h3>
+
+    <p>Three moves, made in this order, before a single body sentence is written. They are decisions about
+    content, not phrases to memorise.</p>
+
+    <h4>Move 1 — choose the grouping, and let it build the paragraphs</h4>
+    <p>Look at all the lines and ask one question: <strong>what do these lines have in common, and what
+    splits them?</strong> The most useful split on a line graph is usually <em>direction</em> —
+    which lines rose and which did not. Alternatives worth considering: high values against low values,
+    or steady lines against volatile ones.</p>
+    <p>Whichever you choose, the grouping <em>is</em> your paragraph structure. Two groups, two body
+    paragraphs. A line belongs to exactly one.</p>
+
+    <div class="callout">
+      <span class="lbl">When grouping by direction fails</span>
+      When every line moves the same way, direction gives you one group and an empty second paragraph.
+      Switch the principle: split by <strong>rate</strong> — the lines that changed sharply against the
+      lines that barely shifted — or by <strong>size</strong>. The move is not “group by direction”; it is
+      “choose a principle that actually divides this graph, and say what it is”.
+    </div>
+
+    <h4>Move 2 — the three-fact rule</h4>
+    <p>For each line, you may report:</p>
+    <ol>
+      <li>its <strong>start</strong> value,</li>
+      <li>its <strong>end</strong> value,</li>
+      <li><strong>one</strong> distinguishing feature — a peak, a trough, a crossing point, a turning
+      point, or the fact that it is the highest or lowest throughout.</li>
+    </ol>
+    <p>Everything else stays out. On a four-line graph that is twelve facts, which is a comfortable
+    180 words. A Band 5 answer typically reports twenty-eight facts in 210 words and reads as a list.</p>
+    <p class="hint">“One distinguishing feature” means the feature that would be missing from the reader's
+    understanding if you left it out. A mid-period value that sits exactly where the trend predicts is not
+    a distinguishing feature.</p>
+
+    <h4>Move 3 — paraphrase without drift</h4>
+    <p>Rewording the rubric is not a synonym-substitution exercise. Run three checks on your version:</p>
+    <div class="scroller">
+    <table>
+      <thead><tr><th style="width:20%">Check</th><th style="width:40%">Question</th><th>Typical failure</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Referent</strong></td><td>Am I still describing the same people or things?</td>
+            <td><em>four countries</em> becomes <em>four universities</em></td></tr>
+        <tr><td><strong>Time frame</strong></td><td>Is the period identical, including both end years?</td>
+            <td><em>2006 to 2018</em> becomes <em>over the last decade</em></td></tr>
+        <tr><td><strong>Measure</strong></td><td>Is the same thing being counted, in the same unit?</td>
+            <td><em>students enrolling</em> becomes <em>students studying</em> — a different quantity</td></tr>
+      </tbody>
+    </table>
+    </div>
+    <p>Natural beats rare. <em>The graph shows how many overseas students began courses…</em> reads
+    better than <em>The diagram demonstrates the quantity of foreign scholars commencing tertiary
+    education…</em>, which is unnatural in three places at once.</p>
+
+    <div class="note">
+      Three moves this lesson: grouping, the three-fact rule, and the paraphrase checks. No fourth move is
+      being added, because a lesson that introduces six things consolidates none of them.
+    </div>
+
+    <h4>The graph we will work on</h4>
+    <div class="chartbox">
+      <p class="rubric"><strong>Graph A.</strong> The line graph below shows the number of international
+      students, in thousands, enrolling at universities in four countries between 2006 and 2018.</p>
+      <div data-chart="b-main"></div>
+    </div>
+
+    <h4>Worked example 1 — applying Moves 1 and 2 to Graph A</h4>
+    <div class="callout">
+      <span class="lbl">Grouping decision</span>
+      <p><strong>Principle chosen:</strong> direction. Three countries finished higher than they started;
+      one did not. That divides the graph cleanly, so it is the principle to state.</p>
+      <p style="margin-bottom:0"><strong>Paragraph 1:</strong> Countries A, B and C — all rising, in
+      different ways. <strong>Paragraph 2:</strong> Country D alone — the exception, which is why it earns
+      its own paragraph despite being one line.</p>
+    </div>
+    <div class="callout">
+      <span class="lbl">Three-fact selection for Country A</span>
+      <p style="margin-bottom:0"><strong>Start</strong> 210 thousand · <strong>End</strong> 300 thousand ·
+      <strong>Distinguishing feature</strong> it fell between 2010 and 2014 before recovering. The 2008
+      figure of 240, the 2016 figure of 260 — both are dropped. They sit on the path already described and
+      add nothing the reader does not have.</p>
+    </div>
+
+    <h4>Worked example 2 — applying Move 3 to the Graph A rubric</h4>
+    <div class="callout">
+      <span class="lbl">Testing two versions</span>
+      <p><span class="right"></span><em>The graph shows how many overseas students started university
+      courses in four nations between 2006 and 2018, with figures given in thousands.</em><br>
+      <span class="hint">Referent intact · time frame intact · <em>started courses</em> preserves
+      <em>enrolling</em> · unit stated.</span></p>
+      <p style="margin-bottom:0"><span class="wrong"></span><em>The chart displays the amount of foreign
+      students studying at universities in four countries over twelve years.</em><br>
+      <span class="hint">Three faults: <em>amount</em> for a countable noun; <em>studying</em> counts
+      everyone enrolled, not those newly starting; <em>over twelve years</em> is arithmetically right but
+      hides the actual dates, which the reader needs.</span></p>
+    </div>
+
+    <h5>A free accuracy check you should be running</h5>
+    <p>Before writing, interrogate the data once. Percentages of a single whole must total 100 in every
+    year. Values described as a total must equal the sum of their parts. Where a graph gives you such a
+    relationship, use it — it catches misreadings before they reach the page, and it costs ten seconds.</p>
+  </section>
+
+  <!-- 4 GUIDED PRACTICE -->
+  <section class="sec">
+    <h3><span class="num">04</span> Guided practice — 10 items on Graph A</h3>
+    <p class="hint">Items 1–4 give you the decisions to judge. Items 5–8 make you repair or compress
+    someone else's work. Items 9–10 are your own paragraphs, unaided.</p>
+
+    <ol class="items">
+      <li><span class="scaf full">Full support</span><br>
+        <strong>Selection audit.</strong> Twelve statements about Graph A are listed below. Exactly five
+        belong in a 180-word answer. Tick those five and leave the rest.
+        <div style="margin-top:.5rem">
+          <label class="ck"><input type="checkbox"> a. In 2008, Country A stood at 240 thousand.</label>
+          <label class="ck"><input type="checkbox"> b. Country A rose overall, from 210 to 300 thousand.</label>
+          <label class="ck"><input type="checkbox"> c. Country B passed Country C in 2015.</label>
+          <label class="ck"><input type="checkbox"> d. Country C climbed steadily throughout, from 180 to 230 thousand.</label>
+          <label class="ck"><input type="checkbox"> e. Country C reached 195 thousand in 2012.</label>
+          <label class="ck"><input type="checkbox"> f. Country B increased more than threefold, from 90 to 310 thousand, and finished highest.</label>
+          <label class="ck"><input type="checkbox"> g. All four countries attracted more students in 2018 than in 2006.</label>
+          <label class="ck"><input type="checkbox"> h. In 2016, Country B was 250 thousand and Country A was 260 thousand.</label>
+          <label class="ck"><input type="checkbox"> i. Country A dipped between 2010 and 2014 before recovering strongly.</label>
+          <label class="ck"><input type="checkbox"> j. Country D fell to 120 thousand in 2010 and rose to 140 thousand in 2014.</label>
+          <label class="ck"><input type="checkbox"> k. Country B grew because of new government scholarships.</label>
+          <label class="ck"><input type="checkbox"> l. Country D showed no overall change, moving between 120 and 140 thousand.</label>
+        </div>
+        <p class="hint" style="margin-top:.4rem">Three of the seven you reject are wrong for reasons other
+        than being minor detail. Note which, and why.</p>
+        <input type="text" placeholder="The three that are wrong for a different reason are ___, ___ and ___, because…">
+      </li>
+
+      <li><span class="scaf full">Full support</span><br>
+        <strong>Grouping decision.</strong> Write your grouping principle and the contents of each body
+        paragraph.
+        <div class="fieldrow" style="flex-direction:column;align-items:stretch;gap:.4rem;margin-top:.4rem">
+          <input type="text" placeholder="Principle: I am splitting these lines by…">
+          <input type="text" placeholder="Paragraph 1: …">
+          <input type="text" placeholder="Paragraph 2: …">
+        </div>
+      </li>
+
+      <li><span class="scaf full">Full support</span><br>
+        <strong>Paraphrase judgement.</strong> Is this an accurate rewording of the Graph A rubric? If not,
+        name the fault. <em>“The line graph gives information about international student numbers at four
+        universities between 2006 and 2018.”</em>
+        <input type="text" placeholder="Accurate / faulty — and why">
+      </li>
+
+      <li><span class="scaf full">Full support</span><br>
+        <strong>Paraphrase judgement.</strong> Same question. <em>“The diagram demonstrates the quantity of
+        undergraduates who enrolled in universities across four countries during the period 2006–2018.”</em>
+        <input type="text" placeholder="Accurate / faulty — and why">
+      </li>
+
+      <li><span class="scaf part">Some support</span><br>
+        <strong>Write the overview for Graph A.</strong> Two sentences. It must name the contrast between
+        your two groups, and contain no figures.
+        <textarea rows="3" placeholder="Overview."></textarea>
+      </li>
+
+      <li><span class="scaf part">Some support</span><br>
+        <strong>Repair the cohesion.</strong> Rewrite this paragraph. The facts are correct; the connections
+        are not.
+        <div class="callout" style="margin:.5rem 0">
+          <em>Country A had 210 thousand students in 2006. Moreover, it rose to 265 thousand in 2010.
+          Furthermore, it dropped after this. In addition, Country B was much lower at the start. However,
+          it grew very fast. This was the highest in 2018.</em>
+        </div>
+        <textarea rows="4" placeholder="Your rewrite. Two sentences is enough."></textarea>
+      </li>
+
+      <li><span class="scaf part">Some support</span><br>
+        <strong>Compress.</strong> Cut this 89-word paragraph to under 55 words without losing anything a
+        reader needs.
+        <div class="callout" style="margin:.5rem 0">
+          <em>Country C had 180 thousand students in 2006. In 2008 it had 185 thousand. In 2010 it had 190
+          thousand. In 2012 it had 195 thousand. In 2014 it reached 205 thousand. In 2016 it was 215
+          thousand, and in 2018 it was 230 thousand. Country D had 130 thousand in 2006. It fell to 125
+          thousand in 2008 and 120 thousand in 2010. Then it rose to 130 thousand in 2012 and 140 thousand
+          in 2014, before finishing at 130 thousand.</em>
+        </div>
+        <textarea rows="4" placeholder="Under 55 words."></textarea>
+      </li>
+
+      <li><span class="scaf part">Some support</span><br>
+        <strong>Combine into comparisons.</strong> Turn each pair of facts into a single comparative sentence.
+        <ol style="margin-top:.4rem">
+          <li>In 2006, Country A had 210 thousand; Country B had 90 thousand.
+            <input type="text" placeholder="One sentence"></li>
+          <li>Country C gained 50 thousand across the period; Country B gained 220 thousand.
+            <input type="text" placeholder="One sentence"></li>
+          <li>Country D finished at its starting figure; the other three finished higher.
+            <input type="text" placeholder="One sentence"></li>
+        </ol>
+      </li>
+
+      <li><span class="scaf none">No support</span><br>
+        <strong>Write body paragraph 1</strong>, using the grouping you chose in item 2 and the three-fact
+        rule. Roughly 70 words.
+        <textarea rows="5" placeholder="Body paragraph 1."></textarea>
+      </li>
+
+      <li><span class="scaf none">No support</span><br>
+        <strong>Write body paragraph 2.</strong> Roughly 50 words. It must connect back to paragraph 1 —
+        the contrast is the point.
+        <textarea rows="4" placeholder="Body paragraph 2."></textarea>
+      </li>
+    </ol>
+  </section>
+
+  <!-- 5 TIMED TRANSFER -->
+  <section class="sec">
+    <h3><span class="num">05</span> Timed transfer — a new graph, 20 minutes</h3>
+
+    <p>Four lines again, but the shapes are harder: one collapses, one accelerates, one rises then
+    plateaus, and one peaks early. Grouping by direction alone will not divide this graph neatly — decide
+    what will.</p>
+
+    <div class="chartbox">
+      <p class="rubric"><strong>Task.</strong> The line graph below shows the amount of electricity
+      generated from four sources in one country between 1990 and 2020, measured in terawatt-hours (TWh).<br>
+      <em>Summarise the information by selecting and reporting the main features, and make comparisons
+      where relevant. Write at least 150 words.</em></p>
+      <div data-chart="b-transfer"></div>
+    </div>
+
+    <div class="taskbar">
+      <span class="clock" data-timer="b">20:00</span>
+      <button type="button" data-timer-act="start" data-timer-for="b">Start</button>
+      <button type="button" data-timer-act="pause" data-timer-for="b">Pause</button>
+      <button type="button" data-timer-act="reset" data-timer-for="b">Reset</button>
+      <span class="hint">Suggested split: 3 min plan · 14 min write · 3 min edit</span>
+      <span class="wc" data-wc-for="b-answer">Words: <b>0</b> / 150 minimum</span>
+    </div>
+
+    <h5>Plan — 3 minutes, and do not skip it</h5>
+    <div class="fieldrow" style="flex-direction:column;align-items:stretch;gap:.45rem">
+      <label class="hint" for="b-plan0">Grouping principle</label>
+      <input type="text" id="b-plan0" placeholder="I am splitting these four lines by…">
+      <label class="hint" for="b-plan1">Paragraph 1 — lines, and the one feature each</label>
+      <input type="text" id="b-plan1" placeholder="e.g. Coal (collapse after 2005) + Renewables (overtakes everything)">
+      <label class="hint" for="b-plan2">Paragraph 2 — lines, and the one feature each</label>
+      <input type="text" id="b-plan2" placeholder="…">
+      <label class="hint" for="b-plan3">Overview — the shape of the whole graph, in note form</label>
+      <input type="text" id="b-plan3" placeholder="…">
+    </div>
+
+    <h5>Your answer</h5>
+    <textarea id="b-answer" rows="18" placeholder="Introduction, overview, two grouped body paragraphs. Aim for 160–200 words — not more."></textarea>
+
+    <h5>Three-minute edit before you stop</h5>
+    <label class="ck"><input type="checkbox"> Can I give each body paragraph a one-phrase heading? If not, the grouping failed.</label>
+    <label class="ck"><input type="checkbox"> Does every line get a start, an end, and exactly one distinguishing feature?</label>
+    <label class="ck"><input type="checkbox"> Does any <em>it</em> or <em>this</em> have two possible referents?</label>
+    <label class="ck"><input type="checkbox"> Does my overview name a contrast, rather than describing one source?</label>
+    <label class="ck"><input type="checkbox"> Have I invented any figure the graph does not give — a single crossing year, for instance?</label>
+    <label class="ck"><input type="checkbox"> Is every comparative form correct? <em>(more than, twice as many as, the highest — not “more higher”)</em></label>
+    <label class="ck"><input type="checkbox"> Word count between 160 and 200, and no causes invented?</label>
+  </section>
+
+  <!-- ============ ANSWERS / MODELS ============ -->
+  <div class="blockhead answers">Answers &amp; models
+    <span>Hidden by default. Attempt the section above before opening this.</span>
+  </div>
+
+  <section class="sec" style="padding-bottom:.6rem">
+    <h3><span class="num">06</span> Review — key, model answer, and error patterns</h3>
+
+    <div class="collapse">
+      <button type="button" class="ctrl" aria-expanded="false"><span class="chev"></span>Diagnostic answers (Section 1)<span class="state">Show</span></button>
+      <div class="body is-collapsed">
+        <ol>
+          <li>Acceptable: <em>The graph shows what proportion of one country's people lived in cities,
+          in the countryside and in suburbs over the four decades from 1980 to 2020.</em></li>
+          <li>Acceptable: <em>Overall, the population shifted decisively from the countryside into the
+          cities, while the suburban share stayed marginal throughout.</em></li>
+          <li>Start 5%, end 7%, and the distinguishing feature: it was by far the smallest category in
+          every year, and barely moved. That is all three facts — a fourth would be over-reporting.</li>
+          <li>Acceptable: <em>Paragraph 1 = urban and rural, because they moved in opposite directions and
+          the crossing between them is the story; paragraph 2 = suburban, because it is the exception that
+          did nothing.</em></li>
+          <li>They must total 100% in every year, because everyone lives in exactly one of the three.
+          In 2000: 60 + 34 + 6 = 100. Correct.</li>
+        </ol>
+        <p><strong>Diagnostic data, for checking:</strong> Urban 45, 52, 60, 67, 72. Rural 50, 42, 34, 27,
+        21. Suburban 5, 6, 6, 6, 7. Urban passes rural between 1980 and 1990.</p>
+      </div>
+    </div>
+
+    <div class="collapse">
+      <button type="button" class="ctrl" aria-expanded="false"><span class="chev"></span>Graph A data table<span class="state">Show</span></button>
+      <div class="body is-collapsed">
+        <div class="scroller">
+        <table>
+          <caption>Graph A — international students enrolling, in thousands.</caption>
+          <thead><tr><th>Country</th><th class="num">2006</th><th class="num">2008</th><th class="num">2010</th><th class="num">2012</th><th class="num">2014</th><th class="num">2016</th><th class="num">2018</th></tr></thead>
+          <tbody>
+            <tr><td>Country A</td><td class="num">210</td><td class="num">240</td><td class="num">265</td><td class="num">250</td><td class="num">235</td><td class="num">260</td><td class="num">300</td></tr>
+            <tr><td>Country B</td><td class="num">90</td><td class="num">110</td><td class="num">135</td><td class="num">165</td><td class="num">200</td><td class="num">250</td><td class="num">310</td></tr>
+            <tr><td>Country C</td><td class="num">180</td><td class="num">185</td><td class="num">190</td><td class="num">195</td><td class="num">205</td><td class="num">215</td><td class="num">230</td></tr>
+            <tr><td>Country D</td><td class="num">130</td><td class="num">125</td><td class="num">120</td><td class="num">130</td><td class="num">140</td><td class="num">135</td><td class="num">130</td></tr>
+          </tbody>
+        </table>
+        </div>
+      </div>
+    </div>
+
+    <div class="collapse">
+      <button type="button" class="ctrl" aria-expanded="false"><span class="chev"></span>Guided practice key, items 1–10<span class="state">Show</span></button>
+      <div class="body is-collapsed">
+        <p><strong>1 · Selection audit.</strong> Keep <strong>b, d, f, i</strong> and <strong>l</strong>.
+        Those five give each of the four lines a start, an end and its distinguishing feature.</p>
+        <ul>
+          <li><strong>a, e, h, j</strong> — accurate but unremarkable. Each sits exactly where the trend
+          already described would put it, so it adds nothing.</li>
+          <li><strong>c</strong> — <em>wrong for a different reason: it invents data.</em> The graph has no
+          2015 reading. Country B was below C in 2014 (200 against 205) and above it in 2016 (250 against
+          215), so the crossing can only be reported as happening between 2014 and 2016.</li>
+          <li><strong>g</strong> — <em>wrong for a different reason: it is factually false.</em> Country D
+          ended at 130 thousand, exactly its 2006 figure, so <em>all four</em> is wrong. Sweeping summary
+          sentences are where factual errors most often hide.</li>
+          <li><strong>k</strong> — <em>wrong for a different reason: it explains.</em> Scholarships appear
+          nowhere in the graph. Task 1 reports what the data shows; a cause is an unsupported claim.</li>
+        </ul>
+
+        <p><strong>2 · Grouping.</strong> Principle: direction. Paragraph 1 = A, B and C, the three that
+        grew, ordered by how dramatically they did so. Paragraph 2 = D alone, the only line with no
+        overall change. Splitting by size instead (A and C high, B and D low at the start) is defensible
+        but weaker here, because B crosses into the top group and breaks the grouping halfway through.</p>
+
+        <p><strong>3 · Faulty.</strong> The referent has changed: the rubric says four <em>countries</em>,
+        the paraphrase says four <em>universities</em>. Everything else is fine, which is what makes this
+        error so easy to miss when you are rushing.</p>
+
+        <p><strong>4 · Faulty, in three places.</strong> <em>Undergraduates</em> narrows the referent — the
+        rubric does not restrict the level of study. <em>Quantity</em> is used for uncountable nouns;
+        students take <em>number</em>. <em>Demonstrates</em> does not collocate naturally with a graph
+        presenting data; <em>shows</em>, <em>gives information about</em> or <em>compares</em> would.</p>
+
+        <p><strong>5 · Model overview.</strong> <em>Overall, three of the four countries attracted more
+        international students at the end of the period than at the beginning, with the steepest growth
+        coming from the country that had started with the fewest. The fourth country was the exception,
+        finishing at the same level at which it began.</em></p>
+
+        <p><strong>6 · Model repair.</strong> <em>Country A began the period with 210 thousand students
+        and climbed to a first peak of 265 thousand in 2010, after which enrolments slipped back for four
+        years. Country B started from a much lower base of 90 thousand but grew without interruption, and
+        by 2018 it had overtaken every other country with 310 thousand.</em></p>
+        <p class="hint">What changed: the four mechanical linkers are gone, because the relationships were
+        already clear; <em>it</em> now has only one possible referent in each sentence; and the two
+        countries are contrasted rather than merely listed one after the other.</p>
+
+        <p><strong>7 · Model compression (51 words).</strong> <em>Country C rose gradually and without
+        interruption, from 180 thousand to 230 thousand. Country D was the only country with no overall
+        growth: after slipping to a low of 120 thousand in 2010 and peaking at 140 thousand in 2014, it
+        returned to its starting figure of 130 thousand.</em></p>
+
+        <p><strong>8 · Model comparisons.</strong></p>
+        <ol>
+          <li><em>In 2006, Country A received well over twice as many international students as Country B.</em></li>
+          <li><em>Country B's increase of 220 thousand was more than four times the growth seen in Country C.</em></li>
+          <li><em>Country D was the only one of the four whose figure was no higher at the end of the period than at the beginning.</em></li>
+        </ol>
+
+        <p><strong>9 · Model body paragraph 1 (86 words).</strong> <em>The three countries that grew did so
+        in very different ways. Country B expanded most dramatically, rising from the lowest figure of 90
+        thousand in 2006 to the highest of 310 thousand in 2018, passing Country C between 2014 and 2016
+        and Country A in the final two years. Country C's growth was far more modest but completely
+        uninterrupted, adding 50 thousand across the period. Country A's path was less even: it climbed to
+        265 thousand by 2010, lost ground until 2014, and then recovered strongly to finish at 300
+        thousand.</em></p>
+
+        <p><strong>10 · Model body paragraph 2 (55 words).</strong> <em>Country D stands apart from this
+        pattern. Its figure never moved far from 130 thousand, dropping to a low of 120 thousand in 2010
+        and reaching a high of only 140 thousand in 2014 before returning to its 2006 level. As a result,
+        it fell from third place to last over the period.</em></p>
+        <p class="hint">Check that last claim yourself: in 2006 the order was A 210, C 180, D 130, B 90 —
+        D was third. In 2018 it was B 310, A 300, C 230, D 130 — D was last. Claims like this are worth
+        making precisely because they are the kind of comparison Band 6 rewards, but only if you verify
+        them first.</p>
+      </div>
+    </div>
+
+    <div class="collapse">
+      <button type="button" class="ctrl" aria-expanded="false"><span class="chev"></span>Transfer task — data table and model answer<span class="state">Show</span></button>
+      <div class="body is-collapsed">
+        <div class="scroller">
+        <table>
+          <caption>Transfer task — electricity generated, in terawatt-hours.</caption>
+          <thead><tr><th>Source</th><th class="num">1990</th><th class="num">1995</th><th class="num">2000</th><th class="num">2005</th><th class="num">2010</th><th class="num">2015</th><th class="num">2020</th></tr></thead>
+          <tbody>
+            <tr><td>Coal</td><td class="num">180</td><td class="num">175</td><td class="num">160</td><td class="num">140</td><td class="num">100</td><td class="num">55</td><td class="num">20</td></tr>
+            <tr><td>Natural gas</td><td class="num">20</td><td class="num">45</td><td class="num">80</td><td class="num">95</td><td class="num">90</td><td class="num">100</td><td class="num">105</td></tr>
+            <tr><td>Nuclear</td><td class="num">60</td><td class="num">65</td><td class="num">70</td><td class="num">65</td><td class="num">60</td><td class="num">55</td><td class="num">45</td></tr>
+            <tr><td>Renewables</td><td class="num">5</td><td class="num">8</td><td class="num">12</td><td class="num">25</td><td class="num">50</td><td class="num">90</td><td class="num">140</td></tr>
+          </tbody>
+        </table>
+        </div>
+
+        <div class="model">
+          <p class="meta">Model answer · 197 words · demonstrates the Section 2 target behaviours. A worked
+          illustration, not a template to reproduce.</p>
+          <p>The line graph compares how much electricity one country produced from coal, natural gas,
+          nuclear power and renewable sources over the thirty years from 1990 to 2020. Output is measured
+          in terawatt-hours.</p>
+          <p>Overall, the country moved away from coal and towards renewable energy: these two sources
+          effectively exchanged places across the period. Gas and nuclear were far more stable, although
+          gas finished well above its starting point.</p>
+          <p>Coal generated 180 TWh in 1990, more than the other three sources combined. Its output
+          declined slowly at first, but collapsed after 2005 and finished at only 20 TWh. Renewables
+          followed the opposite path. Growth was slight until 2000, after which it accelerated sharply,
+          and by 2015 renewables had passed both coal and nuclear, going on to lead all four sources in
+          2020 at 140 TWh.</p>
+          <p>The other two sources moved much less. Gas rose steeply during the 1990s, from 20 to 80 TWh,
+          and then levelled off, staying between 90 and 105 TWh for the remaining twenty years. Nuclear
+          was the most stable of all, peaking at 70 TWh in 2000 before drifting down to 45 TWh.</p>
+        </div>
+
+        <h5>Why the model does what it does</h5>
+        <ul>
+          <li><strong>The grouping is by rate of change, not direction.</strong> Direction would put coal
+          and nuclear together as “falling”, which buries the fact that coal collapsed while nuclear
+          barely moved. Volatile against stable divides this graph honestly. That decision is the single
+          biggest difference between this answer and a Band 5 one.</li>
+          <li><strong>Twelve facts, not twenty-eight.</strong> Coal: 180, 20, and the collapse after 2005.
+          Renewables: near-zero start, 140, and the overtaking. Gas: 20, 80–105, and the plateau.
+          Nuclear: peak 70 in 2000, end 45, and “most stable”. Every mid-period figure that merely
+          confirms the trend is absent.</li>
+          <li><strong>Crossings are stated as ranges.</strong> “By 2015 renewables had passed both coal
+          and nuclear” is exactly what the graph supports. Naming 2013 would be inventing a reading.</li>
+          <li><strong>One verified arithmetic claim.</strong> “More than the other three combined” —
+          20 + 60 + 5 = 85, against 180. Claims like this earn credit; unverified ones lose it.</li>
+          <li><strong>No causes.</strong> No policy, no prices, no climate targets. None of it is in the
+          graph.</li>
+        </ul>
+
+        <h5>Eight error patterns to check your own answer against</h5>
+        <div class="scroller">
+        <table>
+          <thead><tr><th style="width:23%">Pattern</th><th style="width:38%">What it looks like</th><th>The correction</th></tr></thead>
+          <tbody>
+            <tr><td><strong>1. Listing, not selecting</strong></td>
+              <td class="wrong">Coal was 180 in 1990, 175 in 1995, 160 in 2000, 140 in 2005…</td>
+              <td class="right">Coal declined slowly at first but collapsed after 2005, falling from 180 to 20 TWh. <span class="hint">Three facts replace seven.</span></td></tr>
+            <tr><td><strong>2. Overview that covers one line</strong></td>
+              <td class="wrong">Overall, coal decreased a lot during the period.</td>
+              <td class="right">Name the contrast across the graph: what rose, what fell, what stayed put. An overview about one line out of four is a detail sentence in the wrong place.</td></tr>
+            <tr><td><strong>3. Paraphrase drift</strong></td>
+              <td class="wrong">The graph shows the electricity used by four industries.</td>
+              <td class="right">…the electricity <em>generated from</em> four <em>sources</em>. Generation is not consumption, and a source is not an industry — two referent changes in one sentence.</td></tr>
+            <tr><td><strong>4. Linkers on autopilot</strong></td>
+              <td class="wrong">Moreover, gas rose. Furthermore, it levelled off. In addition, nuclear fell.</td>
+              <td class="right">Gas rose steeply during the 1990s and then levelled off, while nuclear drifted slowly downwards. <span class="hint">Two linkers deleted, one clause subordinated.</span></td></tr>
+            <tr><td><strong>5. Broken comparatives</strong></td>
+              <td class="wrong">Coal was more higher than gas. / Renewables increased more than three times bigger.</td>
+              <td class="right">Coal was much higher than gas. / Renewables increased more than tenfold. <span class="hint">One comparative marker per comparison.</span></td></tr>
+            <tr><td><strong>6. Ambiguous reference</strong></td>
+              <td class="wrong">Gas was above nuclear, and it continued to rise until 2020.</td>
+              <td class="right">Gas was above nuclear, and gas continued to rise until 2020. <span class="hint">With four lines in play, repeat the noun rather than risk it.</span></td></tr>
+            <tr><td><strong>7. Invented precision</strong></td>
+              <td class="wrong">Renewables overtook coal in 2013, reaching 62.5 TWh.</td>
+              <td class="right">Renewables overtook coal between 2010 and 2015. <span class="hint">The graph gives readings at five-year intervals only.</span></td></tr>
+            <tr><td><strong>8. Paragraph with no grouping</strong></td>
+              <td class="wrong">A paragraph containing coal, then renewables, then a sentence about gas.</td>
+              <td class="right">Ask whether the paragraph can carry a one-phrase heading. If it cannot, the lines in it do not belong together, and no linker will fix that.</td></tr>
+          </tbody>
+        </table>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ TEACHER NOTES ============ -->
+  <div class="blockhead teacher">Teacher notes
+    <span>Staging, feedback priorities, differentiation, homework, and progression rules.</span>
+  </div>
+
+  <section class="sec" style="padding-bottom:.6rem">
+    <h3><span class="num">07</span> Differentiate — rescue route and stretch route</h3>
+    <div class="collapse">
+      <button type="button" class="ctrl" aria-expanded="false"><span class="chev"></span>Both routes<span class="state">Show</span></button>
+      <div class="body is-collapsed">
+        <div class="grid2">
+          <div>
+            <h5>Rescue — if performance falls below Band 5 behaviour</h5>
+            <p>Symptoms: the diagnostic overview describes one line; the selection audit ticks nine
+            statements; sentences, not decisions, are breaking down.</p>
+            <ol>
+              <li><strong>Give</strong> the grouping instead of asking for it: <em>“Paragraph 1 is coal and
+              renewables. Paragraph 2 is gas and nuclear. Now write.”</em> Judging a grouping is a
+              separate skill from executing one; separate them.</li>
+              <li>Replace the transfer graph with a <strong>three-line</strong> version — drop nuclear.</li>
+              <li>Supply a bank of eight candidate facts and require exactly five to be used. Selection
+              from a closed list precedes selection from an open graph.</li>
+              <li>Extend the limit to 25 minutes for two attempts, then bring it back to 20.</li>
+            </ol>
+            <p class="hint">If the sentences themselves are collapsing rather than the decisions, this
+            learner belongs in Track 1 for a fortnight. Send them there; it is not a demotion, and Track 2
+            will not stick until Track 1's sentence patterns are automatic.</p>
+          </div>
+          <div>
+            <h5>Stretch — if performance is already near Band 6</h5>
+            <p>Symptoms: grouping and selection are sound; the answer is accurate but plain.</p>
+            <ol>
+              <li><strong>Write the overview last</strong>, after both body paragraphs, and check it names
+              a contrast neither paragraph states on its own.</li>
+              <li>Cap the answer at <strong>180 words</strong>. Tight limits force selection far harder
+              than long ones.</li>
+              <li>Ban <em>increase</em> and <em>decrease</em> after one use each, and ban
+              <em>Moreover</em>, <em>Furthermore</em> and <em>In addition</em> outright.</li>
+              <li>Require one sentence quantifying a proportion — <em>almost double</em>, <em>around a
+              third of</em>, <em>more than the other three combined</em> — with the arithmetic verified
+              before it is written.</li>
+              <li>Cut the time limit to 18 minutes.</li>
+            </ol>
+            <p class="hint">The proportion sentence is the highest-value stretch item: it is the clearest
+            single signal of a writer comparing rather than listing.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" style="padding-bottom:.6rem">
+    <h3><span class="num">08</span> Feedback — the three corrections worth making</h3>
+    <div class="collapse">
+      <button type="button" class="ctrl" aria-expanded="false"><span class="chev"></span>Coaching notes<span class="state">Show</span></button>
+      <div class="body is-collapsed">
+        <p>Band 5 answers are usually <em>too long and too flat</em>, not too short. Resist the urge to
+        correct the language first — many of the language errors in a listing answer disappear when the
+        listing stops, because there are simply fewer sentences. Mark these three.</p>
+
+        <ol>
+          <li>
+            <h5 style="margin-top:.3rem">1 · The grouping — highest leverage</h5>
+            <p>Draw a bracket beside each body paragraph and write your one-phrase heading for it. If you
+            cannot write one, put a question mark. Then hand it back with a single instruction:
+            <em>“Re-sort your lines into two groups and tell me the principle, before you rewrite
+            anything.”</em> This fixes paragraph structure, topic focus and a good deal of the referencing
+            in one move.</p>
+          </li>
+          <li>
+            <h5>2 · Over-reporting</h5>
+            <p>Strike through — do not correct — every sentence that reports a figure the reader could
+            already predict. Then write one number in the margin: how many words the strikethroughs saved.
+            Learners argue with the principle in the abstract and accept it instantly when they see that
+            forty words vanished without any loss of meaning.</p>
+          </li>
+          <li>
+            <h5>3 · One language item, chosen by frequency</h5>
+            <p>Count the language errors by type and correct only the most frequent one — usually
+            comparative forms, or ambiguous <em>it/this</em>. One type, marked everywhere it occurs, so the
+            learner sees the pattern rather than eight unrelated corrections.</p>
+          </li>
+        </ol>
+
+        <div class="callout warn">
+          <span class="lbl">Explicitly not this week</span>
+          Article errors, prepositions of time, spelling, and vocabulary range. Say so on the script:
+          <em>“I have deliberately not marked articles this week.”</em> Otherwise the clean margin reads
+          as a clean answer, and the learner draws the wrong conclusion.
+        </div>
+
+        <h5>What to say when returning the work</h5>
+        <p><em>“Every figure in here is accurate, and that's not nothing. The problem is that paragraph two
+        contains a rising line and a falling line, so I can't give it a heading. Sort the four lines into
+        two groups, tell me the principle you used, and then rewrite. Don't change any of the
+        language yet.”</em></p>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" style="padding-bottom:.6rem">
+    <h3><span class="num">09</span> Retrieval — spaced homework and next-lesson check</h3>
+    <div class="collapse">
+      <button type="button" class="ctrl" aria-expanded="false"><span class="chev"></span>Homework schedule and 5-minute check<span class="state">Show</span></button>
+      <div class="body is-collapsed">
+        <h5>Spaced homework — 24 minutes total, spread across the week</h5>
+        <div class="scroller">
+        <table>
+          <thead><tr><th style="width:14%">When</th><th style="width:10%">Time</th><th>Task</th></tr></thead>
+          <tbody>
+            <tr><td><strong>Day 1</strong></td><td>8 min</td>
+              <td>Take your own transfer answer. Beside every sentence write S (start), E (end), F
+              (distinguishing feature) or X (none of these). Count the Xs. Rewrite the paragraph with the
+              most Xs, deleting them.</td></tr>
+            <tr><td><strong>Day 3</strong></td><td>8 min</td>
+              <td>Cover the models. Look at the international students graph for 45 seconds, then write
+              <em>only</em> the grouping principle, the paragraph contents, and the overview. Do not write
+              a body paragraph. Compare against Section 6.</td></tr>
+            <tr><td><strong>Day 6</strong></td><td>8 min</td>
+              <td>Reword the electricity rubric three different ways. Run the referent / time frame /
+              measure check on each. At least one of your three will fail — find out which and why.</td></tr>
+          </tbody>
+        </table>
+        </div>
+        <p class="hint">Day 3 stops before the body paragraphs on purpose. The decisions are the
+        bottleneck, so the practice should isolate them rather than burying them in 180 words of
+        execution.</p>
+
+        <h5>Next lesson — 5-minute retrieval check, books closed</h5>
+        <ol>
+          <li>What three things may you report about each line, and what is the limit on the third?
+          <span class="hint">(30 seconds)</span></li>
+          <li>Name two grouping principles other than direction. <span class="hint">(30 seconds)</span></li>
+          <li>Name the three checks that catch a faulty paraphrase. <span class="hint">(30 seconds)</span></li>
+          <li>Teacher reads out: <em>“Renewables overtook coal in 2013.”</em> Why might this sentence be a
+          problem? <span class="hint">(45 seconds)</span></li>
+          <li>Teacher displays an unseen four-line graph for 45 seconds, then hides it. Learner writes the
+          grouping principle and the overview only. <span class="hint">(2 minutes 45)</span></li>
+        </ol>
+        <p>Item 5 is the check that matters. A learner who can state a defensible grouping from a
+        45-second look has internalised the move; one who needs the graph in front of them has not.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" style="padding-bottom:.6rem">
+    <h3><span class="num">10</span> Mastery — repeat, advance, or seek feedback</h3>
+    <div class="collapse">
+      <button type="button" class="ctrl" aria-expanded="false"><span class="chev"></span>Decision rules<span class="state">Show</span></button>
+      <div class="body is-collapsed">
+        <p>Apply these to the <strong>most recent three timed attempts</strong>, each on a different line
+        graph, each with at least three lines. Count, do not estimate.</p>
+
+        <div class="scroller">
+        <table>
+          <thead><tr><th style="width:16%">Decision</th><th>Condition — all must hold</th></tr></thead>
+          <tbody>
+            <tr>
+              <td><strong>Repeat this track</strong></td>
+              <td>Any one of: over 220 words (over-reporting); a line omitted; an overview naming only one
+              line; a body paragraph you cannot give a one-phrase heading; more than one invented figure or
+              crossing year; or no written plan on the page. Repeat on fresh graphs.</td>
+            </tr>
+            <tr>
+              <td><strong>Advance</strong></td>
+              <td>In <strong>two of the last three</strong> attempts: 160–200 words inside 20 minutes; every
+              line given a start, an end and one distinguishing feature; two body paragraphs matching a
+              stated grouping; three or fewer grammar errors per 150 words; at most one comparative error;
+              and no invented data.</td>
+            </tr>
+            <tr>
+              <td><strong>Seek feedback</strong></td>
+              <td>The structural targets are being met consistently, but you cannot judge whether your
+              phrasing sounds natural, or whether a paraphrase has quietly shifted meaning. Neither is
+              self-assessable — both need a proficient reader. Send one answer with the graph attached, not
+              a folder of five.</td>
+            </tr>
+          </tbody>
+        </table>
+        </div>
+
+        <h5>Track your three attempts</h5>
+        <div class="scroller">
+        <table>
+          <thead><tr><th>Attempt</th><th style="width:12%">Words</th><th style="width:12%">Minutes</th><th style="width:16%">Plan written?</th><th style="width:20%">Headings possible?</th><th style="width:16%">Invented data?</th></tr></thead>
+          <tbody>
+            <tr><td>1</td><td><input type="text" class="short"></td><td><input type="text" class="short"></td><td><input type="text" class="short"></td><td><input type="text" class="short"></td><td><input type="text" class="short"></td></tr>
+            <tr><td>2</td><td><input type="text" class="short"></td><td><input type="text" class="short"></td><td><input type="text" class="short"></td><td><input type="text" class="short"></td><td><input type="text" class="short"></td></tr>
+            <tr><td>3</td><td><input type="text" class="short"></td><td><input type="text" class="short"></td><td><input type="text" class="short"></td><td><input type="text" class="short"></td><td><input type="text" class="short"></td></tr>
+          </tbody>
+        </table>
+        </div>
+
+        <div class="callout warn">
+          <span class="lbl">Not a band score</span>
+          Meeting every condition here means the Band 6 <em>behaviours</em> are consistently present in
+          your writing. It is not a band, and no exercise on this page — or on any page like it — can
+          award one.
+        </div>
+
+        <h5>Where to go next</h5>
+        <p>Once these rules are consistently met on line graphs, the next useful move is a different
+        question type rather than a harder line graph: bar charts and tables demand the same grouping and
+        selection decisions under different data-reading pressures, while processes and maps demand a
+        different organising principle altogether. Task 2 work — 250 words, roughly 40 minutes, and Task
+        <em>Response</em> rather than Task Achievement — is a separate track and should not be started as
+        a substitute for this one.</p>
+      </div>
+    </div>
+  </section>
+
+</div><!-- /panel-b -->
+
+<p class="footnote">
+  All graphs, tasks, model answers and keys on this page are original material written for classroom use.
+  Data is illustrative and does not represent any real country, institution or organisation. Criterion
+  names are the publicly published IELTS Writing assessment criteria; all descriptions of learner
+  behaviour are the author's own. Nothing here awards or predicts an official band score.
+</p>
+
+</div><!-- /wrap -->
+
+<script>
+(function () {
+  "use strict";
+
+  /* ============================================================
+     1. CHART DATA — every figure used anywhere on this page
+        lives here exactly once.
+     ============================================================ */
+  var CHARTS = {
+    "a-diag": {
+      title: "Gym membership, 2018 to 2022",
+      desc: "One gym's membership rises across the period while the other's falls; the two lines cross early on.",
+      x: ["2018", "2019", "2020", "2021", "2022"],
+      yMin: 0, yMax: 800, yStep: 100,
+      yTitle: "Members", xTitle: "Year",
+      series: [
+        { name: "Sunrise Fitness", v: [400, 520, 610, 700, 760] },
+        { name: "Riverside Gym",   v: [500, 480, 430, 390, 350] }
+      ]
+    },
+    "a-main": {
+      title: "Weekly hours on three leisure activities, 2000 to 2020",
+      desc: "Television viewing falls steadily, internet use rises steeply and overtakes it, and time spent reading printed books stays low and almost flat.",
+      x: ["2000", "2005", "2010", "2015", "2020"],
+      yMin: 0, yMax: 25, yStep: 5,
+      yTitle: "Hours per week", xTitle: "Year",
+      series: [
+        { name: "Watching television",   v: [18, 17, 15, 13, 11] },
+        { name: "Using the internet",    v: [2, 6, 12, 19, 24] },
+        { name: "Reading printed books", v: [5, 5, 4, 4, 3] }
+      ]
+    },
+    "a-transfer": {
+      title: "Public transport passengers, 2005 to 2025",
+      desc: "Bus passenger numbers fall throughout, underground numbers rise throughout and overtake the bus, and tram numbers stay low with a slight rise.",
+      x: ["2005", "2010", "2015", "2020", "2025"],
+      yMin: 0, yMax: 70, yStep: 10,
+      yTitle: "Passengers (millions)", xTitle: "Year",
+      series: [
+        { name: "Bus",         v: [60, 55, 48, 40, 34] },
+        { name: "Underground", v: [30, 38, 45, 55, 66] },
+        { name: "Tram",        v: [10, 12, 12, 14, 15] }
+      ]
+    },
+    "b-diag": {
+      title: "Population by area type, 1980 to 2020",
+      desc: "The urban share rises and the rural share falls, the two crossing early in the period, while the suburban share stays very small throughout. The three shares total one hundred per cent in every year.",
+      x: ["1980", "1990", "2000", "2010", "2020"],
+      yMin: 0, yMax: 80, yStep: 10,
+      yTitle: "Percentage of population", xTitle: "Year",
+      series: [
+        { name: "Urban",    v: [45, 52, 60, 67, 72] },
+        { name: "Rural",    v: [50, 42, 34, 27, 21] },
+        { name: "Suburban", v: [5, 6, 6, 6, 7] }
+      ]
+    },
+    "b-main": {
+      title: "International student enrolments in four countries, 2006 to 2018",
+      desc: "Three countries end higher than they began: one grows steadily, one grows very steeply from the lowest start to the highest finish, and one dips mid-period before recovering. The fourth fluctuates and ends where it started.",
+      x: ["2006", "2008", "2010", "2012", "2014", "2016", "2018"],
+      yMin: 0, yMax: 350, yStep: 50,
+      yTitle: "Students (thousands)", xTitle: "Year",
+      series: [
+        { name: "Country A", v: [210, 240, 265, 250, 235, 260, 300] },
+        { name: "Country B", v: [90, 110, 135, 165, 200, 250, 310] },
+        { name: "Country C", v: [180, 185, 190, 195, 205, 215, 230] },
+        { name: "Country D", v: [130, 125, 120, 130, 140, 135, 130] }
+      ]
+    },
+    "b-transfer": {
+      title: "Electricity generation by source, 1990 to 2020",
+      desc: "Coal falls from the largest source to the smallest, renewables rise from almost nothing to the largest, gas rises then levels off, and nuclear peaks early before drifting down.",
+      x: ["1990", "1995", "2000", "2005", "2010", "2015", "2020"],
+      yMin: 0, yMax: 200, yStep: 25,
+      yTitle: "Electricity (TWh)", xTitle: "Year",
+      series: [
+        { name: "Coal",        v: [180, 175, 160, 140, 100, 55, 20] },
+        { name: "Natural gas", v: [20, 45, 80, 95, 90, 100, 105] },
+        { name: "Nuclear",     v: [60, 65, 70, 65, 60, 55, 45] },
+        { name: "Renewables",  v: [5, 8, 12, 25, 50, 90, 140] }
+      ]
+    }
+  };
+
+  /* Line styles: colour AND dash AND marker, so the charts survive
+     greyscale printing, which classrooms do constantly. */
+  var STYLES = [
+    { colour: "#1a4d8f", dash: "",          marker: "circle" },
+    { colour: "#a8420b", dash: "7 4",       marker: "square" },
+    { colour: "#2e6b34", dash: "2 3",       marker: "triangle" },
+    { colour: "#5b2a86", dash: "10 3 2 3",  marker: "diamond" }
+  ];
+
+  var NS = "http://www.w3.org/2000/svg";
+  function el(name, attrs) {
+    var n = document.createElementNS(NS, name);
+    for (var k in attrs) { if (Object.prototype.hasOwnProperty.call(attrs, k)) { n.setAttribute(k, attrs[k]); } }
+    return n;
+  }
+
+  var uid = 0;
+  function nextId(p) { uid += 1; return p + uid; }
+
+  function marker(kind, cx, cy, colour) {
+    var s = 3.4;
+    if (kind === "square") {
+      return el("rect", { x: cx - s, y: cy - s, width: s * 2, height: s * 2, fill: colour });
+    }
+    if (kind === "triangle") {
+      return el("polygon", {
+        points: cx + "," + (cy - s - 0.6) + " " + (cx + s + 0.6) + "," + (cy + s) + " " + (cx - s - 0.6) + "," + (cy + s),
+        fill: colour
+      });
+    }
+    if (kind === "diamond") {
+      return el("polygon", {
+        points: cx + "," + (cy - s - 1) + " " + (cx + s + 1) + "," + cy + " " + cx + "," + (cy + s + 1) + " " + (cx - s - 1) + "," + cy,
+        fill: colour
+      });
+    }
+    return el("circle", { cx: cx, cy: cy, r: s, fill: colour });
+  }
+
+  var SANS = "system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif";
+
+  function buildChart(cfg) {
+    var W = 760, H = 420,
+        L = 74, R = 26, T = 22, B = 66,
+        pw = W - L - R, ph = H - T - B;
+
+    var svg = el("svg", {
+      viewBox: "0 0 " + W + " " + H,
+      role: "img",
+      preserveAspectRatio: "xMidYMid meet"
+    });
+
+    var tid = nextId("cht"), did = nextId("chd");
+    var t = el("title", { id: tid }); t.textContent = cfg.title;
+    var d = el("desc",  { id: did }); d.textContent = cfg.desc;
+    svg.appendChild(t);
+    svg.appendChild(d);
+    svg.setAttribute("aria-labelledby", tid + " " + did);
+
+    var span = cfg.yMax - cfg.yMin,
+        n = cfg.x.length;
+
+    function X(i) { return L + (n === 1 ? pw / 2 : i * pw / (n - 1)); }
+    function Y(v) { return T + (cfg.yMax - v) / span * ph; }
+
+    /* horizontal gridlines and y labels */
+    for (var g = cfg.yMin; g <= cfg.yMax + 0.0001; g += cfg.yStep) {
+      var y = Y(g);
+      svg.appendChild(el("line", {
+        x1: L, y1: y, x2: L + pw, y2: y,
+        stroke: (g === cfg.yMin ? "#8a8577" : "#e2ded4"),
+        "stroke-width": (g === cfg.yMin ? 1.4 : 1)
+      }));
+      var lab = el("text", {
+        x: L - 10, y: y + 4, "text-anchor": "end",
+        "font-size": "13", fill: "#5c584f", "font-family": SANS
+      });
+      lab.textContent = String(g);
+      svg.appendChild(lab);
+    }
+
+    /* vertical guides and x labels */
+    for (var i = 0; i < n; i++) {
+      var x = X(i);
+      svg.appendChild(el("line", {
+        x1: x, y1: T, x2: x, y2: T + ph, stroke: "#eceae3", "stroke-width": 1
+      }));
+      var xl = el("text", {
+        x: x, y: T + ph + 22, "text-anchor": "middle",
+        "font-size": "13", fill: "#5c584f", "font-family": SANS
+      });
+      xl.textContent = cfg.x[i];
+      svg.appendChild(xl);
+    }
+
+    /* y axis */
+    svg.appendChild(el("line", {
+      x1: L, y1: T, x2: L, y2: T + ph, stroke: "#8a8577", "stroke-width": 1.4
+    }));
+
+    /* axis titles */
+    var yt = el("text", {
+      x: -(T + ph / 2), y: 18, transform: "rotate(-90)", "text-anchor": "middle",
+      "font-size": "13", fill: "#3d3a34", "font-weight": "600", "font-family": SANS
+    });
+    yt.textContent = cfg.yTitle;
+    svg.appendChild(yt);
+
+    var xt = el("text", {
+      x: L + pw / 2, y: H - 22, "text-anchor": "middle",
+      "font-size": "13", fill: "#3d3a34", "font-weight": "600", "font-family": SANS
+    });
+    xt.textContent = cfg.xTitle;
+    svg.appendChild(xt);
+
+    /* series */
+    cfg.series.forEach(function (s, si) {
+      var st = STYLES[si % STYLES.length];
+      var pts = s.v.map(function (v, i2) { return X(i2) + "," + Y(v); }).join(" ");
+      var poly = el("polyline", {
+        points: pts, fill: "none", stroke: st.colour,
+        "stroke-width": 2.4, "stroke-linejoin": "round", "stroke-linecap": "round"
+      });
+      if (st.dash) { poly.setAttribute("stroke-dasharray", st.dash); }
+      svg.appendChild(poly);
+      s.v.forEach(function (v, i2) {
+        svg.appendChild(marker(st.marker, X(i2), Y(v), st.colour));
+      });
+    });
+
+    return svg;
+  }
+
+  function buildLegend(cfg) {
+    var box = document.createElement("div");
+    box.className = "legend";
+    cfg.series.forEach(function (s, si) {
+      var st = STYLES[si % STYLES.length];
+      var k = document.createElement("span");
+      k.className = "k";
+      var sw = el("svg", { viewBox: "0 0 34 10", "aria-hidden": "true" });
+      var ln = el("line", { x1: 0, y1: 5, x2: 34, y2: 5, stroke: st.colour, "stroke-width": 2.4 });
+      if (st.dash) { ln.setAttribute("stroke-dasharray", st.dash); }
+      sw.appendChild(ln);
+      sw.appendChild(marker(st.marker, 17, 5, st.colour));
+      k.appendChild(sw);
+      var txt = document.createElement("span");
+      txt.textContent = s.name;
+      k.appendChild(txt);
+      box.appendChild(k);
+    });
+    return box;
+  }
+
+  Array.prototype.forEach.call(document.querySelectorAll("[data-chart]"), function (host) {
+    var cfg = CHARTS[host.getAttribute("data-chart")];
+    if (!cfg) { return; }
+    host.appendChild(buildChart(cfg));
+    host.appendChild(buildLegend(cfg));
+  });
+
+  /* ============================================================
+     2. STORAGE HELPERS
+     ============================================================ */
+  var KEY = "ielts-lg-pack-v1:";
+  function store(k, v) { try { localStorage.setItem(KEY + k, v); } catch (e) { /* unavailable */ } }
+  function recall(k) { try { return localStorage.getItem(KEY + k); } catch (e) { return null; } }
+
+  /* ============================================================
+     3. TABS — real buttons, roving tabindex, arrow keys
+     ============================================================ */
+  var tabs = Array.prototype.slice.call(document.querySelectorAll('[role="tab"]'));
+
+  function selectTab(tab, focus) {
+    tabs.forEach(function (t) {
+      var on = (t === tab);
+      t.setAttribute("aria-selected", on ? "true" : "false");
+      t.tabIndex = on ? 0 : -1;
+      var p = document.getElementById(t.getAttribute("aria-controls"));
+      if (p) { p.hidden = !on; }
+    });
+    if (focus) { tab.focus(); }
+    store("tab", tab.id);
+  }
+
+  tabs.forEach(function (tab) {
+    tab.addEventListener("click", function () { selectTab(tab, false); });
+    tab.addEventListener("keydown", function (e) {
+      var i = tabs.indexOf(tab), next = null;
+      if (e.key === "ArrowRight" || e.key === "ArrowDown") { next = tabs[(i + 1) % tabs.length]; }
+      else if (e.key === "ArrowLeft" || e.key === "ArrowUp") { next = tabs[(i - 1 + tabs.length) % tabs.length]; }
+      else if (e.key === "Home") { next = tabs[0]; }
+      else if (e.key === "End") { next = tabs[tabs.length - 1]; }
+      if (next) { e.preventDefault(); selectTab(next, true); }
+    });
+  });
+
+  var savedTab = recall("tab");
+  var restoreTab = savedTab ? document.getElementById(savedTab) : null;
+  selectTab(restoreTab && restoreTab.getAttribute("role") === "tab" ? restoreTab : tabs[0], false);
+
+  /* ============================================================
+     4. COLLAPSIBLES — aria-expanded plus a class print can override
+     ============================================================ */
+  var panels = Array.prototype.slice.call(document.querySelectorAll(".collapse"));
+  panels.forEach(function (p, idx) {
+    var btn = p.querySelector(".ctrl"),
+        body = p.querySelector(".body"),
+        state = btn.querySelector(".state"),
+        id = "col-" + idx;
+
+    body.id = id + "-body";
+    btn.setAttribute("aria-controls", body.id);
+
+    p._apply = function (open, persist) {
+      btn.setAttribute("aria-expanded", open ? "true" : "false");
+      if (open) { body.classList.remove("is-collapsed"); }
+      else { body.classList.add("is-collapsed"); }
+      if (state) { state.textContent = open ? "Hide" : "Show"; }
+      if (persist) { store(id, open ? "1" : "0"); }
+    };
+    btn.addEventListener("click", function () {
+      p._apply(btn.getAttribute("aria-expanded") !== "true", true);
+    });
+    p._apply(recall(id) === "1", false);
+  });
+
+  document.getElementById("btn-expand").addEventListener("click", function () {
+    panels.forEach(function (p) { p._apply(true, true); });
+  });
+  document.getElementById("btn-collapse").addEventListener("click", function () {
+    panels.forEach(function (p) { p._apply(false, true); });
+  });
+
+  /* Belt and braces: expand everything for printing, restore afterwards.
+     The print stylesheet already forces this; older engines honour the
+     DOM more reliably than the override. */
+  var preprint = [];
+  window.addEventListener("beforeprint", function () {
+    preprint = panels.map(function (p) {
+      var was = p.querySelector(".ctrl").getAttribute("aria-expanded") === "true";
+      p._apply(true, false);
+      return was;
+    });
+  });
+  window.addEventListener("afterprint", function () {
+    panels.forEach(function (p, i) { p._apply(preprint[i] === true, false); });
+  });
+  document.getElementById("btn-print").addEventListener("click", function () { window.print(); });
+
+  /* ============================================================
+     5. PERSISTENCE — every input, textarea and checkbox
+     ============================================================ */
+  var fields = Array.prototype.slice.call(
+    document.querySelectorAll('input[type="text"], input[type="checkbox"], textarea')
+  );
+  fields.forEach(function (f, i) {
+    var panel = f.closest ? f.closest(".panel") : null;
+    var k = "f:" + (panel ? panel.id : "x") + ":" + i;
+    var saved = recall(k);
+    if (saved !== null) {
+      if (f.type === "checkbox") { f.checked = (saved === "1"); }
+      else { f.value = saved; }
+    }
+    function save() {
+      store(k, f.type === "checkbox" ? (f.checked ? "1" : "0") : f.value);
+    }
+    f.addEventListener("input", save);
+    f.addEventListener("change", save);
+  });
+
+  document.getElementById("btn-clear").addEventListener("click", function () {
+    if (!window.confirm("Delete all typed answers, ticks and open/closed settings saved in this browser?")) { return; }
+    try {
+      var doomed = [];
+      for (var i = 0; i < localStorage.length; i++) {
+        var k = localStorage.key(i);
+        if (k && k.indexOf(KEY) === 0) { doomed.push(k); }
+      }
+      doomed.forEach(function (k2) { localStorage.removeItem(k2); });
+    } catch (e) { /* nothing to clear */ }
+    window.location.reload();
+  });
+
+  /* ============================================================
+     6. WORD COUNT
+     ============================================================ */
+  Array.prototype.forEach.call(document.querySelectorAll("[data-wc-for]"), function (out) {
+    var ta = document.getElementById(out.getAttribute("data-wc-for"));
+    if (!ta) { return; }
+    var num = out.querySelector("b");
+    function count() {
+      var trimmed = ta.value.replace(/^\s+|\s+$/g, "");
+      var words = trimmed.length ? trimmed.split(/\s+/).length : 0;
+      num.textContent = words;
+      if (words >= 150) { out.className = "wc ok"; }
+      else if (words > 0) { out.className = "wc low"; }
+      else { out.className = "wc"; }
+    }
+    ta.addEventListener("input", count);
+    count();
+  });
+
+  /* ============================================================
+     7. TIMERS — 20 minutes, counting down, continuing past zero
+     ============================================================ */
+  Array.prototype.forEach.call(document.querySelectorAll("[data-timer]"), function (face) {
+    var id = face.getAttribute("data-timer");
+    var LIMIT = 20 * 60, left = LIMIT, tick = null;
+
+    function paint() {
+      var over = left < 0, abs = Math.abs(left);
+      var m = Math.floor(abs / 60), s = abs % 60;
+      face.textContent = (over ? "+" : "") + m + ":" + (s < 10 ? "0" : "") + s;
+      if (over) { face.className = "clock over"; } else { face.className = "clock"; }
+    }
+    function start() {
+      if (tick) { return; }
+      tick = setInterval(function () { left -= 1; paint(); }, 1000);
+    }
+    function pause() { clearInterval(tick); tick = null; }
+    function reset() { pause(); left = LIMIT; paint(); }
+
+    Array.prototype.forEach.call(
+      document.querySelectorAll('[data-timer-for="' + id + '"]'),
+      function (b) {
+        var act = b.getAttribute("data-timer-act");
+        b.addEventListener("click", act === "start" ? start : (act === "pause" ? pause : reset));
+      }
+    );
+    paint();
+  });
+
+  /* Storage unavailable (private mode, or file:// in some browsers) —
+     say so rather than silently losing the learner's work. */
+  try {
+    localStorage.setItem(KEY + "probe", "1");
+    localStorage.removeItem(KEY + "probe");
+  } catch (e) {
+    document.getElementById("saveflag").textContent =
+      "This browser is blocking local storage, so your typing will not be saved. Print or copy your work before closing.";
+  }
+})();
+</script>
+</body>
+</html>

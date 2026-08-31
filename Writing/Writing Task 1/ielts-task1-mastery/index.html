@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>IELTS Task 1 Mastery — Academic Writing study &amp; revision</title>
+<meta name="description" content="A complete study companion for IELTS Academic Writing Task 1: every question type, the overview, vocabulary, grammar, band criteria, planning practice, quizzes and flashcards.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=Instrument+Serif&family=JetBrains+Mono:wght@400;500;700&family=Literata:opsz,wght@7..72,400;7..72,600&display=swap">
+<link rel="stylesheet" href="css/tokens.css">
+<link rel="stylesheet" href="css/app.css">
+</head>
+<body data-view="dashboard" data-depth="0">
+<a class="skip-link" href="#main">Skip to content</a>
+<div data-shell data-shell-role="topbar" data-depth="0"></div>
+<div class="app">
+  <div data-shell data-shell-role="sidenav" data-depth="0"></div>
+  <main class="main" id="main">
+    <div class="page"><div id="view"></div></div>
+  </main>
+</div>
+
+<dialog id="onboard" style="border:1px solid var(--rule);border-radius:var(--radius-lg);max-width:440px;padding:0">
+  <form method="dialog" style="padding:1.6rem">
+    <h3 style="margin-bottom:.6rem">Quick setup</h3>
+    <p class="small muted" style="margin-bottom:1rem">20 seconds — it tailors the dashboard recommendations. You can skip.</p>
+    <label class="small" style="font-weight:600;font-family:var(--f-ui)">What band are you targeting?</label>
+    <div id="ob-band" class="tag-filter" style="margin:.5rem 0 1rem">
+      <button type="button" data-v="6.0">6.0</button><button type="button" data-v="6.5">6.5</button>
+      <button type="button" data-v="7.0">7.0</button><button type="button" data-v="7.5">7.5</button>
+      <button type="button" data-v="8.0+">8.0+</button>
+    </div>
+    <label class="small" style="font-weight:600;font-family:var(--f-ui)">What do you struggle with most?</label>
+    <div id="ob-weak" class="tag-filter" style="margin:.5rem 0 1.2rem">
+      <button type="button" data-v="Understanding charts">Understanding charts</button>
+      <button type="button" data-v="Choosing key features">Choosing key features</button>
+      <button type="button" data-v="Writing overviews">Writing overviews</button>
+      <button type="button" data-v="Vocabulary">Vocabulary</button>
+      <button type="button" data-v="Grammar">Grammar</button>
+      <button type="button" data-v="Organisation">Organisation</button>
+      <button type="button" data-v="Finishing on time">Finishing on time</button>
+    </div>
+    <div class="btn-row" style="margin-top:0">
+      <button value="save" class="btn" id="ob-save">Save</button>
+      <button value="skip" class="btn btn--ghost">Skip</button>
+    </div>
+  </form>
+</dialog>
+
+<script src="js/store.js"></script>
+<script src="js/shell.js"></script>
+<script src="js/content-core.js"></script>
+<script src="js/content-skills.js"></script>
+<script src="js/content-vocab.js"></script>
+<script src="js/content-reference.js"></script>
+<script src="js/content-quiz.js"></script>
+<script src="js/views.js"></script>
+<script>
+  (function () {
+    var dlg = document.getElementById("onboard");
+    var pick = { band: null, weak: null };
+    function wire(boxId, key) {
+      var box = document.getElementById(boxId);
+      box.addEventListener("click", function (e) {
+        var b = e.target.closest("button"); if (!b) return;
+        box.querySelectorAll("button").forEach(function (x) { x.setAttribute("aria-pressed", "false"); });
+        b.setAttribute("aria-pressed", "true");
+        pick[key] = b.getAttribute("data-v");
+      });
+    }
+    wire("ob-band", "band"); wire("ob-weak", "weak");
+    try {
+      if (dlg && dlg.showModal && !window.IT1MStore.getOnboarding().done) dlg.showModal();
+    } catch (e) {}
+    if (dlg) dlg.addEventListener("close", function () {
+      try {
+        window.IT1MStore.setOnboarding(
+          dlg.returnValue === "save" ? { targetBand: pick.band, weakness: pick.weak } : {}
+        );
+      } catch (e) {}
+      location.reload();
+    });
+  })();
+</script>
+</body>
+</html>

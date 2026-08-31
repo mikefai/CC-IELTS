@@ -1,0 +1,1538 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Comparatives &amp; Superlatives — IELTS Task 1 Grammar Lab</title>
+<style>
+  :root{
+    --ground:#F6F7F6; --surface:#FFFFFF; --sunk:#ECEEED;
+    --ink:#1B2422; --ink-soft:#54605B; --ink-faint:#87918C;
+    --accent:#2E5E58; --accent-soft:#E1EDEA; --accent-line:#BCD7D1;
+    --amber:#8F5A1E; --amber-soft:#F4EADC;
+    --good:#2C6E49; --good-soft:#E3EFE7;
+    --bad:#9A3227; --bad-soft:#F6E5E2;
+    --rule:#D9DEDB;
+    --f-display:"Iowan Old Style","Palatino Linotype","URW Palladio L",P052,Palatino,Georgia,serif;
+    --f-body:Charter,"Bitstream Charter","Sitka Text",Cambria,Georgia,"Times New Roman",serif;
+    --f-ui:system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+    --step--1:0.86rem; --step-0:1.05rem; --step-1:1.2rem; --step-2:1.5rem;
+    --step-3:1.95rem; --step-4:2.6rem;
+    --maxw:820px;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  @media (prefers-reduced-motion:reduce){ html{scroll-behavior:auto} *{transition:none!important;animation:none!important} }
+
+  body{
+    margin:0; background:var(--ground); color:var(--ink);
+    font-family:var(--f-body); font-size:var(--step-0); line-height:1.65;
+    -webkit-text-size-adjust:100%; text-rendering:optimizeLegibility;
+  }
+  .wrap{max-width:var(--maxw); margin:0 auto; padding:0 clamp(1rem,5vw,2rem)}
+  h1,h2,h3,h4{margin:0; line-height:1.15; font-weight:600; text-wrap:balance}
+  h1{font-family:var(--f-display); font-size:var(--step-4); letter-spacing:-0.01em}
+  h2{font-family:var(--f-display); font-size:var(--step-3); letter-spacing:-0.005em}
+  h3{font-family:var(--f-ui); font-size:var(--step-1); font-weight:600}
+  h4{font-family:var(--f-ui); font-size:var(--step-0); font-weight:600}
+  p{max-width:66ch}
+  a{color:var(--accent)}
+  .eyebrow{font-family:var(--f-ui); font-size:0.72rem; font-weight:700; letter-spacing:0.14em; text-transform:uppercase; color:var(--accent)}
+  .muted{color:var(--ink-soft)}
+  .small{font-size:var(--step--1)}
+
+  .skip{position:absolute; left:-999px; top:0; background:var(--ink); color:#fff; padding:0.6rem 1rem; z-index:200; border-radius:0 0 6px 0; font-family:var(--f-ui)}
+  .skip:focus{left:0}
+
+  :focus-visible{outline:3px solid var(--accent); outline-offset:2px; border-radius:3px}
+
+  .hero{background:var(--surface); border-bottom:1px solid var(--rule); padding:clamp(2.2rem,7vw,4rem) 0 clamp(1.6rem,4vw,2.4rem)}
+  .hero .eyebrow{display:block; margin-bottom:0.6rem}
+  .hero h1{margin-bottom:0.9rem}
+  .lede{font-size:var(--step-1); color:var(--ink-soft); max-width:60ch}
+  .outcomes{list-style:none; margin:1.6rem 0 0; padding:0; display:grid; gap:0.55rem}
+  .outcomes li{display:grid; grid-template-columns:1.6rem 1fr; gap:0.6rem; font-family:var(--f-ui); font-size:var(--step--1)}
+  .outcomes li b{grid-column:1; color:var(--accent); font-weight:700}
+  .herabar{display:flex; flex-wrap:wrap; gap:0.8rem; align-items:center; margin-top:1.8rem}
+  .btn{
+    font-family:var(--f-ui); font-size:0.9rem; font-weight:600; cursor:pointer;
+    padding:0.7rem 1.15rem; border-radius:7px; border:1px solid var(--accent);
+    background:var(--accent); color:#fff; transition:filter .15s ease, background .15s ease, border-color .15s ease;
+  }
+  .btn:hover{filter:brightness(1.08)}
+  .btn.ghost{background:var(--surface); color:var(--ink); border-color:var(--rule)}
+  .btn.ghost:hover{background:var(--sunk); border-color:var(--ink-faint); filter:none}
+  .btn.mini{padding:0.4rem 0.7rem; font-size:0.78rem; font-weight:500}
+  .btn[disabled]{opacity:0.5; cursor:default; filter:none}
+  .time-pill{font-family:var(--f-ui); font-size:0.78rem; color:var(--ink-soft); background:var(--sunk); border:1px solid var(--rule); border-radius:999px; padding:0.35rem 0.8rem}
+
+  .disclaimer{
+    font-family:var(--f-ui); font-size:0.78rem; color:var(--ink-soft);
+    border:1px dashed var(--rule); background:var(--surface); border-radius:8px;
+    padding:0.7rem 0.95rem; margin-top:1.6rem; max-width:60ch;
+  }
+
+  section{padding:clamp(2.2rem,6vw,3.6rem) 0; border-bottom:1px solid var(--rule)}
+  .sec-head{margin-bottom:1.6rem}
+  .sec-head .eyebrow{display:block; margin-bottom:0.5rem}
+  .sec-head p{color:var(--ink-soft); margin-top:0.7rem}
+  .set-label{font-family:var(--f-ui); font-size:0.72rem; font-weight:700; letter-spacing:0.08em; text-transform:uppercase; color:var(--amber); background:var(--amber-soft); border-radius:4px; padding:0.15rem 0.5rem; display:inline-block}
+
+  .card{background:var(--surface); border:1px solid var(--rule); border-radius:10px; padding:1.2rem 1.35rem}
+  .callout{border-left:4px solid var(--accent); background:var(--accent-soft); border-radius:0 8px 8px 0; padding:0.9rem 1.15rem; margin:1.1rem 0}
+  .callout .eyebrow{display:block; margin-bottom:0.35rem}
+  .callout p{margin:0.3rem 0}
+  .callout.l1{border-left-color:var(--amber); background:var(--amber-soft)}
+  .callout.l1 .eyebrow{color:var(--amber)}
+
+  table.grid{width:100%; border-collapse:collapse; font-size:var(--step--1); margin:0.6rem 0; font-family:var(--f-ui)}
+  table.grid caption{text-align:left; font-family:var(--f-ui); font-size:0.75rem; text-transform:uppercase; letter-spacing:0.06em; color:var(--ink-soft); margin-bottom:0.4rem}
+  table.grid th, table.grid td{border:1px solid var(--rule); padding:0.5rem 0.65rem; text-align:left; vertical-align:top}
+  table.grid th{background:var(--sunk); font-weight:600}
+  .tbl-scroll{overflow-x:auto}
+  .x{color:var(--bad); font-weight:700}
+  .y{color:var(--good); font-weight:700}
+  .pair{display:grid; gap:0.35rem; margin:0.5rem 0; font-family:var(--f-ui); font-size:var(--step--1)}
+  .pair .no{color:var(--bad)} .pair .no::before{content:"\2717  "; font-weight:700}
+  .pair .yes{color:var(--good)} .pair .yes::before{content:"\2713  "; font-weight:700}
+  .pair .rn{color:var(--ink-soft)}
+
+  .figure{background:var(--surface); border:1px solid var(--rule); border-radius:10px; padding:1rem 1.2rem; margin:1rem 0}
+  .figure .figlabel{font-family:var(--f-ui); font-size:0.72rem; text-transform:uppercase; letter-spacing:0.06em; color:var(--ink-soft); margin-bottom:0.6rem}
+  .bars{display:grid; gap:0.45rem; font-family:var(--f-ui); font-size:var(--step--1)}
+  .bar-row{display:grid; grid-template-columns:9rem 1fr auto; gap:0.6rem; align-items:center}
+  .bar-track{background:var(--sunk); border-radius:4px; height:1rem; overflow:hidden}
+  .bar-fill{height:100%; background:var(--accent); border-radius:4px}
+  @media (max-width:520px){ .bar-row{grid-template-columns:1fr auto} .bar-track{grid-column:1 / -1} }
+
+  .item{background:var(--surface); border:1px solid var(--rule); border-radius:10px; padding:1.1rem 1.25rem; margin:0.85rem 0}
+  .item > .item-head{display:flex; align-items:baseline; gap:0.6rem; flex-wrap:wrap; margin-bottom:0.5rem}
+  .item .qn{font-family:var(--f-ui); font-weight:700; color:var(--accent); font-size:0.82rem}
+  .item .topic{font-family:var(--f-ui); font-size:0.7rem; text-transform:uppercase; letter-spacing:0.06em; color:var(--ink-faint)}
+  .item .bucket-tag{font-family:var(--f-ui); font-size:0.68rem; font-weight:700; color:var(--ink-soft); background:var(--sunk); border:1px solid var(--rule); border-radius:4px; padding:0.05rem 0.4rem; margin-left:auto}
+  .stem{font-weight:600; margin:0.3rem 0 0.7rem}
+  .stem .gap{font-family:var(--f-ui); font-weight:700; color:var(--accent); border-bottom:2px solid var(--accent-line); padding:0 1.4rem}
+  fieldset{border:0; margin:0; padding:0; min-width:0}
+  legend{font-weight:600; padding:0}
+
+  .opts{display:grid; gap:0.4rem; margin-top:0.4rem}
+  .opt{
+    display:grid; grid-template-columns:1.7rem 1fr; gap:0.55rem; align-items:start;
+    text-align:left; font-family:var(--f-body); font-size:var(--step-0); line-height:1.5;
+    padding:0.6rem 0.75rem; border:1px solid var(--rule); border-radius:8px; background:var(--surface);
+    color:var(--ink); cursor:pointer; transition:background .12s ease, border-color .12s ease;
+  }
+  .opt:hover{background:var(--sunk)}
+  .opt .ol{font-family:var(--f-ui); font-weight:700; color:var(--accent)}
+  .opt[aria-checked="true"]{border-color:var(--accent); background:var(--accent-soft); box-shadow:inset 3px 0 0 var(--accent)}
+  .opt.correct{border-color:var(--good); background:var(--good-soft); box-shadow:inset 3px 0 0 var(--good)}
+  .opt.wrong{border-color:var(--bad); background:var(--bad-soft); box-shadow:inset 3px 0 0 var(--bad)}
+  .opt .why{display:none; grid-column:2; margin-top:0.4rem; font-family:var(--f-ui); font-size:0.82rem; color:var(--ink-soft)}
+  .opt.revealed .why{display:block}
+  .opt .why b{color:var(--ink)}
+
+  .chip-row{display:flex; flex-wrap:wrap; gap:0.4rem; margin-top:0.4rem}
+  .chip{font-family:var(--f-ui); font-weight:600; font-size:0.82rem; padding:0.5rem 0.8rem; border:1px solid var(--rule); border-radius:999px; background:var(--surface); cursor:pointer}
+  .chip:hover{background:var(--sunk)}
+  .chip[aria-pressed="true"]{border-color:var(--accent); background:var(--accent-soft)}
+  .chip.correct{border-color:var(--good); background:var(--good-soft)}
+  .chip.wrong{border-color:var(--bad); background:var(--bad-soft)}
+
+  .data-line{font-family:var(--f-ui); font-size:var(--step--1); background:var(--sunk); border:1px solid var(--rule); border-radius:8px; padding:0.6rem 0.8rem; margin:0.4rem 0 0.6rem}
+  .req{font-family:var(--f-ui); font-size:0.82rem; color:var(--ink-soft); margin:0.2rem 0 0.5rem}
+  .req b{color:var(--accent)}
+
+  textarea{
+    width:100%; min-height:4.6rem; resize:vertical; font-family:var(--f-body); font-size:var(--step-0);
+    line-height:1.5; padding:0.7rem 0.8rem; border:1px solid var(--rule); border-radius:8px;
+    background:var(--surface); color:var(--ink);
+  }
+  textarea:focus-visible{border-color:var(--accent)}
+
+  .btn-row{display:flex; flex-wrap:wrap; gap:0.5rem; margin-top:0.6rem; align-items:center}
+
+  .fb{
+    display:none; margin-top:0.7rem; padding:0.7rem 0.9rem; border-radius:8px;
+    font-family:var(--f-ui); font-size:var(--step--1); line-height:1.5;
+  }
+  .fb.show{display:block}
+  .fb.ok{background:var(--good-soft); border:1px solid var(--good)}
+  .fb.no{background:var(--bad-soft); border:1px solid var(--bad)}
+  .fb.info{background:var(--accent-soft); border:1px solid var(--accent-line)}
+  .fb .lbl{font-weight:700; display:block; margin-bottom:0.2rem}
+  .fb .model{font-family:var(--f-body); font-size:var(--step-0); background:var(--surface); border-radius:6px; padding:0.4rem 0.6rem; margin:0.4rem 0}
+  .fb .rule{margin:0.35rem 0}
+  .fb .say{color:var(--ink-soft); font-style:italic}
+
+  .selfcheck{display:grid; gap:0.5rem; margin-top:0.7rem}
+  .selfcheck .sc-row{display:grid; grid-template-columns:1fr auto auto; gap:0.5rem; align-items:center; font-family:var(--f-ui); font-size:var(--step--1); border:1px solid var(--rule); border-radius:8px; padding:0.55rem 0.7rem; background:var(--surface)}
+  .selfcheck .sc-row .scq{grid-column:1}
+  .selfcheck .sc-btn{font-family:var(--f-ui); font-weight:600; font-size:0.78rem; padding:0.35rem 0.65rem; border:1px solid var(--rule); border-radius:6px; background:var(--surface); cursor:pointer}
+  .selfcheck .sc-btn[aria-pressed="true"].yes{border-color:var(--good); background:var(--good-soft)}
+  .selfcheck .sc-btn[aria-pressed="true"].no{border-color:var(--bad); background:var(--bad-soft)}
+  @media (max-width:520px){ .selfcheck .sc-row{grid-template-columns:1fr} .selfcheck .sc-row .scq{grid-column:1} }
+
+  #taxonomy .tax-grid{display:grid; gap:0.7rem}
+  .tax-item{display:grid; grid-template-columns:2.7rem 1fr; gap:0.7rem; border:1px solid var(--rule); border-radius:8px; padding:0.7rem 0.85rem; background:var(--surface)}
+  .tax-item .code{font-family:var(--f-ui); font-weight:700; color:var(--accent)}
+  .tax-item .desc{font-family:var(--f-ui); font-size:var(--step--1)}
+  .tax-item .desc .ex{color:var(--ink-soft)}
+  .tax-item.flag{border-color:var(--amber); background:var(--amber-soft)}
+  .entry-note{font-family:var(--f-ui); font-size:var(--step--1); color:var(--ink-soft); margin-top:0.8rem}
+
+  #dashboard .dash-grid{display:grid; gap:0.6rem}
+  .dash-row{display:grid; grid-template-columns:15rem 1fr 3.6rem; gap:0.7rem; align-items:center; font-family:var(--f-ui); font-size:var(--step--1)}
+  .dash-row .dl{font-weight:600}
+  .dash-row .dl span{display:block; font-weight:400; color:var(--ink-soft); font-size:0.78rem}
+  .dash-track{background:var(--sunk); border-radius:4px; height:0.85rem; overflow:hidden}
+  .dash-fill{height:100%; background:var(--accent); border-radius:4px}
+  .dash-fill.low{background:var(--bad)}
+  .dash-fill.mid{background:var(--amber)}
+  .dash-frac{text-align:right; font-variant-numeric:tabular-nums}
+  @media (max-width:560px){ .dash-row{grid-template-columns:1fr 3.6rem} .dash-track{grid-column:1 / -1} }
+  .dash-note{font-family:var(--f-ui); font-size:var(--step--1); color:var(--ink-soft); margin-top:0.9rem}
+
+  #nextstep .ns-card{border-left:4px solid var(--accent); background:var(--accent-soft); border-radius:0 8px 8px 0; padding:1rem 1.2rem}
+  #nextstep .ns-card h3{margin-bottom:0.4rem}
+  #nextstep ul{margin:0.5rem 0 0; padding-left:1.2rem; font-family:var(--f-ui); font-size:var(--step--1)}
+  #nextstep li{margin:0.3rem 0}
+
+  #teacher h3{margin:1.4rem 0 0.5rem; color:var(--ink-soft)}
+  #teacher ol, #teacher ul{font-family:var(--f-ui); font-size:var(--step--1); padding-left:1.3rem}
+  #teacher li{margin:0.4rem 0; max-width:70ch}
+  #teacher .script{background:var(--surface); border:1px solid var(--rule); border-radius:8px; padding:0.9rem 1.1rem; font-family:var(--f-ui); font-size:var(--step--1)}
+  #teacher .script p{margin:0.3rem 0}
+  #teacher .script .who{font-weight:700; color:var(--accent)}
+
+  #answerkey details{border:1px solid var(--rule); border-radius:8px; margin:0.5rem 0; background:var(--surface)}
+  #answerkey summary{font-family:var(--f-ui); font-weight:600; font-size:var(--step--1); padding:0.65rem 0.9rem; cursor:pointer}
+  #answerkey .ak-body{padding:0 0.9rem 0.9rem; font-family:var(--f-ui); font-size:var(--step--1)}
+  #answerkey .ak-body dl{display:grid; grid-template-columns:8.5rem 1fr; gap:0.3rem 0.7rem; margin:0.4rem 0}
+  #answerkey .ak-body dt{font-weight:700; color:var(--ink-soft)}
+  #answerkey .ak-body dd{margin:0}
+
+  .toolbar{
+    position:sticky; bottom:0; z-index:120; background:var(--surface); border-top:1px solid var(--rule);
+    padding:0.6rem 0; box-shadow:0 -2px 12px rgba(20,24,31,0.06);
+  }
+  .toolbar .wrap{display:flex; flex-wrap:wrap; align-items:center; gap:0.6rem}
+  .toolbar .prog{font-family:var(--f-ui); font-size:0.78rem; color:var(--ink-soft); margin-right:auto}
+  .toolbar .prog b{color:var(--ink)}
+  .prog-track{display:inline-block; width:8rem; height:0.5rem; background:var(--sunk); border-radius:3px; overflow:hidden; vertical-align:middle; margin-left:0.5rem}
+  .prog-fill{height:100%; background:var(--accent)}
+
+  footer{padding:2rem 0 5.5rem; font-family:var(--f-ui); font-size:0.75rem; color:var(--ink-faint); text-align:center}
+
+  .sr-only{position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip:rect(0 0 0 0); white-space:nowrap; border:0}
+
+  @media print{
+    body{background:#fff; color:#000; font-size:11pt}
+    .no-print, .toolbar, .hero .herabar, .skip{display:none !important}
+    section{border-color:#bbb; padding:0.8rem 0; break-inside:avoid}
+    .item, .card, .figure, .callout{border-color:#999; break-inside:avoid}
+    .opt .why{display:block !important}
+    .fb{display:block !important; border-color:#999}
+    #answerkey details .ak-body{display:block !important}
+    #answerkey summary::-webkit-details-marker{display:none}
+    h1{font-size:20pt}
+    a{color:#000; text-decoration:none}
+  }
+</style>
+</head>
+<body>
+<a href="#s-entry" class="skip">Skip to the lab</a>
+
+<header class="hero">
+  <div class="wrap">
+    <span class="eyebrow">IELTS Academic &middot; Writing Task 1 &middot; Grammar Lab</span>
+    <h1>Comparatives &amp; Superlatives</h1>
+    <p class="lede">A diagnostic-first grammar lab for describing data. It finds your actual error pattern, then teaches the forms you need to select and compare key features in a chart or table.</p>
+
+    <ul class="outcomes" aria-label="Learning outcomes">
+      <li><b>1</b><span>Write comparative sentences from data that always name the point of comparison and use a single correct comparative form.</span></li>
+      <li><b>2</b><span>Choose <em>as much / as many as</em> and multiplier structures correctly for both countable and uncountable data.</span></li>
+      <li><b>3</b><span>Produce a short &ldquo;key features&rdquo; comparison for an unseen table using at least two different comparison structures accurately.</span></li>
+    </ul>
+
+    <div class="herabar no-print">
+      <button class="btn" id="startBtn">Start lab</button>
+      <span class="time-pill">About 45 minutes</span>
+      <button class="btn ghost mini" id="printBtn">Print / teacher key</button>
+      <button class="btn ghost mini" id="resetAllBtn">Reset everything</button>
+    </div>
+
+    <p class="disclaimer">Independent practice resource &mdash; not an official IELTS product or score. The review dashboard reports grammar-pattern accuracy only; it is not an IELTS band and is not an assessment.</p>
+  </div>
+</header>
+
+<main>
+
+<section id="s-entry">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">Part 1 &middot; Entry check</span>
+      <h2>Where are you now?</h2>
+      <p><span class="set-label">Teaching set &middot; about 5 minutes</span></p>
+      <p>Six quick sentences, one for each type of error this lab covers. Pick the correct sentence, then say how sure you were. Nothing here is scored as a test &mdash; it decides what to focus on.</p>
+    </div>
+    <div id="entryItems"></div>
+    <div class="btn-row no-print">
+      <button class="btn" id="entryCheckBtn">Check my answers</button>
+      <button class="btn ghost mini" id="entryResetBtn">Reset this part</button>
+    </div>
+    <p class="entry-note" id="entrySummary" aria-live="polite"></p>
+  </div>
+</section>
+
+<section id="taxonomy">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">Part 2 &middot; Your error taxonomy</span>
+      <h2>The six patterns</h2>
+      <p>Every practice item in this lab is tagged to exactly one of these. After the entry check, the ones you missed are highlighted &mdash; start the teaching with those.</p>
+    </div>
+    <div class="tax-grid" id="taxGrid"></div>
+    <p class="entry-note">Highlighted = you missed this in the entry check. Look hardest at any pattern you also answered <em>confidently</em> &mdash; the rule feels secure but is not yet.</p>
+  </div>
+</section>
+
+<section id="s-teach">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">Part 3 &middot; Form, meaning, use</span>
+      <h2>The rules, with contrasts</h2>
+      <p>Three core structures first (comparatives, superlatives, multipliers), then two extension structures for equivalence and framing. In Task 1 these are the tools for the <em>overview</em> and for selecting <em>key features</em> &mdash; the difference between a 5.5 and a 7.0 is doing them accurately every time, not knowing more of them.</p>
+    </div>
+
+    <h3>Core 1 &mdash; Comparative + a stated referent</h3>
+    <div class="tbl-scroll">
+      <table class="grid">
+        <caption>Form</caption>
+        <thead><tr><th>Adjective type</th><th>Comparative</th><th>Example (data)</th></tr></thead>
+        <tbody>
+          <tr><td>One syllable</td><td>adjective + <b>-er</b></td><td>high &rarr; <b>higher</b> than; low &rarr; lower than; large &rarr; larger than</td></tr>
+          <tr><td>Two syllables ending <em>-y</em></td><td><em>-y</em> &rarr; <b>-ier</b></td><td>heavy &rarr; heavier; early &rarr; earlier</td></tr>
+          <tr><td>Two or more syllables</td><td><b>more</b> + adjective</td><td>expensive &rarr; <b>more expensive</b> than; significant &rarr; more significant than</td></tr>
+          <tr><td>Irregular</td><td>&mdash;</td><td>good &rarr; better; bad &rarr; worse; far &rarr; further/farther; much/many &rarr; more; little &rarr; less</td></tr>
+          <tr><td>Adverbs of manner</td><td><b>more</b> + adverb (usually)</td><td>rose <b>more sharply</b> than; grew faster than; fell more steeply than</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="pair">
+      <span class="no">In 2020, solar output was <em>more higher</em> than wind output.</span>
+      <span class="rn">Two comparative markers (<em>more</em> + <em>-er</em>). Use one only.</span>
+      <span class="yes">In 2020, solar output was <em>higher than</em> wind output.</span>
+    </div>
+    <div class="pair">
+      <span class="no">The birth rate in Nigeria was considerably <em>higher</em>.</span>
+      <span class="rn">Higher <em>than what?</em> A comparative always needs the second element.</span>
+      <span class="yes">The birth rate in Nigeria was considerably <em>higher than in Japan</em>.</span>
+    </div>
+    <div class="callout">
+      <span class="eyebrow">Use in Task 1</span>
+      <p>Comparatives carry the &ldquo;key features&rdquo; sentences: <em>&ldquo;Car ownership rose faster in China <b>than in</b> India, and by 2020 it was <b>more than double</b> the Indian figure.&rdquo;</em> Never leave a comparative floating without <em>than</em>.</p>
+    </div>
+
+    <h3>Core 2 &mdash; Superlative + &ldquo;the&rdquo; + a scope</h3>
+    <div class="tbl-scroll">
+      <table class="grid">
+        <caption>Form</caption>
+        <thead><tr><th>Adjective type</th><th>Superlative</th><th>Example (data)</th></tr></thead>
+        <tbody>
+          <tr><td>One syllable</td><td><b>the</b> + adjective + <b>-est</b></td><td><b>the highest</b>; the largest; the lowest</td></tr>
+          <tr><td>Two syllables ending <em>-y</em></td><td><b>the</b> + <em>-iest</em></td><td>the heaviest; the earliest</td></tr>
+          <tr><td>Two or more syllables</td><td><b>the most</b> + adjective</td><td><b>the most significant</b>; the most rapid</td></tr>
+          <tr><td>Irregular</td><td>&mdash;</td><td>the best; the worst; the furthest; the least; the most</td></tr>
+          <tr><td>Scope (needed)</td><td>+ <b>of / among / in</b> the group</td><td>the highest <b>of the six countries</b>; the largest <b>in Europe</b></td></tr>
+          <tr><td>Softened</td><td><b>one of the</b> + superlative + <b>plural</b></td><td>one of the largest economies</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="pair">
+      <span class="no">Finland had <em>highest</em> spending on education.</span>
+      <span class="rn">Superlatives always take <em>the</em>.</span>
+      <span class="yes">Finland had <em>the highest</em> spending on education <em>of the six countries</em>.</span>
+    </div>
+    <div class="pair">
+      <span class="no">Norway had <em>the most highest</em> life expectancy.</span>
+      <span class="rn"><em>most</em> + <em>-est</em> doubles the marker. Also: a superlative already means &ldquo;more than all the others&rdquo;, so you do not add <em>higher than all the other countries</em>.</span>
+      <span class="yes">Norway had <em>the highest</em> life expectancy <em>in the region</em>.</span>
+    </div>
+    <div class="pair">
+      <span class="no">Germany's figure was <em>considerably the highest</em>.</span>
+      <span class="rn"><em>considerably / much / far</em> modify comparatives. With a superlative use <em>by far the highest</em>.</span>
+      <span class="yes">Germany's figure was <em>by far the highest</em>.</span>
+    </div>
+
+    <h3>Core 3 &mdash; Multipliers and countability</h3>
+    <div class="tbl-scroll">
+      <table class="grid">
+        <caption>Form</caption>
+        <thead><tr><th>The data is&hellip;</th><th>Structure</th><th>Example</th></tr></thead>
+        <tbody>
+          <tr><td>An amount (uncountable: electricity, water, spending, rice)</td><td>twice / three times / half <b>as much as</b></td><td>consumed <b>twice as much</b> electricity <b>as</b> Factory B</td></tr>
+          <tr><td>A number (countable: visitors, cars, students, bottles)</td><td>twice / three times <b>as many as</b></td><td>received <b>twice as many</b> visitors <b>as</b> Spain</td></tr>
+          <tr><td>Either, with a measured value</td><td>twice / three times <b>as high / as large as</b>; or <b>X times higher than</b></td><td>the 2023 figure was <b>twice as high as</b> the 2013 figure</td></tr>
+          <tr><td>Naming the quantity noun</td><td><b>the amount of</b> + uncountable &middot; <b>the number of</b> + countable</td><td>the amount of waste; the number of households</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="pair">
+      <span class="no">Spending on rail was <em>twice more than</em> spending on roads.</span>
+      <span class="rn">Not idiomatic. The fixed frame is <em>as &hellip; as</em>.</span>
+      <span class="yes">Spending on rail was <em>twice as much as</em> spending on roads.</span>
+    </div>
+    <div class="pair">
+      <span class="no">France received <em>twice as much visitors</em> as Spain.</span>
+      <span class="rn"><em>visitors</em> is countable &rarr; <em>as many</em>.</span>
+      <span class="yes">France received <em>twice as many visitors as</em> Spain.</span>
+    </div>
+    <div class="pair">
+      <span class="no">The country produced twice <em>as much</em> grain <em>than</em> in 2010.</span>
+      <span class="rn">The frame is <em>as &hellip; as</em>, never <em>as &hellip; than</em>.</span>
+      <span class="yes">The country produced twice <em>as much</em> grain <em>as</em> in 2010.</span>
+    </div>
+
+    <h3>Extension &mdash; equivalence and framing <span class="set-label">extension &middot; lighter testing</span></h3>
+    <div class="tbl-scroll">
+      <table class="grid">
+        <caption>Form</caption>
+        <thead><tr><th>Meaning</th><th>Use</th><th>Not</th></tr></thead>
+        <tbody>
+          <tr><td>Roughly equal</td><td><b>similar to</b>; <b>the same as</b>; roughly equal to; comparable to; broadly in line with</td><td><span class="x">similar with</span>; <span class="x">the same than</span>; <span class="x">same to</span></td></tr>
+          <tr><td>Equality frame</td><td><b>as</b> + adjective + <b>as</b>: as high as; not as low as</td><td><span class="x">as high than</span>; <span class="x">as high</span> (missing second <em>as</em>)</td></tr>
+          <tr><td>Framing a comparison</td><td><b>compared with</b> / <b>compared to</b> (both fine); in comparison with; whereas; while</td><td><span class="x">compared than</span>; <span class="x">in comparison than</span></td></tr>
+          <tr><td>Contrasting two clauses</td><td>X, <b>whereas</b> Y; X, <b>while</b> Y</td><td>&mdash;</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="pair">
+      <span class="no">Wheat yields in Canada were <em>similar with</em> those in Ukraine.</span>
+      <span class="yes">Wheat yields in Canada were <em>similar to</em> those in Ukraine.</span>
+    </div>
+    <div class="pair">
+      <span class="no">Female enrolment was roughly <em>the same than</em> male enrolment.</span>
+      <span class="yes">Female enrolment was roughly <em>the same as</em> male enrolment. / &hellip;<em>equal to</em> male enrolment.</span>
+    </div>
+
+    <div class="callout l1">
+      <span class="eyebrow">Turkish L1 focus</span>
+      <p><b>E1 &mdash; the extra &ldquo;more&rdquo;.</b> Turkish forms the comparative with <em>-DAn daha + adjective</em> (<em>Almanya'dan daha y&uuml;ksek</em>). Learners carry <em>daha</em> across as a second marker: <span class="x">more higher</span>. English allows one marker only.</p>
+      <p><b>E5 &mdash; the dropped &ldquo;the&rdquo;.</b> Turkish has no definite article, so <em>the</em> disappears from superlatives: <span class="x">highest figure</span>, <span class="x">largest country</span>. English superlatives always take <em>the</em>.</p>
+      <p><b>E3 / E4 &mdash; &ldquo;iki kat&rdquo;.</b> <em>iki kat</em> (&ldquo;two-fold&rdquo;) comes out as <span class="x">two times more than</span> or <span class="x">twice more than</span>. Fixed English frame: <em>twice as much / as many as</em>, or <em>double</em>.</p>
+    </div>
+  </div>
+</section>
+
+<section id="s-notice">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">Part 4 &middot; Scaffolded practice &mdash; Notice</span>
+      <h2>Name the error</h2>
+      <p><span class="set-label">Teaching set</span> Each sentence has one problem. Choose the error type. The point is to <em>see</em> the pattern before you fix it.</p>
+    </div>
+    <div id="noticeItems"></div>
+    <div class="btn-row no-print">
+      <button class="btn" id="noticeCheckBtn">Check</button>
+      <button class="btn ghost mini" id="noticeResetBtn">Reset this part</button>
+    </div>
+  </div>
+</section>
+
+<section id="s-choose">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">Part 4 &middot; Scaffolded practice &mdash; Choose</span>
+      <h2>Fill the gap</h2>
+      <p><span class="set-label">Teaching set</span> Every wrong option is wrong for a specific grammatical reason, shown after you check.</p>
+    </div>
+    <div id="chooseItems"></div>
+    <div class="btn-row no-print">
+      <button class="btn" id="chooseCheckBtn">Check</button>
+      <button class="btn ghost mini" id="chooseResetBtn">Reset this part</button>
+    </div>
+  </div>
+</section>
+
+<section id="s-repair">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">Part 4 &middot; Scaffolded practice &mdash; Repair</span>
+      <h2>Rewrite the sentence correctly</h2>
+      <p><span class="set-label">Teaching set</span> Type your correction, then check. The auto-check looks for the key structure; if your sentence fixes the error but is phrased differently, use &ldquo;My answer also fixes this&rdquo;.</p>
+    </div>
+    <div id="repairItems"></div>
+    <div class="btn-row no-print">
+      <button class="btn ghost mini" id="repairResetBtn">Reset this part</button>
+    </div>
+  </div>
+</section>
+
+<section id="s-produce">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">Part 4 &middot; Scaffolded practice &mdash; Produce</span>
+      <h2>Build a sentence from the data</h2>
+      <p><span class="set-label">Teaching set</span> Small data prompt, one required structure. Write one sentence.</p>
+    </div>
+    <div id="produceItems"></div>
+    <div class="btn-row no-print">
+      <button class="btn ghost mini" id="produceResetBtn">Reset this part</button>
+    </div>
+  </div>
+</section>
+
+<section id="s-transfer">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">Part 5 &middot; IELTS transfer &mdash; Writing Task 1</span>
+      <h2>Apply it to a table</h2>
+      <p>Two original tables. For each, write 2&ndash;3 sentences comparing the key features, using <em>at least two different</em> comparison structures. Then run the structural self-check. This is a <span class="set-label">teaching set</span>, not a full Task 1 response &mdash; there is no 20-minute clock and no 150-word target here.</p>
+    </div>
+    <div id="transferItems"></div>
+    <div class="btn-row no-print">
+      <button class="btn ghost mini" id="transferResetBtn">Reset this part</button>
+    </div>
+  </div>
+</section>
+
+<section id="dashboard">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">Part 6 &middot; Review dashboard</span>
+      <h2>Accuracy by error type</h2>
+      <p>Correct out of attempted, per pattern. This is <strong>not</strong> an IELTS band and there is no overall score &mdash; the point is to see which one structure is costing you marks.</p>
+    </div>
+    <div class="dash-grid" id="dashGrid" aria-live="polite"></div>
+    <p class="dash-note" id="dashNote"></p>
+  </div>
+</section>
+
+<section id="nextstep">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">Part 7 &middot; Personalised next step</span>
+      <h2>Your weakest pattern, and a 10-minute drill</h2>
+    </div>
+    <div class="ns-card" id="nsCard" aria-live="polite">
+      <p class="muted">Work through the lab and your weakest pattern will appear here with a targeted follow-up.</p>
+    </div>
+  </div>
+</section>
+
+<section id="teacher">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">For the teacher</span>
+      <h2>How to run this</h2>
+      <p>One 45-minute lab, or split across two shorter sessions. The diagnostic drives everything after it.</p>
+    </div>
+
+    <h3>Staging</h3>
+    <ol>
+      <li><b>Session A (~25 min):</b> entry check (Part 1) &rarr; read the taxonomy together, marking what the learner missed &rarr; teach only the two or three highlighted core structures from Part 3 &rarr; Notice and Choose (Parts 4a&ndash;4b). Stop there. Homework: re-do the missed entry-check buckets from memory.</li>
+      <li><b>Session B (~20 min):</b> two-minute retrieval (learner states each core rule from memory, no notes) &rarr; Repair and Produce (Parts 4c&ndash;4d) &rarr; one Transfer table under light time pressure &rarr; read the dashboard and the next-step panel together.</li>
+      <li>Do not teach all five structures in one sitting. Working memory holds about four new items; the extension pair (equivalence, framing) can wait for Session B or a later lesson.</li>
+    </ol>
+
+    <h3>Anticipated problems &amp; solutions</h3>
+    <ul>
+      <li><b>Over-uses &ldquo;more&rdquo;.</b> The learner adds <em>more</em> to everything (<em>more higher, more bigger, more easier</em>). Solution: a 60-second syllable sort &mdash; one-syllable and <em>-y</em> adjectives take <em>-er</em>; everything longer takes <em>more</em>; never both.</li>
+      <li><b>Superlative with no scope.</b> &ldquo;Germany was the highest.&rdquo; Solution: insist every superlative ends with <em>of / in / among</em> + the group. Drill it as a sentence frame.</li>
+      <li><b>&ldquo;twice more than&rdquo; is fossilised.</b> It resists correction because it maps directly onto the L1. Solution: over-practise the fixed chunk <em>twice as much / many as</em> in isolation before putting it in sentences.</li>
+      <li><b>amount vs number.</b> The learner writes <em>the amount of visitors</em>. Solution: a quick sort of Task-1 nouns into countable (households, cars, students, tourists) and uncountable (electricity, water, spending, waste, rice) and pin the two collocations to the list.</li>
+      <li><b>Heavy use of &ldquo;My answer also fixes this&rdquo;.</b> If the learner overrides the auto-check on most Repair/Produce items, mark those sentences yourself &mdash; the dashboard flags this.</li>
+    </ul>
+
+    <h3>Coaching script</h3>
+    <div class="script">
+      <p><span class="who">Anchor:</span> &ldquo;Your English is not the problem here. You already understand the data. What is costing you marks is a handful of small grammar habits &mdash; and habits change in about a week.&rdquo;</p>
+      <p><span class="who">Main point:</span> &ldquo;Two rules cover most of it. One: a comparative always needs &lsquo;than&rsquo; plus the other thing. Two: a superlative always needs &lsquo;the&rsquo; plus &lsquo;of the group&rsquo;. Say those with me.&rdquo;</p>
+      <p><span class="who">If stuck on multipliers:</span> &ldquo;Do not translate &lsquo;iki kat&rsquo;. Learn the English chunk as one piece: &lsquo;twice as much as&rsquo; for an amount, &lsquo;twice as many as&rsquo; for a number.&rdquo;</p>
+      <p><span class="who">Next step:</span> &ldquo;This week, in every practice answer, underline every comparative and check it has &lsquo;than&rsquo;, and underline every superlative and check it has &lsquo;the&rsquo; and a group.&rdquo;</p>
+    </div>
+  </div>
+</section>
+
+<section id="answerkey">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">Printable teacher answer key</span>
+      <h2>Every item: answer, accepted variants, rule, feedback line</h2>
+      <p class="no-print">Open an item to read its key, or use <strong>Print / teacher key</strong> to print all of them.</p>
+    </div>
+    <div id="keyList"></div>
+    <p class="small muted" style="margin-top:1.4rem">MCQ correct-answer distribution (auto-graded A&ndash;D items): <span id="keyDist"></span> &mdash; no letter far over its fair share, and no A&ndash;B&ndash;C&ndash;D positional cycle.</p>
+  </div>
+</section>
+
+</main>
+
+<div class="toolbar no-print">
+  <div class="wrap">
+    <span class="prog">Progress: <b id="progText">0 / 23</b> interactions
+      <span class="prog-track"><span class="prog-fill" id="progFill" style="width:0%"></span></span>
+    </span>
+    <button class="btn ghost mini" id="tbRationale">Show all rationales</button>
+    <button class="btn ghost mini" id="tbPrint">Print</button>
+    <button class="btn ghost mini" id="tbTop">Top</button>
+  </div>
+</div>
+
+<footer>
+  <div class="wrap">
+    LBEnglishCo &middot; IELTS Academic Writing &middot; Task 1 &middot; Grammar &middot; 2026-08-30<br>
+    Independent practice resource &mdash; not an official IELTS product or score.
+  </div>
+</footer>
+
+<script>
+(function(){
+  "use strict";
+
+  var BUCKETS = {
+    E1:{name:"Double / illogical comparative", ex:"“more higher”, “the most highest”, “expensiver”"},
+    E2:{name:"Missing comparison referent", ex:"“Germany was higher.” — higher than what?"},
+    E3:{name:"Multiplier structure", ex:"“twice more than”, “two times as much than”"},
+    E4:{name:"Countability (much/many, amount/number)", ex:"“twice as much visitors”, “the amount of visitors”"},
+    E5:{name:"Superlative structure", ex:"missing “the”, no scope (“largest in”)"},
+    E6:{name:"Comparison word choice / preposition", ex:"“similar with”, “the same than”, “compared than”, “as high than”"}
+  };
+
+  var DRILLS = {
+    E1:["Write ten Task 1 sentences using a comparative; circle the single marker in each (either the “-er” ending or the word “more”, never both).",
+        "Sort twenty adjectives into “-er” (one syllable / ends -y) vs “more” (two or more syllables). Then write one comparative sentence with each.",
+        "Take five sentences with “more + adjective + -er” and delete one marker from each."],
+    E2:["Take five comparative sentences and delete the “than…” part. Leave it a day, then add a plausible referent back to each.",
+        "In a Cambridge Task 1 model answer, underline every comparative and check each one names its second element.",
+        "Write a 3-sentence overview of any table where every comparative ends with “than in [place]” or “than in [year]”."],
+    E3:["Drill the chunk in isolation: write “twice as much … as”, “three times as much … as”, “half as much … as”, “twice as high as” — ten times, filling different nouns.",
+        "Rewrite five sentences containing “twice more than” or “X times more than” using “as much/many as” or “double/triple”.",
+        "For one table with a doubling, write the same fact three ways: multiplier, “double”, and a percentage increase."],
+    E4:["Sort thirty Task 1 nouns into countable (households, cars, students, tourists, hospitals) and uncountable (electricity, water, spending, waste, rice, income). Pin “the number of” / “the amount of” to each list.",
+        "Rewrite five sentences fixing “much/many” and five fixing “amount/number”.",
+        "Write a paragraph describing a chart of visitor numbers and a chart of energy use in the same text; check every quantifier."],
+    E5:["Write ten superlative sentences; each must start with “the” and end with “of / in / among the …”.",
+        "Take five superlatives and add a scope phrase to each (“the highest” → “the highest of the six countries”).",
+        "Find and fix “most highest / a highest / highest (no the)” in a set of ten sentences."],
+    E6:["Make a two-column list: correct (“similar to”, “the same as”, “compared with / to”, “as … as”) vs wrong (“similar with”, “the same than”, “compared than”, “as … than”). Write one sentence per correct form.",
+        "Rewrite five sentences fixing only the comparison word or preposition, changing nothing else.",
+        "Write three sentences that frame a whole comparison with “compared with”, “whereas”, and “in comparison with”."]
+  };
+
+  var ENTRY = [
+    { id:"I1", bucket:"E1", topic:"Energy",
+      stem:"Which sentence is grammatically correct?",
+      options:[
+        {t:"In 2020, solar output was more higher than wind output.",
+         why:"<b>E1.</b> “more higher” stacks two comparative markers (“more” + “-er”). Use one only."},
+        {t:"In 2020, solar output was higher than wind output.", correct:true,
+         why:"<b>Correct.</b> “high” is one syllable, so the comparative is “higher”, followed by “than” + the second item."},
+        {t:"In 2020, solar output was more high than wind output.",
+         why:"<b>E1.</b> One-syllable adjectives form the comparative with “-er” (“higher”), not with “more”."},
+        {t:"In 2020, solar output was the higher than wind output.",
+         why:"<b>E6.</b> “the higher” only works in a two-item frame (“the higher of the two”). With “than”, use plain “higher”."}
+      ], answer:1 },
+
+    { id:"I2", bucket:"E2", topic:"Population",
+      stem:"Which sentence gives a complete comparison?",
+      options:[
+        {t:"The birth rate in Nigeria was considerably higher than in Japan.", correct:true,
+         why:"<b>Correct.</b> The comparative “higher” is completed by “than” + the second place."},
+        {t:"The birth rate in Nigeria was considerably higher.",
+         why:"<b>E2.</b> Higher than what? A comparative adjective needs a stated point of comparison."},
+        {t:"The birth rate in Nigeria was considerably more.",
+         why:"<b>E2.</b> “more” cannot stand alone here — you need “a higher rate” or “higher than …”."},
+        {t:"The birth rate in Nigeria was considerably the highest.",
+         why:"<b>E5.</b> A superlative needs a defined group (“the highest of the five countries”), and “considerably” modifies comparatives, not superlatives."}
+      ], answer:0 },
+
+    { id:"I3", bucket:"E3", topic:"Transport spending",
+      stem:"Which sentence uses the multiplier structure correctly?",
+      options:[
+        {t:"Spending on rail was twice more than spending on roads.",
+         why:"<b>E3.</b> “twice more than” is non-standard. The fixed pattern is “twice as much as” (or “double”)."},
+        {t:"Spending on rail was two times as much than spending on roads.",
+         why:"<b>E3.</b> The frame is “as … as”, not “as … than”: “two times as much as”."},
+        {t:"Spending on rail was twice as much as spending on roads.", correct:true,
+         why:"<b>Correct.</b> Amount (spending, uncountable) → “twice as much as”."},
+        {t:"Spending on rail was twice higher than spending on roads.",
+         why:"<b>E3.</b> “twice higher than” is not idiomatic. Use “twice as high as” or “double the spending on roads”."}
+      ], answer:2 },
+
+    { id:"I4", bucket:"E4", topic:"Tourism",
+      stem:"Which sentence matches the noun to the correct quantifier?",
+      options:[
+        {t:"France received twice as much visitors as Spain.",
+         why:"<b>E4.</b> “visitors” is countable, so use “as many … as”, not “as much … as”."},
+        {t:"The amount of visitors to France was twice as high as to Spain.",
+         why:"<b>E4.</b> Countable nouns take “the number of”, not “the amount of”."},
+        {t:"France received twice as much of visitors as Spain.",
+         why:"<b>E4.</b> “as much of visitors” is not a valid structure. Countable → “as many visitors as”."},
+        {t:"France received twice as many visitors as Spain.", correct:true,
+         why:"<b>Correct.</b> Number (visitors, countable) → “twice as many … as”."}
+      ], answer:3 },
+
+    { id:"I5", bucket:"E5", topic:"Education",
+      stem:"Which sentence forms the superlative correctly?",
+      options:[
+        {t:"Finland had highest spending on education of the six countries.",
+         why:"<b>E5.</b> Superlatives take “the”: “the highest”."},
+        {t:"Finland had the most highest spending on education of the six countries.",
+         why:"<b>E1.</b> “most” + “highest” doubles the superlative marker. Use “the highest” only."},
+        {t:"Finland had the highest spending on education of the six countries.", correct:true,
+         why:"<b>Correct.</b> “the” + superlative + scope (“of the six countries”)."},
+        {t:"Finland had the highest spending on education than the other countries.",
+         why:"<b>E6.</b> Superlatives are followed by “of / among / in”, not “than” (than belongs to comparatives)."}
+      ], answer:2 },
+
+    { id:"I6", bucket:"E6", topic:"Agriculture",
+      stem:"Which sentence uses the comparison expression correctly?",
+      options:[
+        {t:"Wheat yields in Canada were similar to those in Ukraine.", correct:true,
+         why:"<b>Correct.</b> The fixed collocation is “similar to”."},
+        {t:"Wheat yields in Canada were similar with those in Ukraine.",
+         why:"<b>E6.</b> “similar” pairs with “to”, never “with”."},
+        {t:"Wheat yields in Canada were the same than those in Ukraine.",
+         why:"<b>E6.</b> “the same” is followed by “as”, not “than”."},
+        {t:"Wheat yields in Canada were as high than those in Ukraine.",
+         why:"<b>E6.</b> The equality frame is “as … as”: “as high as”."}
+      ], answer:0 }
+  ];
+
+  var NOTICE = [
+    { id:"I7", bucket:"E1",
+      sentence:"In 2015, car ownership in Brazil was more higher than in Argentina.",
+      choices:["E1","E2","E3","E6"], answer:"E1",
+      why:{ E1:"Correct — “more higher” doubles the comparative marker.",
+            E2:"The referent is present (“than in Argentina”).",
+            E3:"There is no multiplier (twice, three times) here.",
+            E6:"“than” is used correctly; the error is the doubled marker." } },
+    { id:"I8", bucket:"E4",
+      sentence:"The city used twice as much cars as its neighbouring region.",
+      choices:["E3","E4","E5","E6"], answer:"E4",
+      why:{ E3:"The multiplier frame “twice as … as” is actually correct here.",
+            E4:"Correct — “cars” is countable, so it must be “as many cars as”.",
+            E5:"There is no superlative in the sentence.",
+            E6:"“as … as” is the right frame; the problem is “much” with a countable noun." } },
+    { id:"I9", bucket:"E6",
+      sentence:"Rents in the two districts were the same than each other in 2018.",
+      choices:["E2","E5","E6","E1"], answer:"E6",
+      why:{ E2:"Both items are named (“the two districts … each other”).",
+            E5:"There is no superlative here.",
+            E6:"Correct — “the same” must be followed by “as”, not “than”.",
+            E1:"There is no comparative adjective being doubled." } }
+  ];
+
+  var CHOOSE = [
+    { id:"I10", bucket:"E1", topic:"Energy",
+      stemHtml:'In 2019, nuclear output in France was <span class="gap" aria-hidden="true"></span> that in Germany.',
+      stemText:"In 2019, nuclear output in France was ____ that in Germany.",
+      options:[
+        {t:"more higher than", why:"<b>E1.</b> “more” + “-er” — two markers on one adjective."},
+        {t:"higher than", correct:true, why:"<b>Correct.</b> One marker (“higher”) + “than”."},
+        {t:"highest than", why:"<b>E6.</b> “highest” is a superlative and cannot take “than”. Use the comparative “higher than”."},
+        {t:"more high than", why:"<b>E1.</b> One-syllable adjective → “higher”, not “more high”."}
+      ], answer:1 },
+
+    { id:"I11", bucket:"E3", topic:"Agriculture",
+      stemHtml:'The country produced <span class="gap" aria-hidden="true"></span> grain in 2020 as it did in 2010.',
+      stemText:"The country produced ____ grain in 2020 as it did in 2010.",
+      options:[
+        {t:"twice as many", why:"<b>E4.</b> “grain” is uncountable → “as much”, not “as many”."},
+        {t:"two times more", why:"<b>E3.</b> “more … as” is not a valid frame; use “as much … as”."},
+        {t:"twice more than", why:"<b>E3.</b> Non-standard. The sentence already has “as” later, so the frame must be “twice as much … as”."},
+        {t:"twice as much", correct:true, why:"<b>Correct.</b> Uncountable amount → “twice as much … as”."}
+      ], answer:3 },
+
+    { id:"I12", bucket:"E5", topic:"Employment",
+      stemHtml:'Of the five regions shown, the North had <span class="gap" aria-hidden="true"></span> unemployment rate.',
+      stemText:"Of the five regions shown, the North had ____ unemployment rate.",
+      options:[
+        {t:"a highest", why:"<b>E5.</b> Superlatives take “the”, not “a”."},
+        {t:"the higher", why:"<b>E6.</b> “of the five regions” signals a superlative; “the higher” is a comparative (two items only)."},
+        {t:"the highest", correct:true, why:"<b>Correct.</b> “the” + superlative, with the scope already given (“of the five regions”)."},
+        {t:"highest", why:"<b>E5.</b> A superlative before a noun still needs “the”."}
+      ], answer:2 },
+
+    { id:"I13", bucket:"E6", topic:"Education",
+      stemHtml:'Female enrolment in 2010 was roughly <span class="gap" aria-hidden="true"></span> male enrolment.',
+      stemText:"Female enrolment in 2010 was roughly ____ male enrolment.",
+      options:[
+        {t:"the same than", why:"<b>E6.</b> “the same” pairs with “as”."},
+        {t:"equal to", correct:true, why:"<b>Correct.</b> “roughly equal to” expresses near-equality. “the same as” is also correct here."},
+        {t:"similar with", why:"<b>E6.</b> “similar” pairs with “to”, not “with”."},
+        {t:"as high", why:"<b>E2.</b> The equality frame needs both parts: “as high as male enrolment”."}
+      ], answer:1 }
+  ];
+
+  var REPAIR = [
+    { id:"I14", bucket:"E1", topic:"Housing",
+      broken:"In 2005, average house prices in London were more higher than in Manchester.",
+      model:"In 2005, average house prices in London were higher than in Manchester.",
+      accepted:["…were considerably / much / far higher than in Manchester", "…higher than those in Manchester"],
+      validate:function(s){ return /\bhigher than\b/.test(s) && !/more higher|more high\b/.test(s); },
+      rule:"Use one comparative marker only — “higher” (not “more higher”) — followed by “than” + the second place.",
+      say:"You have doubled the comparative: “more” plus “-er”. English allows only one." },
+
+    { id:"I15", bucket:"E2", topic:"Literacy",
+      broken:"The literacy rate in Country A rose steadily, and by 2020 it was much higher.",
+      model:"The literacy rate in Country A rose steadily, and by 2020 it was much higher than in Country B.",
+      accepted:["…higher than the rate in 2000", "…higher than it had been a decade earlier", "…higher than in the neighbouring countries"],
+      validate:function(s){ return /\b(higher|greater)\b/.test(s) && /\bthan\s+[a-z0-9]/.test(s); },
+      rule:"A comparative must name the second element. “Higher than …” — add the reference point (another country, or an earlier year).",
+      say:"Higher than what? Complete the comparison so the reader knows what it is measured against." },
+
+    { id:"I16", bucket:"E3", topic:"Recycling",
+      broken:"The region recycled twice as much waste than in 2010, and collected twice as much bottles as the year before.",
+      model:"The region recycled twice as much waste as in 2010, and collected twice as many bottles as the year before.",
+      accepted:["“double the waste … double the number of bottles …”"],
+      validate:function(s){ return /as much waste as\b/.test(s) && /as many bottles as\b/.test(s) && !/as much waste than/.test(s); },
+      rule:"Two fixes: the multiplier frame is “as … as”, never “as … than”; and “bottles” is countable, so “as many bottles as”.",
+      say:"“As … as”, not “as … than”. And bottles are countable — “as many”." },
+
+    { id:"I17", bucket:"E5", topic:"Wind and solar power",
+      broken:"Of the six countries, Denmark had highest share of wind power, and its solar share was the same than Germany's.",
+      model:"Of the six countries, Denmark had the highest share of wind power, and its solar share was the same as Germany's.",
+      accepted:["“…had the largest share of wind power…”", "“…the same as that of Germany.”"],
+      validate:function(s){ return /the highest share|the largest share/.test(s) && /the same as\b/.test(s) && !/the same than/.test(s) && !/\bhad highest\b/.test(s); },
+      rule:"Two fixes: the superlative needs “the” (“the highest share”); and “the same” is followed by “as”, not “than”.",
+      say:"The superlative always takes “the”. And it is “the same as”, never “the same than”." }
+  ];
+
+  var PRODUCE = [
+    { id:"I18", bucket:"E2", topic:"Agriculture",
+      data:"Rice yield (tonnes per hectare): Country X — 4.8 · Country Y — 3.1",
+      req:'Write one sentence comparing the two yields. Use a <b>comparative adjective + “than”</b>.',
+      model:"Rice yield was higher in Country X than in Country Y.",
+      accepted:["“Country X had a higher rice yield than Country Y.”", "“Rice yield in Country X was greater than that in Country Y.”"],
+      validate:function(s){ return /\bthan\b/.test(s) && /(higher|greater|larger|bigger|more)\b/.test(s); },
+      rule:"A comparative must name both halves: the comparative form and “than …”.",
+      say:"Good — but every comparative needs its “than” half." },
+
+    { id:"I19", bucket:"E3", topic:"Culture",
+      data:"Museum visitors — 2023: 900,000 · 2013: 450,000 (exactly double)",
+      req:'Write one sentence. Use the multiplier <b>“twice as many … as”</b> (visitors are countable).',
+      model:"The museum received twice as many visitors in 2023 as in 2013.",
+      accepted:["“Visitor numbers in 2023 were twice as high as in 2013.”", "“The museum had double the number of visitors in 2023 compared with 2013.”"],
+      validate:function(s){ return (/twice as many\b/.test(s) && / as /.test((s.split("twice as many")[1]||""))) || (/twice as high as\b/.test(s)) || (/double the (number|figure)/.test(s)); },
+      rule:"“twice as many … as” for a countable number; or “twice as high as” for the value; or “double the number of …”.",
+      say:"Keep the frame intact: “twice as many visitors as …”." },
+
+    { id:"I20", bucket:"E4", topic:"Energy",
+      data:"Electricity consumption — Factory A: 60 GWh · Factory B: 30 GWh (double)",
+      req:'Write one sentence. The data is an <b>amount</b> (uncountable), so use <b>“twice as much … as”</b>.',
+      model:"Factory A consumed twice as much electricity as Factory B.",
+      accepted:["“Electricity consumption at Factory A was twice as high as at Factory B.”", "“Factory A used double the amount of electricity that Factory B used.”"],
+      validate:function(s){ return (/twice as much\b/.test(s) && / as /.test((s.split("twice as much")[1]||"")) && !/as many/.test(s)) || (/twice as high as\b/.test(s)) || (/double the amount of/.test(s)); },
+      rule:"Uncountable amount → “twice as much … as” (not “as many”), or “twice as high as”, or “double the amount of …”.",
+      say:"Electricity is uncountable — “as much”, not “as many”." },
+
+    { id:"I21", bucket:"E5", topic:"Health",
+      data:"Life expectancy (years): Japan — 84.5, the highest of the seven countries listed",
+      req:'Write one sentence. Use <b>“the” + superlative + a scope phrase</b> (of / in / among the group).',
+      model:"Japan had the highest life expectancy of the seven countries.",
+      accepted:["“Japan recorded the highest life expectancy among the seven countries listed.”", "“Life expectancy was highest in Japan, at 84.5 years, of all seven countries.”"],
+      validate:function(s){ return /the highest\b/.test(s) && /(of the|among the|in the|of all)\b/.test(s); },
+      rule:"“the highest” + “of / among / in” + the group. Without the scope the superlative is incomplete.",
+      say:"Finish the superlative with its group: “the highest … of the seven countries”." }
+  ];
+
+  var TRANSFER = [
+    { id:"I22", topic:"Housing",
+      figLabel:"Average monthly rent (USD), 2023",
+      rows:[["City A",1900],["City B",1250],["City C",640],["City D",610]],
+      max:1900,
+      instruction:"Write 2–3 sentences comparing the key features of this table. Use at least two different comparison structures.",
+      model:"City A had the highest average rent of the four cities, at $1,900 — roughly three times as high as City D, where rent was lowest at $610. Rent in City B ($1,250) was considerably lower than in City A but much higher than in Cities C and D, which were very similar to each other.",
+      checks:[
+        {bucket:"E2", q:"Every comparative in my answer names what it is compared to (“…than in / than that of…”)."},
+        {bucket:"E5", q:"Any superlative has “the” and a scope phrase (“…of the four cities”)."},
+        {bucket:"E3", q:"Any multiplier uses “as high as” or “X times as high as / X times higher than” — not “twice more than”."},
+        {bucket:"E4", q:"Rent is an amount, so I wrote about “the level of rent” / “how high rent was”, not “the number of rent”."}
+      ] },
+
+    { id:"I23", topic:"Education",
+      figLabel:"Postgraduate enrolment",
+      rows:[["University P — 2013",4000],["University P — 2023",8000],["University Q — 2013",6000],["University Q — 2023",7200]],
+      max:8000,
+      instruction:"Write 2–3 sentences comparing the change at the two universities. Use at least two different comparison structures.",
+      model:"Between 2013 and 2023, postgraduate enrolment at University P doubled, from 4,000 to 8,000, whereas the increase at University Q was much smaller, from 6,000 to 7,200. By 2023, University P had more postgraduate students than University Q, having had far fewer a decade earlier. University P's 2023 figure was twice as high as its 2013 figure.",
+      checks:[
+        {bucket:"E2", q:"Every comparative names its second element (“…than University Q”, “…than in 2013”)."},
+        {bucket:"E3", q:"The doubling at University P is written as “doubled” or “twice as high as / twice as many … as” — not “twice more than”."},
+        {bucket:"E6", q:"I framed the contrast between the two universities with “whereas”, “while”, or “compared with / to”."},
+        {bucket:"E4", q:"Students are countable, so I wrote “more students” / “the number of students”, not “the amount of students”."}
+      ] }
+  ];
+
+  var STORE = "lbe-comparatives-lab-v1";
+  var TOTAL_INTERACTIONS = 23;
+  var S = { mcq:{}, notice:{}, confidence:{}, repair:{}, produce:{}, transferText:{}, selfcheck:{}, revealAll:false };
+  try {
+    var raw = JSON.parse(localStorage.getItem(STORE) || "{}");
+    if (raw && typeof raw === "object") {
+      S.mcq = raw.mcq || {}; S.notice = raw.notice || {}; S.confidence = raw.confidence || {};
+      S.repair = raw.repair || {}; S.produce = raw.produce || {};
+      S.transferText = raw.transferText || {}; S.selfcheck = raw.selfcheck || {};
+      S.revealAll = !!raw.revealAll;
+    }
+  } catch (e) {}
+
+  function save(){ try { localStorage.setItem(STORE, JSON.stringify(S)); } catch (e) {} }
+  function el(tag, cls, html){ var n = document.createElement(tag); if (cls) n.className = cls; if (html != null) n.innerHTML = html; return n; }
+  function $(id){ return document.getElementById(id); }
+  function norm(s){
+    return (s || "").toLowerCase()
+      .replace(/[“”]/g, '"').replace(/[‘’]/g, "'")
+      .replace(/[–—]/g, "-")
+      .replace(/\s+/g, " ").trim()
+      .replace(/[.!?;:,]+$/, "");
+  }
+  function esc(s){ return (s || "").replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;"); }
+
+  /* ---- MCQ ---- */
+  function renderMcq(host, list, opts){
+    opts = opts || {};
+    list.forEach(function(q){
+      var wrap = el("div", "item"); wrap.id = "item-" + q.id;
+      var head = '<div class="item-head"><span class="qn">' + q.id + '</span>' +
+        (q.topic ? '<span class="topic">' + q.topic + '</span>' : '') +
+        '<span class="bucket-tag" title="Error type this item trains">' + q.bucket + '</span></div>';
+      var stem = el("p", "stem", q.stemHtml || esc(q.stem));
+
+      var fs = el("fieldset");
+      fs.appendChild(el("legend", "sr-only", "Options for " + q.id));
+      var group = el("div", "opts");
+      group.setAttribute("role", "radiogroup");
+      group.setAttribute("aria-label", (q.stemText || q.stem || q.id));
+
+      q.options.forEach(function(o, i){
+        var letter = "ABCD"[i];
+        var btn = el("button", "opt");
+        btn.type = "button";
+        btn.setAttribute("role", "radio");
+        btn.setAttribute("aria-checked", (S.mcq[q.id] === i) ? "true" : "false");
+        btn.setAttribute("data-i", i);
+        btn.innerHTML = '<span class="ol">' + letter + '</span><span>' + esc(o.t) +
+          '<span class="why" id="why-' + q.id + '-' + i + '"></span></span>';
+        btn.addEventListener("click", function(){
+          if (S.mcq[q.id + "__done"]) return;
+          S.mcq[q.id] = i;
+          group.querySelectorAll(".opt").forEach(function(b){ b.setAttribute("aria-checked", "false"); });
+          btn.setAttribute("aria-checked", "true");
+          save(); updateProgress();
+        });
+        group.appendChild(btn);
+      });
+      fs.appendChild(group);
+      wrap.insertAdjacentHTML("beforeend", head);
+      wrap.appendChild(stem);
+      wrap.appendChild(fs);
+
+      if (opts.confidence){
+        var cf = el("div", "chip-row");
+        cf.setAttribute("role", "group");
+        cf.setAttribute("aria-label", "How sure were you, " + q.id);
+        cf.innerHTML = '<span class="small muted" style="align-self:center">How sure were you?</span>';
+        [["sure", "Sure"], ["unsure", "Unsure"]].forEach(function(pair){
+          var c = el("button", "chip");
+          c.type = "button";
+          c.textContent = pair[1];
+          c.setAttribute("aria-pressed", (S.confidence[q.id] === pair[0]) ? "true" : "false");
+          c.addEventListener("click", function(){
+            S.confidence[q.id] = pair[0];
+            cf.querySelectorAll(".chip").forEach(function(x){ x.setAttribute("aria-pressed", "false"); });
+            c.setAttribute("aria-pressed", "true");
+            save();
+          });
+          cf.appendChild(c);
+        });
+        wrap.appendChild(cf);
+      }
+
+      var fb = el("div", "fb"); fb.id = "fb-" + q.id; fb.setAttribute("role", "status");
+      wrap.appendChild(fb);
+      host.appendChild(wrap);
+      if (S.mcq[q.id + "__done"]) paintMcq(q);
+    });
+  }
+
+  function paintMcq(q){
+    var item = $("item-" + q.id); if (!item) return;
+    var picked = S.mcq[q.id];
+    item.querySelectorAll(".opt").forEach(function(b){
+      var i = parseInt(b.getAttribute("data-i"), 10);
+      b.classList.remove("correct", "wrong");
+      b.classList.add("revealed");
+      $("why-" + q.id + "-" + i).innerHTML = q.options[i].why;
+      if (i === q.answer) b.classList.add("correct");
+      else if (i === picked) b.classList.add("wrong");
+    });
+    var ok = picked === q.answer;
+    var fb = $("fb-" + q.id);
+    fb.className = "fb show " + (ok ? "ok" : (picked == null ? "info" : "no"));
+    fb.innerHTML = '<span class="lbl">' + (picked == null ? "Not answered" : (ok ? "Correct" : "Not quite")) +
+      '</span>Correct answer: <b>' + "ABCD"[q.answer] + ') ' + esc(q.options[q.answer].t) + '</b>';
+  }
+
+  function checkMcqGroup(list){
+    list.forEach(function(q){ S.mcq[q.id + "__done"] = true; paintMcq(q); });
+    save(); updateProgress(); updateDashboard();
+  }
+
+  /* ---- NOTICE ---- */
+  function renderNotice(host){
+    NOTICE.forEach(function(q){
+      var wrap = el("div", "item"); wrap.id = "item-" + q.id;
+      wrap.innerHTML = '<div class="item-head"><span class="qn">' + q.id + '</span>' +
+        '<span class="bucket-tag">' + q.bucket + '</span></div>' +
+        '<p class="stem">' + esc(q.sentence) + '</p>' +
+        '<p class="small muted">Which error type is this?</p>';
+      var row = el("div", "chip-row");
+      row.setAttribute("role", "group");
+      row.setAttribute("aria-label", "Error type for " + q.id);
+      q.choices.forEach(function(code){
+        var c = el("button", "chip");
+        c.type = "button";
+        c.textContent = code;
+        c.title = BUCKETS[code].name;
+        c.setAttribute("aria-label", code + " — " + BUCKETS[code].name);
+        c.setAttribute("aria-pressed", (S.notice[q.id] === code) ? "true" : "false");
+        c.setAttribute("data-code", code);
+        c.addEventListener("click", function(){
+          if (S.notice[q.id + "__done"]) return;
+          S.notice[q.id] = code;
+          row.querySelectorAll(".chip").forEach(function(x){ x.setAttribute("aria-pressed", "false"); });
+          c.setAttribute("aria-pressed", "true");
+          save(); updateProgress();
+        });
+        row.appendChild(c);
+      });
+      wrap.appendChild(row);
+      var fb = el("div", "fb"); fb.id = "fb-" + q.id; fb.setAttribute("role", "status");
+      wrap.appendChild(fb);
+      host.appendChild(wrap);
+      if (S.notice[q.id + "__done"]) paintNotice(q);
+    });
+  }
+
+  function paintNotice(q){
+    var item = $("item-" + q.id); if (!item) return;
+    var picked = S.notice[q.id];
+    item.querySelectorAll(".chip").forEach(function(c){
+      var code = c.getAttribute("data-code");
+      c.classList.remove("correct", "wrong");
+      if (code === q.answer) c.classList.add("correct");
+      else if (code === picked) c.classList.add("wrong");
+    });
+    var ok = picked === q.answer;
+    var fb = $("fb-" + q.id);
+    fb.className = "fb show " + (ok ? "ok" : (picked == null ? "info" : "no"));
+    var lines = q.choices.map(function(code){
+      return '<div><b>' + code + '</b> — ' + esc(q.why[code]) + '</div>';
+    }).join("");
+    fb.innerHTML = '<span class="lbl">' + (picked == null ? "Not answered" : (ok ? "Correct" : "Not quite")) +
+      '</span>Answer: <b>' + q.answer + ' — ' + BUCKETS[q.answer].name + '</b>' +
+      '<div class="rule" style="margin-top:0.4rem">' + lines + '</div>';
+  }
+
+  function checkNotice(){
+    NOTICE.forEach(function(q){ S.notice[q.id + "__done"] = true; paintNotice(q); });
+    save(); updateProgress(); updateDashboard();
+  }
+
+  /* ---- FREE TEXT ---- */
+  function renderFreeText(host, list, kind){
+    list.forEach(function(q){
+      var st = S[kind][q.id] || {};
+      var wrap = el("div", "item"); wrap.id = "item-" + q.id;
+      var headline = kind === "repair"
+        ? '<p class="stem">Fix this sentence:</p><div class="data-line">' + esc(q.broken) + '</div>'
+        : '<p class="data-line">' + esc(q.data) + '</p><p class="req">' + q.req + '</p>';
+      wrap.innerHTML = '<div class="item-head"><span class="qn">' + q.id + '</span>' +
+        '<span class="topic">' + q.topic + '</span>' +
+        '<span class="bucket-tag">' + q.bucket + '</span></div>' + headline;
+
+      var ta = el("textarea");
+      ta.id = "ta-" + q.id;
+      ta.setAttribute("aria-label", "Your answer for " + q.id);
+      ta.value = st.text || "";
+      ta.addEventListener("input", function(){
+        S[kind][q.id] = S[kind][q.id] || {};
+        S[kind][q.id].text = ta.value; save();
+      });
+      wrap.appendChild(ta);
+
+      var row = el("div", "btn-row no-print");
+      var checkBtn = el("button", "btn mini", "Check"); checkBtn.type = "button";
+      var overrideBtn = el("button", "btn ghost mini", "My answer also fixes this");
+      overrideBtn.type = "button";
+      overrideBtn.style.display = "none";
+      row.appendChild(checkBtn); row.appendChild(overrideBtn);
+      wrap.appendChild(row);
+
+      var fb = el("div", "fb"); fb.id = "fb-" + q.id; fb.setAttribute("role", "status");
+      wrap.appendChild(fb);
+
+      checkBtn.addEventListener("click", function(){
+        var val = norm(ta.value);
+        S[kind][q.id] = S[kind][q.id] || {};
+        S[kind][q.id].text = ta.value;
+        if (!val){
+          fb.className = "fb show info";
+          fb.innerHTML = '<span class="lbl">Type an answer first.</span>';
+          return;
+        }
+        var pass = false;
+        try { pass = q.validate(val); } catch (e) { pass = false; }
+        S[kind][q.id].auto = pass;
+        S[kind][q.id].done = true;
+        if (pass) S[kind][q.id].override = false;
+        save();
+        paintFreeText(q, kind);
+        overrideBtn.style.display = pass ? "none" : "";
+        updateProgress(); updateDashboard();
+      });
+
+      overrideBtn.addEventListener("click", function(){
+        S[kind][q.id] = S[kind][q.id] || {};
+        S[kind][q.id].override = true;
+        S[kind][q.id].done = true;
+        save();
+        paintFreeText(q, kind);
+        updateProgress(); updateDashboard();
+      });
+
+      host.appendChild(wrap);
+      if (st.done){
+        paintFreeText(q, kind);
+        if (st.auto === false && !st.override) overrideBtn.style.display = "";
+      }
+    });
+  }
+
+  function freeTextCorrect(st){ return !!st && (st.auto === true || st.override === true); }
+
+  function paintFreeText(q, kind){
+    var st = S[kind][q.id] || {};
+    var fb = $("fb-" + q.id); if (!fb) return;
+    var ok = freeTextCorrect(st);
+    fb.className = "fb show " + (ok ? "ok" : "no");
+    var acc = (q.accepted && q.accepted.length)
+      ? '<div class="rule"><b>Also acceptable:</b> ' + q.accepted.map(esc).join("; ") + '</div>' : "";
+    fb.innerHTML =
+      '<span class="lbl">' + (st.override ? "Counted correct (you marked it)" : (st.auto ? "Correct" : "Not matched — read the model")) + '</span>' +
+      '<div class="model">' + esc(q.model) + '</div>' + acc +
+      '<div class="rule"><b>Rule:</b> ' + q.rule + '</div>' +
+      '<div class="say">Feedback language: “' + q.say + '”</div>';
+  }
+
+  /* ---- TRANSFER ---- */
+  function renderTransfer(host){
+    TRANSFER.forEach(function(t){
+      var wrap = el("div", "item"); wrap.id = "item-" + t.id;
+      var bars = t.rows.map(function(r){
+        var pct = Math.round(r[1] / t.max * 100);
+        return '<div class="bar-row"><span>' + esc(r[0]) + '</span>' +
+          '<span class="bar-track"><span class="bar-fill" style="width:' + pct + '%"></span></span>' +
+          '<span>' + r[1].toLocaleString("en-GB") + '</span></div>';
+      }).join("");
+      wrap.innerHTML = '<div class="item-head"><span class="qn">' + t.id + '</span>' +
+        '<span class="topic">' + t.topic + '</span><span class="bucket-tag">apply</span></div>' +
+        '<div class="figure"><div class="figlabel">' + t.figLabel + ' · illustrative data</div>' +
+        '<div class="bars">' + bars + '</div></div>' +
+        '<p class="req">' + t.instruction + '</p>';
+
+      var ta = el("textarea");
+      ta.id = "ta-" + t.id;
+      ta.setAttribute("aria-label", "Your Task 1 comparison for " + t.id);
+      ta.style.minHeight = "6.5rem";
+      ta.value = S.transferText[t.id] || "";
+      ta.addEventListener("input", function(){ S.transferText[t.id] = ta.value; save(); });
+      wrap.appendChild(ta);
+
+      var scWrap = el("div", "selfcheck");
+      scWrap.setAttribute("role", "group");
+      scWrap.setAttribute("aria-label", "Structural self-check for " + t.id);
+      t.checks.forEach(function(c, ci){
+        var key = t.id + "-" + ci;
+        var cur = S.selfcheck[key];
+        var rowEl = el("div", "sc-row");
+        rowEl.innerHTML = '<span class="scq">' + esc(c.q) + ' <span class="bucket-tag">' + c.bucket + '</span></span>';
+        [["yes", "Yes"], ["no", "Not yet"]].forEach(function(pair){
+          var b = el("button", "sc-btn " + pair[0]);
+          b.type = "button";
+          b.textContent = pair[1];
+          b.setAttribute("aria-pressed", (cur === pair[0]) ? "true" : "false");
+          b.setAttribute("aria-label", pair[1] + " — " + c.q);
+          b.addEventListener("click", function(){
+            S.selfcheck[key] = pair[0];
+            rowEl.querySelectorAll(".sc-btn").forEach(function(x){ x.setAttribute("aria-pressed", "false"); });
+            b.setAttribute("aria-pressed", "true");
+            save(); updateProgress(); updateDashboard();
+          });
+          rowEl.appendChild(b);
+        });
+        scWrap.appendChild(rowEl);
+      });
+      wrap.appendChild(scWrap);
+
+      var mRow = el("div", "btn-row no-print");
+      var revBtn = el("button", "btn ghost mini", "Show a model answer");
+      revBtn.type = "button";
+      mRow.appendChild(revBtn);
+      wrap.appendChild(mRow);
+
+      var modelBox = el("div", "fb info");
+      modelBox.id = "model-" + t.id;
+      modelBox.innerHTML = '<span class="lbl">One possible answer (not the only correct version)</span>' +
+        '<div class="model">' + esc(t.model) + '</div>';
+      if (S.selfcheck[t.id + "__model"]) modelBox.classList.add("show");
+      revBtn.addEventListener("click", function(){
+        modelBox.classList.toggle("show");
+        S.selfcheck[t.id + "__model"] = modelBox.classList.contains("show");
+        save();
+      });
+      wrap.appendChild(modelBox);
+
+      host.appendChild(wrap);
+    });
+  }
+
+  /* ---- TAXONOMY ---- */
+  function renderTaxonomy(){
+    var host = $("taxGrid");
+    host.innerHTML = "";
+    Object.keys(BUCKETS).forEach(function(code){
+      var b = BUCKETS[code];
+      var flagged = bucketFlagged(code);
+      var d = el("div", "tax-item" + (flagged ? " flag" : ""));
+      d.id = "tax-" + code;
+      d.innerHTML = '<span class="code">' + code + '</span>' +
+        '<span class="desc"><b>' + b.name + '</b><br><span class="ex">' + b.ex + '</span>' +
+        (flagged ? '<br><span class="ex" style="color:var(--amber)"><b>⚠ focus here</b></span>' : '') + '</span>';
+      host.appendChild(d);
+    });
+  }
+
+  function bucketFlagged(code){
+    var q = ENTRY.filter(function(x){ return x.bucket === code; })[0];
+    if (!q) return false;
+    if (!S.mcq[q.id + "__done"]) return false;
+    return S.mcq[q.id] !== q.answer;
+  }
+
+  /* ---- DASHBOARD ---- */
+  function bucketStats(){
+    var stats = {};
+    Object.keys(BUCKETS).forEach(function(c){ stats[c] = { correct:0, attempted:0 }; });
+    function tally(code, done, correct){
+      if (!code || !done) return;
+      stats[code].attempted++;
+      if (correct) stats[code].correct++;
+    }
+    ENTRY.concat(CHOOSE).forEach(function(q){
+      tally(q.bucket, !!S.mcq[q.id + "__done"], S.mcq[q.id] === q.answer);
+    });
+    NOTICE.forEach(function(q){
+      tally(q.bucket, !!S.notice[q.id + "__done"], S.notice[q.id] === q.answer);
+    });
+    REPAIR.forEach(function(q){
+      var st = S.repair[q.id];
+      tally(q.bucket, !!(st && st.done), freeTextCorrect(st));
+    });
+    PRODUCE.forEach(function(q){
+      var st = S.produce[q.id];
+      tally(q.bucket, !!(st && st.done), freeTextCorrect(st));
+    });
+    TRANSFER.forEach(function(t){
+      t.checks.forEach(function(c, ci){
+        var v = S.selfcheck[t.id + "-" + ci];
+        tally(c.bucket, v === "yes" || v === "no", v === "yes");
+      });
+    });
+    return stats;
+  }
+
+  function updateDashboard(){
+    var stats = bucketStats();
+    var host = $("dashGrid");
+    host.innerHTML = "";
+    Object.keys(BUCKETS).forEach(function(code){
+      var s = stats[code];
+      var ratio = s.attempted ? s.correct / s.attempted : 0;
+      var pct = Math.round(ratio * 100);
+      var cls = !s.attempted ? "" : (ratio < 0.5 ? "low" : (ratio < 0.8 ? "mid" : ""));
+      var row = el("div", "dash-row");
+      row.innerHTML = '<span class="dl">' + code + ' <span>' + BUCKETS[code].name + '</span></span>' +
+        '<span class="dash-track"><span class="dash-fill ' + cls + '" style="width:' + (s.attempted ? pct : 0) + '%"></span></span>' +
+        '<span class="dash-frac">' + (s.attempted ? (s.correct + "/" + s.attempted) : "—") + '</span>';
+      host.appendChild(row);
+    });
+
+    var overrides = 0;
+    ["repair", "produce"].forEach(function(k){
+      Object.keys(S[k]).forEach(function(id){
+        var st = S[k][id];
+        if (st && st.done && st.override) overrides++;
+      });
+    });
+    var note = "The dashboard updates as you check items. It is not an IELTS band and there is no total score.";
+    if (overrides >= 3){
+      note += " You have marked " + overrides + " written answers correct yourself — ask a teacher to check those sentences directly.";
+    }
+    $("dashNote").textContent = note;
+
+    updateNextStep(stats);
+    renderTaxonomy();
+  }
+
+  function updateNextStep(stats){
+    var attempted = Object.keys(stats).filter(function(c){ return stats[c].attempted > 0; });
+    var card = $("nsCard");
+    if (attempted.length < 2){
+      card.innerHTML = '<p class="muted">Work through more of the lab and your weakest pattern will appear here with a targeted 10-minute drill.</p>';
+      return;
+    }
+    var order = Object.keys(BUCKETS);
+    var weakest = attempted.slice().sort(function(a, b){
+      var ra = stats[a].correct / stats[a].attempted;
+      var rb = stats[b].correct / stats[b].attempted;
+      if (ra !== rb) return ra - rb;
+      if (stats[b].attempted !== stats[a].attempted) return stats[b].attempted - stats[a].attempted;
+      return order.indexOf(a) - order.indexOf(b);
+    })[0];
+
+    var s = stats[weakest];
+    var confidentMisses = [];
+    ENTRY.forEach(function(q){
+      if (q.bucket === weakest && S.mcq[q.id + "__done"] && S.mcq[q.id] !== q.answer && S.confidence[q.id] === "sure"){
+        confidentMisses.push(q.id);
+      }
+    });
+
+    var drills = DRILLS[weakest] || [];
+    var html = '<h3>Weakest pattern: ' + weakest + ' — ' + BUCKETS[weakest].name + '</h3>' +
+      '<p class="small muted">Accuracy so far: ' + s.correct + ' / ' + s.attempted +
+      ' &nbsp;·&nbsp; typical error: ' + BUCKETS[weakest].ex + '</p>';
+    if (confidentMisses.length){
+      html += '<p><strong>Note:</strong> you answered ' + confidentMisses.join(", ") +
+        ' confidently but incorrectly. This rule <em>feels</em> secure but is not yet — make it the priority.</p>';
+    }
+    html += '<p><strong>Your 10-minute drill:</strong></p><ul>' +
+      drills.map(function(d){ return '<li>' + esc(d) + '</li>'; }).join("") + '</ul>' +
+      '<p class="small muted">Then re-open Part 4 (Repair and Produce) and redo the ' + weakest + ' items.</p>';
+    card.innerHTML = html;
+  }
+
+  /* ---- ANSWER KEY ---- */
+  function keyRow(id, dl){
+    var body = '<div class="ak-body"><dl>';
+    dl.forEach(function(pair){ body += '<dt>' + pair[0] + '</dt><dd>' + pair[1] + '</dd>'; });
+    body += '</dl></div>';
+    return '<details><summary>' + id + '</summary>' + body + '</details>';
+  }
+
+  function renderKey(){
+    var host = $("keyList");
+    var html = "";
+
+    ENTRY.forEach(function(q){
+      html += keyRow(q.id + " · Entry check · " + q.bucket, [
+        ["Answer", "<b>" + "ABCD"[q.answer] + ")</b> " + esc(q.options[q.answer].t)],
+        ["Rule", q.options[q.answer].why.replace(/<\/?b>/g, "")],
+        ["Why others fail", q.options.map(function(o, i){
+          return i === q.answer ? "" : ("<b>" + "ABCD"[i] + ")</b> " + o.why);
+        }).filter(Boolean).join("<br>")],
+        ["Feedback line", "“Check this sentence: is there one comparison marker, and does the comparison name both things?”"]
+      ]);
+    });
+
+    NOTICE.forEach(function(q){
+      html += keyRow(q.id + " · Notice · classify · " + q.bucket, [
+        ["Sentence", esc(q.sentence)],
+        ["Answer", "<b>" + q.answer + "</b> — " + BUCKETS[q.answer].name],
+        ["Rationale", Object.keys(q.why).map(function(c){ return "<b>" + c + "</b> " + esc(q.why[c]); }).join("<br>")],
+        ["Feedback line", "“Do not fix it yet — just name the pattern. Then you know which rule to apply.”"]
+      ]);
+    });
+
+    CHOOSE.forEach(function(q){
+      html += keyRow(q.id + " · Choose · " + q.bucket, [
+        ["Stem", esc(q.stemText)],
+        ["Answer", "<b>" + "ABCD"[q.answer] + ")</b> " + esc(q.options[q.answer].t)],
+        ["Why others fail", q.options.map(function(o, i){
+          return i === q.answer ? "" : ("<b>" + "ABCD"[i] + ")</b> " + o.why);
+        }).filter(Boolean).join("<br>")],
+        ["Feedback line", "“Read the whole sentence, then the gap. The words around the gap tell you which form fits.”"]
+      ]);
+    });
+
+    REPAIR.forEach(function(q){
+      html += keyRow(q.id + " · Repair · " + q.bucket, [
+        ["Broken", esc(q.broken)],
+        ["Intended answer", esc(q.model)],
+        ["Accepted variants", (q.accepted || []).map(esc).join("; ") || "—"],
+        ["Rule", q.rule],
+        ["Feedback line", "“" + q.say + "”"]
+      ]);
+    });
+
+    PRODUCE.forEach(function(q){
+      html += keyRow(q.id + " · Produce · " + q.bucket, [
+        ["Data", esc(q.data)],
+        ["Required structure", q.req.replace(/<\/?b>/g, "")],
+        ["Model answer", esc(q.model)],
+        ["Accepted variants", (q.accepted || []).map(esc).join("; ") || "—"],
+        ["Rule", q.rule],
+        ["Feedback line", "“" + q.say + "”"]
+      ]);
+    });
+
+    TRANSFER.forEach(function(t){
+      html += keyRow(t.id + " · Transfer (Task 1) · apply", [
+        ["Table", t.figLabel + " — " + t.rows.map(function(r){ return r[0] + ": " + r[1].toLocaleString("en-GB"); }).join(" · ")],
+        ["Task", t.instruction],
+        ["Accept any answer that", "<ul style='margin:0;padding-left:1.1rem'>" +
+          t.checks.map(function(c){ return "<li>" + esc(c.q) + " (" + c.bucket + ")</li>"; }).join("") + "</ul>"],
+        ["Model answer", esc(t.model)],
+        ["Feedback line", "“You have the content. Now check the machinery: every &lsquo;than&rsquo; present, every superlative with &lsquo;the&rsquo; and a group, every multiplier as &lsquo;as … as&rsquo;.”"]
+      ]);
+    });
+
+    host.innerHTML = html;
+
+    var mcqAll = ENTRY.concat(CHOOSE);
+    var dist = { A:0, B:0, C:0, D:0 };
+    var seq = mcqAll.map(function(q){ var L = "ABCD"[q.answer]; dist[L]++; return L; });
+    $("keyDist").textContent = "A:" + dist.A + " · B:" + dist.B + " · C:" + dist.C + " · D:" + dist.D +
+      "  (sequence " + seq.join(" ") + ")";
+  }
+
+  /* ---- PROGRESS ---- */
+  function countDone(){
+    var n = 0;
+    ENTRY.forEach(function(q){ if (S.mcq[q.id + "__done"]) n++; });
+    NOTICE.forEach(function(q){ if (S.notice[q.id + "__done"]) n++; });
+    CHOOSE.forEach(function(q){ if (S.mcq[q.id + "__done"]) n++; });
+    REPAIR.forEach(function(q){ if (S.repair[q.id] && S.repair[q.id].done) n++; });
+    PRODUCE.forEach(function(q){ if (S.produce[q.id] && S.produce[q.id].done) n++; });
+    TRANSFER.forEach(function(t){
+      var all = t.checks.every(function(c, ci){ return !!S.selfcheck[t.id + "-" + ci]; });
+      if (all) n++;
+    });
+    return n;
+  }
+
+  function updateProgress(){
+    var n = countDone();
+    $("progText").textContent = n + " / " + TOTAL_INTERACTIONS;
+    $("progFill").style.width = Math.round(n / TOTAL_INTERACTIONS * 100) + "%";
+  }
+
+  /* ---- REVEAL ALL ---- */
+  function applyRevealAll(){
+    document.querySelectorAll(".opt .why").forEach(function(w){
+      var m = w.id.match(/^why-(I\d+)-(\d+)$/);
+      if (!m) return;
+      var q = CHOOSE.concat(ENTRY).filter(function(x){ return x.id === m[1]; })[0];
+      if (q) w.innerHTML = q.options[parseInt(m[2], 10)].why;
+    });
+    document.querySelectorAll(".opt").forEach(function(o){ o.classList.toggle("revealed", S.revealAll); });
+
+    REPAIR.concat(PRODUCE).forEach(function(q){
+      var fb = $("fb-" + q.id); if (!fb) return;
+      var kind = REPAIR.indexOf(q) > -1 ? "repair" : "produce";
+      var st = S[kind][q.id];
+      if (st && st.done) return;
+      if (S.revealAll){
+        fb.className = "fb show info";
+        fb.innerHTML = '<span class="lbl">Model (peek)</span><div class="model">' + esc(q.model) + '</div>' +
+          '<div class="rule"><b>Rule:</b> ' + q.rule + '</div>';
+      } else {
+        fb.className = "fb"; fb.innerHTML = "";
+      }
+    });
+
+    NOTICE.forEach(function(q){
+      var fb = $("fb-" + q.id); if (!fb) return;
+      if (S.notice[q.id + "__done"]) return;
+      if (S.revealAll){
+        fb.className = "fb show info";
+        fb.innerHTML = '<span class="lbl">Answer (peek)</span> <b>' + q.answer + '</b> — ' + BUCKETS[q.answer].name;
+      } else {
+        fb.className = "fb"; fb.innerHTML = "";
+      }
+    });
+
+    $("tbRationale").textContent = S.revealAll ? "Hide all rationales" : "Show all rationales";
+  }
+
+  /* ---- RESET ---- */
+  function resetKeys(prefixes){
+    function match(id){ return prefixes.some(function(p){ return id.indexOf(p) === 0; }); }
+    ["mcq", "notice", "repair", "produce", "confidence", "transferText", "selfcheck"].forEach(function(k){
+      Object.keys(S[k]).forEach(function(id){ if (match(id)) delete S[k][id]; });
+    });
+    save();
+  }
+
+  /* ---- BUILD ---- */
+  renderMcq($("entryItems"), ENTRY, { confidence:true });
+  renderNotice($("noticeItems"));
+  renderMcq($("chooseItems"), CHOOSE, {});
+  renderFreeText($("repairItems"), REPAIR, "repair");
+  renderFreeText($("produceItems"), PRODUCE, "produce");
+  renderTransfer($("transferItems"));
+  renderTaxonomy();
+  renderKey();
+  updateProgress();
+  updateDashboard();
+  applyRevealAll();
+
+  $("startBtn").addEventListener("click", function(){ $("s-entry").scrollIntoView({ block:"start" }); });
+  $("entryCheckBtn").addEventListener("click", function(){
+    checkMcqGroup(ENTRY); renderTaxonomy();
+    $("entrySummary").textContent = "Entry check recorded. Scroll on to Part 2 — the patterns you missed are highlighted.";
+    $("taxonomy").scrollIntoView({ block:"start" });
+  });
+  $("noticeCheckBtn").addEventListener("click", function(){ checkNotice(); });
+  $("chooseCheckBtn").addEventListener("click", function(){ checkMcqGroup(CHOOSE); });
+
+  $("entryResetBtn").addEventListener("click", function(){ resetKeys(["I1", "I2", "I3", "I4", "I5", "I6"]); location.reload(); });
+  $("noticeResetBtn").addEventListener("click", function(){ resetKeys(["I7", "I8", "I9"]); location.reload(); });
+  $("chooseResetBtn").addEventListener("click", function(){ resetKeys(["I10", "I11", "I12", "I13"]); location.reload(); });
+  $("repairResetBtn").addEventListener("click", function(){ resetKeys(["I14", "I15", "I16", "I17"]); location.reload(); });
+  $("produceResetBtn").addEventListener("click", function(){ resetKeys(["I18", "I19", "I20", "I21"]); location.reload(); });
+  $("transferResetBtn").addEventListener("click", function(){ resetKeys(["I22", "I23"]); location.reload(); });
+
+  $("resetAllBtn").addEventListener("click", function(){
+    try { localStorage.removeItem(STORE); } catch (e) {}
+    location.reload();
+  });
+
+  function doPrint(){ window.print(); }
+  $("printBtn").addEventListener("click", doPrint);
+  $("tbPrint").addEventListener("click", doPrint);
+  $("tbTop").addEventListener("click", function(){ window.scrollTo({ top:0 }); });
+  $("tbRationale").addEventListener("click", function(){ S.revealAll = !S.revealAll; save(); applyRevealAll(); });
+
+  document.addEventListener("keydown", function(e){
+    if (["ArrowDown", "ArrowRight", "ArrowUp", "ArrowLeft"].indexOf(e.key) === -1) return;
+    var focused = document.activeElement;
+    if (!focused || !focused.classList || !focused.classList.contains("opt")) return;
+    var opts = Array.prototype.slice.call(focused.parentNode.querySelectorAll(".opt"));
+    var idx = opts.indexOf(focused);
+    if (idx === -1) return;
+    e.preventDefault();
+    var next = (e.key === "ArrowDown" || e.key === "ArrowRight") ? idx + 1 : idx - 1;
+    if (next < 0) next = opts.length - 1;
+    if (next >= opts.length) next = 0;
+    opts[next].focus();
+  });
+
+})();
+</script>
+</body>
+</html>

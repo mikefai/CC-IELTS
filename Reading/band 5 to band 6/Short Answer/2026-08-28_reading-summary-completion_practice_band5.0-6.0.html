@@ -1,0 +1,214 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>IELTS Reading — Summary Completion (Band 5–6)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600&family=IBM+Plex+Sans:wght@400;500;600&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&display=swap">
+<style>
+  :root{
+    --ground:#F7F8F7; --surface:#FFFFFF; --sunk:#EEF1EF;
+    --ink:#1B2422; --ink-soft:#5A6663; --ink-faint:#8A9591;
+    --accent:#2E5E58; --accent-soft:#E3EDEA;
+    --amber:#A9662B; --amber-soft:#F6ECE0;
+    --rule:#DDE3E0; --good:#2F6B45; --bad:#9B3A32;
+    --f-display:"Fraunces",Georgia,serif;
+    --f-body:"Source Serif 4",Georgia,"Times New Roman",serif;
+    --f-ui:"IBM Plex Sans","Segoe UI",system-ui,sans-serif;
+  }
+  @media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+    --ground:#121716; --surface:#1A211F; --sunk:#232C2A;
+    --ink:#E8EDEA; --ink-soft:#9AA8A3; --ink-faint:#6E7C77;
+    --accent:#6FB3A6; --accent-soft:#22322F;
+    --amber:#D69A5E; --amber-soft:#2E2820;
+    --rule:#2A3532; --good:#6DBF8E; --bad:#E08A80;
+  }}
+  :root[data-theme="dark"]{
+    --ground:#121716; --surface:#1A211F; --sunk:#232C2A;
+    --ink:#E8EDEA; --ink-soft:#9AA8A3; --ink-faint:#6E7C77;
+    --accent:#6FB3A6; --accent-soft:#22322F;
+    --amber:#D69A5E; --amber-soft:#2E2820;
+    --rule:#2A3532; --good:#6DBF8E; --bad:#E08A80;
+  }
+  *{box-sizing:border-box;}
+  body{margin:0;background:var(--ground);color:var(--ink);font-family:var(--f-body);font-size:1.02rem;line-height:1.65;-webkit-font-smoothing:antialiased;}
+  .wrap{max-width:820px;margin:0 auto;padding:0 clamp(1rem,5vw,2rem);}
+  h1,h2,h3{font-family:var(--f-display);margin:0;line-height:1.15;text-wrap:balance;font-weight:600;}
+  h1{font-size:clamp(2.1rem,6vw,3.1rem);letter-spacing:-0.015em;}
+  h2{font-size:clamp(1.5rem,3.5vw,2rem);}
+  h3{font-size:1.15rem;}
+  p{max-width:65ch;}
+  .label{font-family:var(--f-ui);font-size:0.7rem;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:var(--ink-faint);}
+  header{background:var(--surface);border-bottom:1px solid var(--rule);padding:clamp(2rem,6vw,3.5rem) 0 1.6rem;}
+  .subtitle{font-family:var(--f-ui);color:var(--ink-soft);font-size:0.98rem;margin:0.5rem 0 0;}
+  .meta{display:flex;flex-wrap:wrap;gap:0.9rem 1.9rem;margin-top:1.5rem;}
+  .meta div{display:flex;flex-direction:column;gap:0.15rem;}
+  .meta span{font-family:var(--f-ui);font-size:0.62rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--ink-faint);}
+  .meta b{font-family:var(--f-ui);font-size:0.9rem;font-weight:500;}
+  section{padding:clamp(2.2rem,6vw,3.4rem) 0;border-bottom:1px solid var(--rule);}
+  .sec-head .label{display:block;margin-bottom:0.5rem;}
+  .sec-head p{color:var(--ink-soft);margin-top:0.7rem;}
+  .rubric{font-family:var(--f-ui);font-size:0.9rem;background:var(--accent-soft);border-radius:4px;padding:0.9rem 1.1rem;margin:1.2rem 0;}
+  .rubric b{color:var(--accent);}
+  .passage{background:var(--surface);border:1px solid var(--rule);border-radius:5px;padding:1.4rem 1.6rem;margin-top:1.4rem;}
+  .passage p{margin:0 0 1rem;}
+  .passage p:last-child{margin-bottom:0;}
+  .passage .pnum{font-family:var(--f-ui);font-size:0.72rem;font-weight:600;color:var(--accent);margin-right:0.5rem;}
+  .summary{background:var(--sunk);border-radius:5px;padding:1.3rem 1.5rem;margin:1.3rem 0;line-height:2.1;}
+  .gap{display:inline-block;min-width:6.5ch;border-bottom:2px solid var(--accent);text-align:center;font-family:var(--f-ui);font-weight:600;color:var(--accent);}
+  .gapn{font-family:var(--f-ui);font-size:0.78rem;font-weight:600;background:var(--accent);color:var(--surface);border-radius:3px;padding:0.05rem 0.4rem;vertical-align:0.1em;}
+  .wordbox{display:flex;flex-wrap:wrap;gap:0.5rem;margin:1.2rem 0;}
+  .wordbox li{list-style:none;font-family:var(--f-ui);font-size:0.9rem;background:var(--surface);border:1px solid var(--rule);border-radius:999px;padding:0.35rem 0.9rem;}
+  .wordbox ul{display:contents;margin:0;padding:0;}
+  details.reveal{margin:1rem 0;border:1px solid var(--rule);border-radius:4px;background:var(--surface);overflow:hidden;}
+  details.reveal>summary{font-family:var(--f-ui);font-size:0.9rem;font-weight:600;padding:0.8rem 1.1rem;cursor:pointer;color:var(--accent);list-style:none;}
+  details.reveal>summary::-webkit-details-marker{display:none;}
+  details.reveal>summary::before{content:"▸ ";}
+  details.reveal[open]>summary::before{content:"▾ ";}
+  .rbody{padding:0.4rem 1.1rem 1.1rem;border-top:1px solid var(--rule);}
+  table.key{width:100%;border-collapse:collapse;font-size:0.92rem;margin-top:0.6rem;}
+  table.key th,table.key td{text-align:left;padding:0.5rem 0.6rem;border-bottom:1px solid var(--rule);vertical-align:top;}
+  table.key th{font-family:var(--f-ui);font-size:0.72rem;letter-spacing:0.06em;text-transform:uppercase;color:var(--ink-faint);}
+  table.key .a{font-family:var(--f-ui);font-weight:600;color:var(--good);white-space:nowrap;}
+  .ev{color:var(--ink-soft);font-style:italic;}
+  .foot{padding:2rem 0 3rem;color:var(--ink-faint);font-family:var(--f-ui);font-size:0.8rem;}
+  .tip{font-family:var(--f-ui);font-size:0.9rem;border-left:3px solid var(--amber);background:var(--amber-soft);padding:0.85rem 1.1rem;border-radius:0 3px 3px 0;margin:1.2rem 0;}
+  .tip .label{color:var(--amber);display:block;margin-bottom:0.3rem;}
+  @media print{details.reveal{display:none;}}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <span class="label">IELTS Academic · Reading</span>
+    <h1>Summary Completion</h1>
+    <p class="subtitle">One passage, two task formats — a word list and words from the text.</p>
+    <div class="meta">
+      <div><span>Exam</span><b>IELTS Academic</b></div>
+      <div><span>Section</span><b>Reading</b></div>
+      <div><span>Question type</span><b>Summary completion</b></div>
+      <div><span>Target band</span><b>5.0 – 6.0</b></div>
+      <div><span>Suggested time</span><b>18 minutes</b></div>
+      <div><span>Questions</span><b>11</b></div>
+    </div>
+  </div>
+</header>
+
+<div class="wrap">
+
+<section>
+  <div class="sec-head">
+    <span class="label">How this question type works</span>
+    <h2>What you have to do</h2>
+    <p>You read a short summary of part of the passage. Some words are missing. You fill each gap so the summary stays true to the passage and is grammatically correct. There are two versions:</p>
+  </div>
+  <div class="rubric">
+    <b>Task 1 — from a list.</b> Choose your answers from the box of words. There are more words than gaps, so some words are not used. Write the word, not the letter.<br><br>
+    <b>Task 2 — from the passage.</b> Use words taken directly from the passage. Write <b>NO MORE THAN TWO WORDS</b> for each answer. Do not change the form of the word.
+  </div>
+  <div class="tip">
+    <span class="label">Working method</span>
+    Read the whole summary first. Decide what kind of word each gap needs — a noun, a verb, an adjective? Then find the part of the passage the summary is describing and match the meaning, not just the same words.
+  </div>
+</section>
+
+<section>
+  <div class="sec-head">
+    <span class="label">Reading passage</span>
+    <h2>The Return of the City Bee</h2>
+  </div>
+  <div class="passage">
+    <p><span class="pnum">A</span>Over the past twenty years, keeping bees in cities has become surprisingly popular. Rooftops, balconies and community gardens in London, Paris and New York now hold thousands of hives. For many people, the main attraction is the chance to produce their own honey. Others keep bees because they are worried about the decline of pollinating insects and want to help.</p>
+    <p><span class="pnum">B</span>City bees often do better than country bees. This seems strange, but the reason is simple. Farmland is frequently planted with a single crop, so once that crop has finished flowering there is little food left. Cities, by contrast, contain parks, gardens and street trees that flower at different times from spring to autumn. This variety gives bees nectar for most of the year.</p>
+    <p><span class="pnum">C</span>Temperature also plays a part. Buildings, roads and pavements store heat during the day and release it slowly at night, making urban areas a few degrees warmer than the surrounding countryside. This effect, known as the urban heat island, allows city bees to start flying earlier in the year and to stay active later in the day.</p>
+    <p><span class="pnum">D</span>There are problems too. If too many hives are placed in a small area, the bees compete with each other and with wild pollinators for the same flowers. Some experts now argue that planting more flowers matters more than adding more hives. A single hive can contain up to 50,000 bees, and each colony needs a large area of blossom to survive.</p>
+    <p><span class="pnum">E</span>Pollution is a further concern. Bees that feed near busy roads may collect tiny amounts of metal from vehicle exhaust, and traces have been found in some urban honey. The levels are usually far below the point at which they would harm a person, but researchers continue to monitor them.</p>
+    <p><span class="pnum">F</span>Despite these difficulties, most beekeepers believe the benefits are worth the effort. Bees pollinate the fruit trees and vegetable plots that make city green spaces productive, and looking after a hive encourages people to pay attention to the seasons and the weather. For city dwellers with little contact with nature, that connection may be the greatest reward of all.</p>
+  </div>
+</section>
+
+<section>
+  <div class="sec-head">
+    <span class="label">Questions 1–6</span>
+    <h2>Task 1 — Complete the summary from the list</h2>
+    <p>Complete the summary below using words from the box. Write your answers next to numbers <b>1–6</b>. There are more words than you need.</p>
+  </div>
+
+  <ul class="wordbox">
+    <li>crop</li><li>earlier</li><li>heat</li><li>hives</li><li>honey</li>
+    <li>later</li><li>nectar</li><li>pollinating</li><li>weather</li><li>year</li>
+  </ul>
+
+  <div class="summary">
+    Beekeeping in cities has grown quickly, partly because people want to produce their own
+    <span class="gapn">1</span> <span class="gap">&nbsp;</span>, and partly out of concern about falling numbers of
+    <span class="gapn">2</span> <span class="gap">&nbsp;</span> insects. City bees are often healthier than rural ones because urban parks and gardens provide nectar for most of the
+    <span class="gapn">3</span> <span class="gap">&nbsp;</span>, unlike farmland that is usually planted with a single
+    <span class="gapn">4</span> <span class="gap">&nbsp;</span>. Cities are also warmer because of the urban
+    <span class="gapn">5</span> <span class="gap">&nbsp;</span> island, which lets bees start flying
+    <span class="gapn">6</span> <span class="gap">&nbsp;</span> in the year.
+  </div>
+
+  <details class="reveal">
+    <summary>Show answers 1–6</summary>
+    <div class="rbody">
+      <table class="key">
+        <thead><tr><th>Q</th><th>Answer</th><th>Where it comes from</th></tr></thead>
+        <tbody>
+          <tr><td>1</td><td class="a">honey</td><td class="ev">Paragraph A: "the chance to produce their own honey".</td></tr>
+          <tr><td>2</td><td class="a">pollinating</td><td class="ev">Paragraph A: "the decline of pollinating insects".</td></tr>
+          <tr><td>3</td><td class="a">year</td><td class="ev">Paragraph B: "This variety gives bees nectar for most of the year".</td></tr>
+          <tr><td>4</td><td class="a">crop</td><td class="ev">Paragraph B: "Farmland is frequently planted with a single crop".</td></tr>
+          <tr><td>5</td><td class="a">heat</td><td class="ev">Paragraph C: "This effect, known as the urban heat island".</td></tr>
+          <tr><td>6</td><td class="a">earlier</td><td class="ev">Paragraph C: "start flying earlier in the year". "later" describes the time of day, not the year — that is the trap.</td></tr>
+        </tbody>
+      </table>
+      <p style="font-family:var(--f-ui);font-size:0.85rem;color:var(--ink-soft);margin-top:0.9rem;">Not used: <b>hives</b>, <b>later</b>, <b>nectar</b>, <b>weather</b>.</p>
+    </div>
+  </details>
+</section>
+
+<section>
+  <div class="sec-head">
+    <span class="label">Questions 7–11</span>
+    <h2>Task 2 — Complete the summary from the passage</h2>
+    <p>Complete the summary below. Choose <b>NO MORE THAN TWO WORDS</b> from the passage for each answer. Write your answers next to numbers <b>7–11</b>.</p>
+  </div>
+
+  <div class="summary">
+    Placing too many hives close together causes bees to
+    <span class="gapn">7</span> <span class="gap">&nbsp;</span> with wild pollinators for flowers, which is why some experts say that planting flowers is more important than increasing the number of
+    <span class="gapn">8</span> <span class="gap">&nbsp;</span>. Near heavy traffic, bees can pick up small amounts of
+    <span class="gapn">9</span> <span class="gap">&nbsp;</span> from exhaust fumes, and this has been found in some city honey, though rarely at a harmful level. On the positive side, hives help to
+    <span class="gapn">10</span> <span class="gap">&nbsp;</span> the fruit trees and vegetables in green spaces, and caring for bees makes people notice the
+    <span class="gapn">11</span> <span class="gap">&nbsp;</span> and the weather more closely.
+  </div>
+
+  <details class="reveal">
+    <summary>Show answers 7–11</summary>
+    <div class="rbody">
+      <table class="key">
+        <thead><tr><th>Q</th><th>Answer</th><th>Where it comes from</th></tr></thead>
+        <tbody>
+          <tr><td>7</td><td class="a">compete</td><td class="ev">Paragraph D: "the bees compete with each other and with wild pollinators".</td></tr>
+          <tr><td>8</td><td class="a">hives</td><td class="ev">Paragraph D: "planting more flowers matters more than adding more hives".</td></tr>
+          <tr><td>9</td><td class="a">metal</td><td class="ev">Paragraph E: "collect tiny amounts of metal from vehicle exhaust".</td></tr>
+          <tr><td>10</td><td class="a">pollinate</td><td class="ev">Paragraph F: "Bees pollinate the fruit trees and vegetable plots". Keep the verb form — do not write "pollination".</td></tr>
+          <tr><td>11</td><td class="a">seasons</td><td class="ev">Paragraph F: "pay attention to the seasons and the weather".</td></tr>
+        </tbody>
+      </table>
+      <p style="font-family:var(--f-ui);font-size:0.85rem;color:var(--ink-soft);margin-top:0.9rem;">Common mistakes: writing "compete for" (too many words for Q7 if you add more), or changing "pollinate" to "pollination" in Q10 (wrong word class).</p>
+    </div>
+  </details>
+</section>
+
+<div class="foot">
+  IELTS Academic Reading · Summary Completion · Target band 5.0–6.0 · Created 2026-08-28
+</div>
+
+</div>
+</body>
+</html>

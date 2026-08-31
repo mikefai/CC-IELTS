@@ -1,0 +1,308 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>IELTS Writing Task 1 — Bar Chart & Line Graph (Band 5–6)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600&family=IBM+Plex+Sans:wght@400;500;600&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&display=swap">
+<style>
+  :root{
+    --ground:#F7F8F7; --surface:#FFFFFF; --sunk:#EEF1EF;
+    --ink:#1B2422; --ink-soft:#5A6663; --ink-faint:#8A9591;
+    --accent:#2E5E58; --accent-soft:#E3EDEA;
+    --amber:#A9662B; --amber-soft:#F6ECE0;
+    --rule:#DDE3E0; --good:#2F6B45; --bad:#9B3A32;
+    --s1:#2E5E58; --s2:#A9662B; --s3:#3B5A9B;
+    --f-display:"Fraunces",Georgia,serif;
+    --f-body:"Source Serif 4",Georgia,"Times New Roman",serif;
+    --f-ui:"IBM Plex Sans","Segoe UI",system-ui,sans-serif;
+  }
+  @media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+    --ground:#121716; --surface:#1A211F; --sunk:#232C2A;
+    --ink:#E8EDEA; --ink-soft:#9AA8A3; --ink-faint:#6E7C77;
+    --accent:#6FB3A6; --accent-soft:#22322F;
+    --amber:#D69A5E; --amber-soft:#2E2820;
+    --rule:#2A3532; --good:#6DBF8E; --bad:#E08A80;
+    --s1:#6FB3A6; --s2:#D69A5E; --s3:#8AA6E0;
+  }}
+  :root[data-theme="dark"]{
+    --ground:#121716; --surface:#1A211F; --sunk:#232C2A;
+    --ink:#E8EDEA; --ink-soft:#9AA8A3; --ink-faint:#6E7C77;
+    --accent:#6FB3A6; --accent-soft:#22322F;
+    --amber:#D69A5E; --amber-soft:#2E2820;
+    --rule:#2A3532; --good:#6DBF8E; --bad:#E08A80;
+    --s1:#6FB3A6; --s2:#D69A5E; --s3:#8AA6E0;
+  }
+  *{box-sizing:border-box;}
+  body{margin:0;background:var(--ground);color:var(--ink);font-family:var(--f-body);font-size:1.02rem;line-height:1.65;-webkit-font-smoothing:antialiased;}
+  .wrap{max-width:820px;margin:0 auto;padding:0 clamp(1rem,5vw,2rem);}
+  h1,h2,h3{font-family:var(--f-display);margin:0;line-height:1.15;text-wrap:balance;font-weight:600;}
+  h1{font-size:clamp(2.1rem,6vw,3.1rem);letter-spacing:-0.015em;}
+  h2{font-size:clamp(1.5rem,3.5vw,2rem);}
+  h3{font-size:1.1rem;}
+  p{max-width:65ch;}
+  .label{font-family:var(--f-ui);font-size:0.7rem;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:var(--ink-faint);}
+  header{background:var(--surface);border-bottom:1px solid var(--rule);padding:clamp(2rem,6vw,3.5rem) 0 1.6rem;}
+  .subtitle{font-family:var(--f-ui);color:var(--ink-soft);font-size:0.98rem;margin:0.5rem 0 0;}
+  .meta{display:flex;flex-wrap:wrap;gap:0.9rem 1.9rem;margin-top:1.5rem;}
+  .meta div{display:flex;flex-direction:column;gap:0.15rem;}
+  .meta span{font-family:var(--f-ui);font-size:0.62rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--ink-faint);}
+  .meta b{font-family:var(--f-ui);font-size:0.9rem;font-weight:500;}
+  section{padding:clamp(2.2rem,6vw,3.4rem) 0;border-bottom:1px solid var(--rule);}
+  .sec-head .label{display:block;margin-bottom:0.5rem;}
+  .sec-head p{color:var(--ink-soft);margin-top:0.7rem;}
+  .rubric{font-family:var(--f-ui);font-size:0.92rem;background:var(--accent-soft);border-radius:4px;padding:1rem 1.2rem;margin:1.2rem 0;}
+  .rubric b{color:var(--accent);}
+  .prompt{background:var(--surface);border:1px solid var(--rule);border-radius:5px;padding:1.3rem 1.5rem;margin-top:1.3rem;font-family:var(--f-ui);font-size:0.98rem;}
+  .chartwrap{margin:1.2rem 0 0.4rem;overflow-x:auto;}
+  svg{display:block;width:100%;height:auto;min-width:460px;font-family:var(--f-ui);}
+  .grid{stroke:var(--rule);stroke-width:1;}
+  .axis{stroke:var(--ink-faint);stroke-width:1.4;}
+  .tick{fill:var(--ink-soft);font-size:12px;}
+  .axlabel{fill:var(--ink-soft);font-size:12px;font-weight:500;}
+  .b2010,.leg-a{fill:var(--s1);}
+  .b2020,.leg-b{fill:var(--s2);}
+  .ln1{fill:none;stroke:var(--s1);stroke-width:2.6;}
+  .ln2{fill:none;stroke:var(--s2);stroke-width:2.6;}
+  .ln3{fill:none;stroke:var(--s3);stroke-width:2.6;}
+  .dot1{fill:var(--s1);}.dot2{fill:var(--s2);}.dot3{fill:var(--s3);}
+  .legtext{fill:var(--ink);font-size:12px;}
+  .caption{font-family:var(--f-ui);font-size:0.82rem;color:var(--ink-faint);margin-top:0.3rem;}
+  details.reveal{margin:1.2rem 0 0;border:1px solid var(--rule);border-radius:4px;background:var(--surface);overflow:hidden;}
+  details.reveal>summary{font-family:var(--f-ui);font-size:0.9rem;font-weight:600;padding:0.8rem 1.1rem;cursor:pointer;color:var(--accent);list-style:none;}
+  details.reveal>summary::-webkit-details-marker{display:none;}
+  details.reveal>summary::before{content:"▸ ";}
+  details.reveal[open]>summary::before{content:"▾ ";}
+  .rbody{padding:0.8rem 1.1rem 1.1rem;border-top:1px solid var(--rule);}
+  .model p{margin:0 0 0.8rem;}
+  .model .wc{font-family:var(--f-ui);font-size:0.8rem;color:var(--ink-faint);}
+  .lang{font-family:var(--f-ui);font-size:0.9rem;}
+  .lang dt{font-weight:600;color:var(--accent);margin-top:0.7rem;}
+  .lang dd{margin:0.2rem 0 0;color:var(--ink-soft);}
+  .tip{font-family:var(--f-ui);font-size:0.9rem;border-left:3px solid var(--amber);background:var(--amber-soft);padding:0.85rem 1.1rem;border-radius:0 3px 3px 0;margin:1.2rem 0;}
+  .tip .label{color:var(--amber);display:block;margin-bottom:0.3rem;}
+  .foot{padding:2rem 0 3rem;color:var(--ink-faint);font-family:var(--f-ui);font-size:0.8rem;}
+  @media print{details.reveal{display:none;}}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <span class="label">IELTS Academic · Writing Task 1</span>
+    <h1>Bar Chart &amp; Line Graph</h1>
+    <p class="subtitle">Two practice questions with a worked model answer for each.</p>
+    <div class="meta">
+      <div><span>Exam</span><b>IELTS Academic</b></div>
+      <div><span>Section</span><b>Writing, Task 1</b></div>
+      <div><span>Question types</span><b>Bar chart · Line graph</b></div>
+      <div><span>Target band</span><b>5.0 – 6.0</b></div>
+      <div><span>Time per task</span><b>20 minutes</b></div>
+      <div><span>Minimum length</span><b>150 words</b></div>
+    </div>
+  </div>
+</header>
+
+<div class="wrap">
+
+<section>
+  <div class="sec-head">
+    <span class="label">Before you start</span>
+    <h2>What Task 1 asks for</h2>
+    <p>You describe the information in a chart or graph in your own words. You do <b>not</b> give opinions or reasons. Spend about 20 minutes and write at least 150 words.</p>
+  </div>
+  <div class="rubric">
+    A safe four-paragraph plan:<br>
+    <b>1 · Introduction</b> — one sentence that rewrites the question in your own words.<br>
+    <b>2 · Overview</b> — 2 sentences on the main trends or biggest differences. No numbers here.<br>
+    <b>3 · Details</b> — the largest / highest figures, with data.<br>
+    <b>4 · Details</b> — the rest of the data, grouped sensibly.
+  </div>
+  <div class="tip">
+    <span class="label">The overview is the most important sentence</span>
+    Examiners look for a clear overview. Start it with <b>Overall,</b> and say what happened in general — what went up, what went down, or which group was highest.
+  </div>
+</section>
+
+<section>
+  <div class="sec-head">
+    <span class="label">Question 1</span>
+    <h2>Bar chart</h2>
+  </div>
+  <div class="prompt">
+    The bar chart below shows the percentage of households with internet access in four countries in 2010 and 2020. Summarise the information by selecting and reporting the main features, and make comparisons where relevant.
+  </div>
+
+  <div class="chartwrap">
+    <svg viewBox="0 0 640 400" role="img" aria-label="Bar chart: percentage of households with internet access in South Korea, Germany, Brazil and Nigeria in 2010 and 2020.">
+      <!-- gridlines + y ticks -->
+      <line class="grid" x1="70" y1="40" x2="610" y2="40"></line>
+      <line class="grid" x1="70" y1="100" x2="610" y2="100"></line>
+      <line class="grid" x1="70" y1="160" x2="610" y2="160"></line>
+      <line class="grid" x1="70" y1="220" x2="610" y2="220"></line>
+      <line class="grid" x1="70" y1="280" x2="610" y2="280"></line>
+      <line class="axis" x1="70" y1="340" x2="610" y2="340"></line>
+      <line class="axis" x1="70" y1="40" x2="70" y2="340"></line>
+      <text class="tick" x="60" y="44" text-anchor="end">100</text>
+      <text class="tick" x="60" y="104" text-anchor="end">80</text>
+      <text class="tick" x="60" y="164" text-anchor="end">60</text>
+      <text class="tick" x="60" y="224" text-anchor="end">40</text>
+      <text class="tick" x="60" y="284" text-anchor="end">20</text>
+      <text class="tick" x="60" y="344" text-anchor="end">0</text>
+      <text class="axlabel" x="24" y="195" text-anchor="middle" transform="rotate(-90 24 195)">% of households</text>
+
+      <!-- South Korea -->
+      <rect class="b2010" x="100.5" y="52" width="34" height="288"></rect>
+      <rect class="b2020" x="140.5" y="43" width="34" height="297"></rect>
+      <text class="axlabel" x="137.5" y="360" text-anchor="middle">South Korea</text>
+      <!-- Germany -->
+      <rect class="b2010" x="235.5" y="94" width="34" height="246"></rect>
+      <rect class="b2020" x="275.5" y="52" width="34" height="288"></rect>
+      <text class="axlabel" x="272.5" y="360" text-anchor="middle">Germany</text>
+      <!-- Brazil -->
+      <rect class="b2010" x="370.5" y="259" width="34" height="81"></rect>
+      <rect class="b2020" x="410.5" y="91" width="34" height="249"></rect>
+      <text class="axlabel" x="407.5" y="360" text-anchor="middle">Brazil</text>
+      <!-- Nigeria -->
+      <rect class="b2010" x="505.5" y="322" width="34" height="18"></rect>
+      <rect class="b2020" x="545.5" y="232" width="34" height="108"></rect>
+      <text class="axlabel" x="542.5" y="360" text-anchor="middle">Nigeria</text>
+
+      <!-- legend -->
+      <rect class="leg-a" x="210" y="382" width="13" height="13"></rect>
+      <text class="legtext" x="229" y="393">2010</text>
+      <rect class="leg-b" x="290" y="382" width="13" height="13"></rect>
+      <text class="legtext" x="309" y="393">2020</text>
+    </svg>
+  </div>
+  <p class="caption">Figures: South Korea 96 → 99; Germany 82 → 96; Brazil 27 → 83; Nigeria 6 → 36.</p>
+
+  <details class="reveal">
+    <summary>Show a band 6 model answer</summary>
+    <div class="rbody model">
+      <p>The bar chart compares the percentage of households that had internet access in four countries — South Korea, Germany, Brazil and Nigeria — in 2010 and 2020.</p>
+      <p>Overall, the proportion of households with internet access rose in all four countries over the period. However, the increase was much larger in Brazil and Nigeria, which began from a low level, than in South Korea and Germany.</p>
+      <p>In 2010, South Korea already had the highest figure, at 96%, and this rose slightly to 99% in 2020. Germany showed a similar pattern, climbing from 82% to 96%. By the end of the period, these two countries were therefore close to full coverage.</p>
+      <p>The situation in Brazil and Nigeria was different. Brazil saw the biggest change of all, with the figure jumping from 27% in 2010 to 83% in 2020. Nigeria remained the lowest throughout, but its figure still rose sharply, from just 6% to 36%. Despite this growth, well over half of Nigerian households were still without internet access in 2020.</p>
+      <p class="wc">183 words</p>
+    </div>
+  </details>
+
+  <details class="reveal">
+    <summary>Show useful language for this chart</summary>
+    <div class="rbody">
+      <dl class="lang">
+        <dt>Rewriting the question (introduction)</dt>
+        <dd>The bar chart compares… / shows the percentage of… / gives information about…</dd>
+        <dt>Describing an increase</dt>
+        <dd>rose / increased / climbed / went up / jumped (large change) / rose slightly (small change)</dd>
+        <dt>From a number to a number</dt>
+        <dd>rose <b>from</b> 27% <b>to</b> 83% / climbed from 82% to 96%</dd>
+        <dt>Comparing groups</dt>
+        <dd>had the highest / lowest figure · remained the lowest throughout · was close to · showed a similar pattern</dd>
+      </dl>
+    </div>
+  </details>
+</section>
+
+<section>
+  <div class="sec-head">
+    <span class="label">Question 2</span>
+    <h2>Line graph</h2>
+  </div>
+  <div class="prompt">
+    The line graph below shows the number of visitors, in millions, to three attractions in London between 2015 and 2023. Summarise the information by selecting and reporting the main features, and make comparisons where relevant.
+  </div>
+
+  <div class="chartwrap">
+    <svg viewBox="0 0 640 400" role="img" aria-label="Line graph: annual visitors in millions to the British Museum, Tate Modern and the Tower of London from 2015 to 2023.">
+      <line class="grid" x1="60" y1="40" x2="610" y2="40"></line>
+      <line class="grid" x1="60" y1="115" x2="610" y2="115"></line>
+      <line class="grid" x1="60" y1="190" x2="610" y2="190"></line>
+      <line class="grid" x1="60" y1="265" x2="610" y2="265"></line>
+      <line class="axis" x1="60" y1="340" x2="610" y2="340"></line>
+      <line class="axis" x1="60" y1="40" x2="60" y2="340"></line>
+      <text class="tick" x="50" y="44" text-anchor="end">8</text>
+      <text class="tick" x="50" y="119" text-anchor="end">6</text>
+      <text class="tick" x="50" y="194" text-anchor="end">4</text>
+      <text class="tick" x="50" y="269" text-anchor="end">2</text>
+      <text class="tick" x="50" y="344" text-anchor="end">0</text>
+      <text class="axlabel" x="20" y="190" text-anchor="middle" transform="rotate(-90 20 190)">visitors (millions)</text>
+
+      <text class="tick" x="60" y="360" text-anchor="middle">2015</text>
+      <text class="tick" x="128.75" y="360" text-anchor="middle">2016</text>
+      <text class="tick" x="197.5" y="360" text-anchor="middle">2017</text>
+      <text class="tick" x="266.25" y="360" text-anchor="middle">2018</text>
+      <text class="tick" x="335" y="360" text-anchor="middle">2019</text>
+      <text class="tick" x="403.75" y="360" text-anchor="middle">2020</text>
+      <text class="tick" x="472.5" y="360" text-anchor="middle">2021</text>
+      <text class="tick" x="541.25" y="360" text-anchor="middle">2022</text>
+      <text class="tick" x="610" y="360" text-anchor="middle">2023</text>
+
+      <polyline class="ln1" points="60,85 128.75,85 197.5,92.5 266.25,107.5 335,107.5 403.75,291.25 472.5,280 541.25,186.25 610,122.5"></polyline>
+      <polyline class="ln2" points="60,163.75 128.75,122.5 197.5,126.25 266.25,118.75 335,111.25 403.75,287.5 472.5,295 541.25,208.75 610,163.75"></polyline>
+      <polyline class="ln3" points="60,235 128.75,231.25 197.5,235 266.25,231.25 335,227.5 403.75,317.5 472.5,313.75 541.25,265 610,238.75"></polyline>
+
+      <g>
+        <circle class="dot1" cx="60" cy="85" r="3"></circle><circle class="dot1" cx="128.75" cy="85" r="3"></circle><circle class="dot1" cx="197.5" cy="92.5" r="3"></circle><circle class="dot1" cx="266.25" cy="107.5" r="3"></circle><circle class="dot1" cx="335" cy="107.5" r="3"></circle><circle class="dot1" cx="403.75" cy="291.25" r="3"></circle><circle class="dot1" cx="472.5" cy="280" r="3"></circle><circle class="dot1" cx="541.25" cy="186.25" r="3"></circle><circle class="dot1" cx="610" cy="122.5" r="3"></circle>
+        <circle class="dot2" cx="60" cy="163.75" r="3"></circle><circle class="dot2" cx="128.75" cy="122.5" r="3"></circle><circle class="dot2" cx="197.5" cy="126.25" r="3"></circle><circle class="dot2" cx="266.25" cy="118.75" r="3"></circle><circle class="dot2" cx="335" cy="111.25" r="3"></circle><circle class="dot2" cx="403.75" cy="287.5" r="3"></circle><circle class="dot2" cx="472.5" cy="295" r="3"></circle><circle class="dot2" cx="541.25" cy="208.75" r="3"></circle><circle class="dot2" cx="610" cy="163.75" r="3"></circle>
+        <circle class="dot3" cx="60" cy="235" r="3"></circle><circle class="dot3" cx="128.75" cy="231.25" r="3"></circle><circle class="dot3" cx="197.5" cy="235" r="3"></circle><circle class="dot3" cx="266.25" cy="231.25" r="3"></circle><circle class="dot3" cx="335" cy="227.5" r="3"></circle><circle class="dot3" cx="403.75" cy="317.5" r="3"></circle><circle class="dot3" cx="472.5" cy="313.75" r="3"></circle><circle class="dot3" cx="541.25" cy="265" r="3"></circle><circle class="dot3" cx="610" cy="238.75" r="3"></circle>
+      </g>
+
+      <rect class="leg-a" x="95" y="382" width="13" height="13"></rect>
+      <text class="legtext" x="114" y="393">British Museum</text>
+      <rect class="leg-b" x="255" y="382" width="13" height="13"></rect>
+      <text class="legtext" x="274" y="393">Tate Modern</text>
+      <rect x="390" y="382" width="13" height="13" fill="var(--s3)"></rect>
+      <text class="legtext" x="409" y="393">Tower of London</text>
+    </svg>
+  </div>
+  <p class="caption">Figures (millions): stable at roughly 6–7 (British Museum), 5–6 (Tate Modern) and 3 (Tower of London) until 2019; all fell below 1.6 in 2020–21; by 2023, 5.8 / 4.7 / 2.7.</p>
+
+  <details class="reveal">
+    <summary>Show a band 6 model answer</summary>
+    <div class="rbody model">
+      <p>The line graph shows how many people, in millions, visited three attractions in London — the British Museum, Tate Modern and the Tower of London — between 2015 and 2023.</p>
+      <p>Overall, visitor numbers were fairly stable until 2019, then fell dramatically in 2020 and 2021 before starting to recover. The British Museum was the most popular attraction for most of the period.</p>
+      <p>From 2015 to 2019, the British Museum received between 6.2 and 6.8 million visitors a year. Tate Modern was slightly less popular but rose steadily to reach 6.1 million in 2019, almost the same as the British Museum. The Tower of London was much lower, staying at around 2.8 to 3 million.</p>
+      <p>In 2020 all three attractions dropped sharply to their lowest points, with the Tower of London falling below one million. Numbers stayed low in 2021 and then increased again from 2022. By 2023, the British Museum had climbed back to 5.8 million and Tate Modern to 4.7 million, but both were still below their 2019 levels.</p>
+      <p class="wc">182 words</p>
+    </div>
+  </details>
+
+  <details class="reveal">
+    <summary>Show useful language for this graph</summary>
+    <div class="rbody">
+      <dl class="lang">
+        <dt>Describing a period of no change</dt>
+        <dd>remained stable / stayed at around 3 million / stayed roughly the same / changed little</dd>
+        <dt>Describing a large fall</dt>
+        <dd>fell dramatically / dropped sharply / plunged / fell to its lowest point</dd>
+        <dt>Describing a recovery</dt>
+        <dd>began to recover / rose again / climbed back to / increased from 2022</dd>
+        <dt>Comparing lines</dt>
+        <dd>the most popular attraction · slightly less popular than · much lower than · almost the same as · still below its 2019 level</dd>
+        <dt>Time phrases</dt>
+        <dd>from 2015 to 2019 · over the period · by 2023 · in the following year</dd>
+      </dl>
+    </div>
+  </details>
+</section>
+
+<section>
+  <div class="sec-head">
+    <span class="label">Now you try</span>
+    <h2>Write your own</h2>
+    <p>Choose one question. Set a timer for 20 minutes. Write at least 150 words using the four-paragraph plan. Then compare your answer with the model — check that your overview has no numbers and that every figure you used is accurate.</p>
+  </div>
+</section>
+
+<div class="foot">
+  IELTS Academic Writing Task 1 · Bar chart &amp; line graph · Target band 5.0–6.0 · Created 2026-08-28
+</div>
+
+</div>
+</body>
+</html>

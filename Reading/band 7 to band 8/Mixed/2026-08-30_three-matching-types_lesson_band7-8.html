@@ -1,0 +1,1858 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Band 7–8 Matching Questions: Integrated Lesson</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=IBM+Plex+Sans:wght@400;500;600&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&display=swap">
+
+  <style>
+    :root {
+      --ground: #F7F8F7;
+      --surface: #FFFFFF;
+      --surface-sunk: #EEF1EF;
+      --ink: #1B2422;
+      --ink-soft: #5A6663;
+      --ink-faint: #8A9591;
+      --accent: #2E5E58;
+      --accent-soft: #E3EDEA;
+      --amber: #A9662B;
+      --amber-soft: #F6ECE0;
+      --rule: #DDE3E0;
+      --good: #2F6B45;
+      --bad: #9B3A32;
+
+      --f-display: "Fraunces", Georgia, "Times New Roman", serif;
+      --f-body: "Source Serif 4", Georgia, "Times New Roman", serif;
+      --f-ui: "IBM Plex Sans", "Segoe UI", system-ui, sans-serif;
+
+      --step-0: 1rem;
+      --step-1: 1.15rem;
+      --step-2: 1.45rem;
+      --step-3: 1.9rem;
+      --step-4: 2.6rem;
+
+      --module-1-accent: #2E5E58;
+      --module-2-accent: #5A7D6E;
+      --module-3-accent: #8B6F47;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      :root:not([data-theme="light"]) {
+        --ground: #121716;
+        --surface: #1A211F;
+        --surface-sunk: #232C2A;
+        --ink: #E8EDEA;
+        --ink-soft: #9AA8A3;
+        --ink-faint: #6E7C77;
+        --accent: #6FB3A6;
+        --accent-soft: #22322F;
+        --amber: #D69A5E;
+        --amber-soft: #2E2820;
+        --rule: #2A3532;
+        --good: #6DBF8E;
+        --bad: #E08A80;
+      }
+    }
+
+    :root[data-theme="dark"] {
+      --ground: #121716;
+      --surface: #1A211F;
+      --surface-sunk: #232C2A;
+      --ink: #E8EDEA;
+      --ink-soft: #9AA8A3;
+      --ink-faint: #6E7C77;
+      --accent: #6FB3A6;
+      --accent-soft: #22322F;
+      --amber: #D69A5E;
+      --amber-soft: #2E2820;
+      --rule: #2A3532;
+      --good: #6DBF8E;
+      --bad: #E08A80;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      background: var(--ground);
+      color: var(--ink);
+      font-family: var(--f-body);
+      font-size: var(--step-0);
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+    }
+    h1, h2, h3, h4 {
+      font-family: var(--f-display);
+      text-wrap: balance;
+      margin: 0;
+      line-height: 1.15;
+    }
+    .label {
+      font-family: var(--f-ui);
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--ink-faint);
+    }
+
+    header {
+      border-bottom: 1px solid var(--rule);
+      background: var(--surface);
+      padding: 2.5rem clamp(1rem, 4vw, 2.5rem) 1.5rem;
+    }
+    .head-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2rem;
+      align-items: flex-start;
+      justify-content: space-between;
+    }
+    header h1 {
+      font-size: var(--step-4);
+      font-weight: 600;
+      font-variation-settings: "SOFT" 20, "WONK" 1;
+      letter-spacing: -0.015em;
+    }
+    .subtitle {
+      font-family: var(--f-ui);
+      color: var(--ink-soft);
+      font-size: 0.95rem;
+      margin-top: 0.4rem;
+    }
+    .disclaimer {
+      font-family: var(--f-ui);
+      font-size: 0.8rem;
+      color: var(--ink-faint);
+      font-style: italic;
+      margin-top: 0.6rem;
+    }
+    .view-toggle {
+      display: flex;
+      gap: 0.5rem;
+      align-items: center;
+    }
+
+    .module-nav {
+      position: sticky;
+      top: 0;
+      background: var(--surface);
+      border-bottom: 1px solid var(--rule);
+      z-index: 100;
+      padding: 0.8rem clamp(1rem, 4vw, 2.5rem);
+    }
+    .module-nav-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      gap: 0.5rem;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+    .module-nav a {
+      font-family: var(--f-ui);
+      font-size: 0.9rem;
+      font-weight: 500;
+      padding: 0.5rem 1rem;
+      border-radius: 3px;
+      border: 1px solid var(--rule);
+      background: var(--surface);
+      color: var(--ink);
+      text-decoration: none;
+      cursor: pointer;
+      transition: all 0.15s ease;
+    }
+    .module-nav a:hover, .module-nav a.active {
+      background: var(--accent-soft);
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+
+    button {
+      font-family: var(--f-ui);
+      font-size: 0.85rem;
+      font-weight: 500;
+      padding: 0.5rem 0.9rem;
+      border-radius: 3px;
+      border: 1px solid var(--rule);
+      background: var(--surface);
+      color: var(--ink);
+      cursor: pointer;
+      transition: background 0.15s ease, border-color 0.15s ease;
+    }
+    button:hover {
+      background: var(--surface-sunk);
+      border-color: var(--ink-faint);
+    }
+    button.primary {
+      background: var(--accent);
+      border-color: var(--accent);
+      color: var(--surface);
+    }
+    button.primary:hover {
+      filter: brightness(1.1);
+    }
+    :focus-visible {
+      outline: 2px solid var(--accent);
+      outline-offset: 2px;
+    }
+
+    main {
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+
+    .module {
+      padding: 3rem clamp(1rem, 4vw, 2.5rem);
+      border-bottom: 1px solid var(--rule);
+    }
+
+    .module.m1 { --current-accent: var(--module-1-accent); }
+    .module.m2 { --current-accent: var(--module-2-accent); }
+    .module.m3 { --current-accent: var(--module-3-accent); }
+
+    .module-header {
+      display: flex;
+      gap: 1.5rem;
+      align-items: flex-start;
+      margin-bottom: 2rem;
+      padding-bottom: 1.5rem;
+      border-bottom: 2px solid var(--current-accent);
+    }
+
+    .module-badge {
+      font-family: var(--f-ui);
+      font-size: 2rem;
+      font-weight: 600;
+      color: var(--current-accent);
+      min-width: 3rem;
+      text-align: center;
+    }
+
+    .module-title-block h2 {
+      font-size: var(--step-3);
+      font-weight: 600;
+      color: var(--current-accent);
+      margin-bottom: 0.35rem;
+    }
+
+    .module-title-block p {
+      font-family: var(--f-ui);
+      font-size: 0.9rem;
+      color: var(--ink-soft);
+      margin: 0.25rem 0;
+    }
+
+    .section-card {
+      margin: 2.5rem 0;
+      padding: 1.5rem;
+      background: var(--surface);
+      border: 1px solid var(--rule);
+      border-radius: 4px;
+    }
+
+    .section-card h3 {
+      font-size: var(--step-2);
+      font-weight: 600;
+      margin-top: 0;
+      margin-bottom: 1rem;
+      padding-bottom: 0.75rem;
+      border-bottom: 2px solid var(--current-accent);
+    }
+
+    .outcomes-list {
+      list-style: none;
+      padding: 0;
+      margin: 1rem 0;
+    }
+
+    .outcomes-list li {
+      font-size: 0.95rem;
+      padding: 0.6rem 0 0.6rem 1.8rem;
+      position: relative;
+    }
+
+    .outcomes-list li::before {
+      content: "✓";
+      position: absolute;
+      left: 0;
+      color: var(--good);
+      font-weight: 600;
+    }
+
+    .band-gap-table, .keytable {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.92rem;
+      margin: 1.5rem 0;
+    }
+
+    .band-gap-table th, .band-gap-table td,
+    .keytable th, .keytable td {
+      text-align: left;
+      padding: 0.75rem;
+      border-bottom: 1px solid var(--rule);
+      vertical-align: top;
+    }
+
+    .band-gap-table th, .keytable th {
+      font-family: var(--f-ui);
+      font-size: 0.75rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--ink-faint);
+      font-weight: 600;
+      background: var(--surface-sunk);
+    }
+
+    .lesson-block {
+      margin: 1.5rem 0;
+      padding: 1.25rem;
+      background: var(--accent-soft);
+      border-left: 3px solid var(--current-accent);
+      border-radius: 0 3px 3px 0;
+    }
+
+    .lesson-block strong {
+      color: var(--current-accent);
+      font-family: var(--f-ui);
+    }
+
+    .anti-example {
+      margin: 1.5rem 0;
+      padding: 1rem;
+      background: color-mix(in srgb, var(--bad) 5%, var(--surface));
+      border-left: 3px solid var(--bad);
+      border-radius: 0 3px 3px 0;
+    }
+
+    .passage-box {
+      background: var(--surface-sunk);
+      padding: 1.5rem;
+      margin: 1.5rem 0;
+      border-radius: 3px;
+      border-left: 4px solid var(--current-accent);
+    }
+
+    .passage-title {
+      font-family: var(--f-display);
+      font-size: var(--step-3);
+      font-weight: 600;
+      margin: 0 0 0.5rem;
+      color: var(--current-accent);
+    }
+
+    .passage-meta {
+      font-family: var(--f-ui);
+      font-size: 0.8rem;
+      color: var(--ink-faint);
+      margin-bottom: 1.25rem;
+    }
+
+    .para {
+      display: grid;
+      grid-template-columns: 2.4rem 1fr;
+      gap: 0 1rem;
+      margin-bottom: 1.5rem;
+      scroll-margin-top: 120px;
+    }
+
+    .para p {
+      margin: 0;
+      max-width: 66ch;
+    }
+
+    .para-letter {
+      font-family: var(--f-ui);
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--surface);
+      background: var(--current-accent);
+      border-radius: 3px;
+      height: 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .para.flash {
+      animation: flash 1.6s ease;
+    }
+
+    @keyframes flash {
+      0%, 15% { background: var(--amber-soft); }
+      100% { background: transparent; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .para.flash {
+        animation: none;
+        outline: 2px solid var(--amber);
+        outline-offset: 6px;
+      }
+    }
+
+    .q {
+      display: grid;
+      grid-template-columns: 2.2rem 1fr 3.4rem;
+      gap: 0 0.75rem;
+      align-items: start;
+      padding: 0.8rem 0;
+      border-bottom: 1px dotted var(--rule);
+    }
+
+    .q-num {
+      font-family: var(--f-ui);
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--ink-faint);
+      font-variant-numeric: tabular-nums;
+      padding-top: 0.3rem;
+    }
+
+    .q-text {
+      font-size: 0.98rem;
+    }
+
+    .q input[type="text"] {
+      font-family: var(--f-ui);
+      font-size: 1rem;
+      font-weight: 600;
+      text-align: center;
+      text-transform: uppercase;
+      width: 100%;
+      padding: 0.35rem 0;
+      border: 1px solid var(--rule);
+      border-radius: 3px;
+      background: var(--surface);
+      color: var(--ink);
+      transition: border-color 0.15s ease;
+    }
+
+    .q input.right {
+      border-color: var(--good);
+      color: var(--good);
+      background: color-mix(in srgb, var(--good) 8%, var(--surface));
+    }
+
+    .q input.wrong {
+      border-color: var(--bad);
+      color: var(--bad);
+      background: color-mix(in srgb, var(--bad) 8%, var(--surface));
+    }
+
+    .timer-box {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      margin: 1.5rem 0;
+    }
+
+    .clock {
+      font-family: var(--f-ui);
+      font-variant-numeric: tabular-nums;
+      font-size: 1.9rem;
+      font-weight: 500;
+      letter-spacing: -0.02em;
+      min-width: 4.2ch;
+      color: var(--current-accent);
+      transition: color 0.15s ease;
+    }
+
+    .clock.over {
+      color: var(--bad);
+    }
+
+    details {
+      border: 1px solid var(--rule);
+      border-radius: 3px;
+      margin: 1.5rem 0;
+      background: var(--ground);
+    }
+
+    details summary {
+      font-family: var(--f-ui);
+      font-size: 0.9rem;
+      font-weight: 600;
+      padding: 0.8rem 1rem;
+      cursor: pointer;
+      color: var(--current-accent);
+    }
+
+    details summary::marker {
+      color: var(--ink-faint);
+    }
+
+    details[open] summary {
+      border-bottom: 1px solid var(--rule);
+    }
+
+    .details-body {
+      padding: 1.25rem;
+    }
+
+    .keytable td.ans {
+      font-family: var(--f-ui);
+      font-weight: 600;
+      color: var(--current-accent);
+      white-space: nowrap;
+    }
+
+    .jump {
+      font-family: var(--f-ui);
+      font-size: 0.75rem;
+      font-weight: 600;
+      background: color-mix(in srgb, var(--current-accent) 12%, transparent);
+      color: var(--current-accent);
+      border: none;
+      border-radius: 3px;
+      padding: 0.2rem 0.45rem;
+      cursor: pointer;
+      margin-left: 0.4rem;
+      transition: filter 0.15s ease;
+    }
+
+    .jump:hover {
+      filter: brightness(0.9);
+    }
+
+    .ev {
+      color: var(--amber);
+      font-style: italic;
+    }
+
+    .strategy-list {
+      list-style: decimal;
+      padding-left: 1.8rem;
+    }
+
+    .strategy-list li {
+      margin-bottom: 1rem;
+      max-width: 66ch;
+    }
+
+    .strategy-list b {
+      font-family: var(--f-ui);
+      font-size: 0.95rem;
+    }
+
+    .error-taxonomy {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 1rem;
+      margin: 1.5rem 0;
+    }
+
+    .tax-code {
+      padding: 0.8rem;
+      background: var(--surface-sunk);
+      border-left: 3px solid var(--current-accent);
+      border-radius: 0 2px 2px 0;
+    }
+
+    .tax-code strong {
+      font-family: var(--f-ui);
+      color: var(--current-accent);
+    }
+
+    .tax-code p {
+      font-size: 0.85rem;
+      margin: 0.3rem 0 0;
+    }
+
+    .teacher-notes {
+      background: color-mix(in srgb, var(--current-accent) 8%, transparent);
+      padding: 1.25rem;
+      border-left: 3px solid var(--current-accent);
+      border-radius: 0 3px 3px 0;
+      font-size: 0.92rem;
+    }
+
+    .teacher-notes p {
+      margin: 0.6rem 0;
+    }
+
+    .teacher-view .teacher-notes,
+    .teacher-view details {
+      display: block;
+    }
+
+    .student-view .teacher-notes,
+    .student-view .teacher-section {
+      display: none;
+    }
+
+    body.student-view details[open] {
+      display: none !important;
+    }
+
+    footer {
+      font-family: var(--f-ui);
+      font-size: 0.78rem;
+      color: var(--ink-faint);
+      border-top: 1px solid var(--rule);
+      padding: 1.5rem clamp(1rem, 4vw, 2.5rem);
+      text-align: center;
+      background: var(--surface);
+    }
+
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+      align-items: center;
+      margin: 1.5rem 0;
+    }
+
+    .score {
+      font-family: var(--f-ui);
+      font-weight: 600;
+      font-size: 0.95rem;
+      color: var(--accent);
+    }
+
+    @media print {
+      header, .module-nav, .timer-box, .view-toggle, button, .teacher-notes {
+        display: none;
+      }
+      body {
+        background: white;
+        color: black;
+      }
+      .section-card, .lesson-block, .passage-box {
+        page-break-inside: avoid;
+        break-inside: avoid;
+      }
+      .para {
+        page-break-inside: avoid;
+        break-inside: avoid;
+      }
+      details {
+        border: none;
+        background: transparent;
+      }
+      details summary {
+        display: none;
+      }
+      details[open] .details-body {
+        display: block;
+        padding: 0;
+      }
+      .keytable {
+        font-size: 0.85rem;
+      }
+      footer {
+        border-top: 1px solid #ccc;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .module-header {
+        flex-direction: column;
+        gap: 0.75rem;
+      }
+      .section-card {
+        padding: 1rem;
+      }
+      .q {
+        grid-template-columns: 1.8rem 1fr 2.8rem;
+        gap: 0 0.5rem;
+      }
+      .timer-box {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+  </style>
+</head>
+
+<body class="student-view">
+
+<header>
+  <div class="head-inner">
+    <div>
+      <span class="label">IELTS Academic · Reading</span>
+      <h1>Three Matching Question Types</h1>
+      <p class="subtitle">Band 7–8 integrated lesson: grammar, paraphrase, entity mapping</p>
+      <p class="disclaimer">
+        This material is an original teaching set. It does not represent an official IELTS test or score prediction.
+      </p>
+    </div>
+    <div class="view-toggle">
+      <label for="viewMode" style="font-family: var(--f-ui); font-size: 0.9rem;">
+        <input type="checkbox" id="viewMode" aria-label="Toggle teacher view">
+        Teacher View
+      </label>
+    </div>
+  </div>
+</header>
+
+<nav class="module-nav">
+  <div class="module-nav-inner">
+    <a href="#module-1" class="nav-link" data-module="1">Module 1: Sentence Endings</a>
+    <a href="#module-2" class="nav-link" data-module="2">Module 2: Paraphrase Lab</a>
+    <a href="#module-3" class="nav-link" data-module="3">Module 3: Entity Mapping</a>
+  </div>
+</nav>
+
+<main>
+
+<!-- MODULE 1: MATCHING SENTENCE ENDINGS -->
+
+<section id="module-1" class="module m1">
+
+  <div class="module-header">
+    <div class="module-badge">①</div>
+    <div class="module-title-block">
+      <h2>Matching Sentence Endings</h2>
+      <p><strong>Context:</strong> Memory & Learning Science</p>
+      <p><strong>Band level:</strong> 7–8 | <strong>Time:</strong> 16 minutes | <strong>Questions:</strong> 8</p>
+    </div>
+  </div>
+
+  <div class="section-card">
+    <h3>① Target</h3>
+    <p><strong>Three measurable outcomes:</strong></p>
+    <ul class="outcomes-list">
+      <li>Distinguish grammatical fit from textual accuracy—you can eliminate a trap ending because it doesn't match the grammar or meaning, not just because it sounds odd.</li>
+      <li>Recognize paraphrase without keyword hunting—the correct ending will not use the exact words from the stem.</li>
+      <li>Justify every answer with a specific evidence quote from the passage.</li>
+    </ul>
+  </div>
+
+  <div class="section-card">
+    <h3>② Band Gap</h3>
+    <table class="band-gap-table">
+      <thead>
+        <tr><th>Band 6.5 pattern</th><th>Band 7–8 target</th><th>Evidence of shift</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Finds an ending that has the topic words from the stem.</td>
+          <td>Finds an ending whose meaning and grammar prove the connection, even if words differ.</td>
+          <td>You now check for evidence first, not vocabulary match.</td>
+        </tr>
+        <tr>
+          <td>Eliminates an ending because it "doesn't sound right."</td>
+          <td>Eliminates an ending because you can show why the grammar doesn't fit or the passage doesn't support it.</td>
+          <td>You cite passage evidence for every elimination, not intuition.</td>
+        </tr>
+        <tr>
+          <td>Answers without looking back at the passage.</td>
+          <td>Always cites the passage evidence before committing to an answer.</td>
+          <td>You spend more time per question but answer correctly.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="section-card">
+    <h3>③ Mini-Lesson: Three-Check Routine</h3>
+    <p>Before you mark an answer, run these three checks:</p>
+    <div class="lesson-block">
+      <p><strong>Check 1: Grammar.</strong> Does the ending fit the grammar of the stem? Look at subject-verb agreement, tense, and clause structure.</p>
+      <p><strong>Check 2: Meaning.</strong> Does the ending express a meaning the passage actually supports? Read the relevant paragraph again.</p>
+      <p><strong>Check 3: Evidence.</strong> Can you quote a sentence that proves this ending is correct? If not, find it or reject it.</p>
+    </div>
+  </div>
+
+  <div class="section-card">
+    <h3>④ Passage: Sleep and Memory Formation</h3>
+    <div class="passage-box">
+      <p class="passage-title">The Hidden Teacher: How Sleep Consolidates Learning</p>
+      <p class="passage-meta">~250 words | Band 7–8 teaching set</p>
+
+      <div class="para" id="para-1a">
+        <span class="para-letter">A</span>
+        <p>At first glance, sleep seems like a waste of time. A learner who stayed awake to study longer would accumulate more raw hours of exposure to the material. Yet decades of research into memory consolidation—the process by which temporary, fragile memories are transformed into stable, durable ones—suggests that skipping sleep is one of the worst study strategies imaginable. Sleep does not simply preserve what we have learned; it actively reorganizes and strengthens the neural pathways that encode that knowledge.</p>
+      </div>
+
+      <div class="para" id="para-1b">
+        <span class="para-letter">B</span>
+        <p>The mechanism is surprisingly intricate. During sleep, the brain enters a state in which new memories are replayed and reprocessed. Specifically, the hippocampus—a seahorse-shaped structure critical for forming new memories—discharges patterns of neural activity that correspond to events and skills learned during wakefulness. This replay is thought to serve as a form of internal tutoring, in which the sleeping brain reinforces connections between neurons and shifts memories from short-term to long-term storage. Each time a memory is replayed, it becomes progressively more resistant to decay, a phenomenon known as consolidation strengthening.</p>
+      </div>
+
+      <div class="para" id="para-1c">
+        <span class="para-letter">C</span>
+        <p>What makes this process even more remarkable is that consolidation is not uniform across all types of learning. Research has shown that declarative memories—facts, names, and explicit knowledge—rely heavily on a full cycle of non-REM and REM sleep for optimal consolidation. Procedural memories, such as playing an instrument or executing a dance move, appear to benefit more from non-REM sleep alone, particularly during the deep, slow-wave stages. This difference suggests that the brain has evolved specialized consolidation pathways for different knowledge types, with sleep acting as a selector that routes each memory to its appropriate storage location.</p>
+      </div>
+
+      <div class="para" id="para-1d">
+        <span class="para-letter">D</span>
+        <p>The implications for learners are profound. If a student learns material in the evening and then sleeps for eight hours, the material has undergone a full consolidation cycle by the time they wake. By contrast, a student who learns the same material in the morning and stays awake for sixteen hours before sleeping has deprived that memory of consolidation time during the brain's most active replaying period. Cramming the night before an exam, therefore, is not merely inefficient—it is neurologically self-sabotaging. The brain requires sleep to transform information from an exam paper into lasting knowledge.</p>
+      </div>
+
+      <div class="para" id="para-1e">
+        <span class="para-letter">E</span>
+        <p>Recent studies have even hinted at a potential role for sleep in error correction. When learning a skill that initially produces mistakes—such as learning to type or speak a foreign language—the brain appears to use sleep as an opportunity to refine motor sequences and suppress erroneous patterns. This refinement, like consolidation itself, occurs without conscious awareness. In other words, sleeping learners are not passively waiting for memory to solidify; they are actively optimizing their knowledge in ways their waking brains cannot achieve.</p>
+      </div>
+
+      <div class="para" id="para-1f">
+        <span class="para-letter">F</span>
+        <p>Sleep-deprived individuals often report that they "cannot think straight," and neuroscience confirms this intuition is grounded in biology. When sleep is restricted, the prefrontal cortex—the brain region responsible for logical reasoning, attention, and decision-making—shows reduced activity and diminished connectivity with other brain regions. Over time, chronic sleep loss accumulates cognitive debt that cannot be repaid by a single weekend of recovery sleep. For learners, this means that consistent, adequate sleep is not a luxury but a fundamental requirement for intellectual function.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-card">
+    <h3>⑤ Timed Transfer (16 minutes)</h3>
+    <div class="timer-box">
+      <span class="clock" id="m1-clock">16:00</span>
+      <button class="primary" id="m1-start">Start</button>
+      <button id="m1-reset">Reset</button>
+    </div>
+
+    <div style="margin-top: 2rem;">
+      <p><strong style="font-family: var(--f-ui);">Questions 1–8</strong></p>
+
+      <div class="q">
+        <span class="q-num">1</span>
+        <span class="q-text">Sleep does not simply preserve memory; it…</span>
+        <input type="text" data-q="1" maxlength="1" aria-label="Question 1">
+      </div>
+
+      <div class="q">
+        <span class="q-num">2</span>
+        <span class="q-text">The hippocampus replays learned memories during sleep so that…</span>
+        <input type="text" data-q="2" maxlength="1" aria-label="Question 2">
+      </div>
+
+      <div class="q">
+        <span class="q-num">3</span>
+        <span class="q-text">Procedural memories, unlike declarative memories, require…</span>
+        <input type="text" data-q="3" maxlength="1" aria-label="Question 3">
+      </div>
+
+      <div class="q">
+        <span class="q-num">4</span>
+        <span class="q-text">Cramming the night before an exam is ineffective because…</span>
+        <input type="text" data-q="4" maxlength="1" aria-label="Question 4">
+      </div>
+
+      <div class="q">
+        <span class="q-num">5</span>
+        <span class="q-text">When learners acquire skills that initially involve errors, sleep appears to…</span>
+        <input type="text" data-q="5" maxlength="1" aria-label="Question 5">
+      </div>
+
+      <div class="q">
+        <span class="q-num">6</span>
+        <span class="q-text">Sleep-deprived individuals experience reduced mental function because…</span>
+        <input type="text" data-q="6" maxlength="1" aria-label="Question 6">
+      </div>
+
+      <div class="q">
+        <span class="q-num">7</span>
+        <span class="q-text">The research described in the passage suggests that sleep is…</span>
+        <input type="text" data-q="7" maxlength="1" aria-label="Question 7">
+      </div>
+
+      <div class="q">
+        <span class="q-num">8</span>
+        <span class="q-text">Consolidation strengthening occurs each time a memory is replayed because…</span>
+        <input type="text" data-q="8" maxlength="1" aria-label="Question 8">
+      </div>
+
+      <div class="actions">
+        <button class="primary" id="m1-check">Check Answers</button>
+        <button id="m1-clear">Clear</button>
+        <span class="score" id="m1-score"></span>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-card">
+    <h3>⑥ Feedback & Answer Key</h3>
+    <details>
+      <summary>Reveal answers 1–8</summary>
+      <div class="details-body">
+        <table class="keytable">
+          <thead>
+            <tr><th>Q</th><th>Answer</th><th>Evidence</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>1</td>
+              <td class="ans">A <button class="jump" data-jump="1a">go</button></td>
+              <td>Paragraph A: <span class="ev">"Sleep does not simply preserve what we have learned; it actively reorganizes and strengthens"</span></td>
+            </tr>
+            <tr>
+              <td>2</td>
+              <td class="ans">B <button class="jump" data-jump="1b">go</button></td>
+              <td>Paragraph B: <span class="ev">"shifts memories from short-term to long-term storage"</span></td>
+            </tr>
+            <tr>
+              <td>3</td>
+              <td class="ans">C <button class="jump" data-jump="1c">go</button></td>
+              <td>Paragraph C: <span class="ev">"Procedural memories… appear to benefit more from non-REM sleep alone"</span></td>
+            </tr>
+            <tr>
+              <td>4</td>
+              <td class="ans">D <button class="jump" data-jump="1d">go</button></td>
+              <td>Paragraph D: <span class="ev">"material does not undergo full consolidation cycle"</span></td>
+            </tr>
+            <tr>
+              <td>5</td>
+              <td class="ans">E <button class="jump" data-jump="1e">go</button></td>
+              <td>Paragraph E: <span class="ev">"refine motor sequences and suppress erroneous patterns"</span></td>
+            </tr>
+            <tr>
+              <td>6</td>
+              <td class="ans">F <button class="jump" data-jump="1f">go</button></td>
+              <td>Paragraph F: <span class="ev">"prefrontal cortex shows reduced activity and diminished connectivity"</span></td>
+            </tr>
+            <tr>
+              <td>7</td>
+              <td class="ans">A <button class="jump" data-jump="1a">go</button></td>
+              <td>Paragraph A and E show sleep is active, not passive optimization</td>
+            </tr>
+            <tr>
+              <td>8</td>
+              <td class="ans">B <button class="jump" data-jump="1b">go</button></td>
+              <td>Paragraph B: <span class="ev">"reinforces connections between neurons and becomes resistant to decay"</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </details>
+  </div>
+
+  <div class="section-card">
+    <h3>⑦ Language Support</h3>
+    <div style="display: grid; gap: 1rem; margin: 1.5rem 0;">
+      <div class="tax-code">
+        <strong>Consolidation</strong>
+        <p>The process of transforming temporary memories into permanent ones through neural strengthening during sleep.</p>
+      </div>
+      <div class="tax-code">
+        <strong>Hippocampus</strong>
+        <p>Brain structure that replays memories during sleep to move them from short-term to long-term storage.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-card">
+    <h3>⑧ Reflection: Error Log</h3>
+    <div class="error-taxonomy">
+      <div class="tax-code">
+        <strong>G</strong>
+        <p>Grammar fit: Ending doesn't match stem's grammatical structure.</p>
+      </div>
+      <div class="tax-code">
+        <strong>M</strong>
+        <p>Meaning: Ending doesn't match passage's actual meaning.</p>
+      </div>
+      <div class="tax-code">
+        <strong>E</strong>
+        <p>Evidence ignored: You couldn't find passage support.</p>
+      </div>
+      <div class="tax-code">
+        <strong>K</strong>
+        <p>Kept old knowledge: You chose based on real-life truth, not passage.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-card">
+    <h3>⑨ Independent Practice</h3>
+    <p>Homework: Write 3 sentences summarizing the three-check routine. Use it on any reading task this week.</p>
+  </div>
+
+  <div class="section-card teacher-section">
+    <h3>⑩ Teacher Notes</h3>
+    <div class="teacher-notes">
+      <p><strong>Timing:</strong> 16 minutes (0–2 skim; 2–14 answer; 14–16 check).</p>
+      <p><strong>Mastery:</strong> 7–8 correct = ready for Module 2. 5–6 = reteach routine. Below 5 = pair work.</p>
+    </div>
+  </div>
+
+</section>
+
+<!-- MODULE 2: MATCHING INFORMATION (PARAPHRASE LAB) -->
+
+<section id="module-2" class="module m2">
+
+  <div class="module-header">
+    <div class="module-badge">②</div>
+    <div class="module-title-block">
+      <h2>Matching Information</h2>
+      <p><strong>Context:</strong> Workplace Automation</p>
+      <p><strong>Band level:</strong> 7–8 | <strong>Time:</strong> 15 minutes | <strong>Questions:</strong> 8</p>
+    </div>
+  </div>
+
+  <div class="section-card">
+    <h3>① Target</h3>
+    <ul class="outcomes-list">
+      <li>Identify four core paraphrase patterns (synonym swap, active/passive flip, generic/specific shift, clause inversion).</li>
+      <li>Spot paraphrase despite keyword absence—recognize equivalent meanings.</li>
+      <li>Distinguish topical mentions from full matches: does the paragraph actually make the claim?</li>
+    </ul>
+  </div>
+
+  <div class="section-card">
+    <h3>② Band Gap</h3>
+    <table class="band-gap-table">
+      <thead>
+        <tr><th>Band 6.5</th><th>Band 7–8</th><th>Evidence</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Hunts for matching keywords.</td>
+          <td>Recognizes equivalent meanings with different vocabulary.</td>
+          <td>You now skip trap answers despite topic-word match.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="section-card">
+    <h3>③ Mini-Lesson: Four Paraphrase Patterns</h3>
+    <div class="lesson-block">
+      <p><strong>Pattern 1: Synonym swap</strong> — "organizations" = "firms"; "adopted automation" = "implemented digital transformation."</p>
+      <p><strong>Pattern 2: Active ↔ Passive</strong> — "Workers retrained" = "Retraining was implemented."</p>
+      <p><strong>Pattern 3: Generic → Specific</strong> — "Challenges" (generic) = "Resistance, inefficiency, anxiety" (specific examples).</p>
+      <p><strong>Pattern 4: Clause inversion</strong> — "Because of X" = "X enabled Y."</p>
+    </div>
+  </div>
+
+  <div class="section-card">
+    <h3>④ Passage: Digital Transformation</h3>
+    <div class="passage-box">
+      <p class="passage-title">The Silent Reorganization: Why Automation Reshapes Workforces</p>
+      <p class="passage-meta">~280 words | Band 7–8 teaching set</p>
+
+      <div class="para" id="para-2a">
+        <span class="para-letter">A</span>
+        <p>Organizational adoption of automation technology is rarely straightforward. When firms implement digital systems to streamline operations, they typically discover that the technical challenge—installing hardware and software—is the simplest part of the transformation. The far greater difficulty lies in reshaping workplace culture, redefining job roles, and managing the psychological impact on employees who fear obsolescence. Companies that proceed without addressing these human dimensions often encounter resistance that can derail even well-designed automation initiatives.</p>
+      </div>
+
+      <div class="para" id="para-2b">
+        <span class="para-letter">B</span>
+        <p>A critical insight from recent case studies is that successful automation depends on transparent communication. Organizations that clearly explain the rationale for automation—that it eliminates drudgery rather than eliminating people—experience less workforce anxiety and higher adoption rates. Conversely, firms that implement systems without explanation often face passive resistance: employees deliberately work slowly with new tools, bypass automated processes in favor of familiar manual methods, or leave the organization entirely. This resistance is not malice; it is a rational response to perceived threat.</p>
+      </div>
+
+      <div class="para" id="para-2c">
+        <span class="para-letter">C</span>
+        <p>Reskilling and upskilling initiatives have become central to managing the transition. Instead of displacing workers, forward-thinking organizations invest in comprehensive training programs that enable current employees to operate new systems, analyze their outputs, and make decisions based on insights the automation provides. These initiatives require substantial financial commitment over months or years, yet they yield returns by retaining institutional knowledge and preventing the hiring costs associated with turnover. Companies that treat automation as an opportunity to elevate their workforce—rather than reduce headcount—report higher employee morale and greater operational gains.</p>
+      </div>
+
+      <div class="para" id="para-2d">
+        <span class="para-letter">D</span>
+        <p>The role of middle management deserves particular attention. These managers often serve as the interpreters between organizational leadership and frontline workers, translating strategic changes into actionable directives. Yet automation frequently threatens middle-management roles directly, as decision-making authority is sometimes redistributed to algorithms or to senior leadership's data-analysis teams. Middle managers who perceive automation as a threat to their position can become passive blockers, failing to champion the transition or adequately preparing their teams. Organizations that redefined middle-management roles—emphasizing coaching, team development, and exception handling—managed this transition more smoothly.</p>
+      </div>
+
+      <div class="para" id="para-2e">
+        <span class="para-letter">E</span>
+        <p>A secondary but significant challenge is legacy-system integration. Many organizations operate with disparate, decades-old systems that were never designed to communicate with modern automation platforms. The effort required to extract data from legacy systems, standardize it, and feed it into new automated processes can consume more time and budget than the automation purchase itself. Firms that underestimated this challenge often experienced implementation delays, partial deployments, and reduced returns on their investment. Strategic planning that accounts for legacy-system replacement or rigorous data-migration processes proves essential to successful automation rollout.</p>
+      </div>
+
+      <div class="para" id="para-2f">
+        <span class="para-letter">F</span>
+        <p>Looking forward, organizations that view automation as a catalyst for workforce evolution—rather than contraction—are likely to sustain competitive advantage. This perspective requires investment in continuous learning infrastructure, flexibility in role definition, and genuine partnership between human workers and automated systems. The future of work does not hinge on technology alone, but on the organizational wisdom to deploy that technology in ways that enhance, rather than diminish, human capability and dignity.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-card">
+    <h3>⑤ Timed Transfer (15 minutes)</h3>
+    <div class="timer-box">
+      <span class="clock" id="m2-clock">15:00</span>
+      <button class="primary" id="m2-start">Start</button>
+      <button id="m2-reset">Reset</button>
+    </div>
+
+    <div style="margin-top: 2rem;">
+      <p><strong style="font-family: var(--f-ui);">Match 8 statements to paragraphs (A–F). Some may repeat; some unused.</strong></p>
+
+      <div class="q">
+        <span class="q-num">1</span>
+        <span class="q-text">Firms that fail to communicate the reasons for automation face higher levels of employee attrition.</span>
+        <input type="text" data-q="m2-1" maxlength="1" aria-label="Question 1">
+      </div>
+
+      <div class="q">
+        <span class="q-num">2</span>
+        <span class="q-text">Legacy systems represent a hidden cost in automation projects because they do not interface easily with new platforms.</span>
+        <input type="text" data-q="m2-2" maxlength="1" aria-label="Question 2">
+      </div>
+
+      <div class="q">
+        <span class="q-num">3</span>
+        <span class="q-text">The technical installation of automation is often the least complex part of organizational transformation.</span>
+        <input type="text" data-q="m2-3" maxlength="1" aria-label="Question 3">
+      </div>
+
+      <div class="q">
+        <span class="q-num">4</span>
+        <span class="q-text">Training employees to work alongside automated systems can improve morale and productivity outcomes.</span>
+        <input type="text" data-q="m2-4" maxlength="1" aria-label="Question 4">
+      </div>
+
+      <div class="q">
+        <span class="q-num">5</span>
+        <span class="q-text">Middle managers who interpret strategy for their teams are sometimes disadvantaged when automation redistributes decision-making authority.</span>
+        <input type="text" data-q="m2-5" maxlength="1" aria-label="Question 5">
+      </div>
+
+      <div class="q">
+        <span class="q-num">6</span>
+        <span class="q-text">Organizations that contextualize automation as an enhancement of human work rather than a replacement are better positioned for long-term success.</span>
+        <input type="text" data-q="m2-6" maxlength="1" aria-label="Question 6">
+      </div>
+
+      <div class="q">
+        <span class="q-num">7</span>
+        <span class="q-text">Worker resistance to new systems is often rooted in reasonable concerns about job security.</span>
+        <input type="text" data-q="m2-7" maxlength="1" aria-label="Question 7">
+      </div>
+
+      <div class="q">
+        <span class="q-num">8</span>
+        <span class="q-text">Extracting and standardizing data from obsolete legacy systems can require more resources than acquiring the automation technology itself.</span>
+        <input type="text" data-q="m2-8" maxlength="1" aria-label="Question 8">
+      </div>
+
+      <div class="actions">
+        <button class="primary" id="m2-check">Check Answers</button>
+        <button id="m2-clear">Clear</button>
+        <span class="score" id="m2-score"></span>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-card">
+    <h3>⑥ Feedback & Answer Key</h3>
+    <details>
+      <summary>Reveal answers 1–8</summary>
+      <div class="details-body">
+        <table class="keytable">
+          <thead>
+            <tr><th>Q</th><th>Paragraph</th><th>Evidence</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>1</td>
+              <td class="ans">B <button class="jump" data-jump="2b">go</button></td>
+              <td><span class="ev">"employees… leave the organization entirely"</span> (attrition) when firms don't explain.</td>
+            </tr>
+            <tr>
+              <td>2</td>
+              <td class="ans">E <button class="jump" data-jump="2e">go</button></td>
+              <td><span class="ev">"never designed to communicate with modern automation platforms"</span></td>
+            </tr>
+            <tr>
+              <td>3</td>
+              <td class="ans">A <button class="jump" data-jump="2a">go</button></td>
+              <td><span class="ev">"technical challenge… is the simplest part"</span></td>
+            </tr>
+            <tr>
+              <td>4</td>
+              <td class="ans">C <button class="jump" data-jump="2c">go</button></td>
+              <td><span class="ev">"higher employee morale and greater operational gains"</span></td>
+            </tr>
+            <tr>
+              <td>5</td>
+              <td class="ans">D <button class="jump" data-jump="2d">go</button></td>
+              <td><span class="ev">"automation frequently threatens middle-management roles directly"</span></td>
+            </tr>
+            <tr>
+              <td>6</td>
+              <td class="ans">F <button class="jump" data-jump="2f">go</button></td>
+              <td><span class="ev">"catalyst for workforce evolution… enhance human capability"</span></td>
+            </tr>
+            <tr>
+              <td>7</td>
+              <td class="ans">B <button class="jump" data-jump="2b">go</button></td>
+              <td><span class="ev">"rational response to perceived threat"</span></td>
+            </tr>
+            <tr>
+              <td>8</td>
+              <td class="ans">E <button class="jump" data-jump="2e">go</button></td>
+              <td><span class="ev">"consume more time and budget than the automation purchase itself"</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </details>
+  </div>
+
+  <div class="section-card">
+    <h3>⑦ Language Support</h3>
+    <div style="display: grid; gap: 1rem; margin: 1.5rem 0;">
+      <div class="tax-code">
+        <strong>Passive resistance</strong>
+        <p>Non-confrontational opposition: working slowly or deliberately avoiding new systems.</p>
+      </div>
+      <div class="tax-code">
+        <strong>Blocker (organizational)</strong>
+        <p>A person or factor that slows down or stops progress.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-card">
+    <h3>⑧ Reflection: Error Log</h3>
+    <div class="error-taxonomy">
+      <div class="tax-code">
+        <strong>F</strong>
+        <p>Function missed: Spotted keyword but didn't notice different aspect (cause vs. effect).</p>
+      </div>
+      <div class="tax-code">
+        <strong>P</strong>
+        <p>Paraphrase blindness: Correct answer used different vocabulary; you missed it.</p>
+      </div>
+      <div class="tax-code">
+        <strong>K</strong>
+        <p>Kept part: Paragraph touched the topic but didn't make the full claim.</p>
+      </div>
+      <div class="tax-code">
+        <strong>N</strong>
+        <p>Never read: You didn't check that paragraph before answering.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-card">
+    <h3>⑨ Independent Practice</h3>
+    <p>Homework: List the four paraphrase patterns from memory. Practice spotting them in any reading you do.</p>
+  </div>
+
+  <div class="section-card teacher-section">
+    <h3>⑩ Teacher Notes</h3>
+    <div class="teacher-notes">
+      <p><strong>Timing:</strong> 15 minutes (0–2 read; 2–13 answer; 13–15 check).</p>
+      <p><strong>Mastery:</strong> 7+ correct = ready for Module 3. Below 7 = reteach the four patterns using local examples.</p>
+    </div>
+  </div>
+
+</section>
+
+<!-- MODULE 3: MATCHING FEATURES (TIMED DRILL) -->
+
+<section id="module-3" class="module m3">
+
+  <div class="module-header">
+    <div class="module-badge">③</div>
+    <div class="module-title-block">
+      <h2>Matching Features</h2>
+      <p><strong>Context:</strong> Food Systems & Agriculture</p>
+      <p><strong>Band level:</strong> 7–8 | <strong>Time:</strong> 15 minutes (3×5-min rounds) | <strong>Questions:</strong> 9</p>
+    </div>
+  </div>
+
+  <div class="section-card">
+    <h3>① Target</h3>
+    <ul class="outcomes-list">
+      <li>Track entities (countries, crops, systems) across multiple paragraphs instead of assuming one location per entity.</li>
+      <li>Reject distractors that mention an entity but make a different claim—entity presence ≠ match.</li>
+      <li>Maintain accuracy under time pressure: three 5-minute rounds teach speed + precision.</li>
+    </ul>
+  </div>
+
+  <div class="section-card">
+    <h3>② Band Gap</h3>
+    <table class="band-gap-table">
+      <thead>
+        <tr><th>Band 6.5</th><th>Band 7–8</th><th>Evidence</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Assumes each entity is in one paragraph only.</td>
+          <td>Tracks entities across all paragraphs, notes which claims attach where.</td>
+          <td>You now find entities spread across text before answering.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="section-card">
+    <h3>③ Mini-Lesson: Entity-to-Claim Mapping</h3>
+    <div class="lesson-block">
+      <p><strong>Step 1:</strong> Scan passage, list key entities (countries, crops, systems).</p>
+      <p><strong>Step 2:</strong> For each question, extract entity + claim.</p>
+      <p><strong>Step 3:</strong> Search ALL paragraphs for that entity.</p>
+      <p><strong>Step 4:</strong> Match the CLAIM, not just the entity.</p>
+    </div>
+  </div>
+
+  <div class="section-card">
+    <h3>④ Passage: Cultivating Resilience—Food Systems</h3>
+    <div class="passage-box">
+      <p class="passage-title">Toward Agricultural Futures That Endure</p>
+      <p class="passage-meta">~270 words | Band 7–8 teaching set</p>
+
+      <div class="para" id="para-3a">
+        <span class="para-letter">A</span>
+        <p>The global food system stands at a crossroads. Current agricultural practices—concentrated on a handful of commodity crops, dependent on chemical inputs, and optimized for short-term yield—have delivered unprecedented production volumes. Yet this efficiency has come at a cost: the narrowing of crop genetic diversity, the depletion of soil nutrients, and increasing vulnerability to pest outbreaks and climate variation. Regions once celebrated for agricultural innovation now struggle with degraded lands and depleted aquifers. Food security, it appears, requires a fundamental rethinking of how humans grow, distribute, and value food.</p>
+      </div>
+
+      <div class="para" id="para-3b">
+        <span class="para-letter">B</span>
+        <p>The challenge is magnified in monoculture-dependent regions. Across vast areas of Sub-Saharan Africa, South Asia, and Latin America, agricultural output relies on single high-yield varieties of staple crops. While this approach maximizes immediate output, it creates catastrophic risk: a single pest outbreak, a drought cycle, or a disease affecting that crop can devastate an entire region's food supply. Ethiopia, for instance, produces more than half its caloric output from a single crop type, leaving the nation acutely vulnerable. Diversifying production away from this monoculture trap is essential, yet it requires not just farmer adoption but also government support for transition costs and supply-chain restructuring.</p>
+      </div>
+
+      <div class="para" id="para-3c">
+        <span class="para-letter">C</span>
+        <p>Some regions are beginning this transition. Brazil, responding to international pressure and domestic sustainability movements, has launched initiatives to promote crop rotation and the reintegration of native species into agricultural landscapes. In West Africa, farmer cooperatives are experimenting with agroforestry—integrating trees into crop fields—to improve soil health, reduce pest pressure, and generate income streams beyond the primary crop. These pilots remain modest in scale, but they demonstrate proof of concept that diversification is achievable without wholesale abandonment of commercial agriculture.</p>
+      </div>
+
+      <div class="para" id="para-3d">
+        <span class="para-letter">D</span>
+        <p>Cold storage and logistics infrastructure emerge as critical enablers of dietary diversity. When perishable crops reach consumers before spoiling, smallholder farmers can profitably grow nutrient-rich vegetables, fruits, and legumes instead of relying solely on shelf-stable grains. However, most developing nations lack refrigerated transportation networks. The World Food Programme reports that Sub-Saharan Africa loses approximately 30 percent of its harvested vegetables to spoilage before they reach markets, a waste driven by inadequate storage capacity and transport delays. Investing in cold-chain infrastructure would not only reduce post-harvest losses but enable farmers to diversify into higher-value crops.</p>
+      </div>
+
+      <div class="para" id="para-3e">
+        <span class="para-letter">E</span>
+        <p>Water governance is another decisive factor. Regions relying on irrigated agriculture—including major grain-producing areas of South Asia and the Middle East—face the prospect of groundwater depletion. India, which feeds over 1.4 billion people through intensive irrigation, is drawing down aquifers at rates that cannot be sustained beyond the coming decades. Transitioning to climate-adapted, less water-intensive crops; implementing precision irrigation technologies; and promoting rainwater harvesting can extend agricultural viability, but only if water is governed as a shared resource, not a commodity to be exploited freely by the largest producers.</p>
+      </div>
+
+      <div class="para" id="para-3f">
+        <span class="para-letter">F</span>
+        <p>The role of indigenous knowledge systems deserves renewed emphasis. Agricultural practices refined over millennia—intercropping, managing seasonal variations, selecting for local climate adaptation—were systematically displaced during the industrial agriculture transition of the late 20th century. Yet these systems often embodied sophisticated ecological principles that modern science is only now validating. In the Andean region, farmers have long cultivated multiple potato varieties at different altitudes, a strategy that provides insurance against crop failure due to frost or drought. Such multi-layered adaptation strategies offer lessons for building resilience in an era of climate instability.</p>
+      </div>
+
+      <div class="para" id="para-3g">
+        <span class="para-letter">G</span>
+        <p>Ultimately, the path forward requires viewing food security not as a problem to be solved through maximum yield, but as a challenge to be managed through ecological resilience. This shift entails investing in research on crop-environment interaction, supporting farmers through transition periods, and building markets for diverse agricultural outputs. It also demands that consumers—especially in wealthy nations—accept higher food costs and reduced year-round availability of all crops. The alternative—continuing current practices until system collapse forces change—carries risks far greater than the inconveniences of a more modest, diversified, and locally-attuned food system.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-card">
+    <h3>⑤ Timed Drill: Three 5-Minute Rounds</h3>
+    <div class="timer-box">
+      <span class="clock" id="m3-clock">5:00</span>
+      <button class="primary" id="m3-start">Start Round</button>
+      <button id="m3-reset">Reset Timer</button>
+    </div>
+
+    <div style="margin-top: 2rem;">
+      <p><strong style="font-family: var(--f-ui);">ROUND 1 (Questions 1–3)</strong></p>
+
+      <div class="q">
+        <span class="q-num">1</span>
+        <span class="q-text">Ethiopia's food supply is particularly susceptible to external shocks because of agricultural practices.</span>
+        <input type="text" data-q="m3-1" maxlength="1" aria-label="Question 1">
+      </div>
+
+      <div class="q">
+        <span class="q-num">2</span>
+        <span class="q-text">Brazil has implemented programs designed to reduce dependence on single-crop production.</span>
+        <input type="text" data-q="m3-2" maxlength="1" aria-label="Question 2">
+      </div>
+
+      <div class="q">
+        <span class="q-num">3</span>
+        <span class="q-text">Integrating trees into crop fields improves soil conditions and pest management in farming systems.</span>
+        <input type="text" data-q="m3-3" maxlength="1" aria-label="Question 3">
+      </div>
+
+      <div class="actions">
+        <button class="primary" id="m3-check-r1">Check Round 1</button>
+        <span class="score" id="m3-score-r1"></span>
+      </div>
+
+      <p style="margin-top: 2rem;"><strong style="font-family: var(--f-ui);">ROUND 2 (Questions 4–6)</strong></p>
+
+      <div class="q">
+        <span class="q-num">4</span>
+        <span class="q-text">Sub-Saharan Africa loses a significant portion of harvested vegetables before consumers can access them.</span>
+        <input type="text" data-q="m3-4" maxlength="1" aria-label="Question 4">
+      </div>
+
+      <div class="q">
+        <span class="q-num">5</span>
+        <span class="q-text">The rapid depletion of aquifers threatens the agricultural sustainability of South Asian nations.</span>
+        <input type="text" data-q="m3-5" maxlength="1" aria-label="Question 5">
+      </div>
+
+      <div class="q">
+        <span class="q-num">6</span>
+        <span class="q-text">Indigenous farming techniques from mountainous regions demonstrate strategies that mitigate climate-related crop failure.</span>
+        <input type="text" data-q="m3-6" maxlength="1" aria-label="Question 6">
+      </div>
+
+      <div class="actions">
+        <button class="primary" id="m3-check-r2">Check Round 2</button>
+        <span class="score" id="m3-score-r2"></span>
+      </div>
+
+      <p style="margin-top: 2rem;"><strong style="font-family: var(--f-ui);">ROUND 3 (Questions 7–9)</strong></p>
+
+      <div class="q">
+        <span class="q-num">7</span>
+        <span class="q-text">Current agricultural practices have achieved high yields at the expense of environmental degradation.</span>
+        <input type="text" data-q="m3-7" maxlength="1" aria-label="Question 7">
+      </div>
+
+      <div class="q">
+        <span class="q-num">8</span>
+        <span class="q-text">Improving transportation and refrigeration systems would enable farmers to grow less-stable food crops profitably.</span>
+        <input type="text" data-q="m3-8" maxlength="1" aria-label="Question 8">
+      </div>
+
+      <div class="q">
+        <span class="q-num">9</span>
+        <span class="q-text">Building a resilient food system requires both technological investment and changes in consumer behavior and expectations.</span>
+        <input type="text" data-q="m3-9" maxlength="1" aria-label="Question 9">
+      </div>
+
+      <div class="actions">
+        <button class="primary" id="m3-check-r3">Check Round 3</button>
+        <button id="m3-check-all">Show All Answers</button>
+        <span class="score" id="m3-score-r3"></span>
+        <span class="score" id="m3-score-total" style="margin-left: 1rem;"></span>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-card">
+    <h3>⑥ Feedback & Answer Key</h3>
+    <details>
+      <summary>Reveal all answers (1–9)</summary>
+      <div class="details-body">
+        <table class="keytable">
+          <thead>
+            <tr><th>Q</th><th>Paragraph</th><th>Evidence</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>1</td>
+              <td class="ans">B <button class="jump" data-jump="3b">go</button></td>
+              <td><span class="ev">"Ethiopia produces more than half its caloric output from a single crop type, leaving the nation acutely vulnerable"</span></td>
+            </tr>
+            <tr>
+              <td>2</td>
+              <td class="ans">C <button class="jump" data-jump="3c">go</button></td>
+              <td><span class="ev">"Brazil… has launched initiatives to promote crop rotation and the reintegration of native species"</span></td>
+            </tr>
+            <tr>
+              <td>3</td>
+              <td class="ans">C <button class="jump" data-jump="3c">go</button></td>
+              <td><span class="ev">"agroforestry—integrating trees into crop fields—to improve soil health, reduce pest pressure"</span></td>
+            </tr>
+            <tr>
+              <td>4</td>
+              <td class="ans">D <button class="jump" data-jump="3d">go</button></td>
+              <td><span class="ev">"Sub-Saharan Africa loses approximately 30 percent of its harvested vegetables to spoilage"</span></td>
+            </tr>
+            <tr>
+              <td>5</td>
+              <td class="ans">E <button class="jump" data-jump="3e">go</button></td>
+              <td><span class="ev">"major grain-producing areas of South Asia… face the prospect of groundwater depletion"</span></td>
+            </tr>
+            <tr>
+              <td>6</td>
+              <td class="ans">F <button class="jump" data-jump="3f">go</button></td>
+              <td><span class="ev">"Andean region… cultivated multiple potato varieties… provides insurance against crop failure due to frost or drought"</span></td>
+            </tr>
+            <tr>
+              <td>7</td>
+              <td class="ans">A <button class="jump" data-jump="3a">go</button></td>
+              <td><span class="ev">"efficiency has come at a cost: the narrowing of crop genetic diversity, the depletion of soil nutrients"</span></td>
+            </tr>
+            <tr>
+              <td>8</td>
+              <td class="ans">D <button class="jump" data-jump="3d">go</button></td>
+              <td><span class="ev">"perishable crops reach consumers before spoiling, smallholder farmers can profitably grow nutrient-rich vegetables"</span> (less-stable crops)</td>
+            </tr>
+            <tr>
+              <td>9</td>
+              <td class="ans">G <button class="jump" data-jump="3g">go</button></td>
+              <td><span class="ev">"investing in research… supporting farmers… demands that consumers… accept higher food costs and reduced year-round availability"</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </details>
+  </div>
+
+  <div class="section-card">
+    <h3>⑦ Language Support</h3>
+    <div style="display: grid; gap: 1rem; margin: 1.5rem 0;">
+      <div class="tax-code">
+        <strong>Monoculture</strong>
+        <p>Cultivation of a single crop variety over a large area. Creates efficiency but vulnerability.</p>
+      </div>
+      <div class="tax-code">
+        <strong>Agroforestry</strong>
+        <p>Integration of trees into crop fields to improve soil and reduce pests.</p>
+      </div>
+      <div class="tax-code">
+        <strong>Cold-chain infrastructure</strong>
+        <p>Temperature-controlled storage and transport systems.</p>
+      </div>
+      <div class="tax-code">
+        <strong>Resilience</strong>
+        <p>Ability to withstand and recover from shocks (droughts, pests, market changes).</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-card">
+    <h3>⑧ Reflection: Accuracy Tracker & Entity Tracking</h3>
+    <p style="margin-top: 1.5rem; font-style: italic;">For each wrong answer: Did you assume one entity per paragraph? Did you spot the entity but miss the claim? Did you confuse similar entities? Track these patterns.</p>
+    <div class="error-taxonomy">
+      <div class="tax-code">
+        <strong>V</strong>
+        <p>Visible but different: Entity appeared, but claim contradicted the question.</p>
+      </div>
+      <div class="tax-code">
+        <strong>D</strong>
+        <p>Distributed: Entity was correct, but I looked in the wrong paragraph first.</p>
+      </div>
+      <div class="tax-code">
+        <strong>N</strong>
+        <p>Never there: I confused this entity with another or misread the name.</p>
+      </div>
+      <div class="tax-code">
+        <strong>M</strong>
+        <p>Misread claim: Entity was correct, but I misunderstood what the passage said.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-card">
+    <h3>⑨ Independent Practice</h3>
+    <p>Homework: Create an "entity map" for tomorrow's reading task: list all entities and the paragraphs that mention them.</p>
+  </div>
+
+  <div class="section-card teacher-section">
+    <h3>⑩ Teacher Notes</h3>
+    <div class="teacher-notes">
+      <p><strong>Timing:</strong> 15 minutes (5-min rounds × 3, with check/reflect between).</p>
+      <p><strong>Mastery:</strong> 8–9/9 = ready for full timed tests. 6–7/9 = revisit entity mapping. Below 6 = pair work and reteach routine.</p>
+    </div>
+  </div>
+
+</section>
+
+</main>
+
+<footer>
+  IELTS Academic Reading (Bands 7–8) · Three integrated matching modules · Original teaching material · Created 2026-08-30
+</footer>
+
+<script type="application/json" id="lesson-data">
+{
+  "metadata": {
+    "title": "Band 7–8 Matching Questions: Integrated Lesson",
+    "band": "7-8",
+    "totalTime": "46 minutes",
+    "totalQuestions": 25,
+    "created": "2026-08-30"
+  },
+  "modules": [
+    {"id": "M1", "type": "matching-sentence-endings", "title": "Matching Sentence Endings", "context": "Memory & Learning", "questions": 8, "timeLimit": "16 minutes"},
+    {"id": "M2", "type": "matching-information", "title": "Matching Information", "context": "Workplace Automation", "questions": 8, "timeLimit": "15 minutes"},
+    {"id": "M3", "type": "matching-features", "title": "Matching Features", "context": "Food Systems", "questions": 9, "timeLimit": "15 minutes (3×5-min rounds)"}
+  ]
+}
+</script>
+
+<script>
+(function() {
+  const M1_KEY = {1:"A", 2:"B", 3:"C", 4:"D", 5:"E", 6:"F", 7:"A", 8:"B"};
+  const M2_KEY = {1:"B", 2:"E", 3:"A", 4:"C", 5:"D", 6:"F", 7:"B", 8:"E"};
+  const M3_KEY = {1:"B", 2:"C", 3:"C", 4:"D", 5:"E", 6:"F", 7:"A", 8:"D", 9:"G"};
+
+  // View toggle
+  const viewMode = document.getElementById("viewMode");
+  const body = document.body;
+
+  function updateView() {
+    if (viewMode.checked) {
+      body.classList.remove("student-view");
+      body.classList.add("teacher-view");
+      sessionStorage.setItem("view-mode", "teacher");
+    } else {
+      body.classList.remove("teacher-view");
+      body.classList.add("student-view");
+      sessionStorage.setItem("view-mode", "student");
+    }
+  }
+
+  const saved = sessionStorage.getItem("view-mode") || "student";
+  viewMode.checked = (saved === "teacher");
+  updateView();
+  viewMode.addEventListener("change", updateView);
+
+  // Module 1
+  (function() {
+    const clock = document.getElementById("m1-clock");
+    const start = document.getElementById("m1-start");
+    const reset = document.getElementById("m1-reset");
+    const check = document.getElementById("m1-check");
+    const clear = document.getElementById("m1-clear");
+    const score = document.getElementById("m1-score");
+    const inputs = Array.from(document.querySelectorAll(".q input[data-q]"));
+
+    let total = 16 * 60, left = total, running = false, tick = null;
+
+    function paint() {
+      const m = Math.floor(Math.abs(left) / 60), s = Math.abs(left) % 60;
+      clock.textContent = (left < 0 ? "-" : "") + m + ":" + (s < 10 ? "0" : "") + s;
+      clock.classList.toggle("over", left <= 0);
+    }
+
+    start.addEventListener("click", () => {
+      running = !running;
+      start.textContent = running ? "Pause" : "Start";
+      if (running) tick = setInterval(() => { left--; paint(); }, 1000);
+      else clearInterval(tick);
+    });
+
+    reset.addEventListener("click", () => {
+      clearInterval(tick);
+      running = false;
+      left = total;
+      start.textContent = "Start";
+      paint();
+    });
+
+    inputs.forEach((el, i) => {
+      el.addEventListener("input", () => {
+        el.value = el.value.toUpperCase().replace(/[^A-F]/g, "");
+        el.classList.remove("right", "wrong");
+        if (el.value && inputs[i + 1]) inputs[i + 1].focus();
+      });
+    });
+
+    check.addEventListener("click", () => {
+      let correct = 0;
+      for (let q in M1_KEY) {
+        const inp = document.querySelector('[data-q="' + q + '"]');
+        const ok = inp.value.toUpperCase() === M1_KEY[q];
+        inp.classList.toggle("right", ok);
+        inp.classList.toggle("wrong", !ok);
+        if (ok) correct++;
+      }
+      score.textContent = correct + " / 8 — " + (correct >= 7 ? "7.5+" : correct >= 6 ? "7.0" : correct >= 4 ? "6.5" : "below 6");
+    });
+
+    clear.addEventListener("click", () => {
+      inputs.forEach(el => { el.value = ""; el.classList.remove("right", "wrong"); });
+      score.textContent = "";
+    });
+
+    paint();
+
+    document.querySelectorAll('[data-jump]').forEach(btn => {
+      btn.addEventListener("click", () => {
+        const id = "para-1" + btn.dataset.jump;
+        const el = document.getElementById(id);
+        if (el) {
+          el.scrollIntoView({ behavior: "smooth" });
+          el.classList.remove("flash");
+          void el.offsetWidth;
+          el.classList.add("flash");
+        }
+      });
+    });
+  })();
+
+  // Module 2
+  (function() {
+    const clock = document.getElementById("m2-clock");
+    const start = document.getElementById("m2-start");
+    const reset = document.getElementById("m2-reset");
+    const check = document.getElementById("m2-check");
+    const clear = document.getElementById("m2-clear");
+    const score = document.getElementById("m2-score");
+    const inputs = Array.from(document.querySelectorAll('input[data-q^="m2-"]'));
+
+    let total = 15 * 60, left = total, running = false, tick = null;
+
+    function paint() {
+      const m = Math.floor(Math.abs(left) / 60), s = Math.abs(left) % 60;
+      clock.textContent = (left < 0 ? "-" : "") + m + ":" + (s < 10 ? "0" : "") + s;
+      clock.classList.toggle("over", left <= 0);
+    }
+
+    start.addEventListener("click", () => {
+      running = !running;
+      start.textContent = running ? "Pause" : "Start";
+      if (running) tick = setInterval(() => { left--; paint(); }, 1000);
+      else clearInterval(tick);
+    });
+
+    reset.addEventListener("click", () => {
+      clearInterval(tick);
+      running = false;
+      left = total;
+      start.textContent = "Start";
+      paint();
+    });
+
+    inputs.forEach(el => {
+      el.addEventListener("input", () => {
+        el.value = el.value.toUpperCase().replace(/[^A-F]/g, "");
+        el.classList.remove("right", "wrong");
+      });
+    });
+
+    check.addEventListener("click", () => {
+      let correct = 0;
+      for (let i = 1; i <= 8; i++) {
+        const inp = document.querySelector('[data-q="m2-' + i + '"]');
+        const ok = inp.value.toUpperCase() === M2_KEY[i];
+        inp.classList.toggle("right", ok);
+        inp.classList.toggle("wrong", !ok);
+        if (ok) correct++;
+      }
+      score.textContent = correct + " / 8 — " + (correct >= 7 ? "7.5+" : correct >= 6 ? "7.0" : correct >= 4 ? "6.5" : "below 6");
+    });
+
+    clear.addEventListener("click", () => {
+      inputs.forEach(el => { el.value = ""; el.classList.remove("right", "wrong"); });
+      score.textContent = "";
+    });
+
+    paint();
+
+    document.querySelectorAll('[data-jump]').forEach(btn => {
+      btn.addEventListener("click", () => {
+        const id = "para-2" + btn.dataset.jump;
+        const el = document.getElementById(id);
+        if (el) {
+          el.scrollIntoView({ behavior: "smooth" });
+          el.classList.remove("flash");
+          void el.offsetWidth;
+          el.classList.add("flash");
+        }
+      });
+    });
+  })();
+
+  // Module 3
+  (function() {
+    const clock = document.getElementById("m3-clock");
+    const start = document.getElementById("m3-start");
+    const reset = document.getElementById("m3-reset");
+    const checkR1 = document.getElementById("m3-check-r1");
+    const checkR2 = document.getElementById("m3-check-r2");
+    const checkR3 = document.getElementById("m3-check-r3");
+    const checkAll = document.getElementById("m3-check-all");
+    const scoreR1 = document.getElementById("m3-score-r1");
+    const scoreR2 = document.getElementById("m3-score-r2");
+    const scoreR3 = document.getElementById("m3-score-r3");
+    const scoreTotal = document.getElementById("m3-score-total");
+    const inputs = Array.from(document.querySelectorAll('input[data-q^="m3-"]'));
+
+    let total = 5 * 60, left = total, running = false, tick = null;
+
+    function paint() {
+      const m = Math.floor(Math.abs(left) / 60), s = Math.abs(left) % 60;
+      clock.textContent = (left < 0 ? "-" : "") + m + ":" + (s < 10 ? "0" : "") + s;
+      clock.classList.toggle("over", left <= 0);
+    }
+
+    start.addEventListener("click", () => {
+      running = !running;
+      start.textContent = running ? "Pause" : "Start";
+      if (running) tick = setInterval(() => { left--; paint(); }, 1000);
+      else clearInterval(tick);
+    });
+
+    reset.addEventListener("click", () => {
+      clearInterval(tick);
+      running = false;
+      left = total;
+      start.textContent = "Start";
+      paint();
+    });
+
+    inputs.forEach(el => {
+      el.addEventListener("input", () => {
+        el.value = el.value.toUpperCase().replace(/[^A-G]/g, "");
+        el.classList.remove("right", "wrong");
+      });
+    });
+
+    checkR1.addEventListener("click", () => {
+      let correct = 0;
+      for (let i = 1; i <= 3; i++) {
+        const inp = document.querySelector('[data-q="m3-' + i + '"]');
+        const ok = inp.value.toUpperCase() === M3_KEY[i];
+        inp.classList.toggle("right", ok);
+        inp.classList.toggle("wrong", !ok);
+        if (ok) correct++;
+      }
+      scoreR1.textContent = correct + " / 3";
+    });
+
+    checkR2.addEventListener("click", () => {
+      let correct = 0;
+      for (let i = 4; i <= 6; i++) {
+        const inp = document.querySelector('[data-q="m3-' + i + '"]');
+        const ok = inp.value.toUpperCase() === M3_KEY[i];
+        inp.classList.toggle("right", ok);
+        inp.classList.toggle("wrong", !ok);
+        if (ok) correct++;
+      }
+      scoreR2.textContent = correct + " / 3";
+    });
+
+    checkR3.addEventListener("click", () => {
+      let correct = 0;
+      for (let i = 7; i <= 9; i++) {
+        const inp = document.querySelector('[data-q="m3-' + i + '"]');
+        const ok = inp.value.toUpperCase() === M3_KEY[i];
+        inp.classList.toggle("right", ok);
+        inp.classList.toggle("wrong", !ok);
+        if (ok) correct++;
+      }
+      scoreR3.textContent = correct + " / 3";
+      const r1 = parseInt(scoreR1.textContent) || 0;
+      const r2 = parseInt(scoreR2.textContent) || 0;
+      const r3 = parseInt(scoreR3.textContent) || 0;
+      const total_score = r1 + r2 + r3;
+      const band = total_score >= 8 ? "7.5+" : total_score >= 7 ? "7.0" : total_score >= 5 ? "6.5" : "below 6";
+      scoreTotal.textContent = "TOTAL: " + total_score + " / 9 — " + band;
+    });
+
+    checkAll.addEventListener("click", () => {
+      checkR1.click();
+      setTimeout(() => checkR2.click(), 100);
+      setTimeout(() => checkR3.click(), 200);
+    });
+
+    paint();
+
+    document.querySelectorAll('[data-jump]').forEach(btn => {
+      btn.addEventListener("click", () => {
+        const id = "para-3" + btn.dataset.jump;
+        const el = document.getElementById(id);
+        if (el) {
+          el.scrollIntoView({ behavior: "smooth" });
+          el.classList.remove("flash");
+          void el.offsetWidth;
+          el.classList.add("flash");
+        }
+      });
+    });
+  })();
+
+  // Nav
+  document.querySelectorAll(".nav-link").forEach(link => {
+    link.addEventListener("click", (e) => {
+      e.preventDefault();
+      document.querySelectorAll(".nav-link").forEach(l => l.classList.remove("active"));
+      link.classList.add("active");
+      const id = link.getAttribute("href");
+      const el = document.querySelector(id);
+      if (el) el.scrollIntoView({ behavior: "smooth" });
+    });
+  });
+
+})();
+</script>
+
+</body>
+</html>
