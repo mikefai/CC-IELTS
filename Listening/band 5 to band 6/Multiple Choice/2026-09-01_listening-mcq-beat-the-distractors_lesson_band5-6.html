@@ -39,7 +39,15 @@ summary{cursor:pointer;color:var(--accent);font-weight:600;font-size:.9rem}
 .transcript{font-size:.95rem;white-space:pre-line;background:var(--accent-soft);border-radius:10px;padding:1rem;margin-top:.5rem}
 .note{font-size:.85rem;color:var(--muted)}
 footer{margin-top:2.5rem;border-top:1px solid var(--line);padding-top:1rem;font-size:.85rem;color:var(--muted)}
-footer a{color:var(--accent);text-decoration:none}</style>
+footer a{color:var(--accent);text-decoration:none}
+#rbar{position:fixed;top:0;left:0;height:3px;background:linear-gradient(90deg,#2563eb,#60a5fa);width:0;z-index:100;transition:width .1s linear}
+a:focus-visible,button:focus-visible,input:focus-visible,summary:focus-visible{outline:3px solid #2563eb;outline-offset:2px;border-radius:6px}
+@media(prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important;scroll-behavior:auto!important}}
+.btn{transition:filter .15s,transform .1s}
+.btn:active{transform:scale(.97)}
+#toTop{position:fixed;right:1.2rem;bottom:1.2rem;width:2.7rem;height:2.7rem;border-radius:50%;border:1px solid #dfe6ef;background:#fff;color:#2563eb;font-size:1.15rem;font-weight:800;cursor:pointer;box-shadow:0 4px 16px rgba(22,32,47,.12);opacity:0;pointer-events:none;transition:opacity .2s;z-index:99}
+#toTop.show{opacity:1;pointer-events:auto}
+</style>
 </head>
 <body>
 <header class="top">
@@ -81,6 +89,7 @@ footer a{color:var(--accent);text-decoration:none}</style>
 <label class="opt"><input type="radio" name="q4" value="D">D&nbsp; 20</label></div>
 <button class="btn" id="check">Check answers</button>
 <button class="btn ghost" id="revealTx">Show transcript</button>
+<button class="btn ghost" id="resetQ">Reset</button>
 <div class="score hidden" id="score"></div>
 <details class="hidden" id="txWrap"><summary>Transcript (read aloud, or have a partner read it to you)</summary>
 <div class="transcript">Good afternoon everyone. A quick reminder that the library's study-skills workshop — the one on taking better lecture notes — begins at half past five this evening. We had planned an earlier start at five, but the tutor is teaching until five fifteen, so we've pushed it back slightly.
@@ -118,8 +127,28 @@ document.getElementById("revealTx").addEventListener("click",function(){
   d.classList.toggle("hidden");
   this.textContent=d.classList.contains("hidden")?"Show transcript":"Hide transcript";
 });
+document.getElementById("resetQ").addEventListener("click",function(){
+  document.querySelectorAll("input[type=radio]").forEach(function(i){i.checked=false});
+  document.querySelectorAll(".opt").forEach(function(l){l.classList.remove("correct","wrong")});
+  document.getElementById("score").classList.add("hidden");
+});
 </script>
 
 </div>
+<div id="rbar" role="presentation"></div>
+<button id="toTop" aria-label="Back to top" title="Back to top">↑</button>
+<script>
+(function(){
+  var bar=document.getElementById("rbar"),t=document.getElementById("toTop");
+  function upd(){
+    var h=document.documentElement;
+    var max=h.scrollHeight-h.clientHeight;
+    bar.style.width=(max>0?(h.scrollTop/max*100):0)+"%";
+    t.classList.toggle("show",h.scrollTop>400);
+  }
+  window.addEventListener("scroll",upd,{passive:true});upd();
+  t.addEventListener("click",function(){window.scrollTo({top:0,behavior:"smooth"})});
+})();
+</script>
 </body>
 </html>
