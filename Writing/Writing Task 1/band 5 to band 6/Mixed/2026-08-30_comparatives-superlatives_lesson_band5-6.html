@@ -941,7 +941,7 @@ a{color:#000;text-decoration:none}
   /* ---- NOTICE ---- */
   function renderNotice(host){
     NOTICE.forEach(function(q){
-      var wrap = el("div", "item"); wrap.id = "item-" + q.id;
+      var wrap = el("div", "item"); wrap.id = "item-2" + q.id;
       wrap.innerHTML = '<div class="item-head"><span class="qn">' + q.id + '</span>' +
         '<span class="bucket-tag">' + q.bucket + '</span></div>' +
         '<p class="stem">' + esc(q.sentence) + '</p>' +
@@ -967,7 +967,7 @@ a{color:#000;text-decoration:none}
         row.appendChild(c);
       });
       wrap.appendChild(row);
-      var fb = el("div", "fb"); fb.id = "fb-" + q.id; fb.setAttribute("role", "status");
+      var fb = el("div", "fb"); fb.id = "fb-2" + q.id; fb.setAttribute("role", "status");
       wrap.appendChild(fb);
       host.appendChild(wrap);
       if (S.notice[q.id + "__done"]) paintNotice(q);
@@ -1003,7 +1003,7 @@ a{color:#000;text-decoration:none}
   function renderFreeText(host, list, kind){
     list.forEach(function(q){
       var st = S[kind][q.id] || {};
-      var wrap = el("div", "item"); wrap.id = "item-" + q.id;
+      var wrap = el("div", "item"); wrap.id = "item-3" + q.id;
       var headline = kind === "repair"
         ? '<p class="stem">Fix this sentence:</p><div class="data-line">' + esc(q.broken) + '</div>'
         : '<p class="data-line">' + esc(q.data) + '</p><p class="req">' + q.req + '</p>';
@@ -1029,7 +1029,7 @@ a{color:#000;text-decoration:none}
       row.appendChild(checkBtn); row.appendChild(overrideBtn);
       wrap.appendChild(row);
 
-      var fb = el("div", "fb"); fb.id = "fb-" + q.id; fb.setAttribute("role", "status");
+      var fb = el("div", "fb"); fb.id = "fb-3" + q.id; fb.setAttribute("role", "status");
       wrap.appendChild(fb);
 
       checkBtn.addEventListener("click", function(){
@@ -1088,7 +1088,7 @@ a{color:#000;text-decoration:none}
   /* ---- TRANSFER ---- */
   function renderTransfer(host){
     TRANSFER.forEach(function(t){
-      var wrap = el("div", "item"); wrap.id = "item-" + t.id;
+      var wrap = el("div", "item"); wrap.id = "item-4" + t.id;
       var bars = t.rows.map(function(r){
         var pct = Math.round(r[1] / t.max * 100);
         return '<div class="bar-row"><span>' + esc(r[0]) + '</span>' +
@@ -1102,7 +1102,7 @@ a{color:#000;text-decoration:none}
         '<p class="req">' + t.instruction + '</p>';
 
       var ta = el("textarea");
-      ta.id = "ta-" + t.id;
+      ta.id = "ta-2" + t.id;
       ta.setAttribute("aria-label", "Your Task 1 comparison for " + t.id);
       ta.style.minHeight = "6.5rem";
       ta.value = S.transferText[t.id] || "";
