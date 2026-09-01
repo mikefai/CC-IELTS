@@ -27,8 +27,20 @@ No MCQ key — self-assessed against checklist.
 - Strategy 3 (trap / cohesion / concede) present?
 - If 3/4 criteria ticked → ready for next band.
 
----
-**Before finalising:** count by letter — no option holds far more than its share. 4±1 per A-D per 12Q set; here 1 each per 4Q lesson. Rebalance distractors if skewed, never the key.
 ## 2026-09-08_task2-discussion-language-focus_lesson_band7-8.html — Language Focus — Hedging (supplementary)
 
 No MCQ — self-assessed via checklist (cohesion/hedging/one-idea). 3 criteria ticked → ready.
+
+---
+
+## What a good answer looks like
+**Model thesis (skeleton — adapt to the prompt, do not memorise):**
+> Some argue that [view A], whereas others maintain that [view B]; this essay will examine both before arguing that [synthesis / reasoned position].
+
+**Language bank:** advocates of this view · critics point out · a more balanced reading · weighing both sides
+### Band ladder (self-check)
+- **4-5:** overview / position is present and clear; one idea per paragraph; simple but accurate sentences.
+- **5-6:** extend every idea with an example + result; fix tense consistency; basic linking.
+- **6-7:** precise data selection or hedged stance; complex comparisons / concession sentences.
+- **7-8:** group data logically or weave concession into the argument; cohesion is unobtrusive.
+- **8-9:** fluent, natural phrasing; features blended ("twice as many... as") / stance nuanced throughout with skilful qualification.
