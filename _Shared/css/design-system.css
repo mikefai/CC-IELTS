@@ -423,3 +423,30 @@ a:hover{ color:var(--primary-strong); }
 
 /* Lesson polish stays quiet */
 .article{ max-width:860px; margin-inline:auto; }
+
+/* ---------- RESPONSIVE REFINEMENTS — 320 / 640 / 900 / 1040 ---------- */
+@media(max-width:640px){
+  .wrap{ width:min(100% - 1.25rem, var(--page-w)); }
+  .hero{ padding:1rem 0 .3rem; }
+  .hero__actions{ gap:.5rem; }
+  .hero__actions .btn{ flex:1 1 100%; justify-content:center; }
+  .hero__meta-inline{ flex-basis:100%; }
+  .band-ruler{ padding:.6rem .7rem; gap:.6rem; }
+  .toolbar{ gap:.6rem; }
+  .search{ flex-basis:100%; max-width:none; }
+  .grid--cards{ gap:.8rem; }
+  .card{ padding:1.15rem 1.1rem; }
+  .list__item{ flex-direction:column; align-items:flex-start; gap:.4rem; }
+  .list__meta{ white-space:normal; }
+}
+@media(max-width:520px){
+  .card__head{ gap:.6rem; }
+  .card__icon{ width:2.15rem; height:2.15rem; font-size:.76rem; }
+  .filter-row{ gap:.3rem; }
+}
+@media(min-width:641px) and (max-width:900px){
+  .grid--cards{ grid-template-columns:repeat(2,1fr); }
+}
+@media(min-width:901px) and (max-width:1040px){
+  .grid--cards{ grid-template-columns:repeat(3,1fr); }
+}

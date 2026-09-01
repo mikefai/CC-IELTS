@@ -65,6 +65,26 @@ footer{margin-top:2rem;padding:1.2rem 0 2rem;border-top:1px solid var(--line);te
 .compare td{padding:.65rem .8rem;border-top:1px solid #EEF1EF;vertical-align:top}
 .compare td:first-child{font-weight:600;background:var(--sunk);width:24%}
 </style>
+
+<style id="ct-responsive-v2">
+@media(max-width:640px){
+  .wrap{padding:1rem .9rem 2rem}
+  .meta{flex-direction:column; gap:.5rem}
+  .strat{flex-direction:column; gap:.4rem}
+  .opt{padding:.7rem .8rem; min-height:44px}
+  .timer{font-size:1rem}
+  .card{padding:1rem .9rem}
+  .compare{font-size:.82rem; display:block; overflow-x:auto}
+}
+@media(max-width:520px){
+  h1{font-size:1.45rem}
+  .badge{font-size:.62rem}
+}
+@media(max-width:360px){
+  .wrap{padding:.8rem .65rem 2rem}
+}
+</style>
+
 </head>
 <body>
 <div class="wrap">
@@ -212,5 +232,25 @@ var KEY={};
   if(to){window.addEventListener('scroll', function(){to.classList.toggle('show', window.scrollY>400)},{passive:true}); to.addEventListener('click', function(){window.scrollTo({top:0,behavior:'smooth'})});}
 })();
 </script>
+
+<script>
+(function(){
+  // unify timer pause on visibilityChange for all lessons
+  document.addEventListener('visibilitychange', function(){
+    if(document.hidden){
+      // timers will auto pause via existing intervals? dispatch event for custom timers
+      document.dispatchEvent(new CustomEvent('ct:pauseTimers'));
+    }
+  });
+  // ensure all inputs have 44px hit area on touch devices
+  if(window.matchMedia('(pointer: coarse)').matches){
+    document.querySelectorAll('input, button, .opt, .filter-btn').forEach(function(el){
+      var h = el.getBoundingClientRect().height;
+      if(h && h < 44) el.style.minHeight='44px';
+    });
+  }
+})();
+</script>
+
 </body>
 </html>

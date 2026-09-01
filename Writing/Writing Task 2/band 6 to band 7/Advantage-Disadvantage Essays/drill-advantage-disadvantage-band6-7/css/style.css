@@ -14,3 +14,15 @@ h1{font-family:Georgia,serif;font-size:1.6rem;margin:.5rem 0 .3rem}
 .q.wrong{border-color:var(--bad);background:var(--bad-soft)}
 footer{margin-top:2rem;text-align:center;color:var(--muted);font-size:.82rem;border-top:1px solid var(--line);padding-top:1rem}
 footer a{color:var(--accent)}
+
+/* ct-drill-responsive */
+
+@media(max-width:640px){
+  .wrap{padding:1.2rem .9rem 2rem}
+  .card{padding:1rem .9rem}
+  .q{padding:.7rem .8rem}
+  button, .btn{min-height:44px}
+}
+@media(max-width:520px){
+  h1{font-size:1.35rem}
+}

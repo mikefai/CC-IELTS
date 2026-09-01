@@ -111,6 +111,26 @@ footer{border-top:1px solid #ccc}
 .section-card{padding:1rem}
 .q{grid-template-columns:1.8rem 1fr 2.8rem;gap:0 0.5rem}
 .timer-box{flex-direction:column;align-items:flex-start}
+.head-inner{flex-direction:column; gap:1rem}
+.view-toggle{align-self:flex-start}
+}
+@media (max-width:520px){
+  header{padding:1.4rem 1rem 1rem}
+  header h1{font-size:1.55rem}
+  .module-nav{padding:.6rem .75rem; overflow-x:auto; -webkit-overflow-scrolling:touch}
+  .module-nav-inner{flex-wrap:nowrap; min-width:max-content; gap:.35rem}
+  .module-nav a{white-space:nowrap; flex:0 0 auto; font-size:.84rem; padding:.45rem .75rem}
+  .module-badge{font-size:1.6rem; min-width:2.2rem}
+  .module-title-block h2{font-size:1.35rem}
+  .para{grid-template-columns:1.9rem 1fr; gap:0 .6rem}
+  .para-letter{height:1.75rem; width:1.9rem; font-size:.9rem}
+  .q-text{font-size:.92rem}
+  .band-gap-table{font-size:.84rem; display:block; overflow-x:auto; white-space:nowrap}
+  .band-gap-table th,.band-gap-table td{white-space:normal; min-width:120px}
+}
+@media (max-width:360px){
+  .q{grid-template-columns:1.6rem 1fr 2.4rem}
+  .q input[type="text"]{font-size:.92rem}
 }</style>
 <link rel="stylesheet" href="../../../_Shared/css/lesson.css">
 <link rel="stylesheet" href="../../../_Shared/css/dashboard.css">
@@ -1290,17 +1310,43 @@ footer{border-top:1px solid #ccc}
     });
   })();
 
-  // Nav
+  // Nav — responsive + keyboard accessible
+  const nav = document.querySelector(".module-nav");
+  const navInner = document.querySelector(".module-nav-inner");
+  if(nav) nav.setAttribute("role","tablist");
   document.querySelectorAll(".nav-link").forEach(link => {
+    link.setAttribute("role","tab");
+    link.setAttribute("aria-selected", link.classList.contains("active")?"true":"false");
+    link.setAttribute("tabindex", link.classList.contains("active")?"0":"-1");
     link.addEventListener("click", (e) => {
       e.preventDefault();
-      document.querySelectorAll(".nav-link").forEach(l => l.classList.remove("active"));
-      link.classList.add("active");
+      document.querySelectorAll(".nav-link").forEach(l => {l.classList.remove("active"); l.setAttribute("aria-selected","false"); l.setAttribute("tabindex","-1")});
+      link.classList.add("active"); link.setAttribute("aria-selected","true"); link.setAttribute("tabindex","0");
       const id = link.getAttribute("href");
       const el = document.querySelector(id);
-      if (el) el.scrollIntoView({ behavior: "smooth" });
+      if (el) el.scrollIntoView({ behavior: "smooth", block:"start" });
+      // keep active tab visible on small screens
+      link.scrollIntoView({behavior:"smooth", inline:"center", block:"nearest"});
+    });
+    link.addEventListener("keydown", (e)=>{
+      if(e.key==="ArrowRight"||e.key==="ArrowLeft"){
+        e.preventDefault();
+        const links=[...document.querySelectorAll(".nav-link")];
+        const idx=links.indexOf(link);
+        const next = e.key==="ArrowRight" ? links[(idx+1)%links.length] : links[(idx-1+links.length)%links.length];
+        next.focus(); next.click();
+      }
     });
   });
+  // Responsive: module-nav sticky offset for dash-topbar
+  if(nav && document.body.classList.contains("with-dash")){
+    nav.style.top="56px";
+    document.querySelectorAll(".module, .para").forEach(el=>el.style.scrollMarginTop="108px");
+  }
+  // Enhance inputs for touch — ensure 44px hit area on mobile
+  if(window.innerWidth<=640){
+    document.querySelectorAll(".q input[type='text']").forEach(inp=>{inp.style.minHeight="44px"; inp.style.minWidth="44px"});
+  }
 
 })();
 </script>
