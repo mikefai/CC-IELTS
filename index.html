@@ -1,14 +1,28 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<script>try{var t=localStorage.getItem('ct-theme');if(t==='dark'||t==='light')document.documentElement.setAttribute('data-theme',t)}catch(e){}</script>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>IELTS Academic — Materials Hub · Examination Atelier</title>
 <meta name="description" content="IELTS Academic — Materials Hub — CLAUDE TEACHING Examination Atelier. Every lesson by band and question type, band tape, offline.">
 <meta name="theme-color" content="#0f141c">
 <link rel="stylesheet" href="_Shared/css/design-system.css">
+<link rel="stylesheet" href="_Shared/css/dashboard.css">
 </head>
-<body>
+<body class="with-dash">
+<header class="dash-topbar" aria-label="Dashboard top bar">
+  <a class="dash-topbar__left" href="index.html" aria-label="Back to hub">
+    <span class="dash-topbar__mark" aria-hidden="true">CT</span>
+    <span>
+      <div class="dash-topbar__brand-title">CLAUDE TEACHING</div>
+      <div class="dash-topbar__brand-sub">IELTS Academic · Dashboard</div>
+    </span>
+  </a>
+  <nav class="dash-topbar__center" aria-label="Primary"><a class="dash-tab" href="dashboard/index.html">Dashboard</a><a class="dash-tab" href="index.html">Hub</a><a class="dash-tab" href="Reading/index.html">Reading</a><a class="dash-tab" href="Writing/index.html">Writing</a></nav>
+  <span class="dash-target" aria-label="Target Band">Target: Band 7.0</span>
+</header>
+
 <div id="progress" class="progress" aria-hidden="true"></div>
 <a class="skip-link" href="#main">Skip to content</a>
 <header class="topbar">
@@ -21,6 +35,7 @@
       </span>
     </a>
     <div class="topbar__right">
+      <a class="topbar__crumb" href="dashboard/index.html">Dashboard →</a>
       <a class="topbar__crumb" href="../SAT/index.html">Digital SAT →</a>
       <span class="pill pill--violet">IELTS Academic</span>
       <button id="theme-toggle" class="theme-toggle" type="button" aria-pressed="false" aria-label="Switch to dark theme"><span class="theme-icon" aria-hidden="true">☀</span><span class="theme-label visually-hidden">Dark</span></button>

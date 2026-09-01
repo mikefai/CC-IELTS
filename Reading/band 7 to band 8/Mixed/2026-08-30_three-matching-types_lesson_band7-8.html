@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<script>try{var t=localStorage.getItem('ct-theme');if(t==='dark'||t==='light')document.documentElement.setAttribute('data-theme',t)}catch(e){}</script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Band 7–8 Matching Questions: Integrated Lesson</title>
@@ -115,9 +116,22 @@ footer{border-top:1px solid #ccc}
 .timer-box{flex-direction:column;align-items:flex-start}
 }</style>
 <link rel="stylesheet" href="../../../_Shared/css/lesson.css">
+<link rel="stylesheet" href="../../../_Shared/css/dashboard.css">
 </head>
 
-<body class="student-view">
+<body class="student-view with-dash">
+<header class="dash-topbar" aria-label="Dashboard top bar">
+  <a class="dash-topbar__left" href="../../../index.html" aria-label="Back to hub">
+    <span class="dash-topbar__mark" aria-hidden="true">CT</span>
+    <span>
+      <div class="dash-topbar__brand-title">CLAUDE TEACHING</div>
+      <div class="dash-topbar__brand-sub">IELTS Academic · Dashboard</div>
+    </span>
+  </a>
+  <nav class="dash-topbar__center" aria-label="Primary"><a class="dash-tab" href="../../../dashboard/index.html">Dashboard</a><a class="dash-tab" href="../../../index.html">Hub</a><a class="dash-tab" href="../../index.html">Reading</a><a class="dash-tab" href="../../../Writing/index.html">Writing</a></nav>
+  <span class="dash-target" aria-label="Target Band">Target: Band 7.0</span>
+</header>
+
 
 <header class="lesson-head">
   <div class="head-inner">

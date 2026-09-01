@@ -1,3 +1,9 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script>try{var t=localStorage.getItem('ct-theme');if(t==='dark'||t==='light')document.documentElement.setAttribute('data-theme',t)}catch(e){}</script>
 <meta charset="utf-8">
 <title>Paragraph Mapping</title>
 <meta name="theme-color" content="#1d4ed8">
@@ -135,6 +141,21 @@ footer{font-family:var(--f-mono);font-size:0.72rem;color:var(--ink-faint);text-a
 @media print{.bar{position:static}
 .map-para,details.key{break-inside:avoid}
 }</style>
+<link rel="stylesheet" href="../../../_Shared/css/dashboard.css">
+</head>
+<body class="with-dash">
+<header class="dash-topbar" aria-label="Dashboard top bar">
+  <a class="dash-topbar__left" href="../../../index.html" aria-label="Back to hub">
+    <span class="dash-topbar__mark" aria-hidden="true">CT</span>
+    <span>
+      <div class="dash-topbar__brand-title">CLAUDE TEACHING</div>
+      <div class="dash-topbar__brand-sub">IELTS Academic · Dashboard</div>
+    </span>
+  </a>
+  <nav class="dash-topbar__center" aria-label="Primary"><a class="dash-tab" href="../../../dashboard/index.html">Dashboard</a><a class="dash-tab" href="../../../index.html">Hub</a><a class="dash-tab" href="../../index.html">Reading</a><a class="dash-tab" href="../../../Writing/index.html">Writing</a></nav>
+  <span class="dash-target" aria-label="Target Band">Target: Band 7.0</span>
+</header>
+
 <link rel="stylesheet" href="../../../_Shared/css/lesson.css">
 
 <div class="hero">
@@ -919,3 +940,6 @@ footer{font-family:var(--f-mono);font-size:0.72rem;color:var(--ink-faint);text-a
   });
 })();
 </script>
+
+</body>
+</html>

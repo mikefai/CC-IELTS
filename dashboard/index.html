@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>IELTS Dashboard — CLAUDE TEACHING</title>
+<meta name="description" content="IELTS Academic quadrant dashboard — four skills, streak, band ladder, vocab mastery, and learning path.">
+<meta name="theme-color" content="#fafaf9">
+<script>try{var t=localStorage.getItem('ct-theme');if(t==='dark'||t==='light')document.documentElement.setAttribute('data-theme',t);}catch(e){}</script>
+<link rel="stylesheet" href="../_Shared/css/design-system.css">
+<link rel="stylesheet" href="../_Shared/css/dashboard.css">
+<style>
+/* ========== Dashboard — scoped palette, isolated from atelier globals ========== */
+.dashboard{
+  --dash-bg: #fafaf9;
+  --dash-stone-900:#1c1917;
+  --dash-stone-500:#78716c;
+  --dash-rule:#e7e5e4;
+  --dash-card:#ffffff;
+  --dash-shadow:0 1px 3px rgba(28,25,23,.06),0 4px 12px rgba(28,25,23,.06);
+  --skill-listening:#06b6d4;
+  --skill-reading:#6366f1;
+  --skill-writing:#f59e0b;
+  --skill-speaking:#fb7185;
+  --tier-5:#22c55e;
+  --tier-6:#14b8a6;
+  --tier-7:#3b82f6;
+  --tier-8:#8b5cf6;
+  --streak:#f97316;
+  --ring:#0d9488;
+  --ladder-current-bg:#f0fdf4;
+  --ladder-current:#16a34a;
+}
+.dashboard-page{
+  background:var(--dash-bg);
+  color:var(--dash-stone-900);
+  padding-top:56px;
+}
+.dashboard-page body{ background:var(--dash-bg); }
+/* ---------- Top bar (dashboard variant, fixed) ---------- */
+.dash-topbar{
+  position:fixed;top:0;left:0;right:0;z-index:80;
+  height:56px;background:#fff;border-bottom:1px solid var(--dash-rule);
+  display:flex;align-items:center;justify-content:space-between;
+  padding:0 1.5rem;gap:1rem;
+}
+.dash-topbar__left{display:flex;align-items:center;gap:.7rem;text-decoration:none;color:inherit}
+.dash-topbar__mark{
+  width:2.15rem;height:2.15rem;border-radius:8px;display:grid;place-items:center;
+  background:#0f141c;color:#fbfaf6;font-family:var(--f-mono);font-weight:700;font-size:.72rem;letter-spacing:.06em;
+  flex-shrink:0;
+}
+.dash-topbar__brand-title{font-family:var(--f-display);font-weight:400;letter-spacing:-.015em;font-size:.98rem;line-height:1}
+.dash-topbar__brand-sub{font-family:var(--f-mono);font-size:.58rem;letter-spacing:.11em;text-transform:uppercase;color:#78716c;font-weight:600}
+.dash-topbar__center{display:flex;align-items:center;gap:.4rem}
+.dash-tab{
+  font-family:var(--f-mono);font-size:.78rem;font-weight:700;letter-spacing:.04em;
+  padding:.44rem .7rem;border-radius:8px;text-decoration:none;color:var(--dash-stone-500);
+  border:1px solid transparent;position:relative;
+}
+.dash-tab--active{color:var(--dash-stone-900);background:#fafaf9}
+.dash-tab--active::after{
+  content:"";position:absolute;left:.7rem;right:.7rem;bottom:-1px;height:2px;
+  background:var(--skill-reading);border-radius:999px;
+}
+.dash-target{
+  font-family:var(--f-mono);font-size:.7rem;font-weight:700;letter-spacing:.06em;
+  background:#dbeafe;color:#1e40af;border:1px solid #bfdbfe;border-radius:999px;
+  padding:.35rem .75rem;white-space:nowrap;
+}
+@media(max-width:600px){ .dash-target{display:none} }
+
+/* ---------- Container + Grid ---------- */
+.dashboard{max-width:1180px;margin:0 auto;padding:1.5rem 1.25rem 2rem}
+@media(max-width:520px){ .dashboard{padding:1.2rem .9rem 2rem} }
+.dashboard-grid{display:grid;grid-template-columns:2fr 1fr;gap:1.5rem;align-items:start}
+@media(max-width:900px){ .dashboard-grid{grid-template-columns:1fr} }
+
+/* ---------- Quadrants ---------- */
+.quadrants{display:grid;grid-template-columns:repeat(2,1fr);gap:1rem}
+@media(max-width:600px){ .quadrants{grid-template-columns:1fr} }
+.q-card{
+  background:#fff;border:1px solid var(--dash-rule);border-radius:24px;
+  padding:1.25rem;box-shadow:var(--dash-shadow);
+  display:flex;flex-direction:column;gap:.75rem;
+  transition:transform .3s ease,box-shadow .3s ease;
+  outline:0;
+}
+.q-card:hover{transform:translateY(-3px);box-shadow:0 8px 22px rgba(28,25,23,.1)}
+.q-card:focus-visible{box-shadow:0 0 0 3px color-mix(in srgb, var(--skill-reading) 30%, transparent), var(--dash-shadow)}
+.q-card--listening{--skill:var(--skill-listening); background:color-mix(in srgb, var(--skill-listening) 10%, #fff)}
+.q-card--reading{--skill:var(--skill-reading); background:color-mix(in srgb, var(--skill-reading) 10%, #fff)}
+.q-card--writing{--skill:var(--skill-writing); background:color-mix(in srgb, var(--skill-writing) 10%, #fff)}
+.q-card--speaking{--skill:var(--skill-speaking); background:color-mix(in srgb, var(--skill-speaking) 10%, #fff)}
+/* fallback for Safari 14 no color-mix */
+@supports not (background: color-mix(in srgb, red 10%, white)){
+  .q-card--listening{background:rgba(6,182,212,.1)}
+  .q-card--reading{background:rgba(99,102,241,.1)}
+  .q-card--writing{background:rgba(245,158,11,.1)}
+  .q-card--speaking{background:rgba(251,113,133,.1)}
+}
+.q-card__head{display:flex;align-items:center;justify-content:space-between;gap:.6rem}
+.q-card__label{display:flex;align-items:center;gap:.45rem;font-family:var(--f-mono);font-size:.72rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--dash-stone-500)}
+.q-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0}
+.q-dot--listening{background:var(--skill-listening)}
+.q-dot--reading{background:var(--skill-reading)}
+.q-dot--writing{background:var(--skill-writing)}
+.q-dot--speaking{background:var(--skill-speaking)}
+.q-band{font-family:var(--f-mono);font-size:2rem;font-weight:800;line-height:1;letter-spacing:-.04em}
+.q-band--listening{color:var(--skill-listening)}
+.q-band--reading{color:var(--skill-reading)}
+.q-band--writing{color:var(--skill-writing)}
+.q-band--speaking{color:var(--skill-speaking)}
+.q-stats{display:flex;gap:.9rem;font-family:var(--f-mono);font-size:.72rem;color:var(--dash-stone-500);flex-wrap:wrap}
+.q-stats b{color:var(--dash-stone-900);font-weight:700}
+.q-trend-up{color:#16a34a;font-weight:800}
+.q-spark{display:flex;align-items:end;gap:2px;height:36px;margin-top:.1rem}
+.q-spark__bar{flex:1;border-radius:4px;min-height:4px;transition:height .6s ease, opacity .6s ease}
+.q-btn{
+  margin-top:.15rem;width:100%;border:0;border-radius:999px;padding:.6rem 1rem;
+  font-family:var(--f-mono);font-size:.78rem;font-weight:700;letter-spacing:.02em;
+  color:#fff;cursor:pointer;transition:filter .15s, transform .12s, box-shadow .15s;
+}
+.q-btn:hover{filter:brightness(1.06);transform:translateY(-1px)}
+.q-btn:active{transform:none}
+.q-btn:focus-visible{box-shadow:0 0 0 3px color-mix(in srgb, var(--skill) 30%, transparent)}
+.q-btn--listening{background:var(--skill-listening)}
+.q-btn--reading{background:var(--skill-reading)}
+.q-btn--writing{background:var(--skill-writing)}
+.q-btn--speaking{background:var(--skill-speaking)}
+
+/* ---------- Right panel ---------- */
+.side-stack{display:flex;flex-direction:column;gap:1rem}
+.side-card{background:#fff;border:1px solid var(--dash-rule);border-radius:24px;padding:1.25rem;box-shadow:var(--dash-shadow)}
+.side-card__label{font-family:var(--f-mono);font-size:.62rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--dash-stone-500);margin:0 0 .3rem}
+.side-card__title{font-family:var(--f-display);font-weight:400;font-size:1.02rem;margin:0 0 .4rem}
+.streak-num{font-family:var(--f-mono);font-size:48px;font-weight:800;line-height:.95;color:var(--streak)}
+.streak-sub{font-family:var(--f-mono);font-size:.72rem;color:var(--dash-stone-500);font-weight:600}
+.streak-row{display:flex;align-items:baseline;gap:.35rem}
+.streak-meta{font-size:.76rem;color:var(--dash-stone-500);margin-top:.6rem;line-height:1.5}
+.ladder{list-style:none;margin:.55rem 0 0;padding:0;display:grid;gap:.35rem}
+.ladder__row{display:flex;align-items:center;gap:.6rem;padding:.34rem .55rem;border-radius:10px;font-family:var(--f-mono);font-size:.78rem}
+.ladder__bar{width:24px;height:6px;border-radius:999px;flex-shrink:0}
+.ladder__label{font-weight:700}
+.ladder__status{margin-left:auto;font-size:.7rem;color:var(--dash-stone-500);font-weight:600}
+.ladder__row--current{background:var(--ladder-current-bg);color:var(--ladder-current)}
+.ladder__row--current .ladder__status{color:var(--ladder-current);font-weight:800}
+.ladder__row--passed{opacity:.4}
+.ladder__row--future .ladder__status{color:var(--dash-stone-500)}
+.vocab-ring-wrap{display:flex;align-items:center;gap:1rem;margin-top:.6rem}
+.vocab-ring{position:relative;width:100px;height:100px;flex-shrink:0}
+.vocab-ring svg{width:100px;height:100px;transform:rotate(-90deg)}
+.vocab-pct{position:absolute;inset:0;display:grid;place-items:center;font-family:var(--f-mono);font-weight:800;font-size:1.15rem;color:var(--dash-stone-900)}
+.vocab-meta{font-size:.8rem;color:var(--dash-stone-500);line-height:1.5}
+.vocab-meta b{color:var(--dash-stone-900)}
+
+/* ---------- Learning Path ---------- */
+.learning-path{margin-top:1.5rem;background:#fff;border:1px solid var(--dash-rule);border-radius:24px;padding:1.25rem;box-shadow:var(--dash-shadow)}
+.lp-head{display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap;margin-bottom:.9rem}
+.lp-head h2{font-family:var(--f-display);font-weight:400;font-size:1.25rem;letter-spacing:-.015em}
+.lp-pill{font-family:var(--f-mono);font-size:.7rem;font-weight:700;letter-spacing:.06em;background:#f0fdf4;color:#16a34a;border:1px solid #bbf7d0;border-radius:999px;padding:.34rem .7rem}
+.lp-track-wrap{position:relative;padding:1rem 0 .2rem;overflow-x:auto;overflow-y:hidden;-webkit-overflow-scrolling:touch;scroll-snap-type:x proximity}
+.lp-track{position:relative;display:flex;gap:1.5rem;min-width:max-content;padding:0 .4rem 1rem}
+.lp-line{position:absolute;left:0;right:0;top:18px;height:4px;border-radius:999px;background:linear-gradient(90deg,var(--tier-5),var(--tier-6),var(--tier-7),var(--tier-8));opacity:.95}
+.lp-node-col{display:flex;flex-direction:column;align-items:center;gap:.6rem;scroll-snap-align:start;min-width:180px}
+.lp-node{width:12px;height:12px;border-radius:50%;border:3px solid #fff;box-shadow:0 0 0 2px rgba(28,25,23,.08);position:relative;z-index:1}
+.lp-node--5{background:var(--tier-5)}
+.lp-node--6{background:var(--tier-6)}
+.lp-node--7{background:var(--tier-7)}
+.lp-node--8{background:var(--tier-8)}
+.lp-node--current{box-shadow:0 0 0 8px color-mix(in srgb, var(--tier-7) 20%, transparent), 0 0 0 2px rgba(28,25,23,.08)}
+@supports not (box-shadow: 0 0 0 8px color-mix(in srgb, red 20%, transparent)){
+  .lp-node--current{box-shadow:0 0 0 8px rgba(59,130,246,.2), 0 0 0 2px rgba(28,25,23,.08)}
+}
+@media(prefers-reduced-motion:no-preference){
+  .lp-node--current{animation:pulse 2s infinite}
+  @keyframes pulse{0%{box-shadow:0 0 0 0 rgba(59,130,246,.35),0 0 0 2px rgba(28,25,23,.08)}70%{box-shadow:0 0 0 10px rgba(59,130,246,0),0 0 0 2px rgba(28,25,23,.08)}100%{box-shadow:0 0 0 0 rgba(59,130,246,0),0 0 0 2px rgba(28,25,23,.08)}}
+}
+.lp-card{width:180px;background:#fff;border:1px solid var(--dash-rule);border-radius:16px;padding:.9rem;box-shadow:var(--dash-shadow);text-align:left}
+.lp-card__title{font-family:var(--f-mono);font-size:.82rem;font-weight:700;color:var(--dash-stone-900);line-height:1.35;margin:0 0 .25rem}
+.lp-card__band{font-family:var(--f-mono);font-size:.72rem;color:var(--dash-stone-500);font-weight:600;display:flex;align-items:center;gap:.35rem}
+.lp-card--completed{opacity:.5}
+.lp-card--completed .lp-card__title{text-decoration:line-through}
+.lp-card--locked{opacity:.4;pointer-events:none}
+.lp-check{width:14px;height:14px;border-radius:50%;background:var(--tier-5);color:#fff;display:inline-grid;place-items:center;font-size:.62rem;font-weight:800;flex-shrink:0}
+
+/* ---------- Entrance / reveal ---------- */
+.reveal-dash{opacity:0;transform:translateY(20px)}
+.reveal-dash.in{opacity:1;transform:none;transition:opacity .6s ease, transform .6s ease}
+@media(prefers-reduced-motion:reduce){
+  .reveal-dash{opacity:1;transform:none;transition:none}
+  .q-card{transition:none}
+  .q-spark__bar{transition:none}
+  .lp-node--current{animation:none}
+}
+body[data-practice="true"] .band-tape__track{animation:none}
+
+/* ---------- Toast ---------- */
+.dash-toast{
+  position:fixed;left:50%;bottom:24px;transform:translateX(-50%) translateY(12px);
+  background:#1c1917;color:#fff;font-family:var(--f-mono);font-size:.84rem;font-weight:600;
+  padding:.7rem 1.2rem;border-radius:999px;box-shadow:0 8px 24px rgba(0,0,0,.18);
+  opacity:0;pointer-events:none;transition:opacity .22s ease, transform .22s ease;z-index:90;
+  white-space:nowrap;max-width:min(92vw, 420px);text-align:center;
+}
+.dash-toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+.visually-hidden{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
+
+/* focus rings for side cards */
+.side-card:focus-visible{box-shadow:0 0 0 3px rgba(13,148,136,.3), var(--dash-shadow)}
+</style>
+</head>
+<body class="dashboard-page">
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="dash-topbar" aria-label="Dashboard top bar">
+  <a class="dash-topbar__left" href="../index.html" aria-label="Back to IELTS Academic hub">
+    <span class="dash-topbar__mark" aria-hidden="true">CT</span>
+    <span>
+      <div class="dash-topbar__brand-title">CLAUDE TEACHING</div>
+      <div class="dash-topbar__brand-sub">IELTS Academic · Dashboard</div>
+    </span>
+  </a>
+  <nav class="dash-topbar__center" aria-label="Primary">
+    <a class="dash-tab dash-tab--active" href="./" aria-current="page">Dashboard</a>
+    <a class="dash-tab" href="../index.html">Hub</a>
+    <a class="dash-tab" href="../Reading/index.html">Reading</a>
+    <a class="dash-tab" href="../Writing/index.html">Writing</a>
+  </nav>
+  <span class="dash-target" aria-label="Target Band">Target: Band 7.0</span>
+</header>
+
+<main id="main" class="dashboard" aria-label="IELTS quadrant dashboard">
+  <div class="dashboard-grid">
+    <!-- LEFT: Skill Quadrants -->
+    <section aria-label="Skill quadrants">
+      <div style="margin-bottom:.9rem">
+        <span class="side-card__label">Command center</span>
+        <h1 style="font-family:var(--f-display);font-weight:400;font-size:clamp(1.4rem,1.2rem + 1vw,1.95rem);letter-spacing:-.02em;margin:.15rem 0 .3rem">Four skills — <em style="font-style:normal;color:var(--skill-reading)">one view</em></h1>
+        <p style="font-size:.88rem;color:var(--dash-stone-500);margin:0;max-width:58ch">Live band snapshot, streak, and the next 12-day path. Mock data hydrates from <code style="font-family:var(--f-mono);font-size:.74rem;background:#f5f5f4;padding:.1rem .35rem;border-radius:6px">it1m.v1</code> if present.</p>
+      </div>
+      <div class="quadrants" id="quadrants"></div>
+    </section>
+
+    <!-- RIGHT: Streak + Ladder + Vocab -->
+    <aside class="side-stack" aria-label="Streak and progress">
+      <div class="side-card reveal-dash" id="card-streak">
+        <p class="side-card__label">Study streak</p>
+        <div class="streak-row"><span class="streak-num" id="streak-num">48</span><span class="streak-sub">days</span></div>
+        <div class="streak-sub">in a row</div>
+        <p class="streak-meta">Keep it going — next check-in tomorrow. <span id="streak-extra" class="muted"></span></p>
+      </div>
+      <div class="side-card reveal-dash" id="card-ladder">
+        <p class="side-card__label">Band score ladder</p>
+        <p class="side-card__title">Where you stand</p>
+        <ul class="ladder" id="ladder" role="list" aria-label="Band ladder 5.0 to 8.0+"></ul>
+      </div>
+      <div class="side-card reveal-dash" id="card-vocab">
+        <p class="side-card__label">Vocabulary mastery</p>
+        <p class="side-card__title">AWL — 30 headwords</p>
+        <div class="vocab-ring-wrap">
+          <div class="vocab-ring" aria-hidden="true">
+            <svg viewBox="0 0 100 100">
+              <circle cx="50" cy="50" r="42" fill="none" stroke="#e7e5e4" stroke-width="8" stroke-linecap="round"/>
+              <circle id="vocab-progress" cx="50" cy="50" r="42" fill="none" stroke="#0d9488" stroke-width="8" stroke-linecap="round" stroke-dasharray="263.89" stroke-dashoffset="263.89"/>
+            </svg>
+            <span class="vocab-pct"><span id="vocab-pct">0%</span></span>
+          </div>
+          <div class="vocab-meta"><div><b id="vocab-count">0/30</b> mastered</div><div>Bucket ≥3 · <span style="color:#0d9488;font-weight:700">68%</span> to next tier</div><div class="muted" style="font-family:var(--f-mono);font-size:.68rem;margin-top:.25rem">SVG r 42 · stroke 8 · cap round</div></div>
+        </div>
+      </div>
+    </aside>
+  </div>
+
+  <!-- Full-width Learning Path -->
+  <section class="learning-path reveal-dash" id="path-section" aria-label="Learning path">
+    <div class="lp-head">
+      <h2>Learning Path</h2>
+      <span class="lp-pill" id="lp-pill">Day 5 of 30</span>
+    </div>
+    <div class="lp-track-wrap" tabindex="0" aria-label="Scrollable learning path">
+      <div class="lp-line" aria-hidden="true"></div>
+      <div class="lp-track" id="lp-track" role="list"></div>
+    </div>
+    <p style="font-family:var(--f-mono);font-size:.72rem;color:var(--dash-stone-500);margin:.65rem 0 0">Scroll horizontally · Current pulse · Completed 50% + strikethrough + check · Locked muted</p>
+  </section>
+
+  <footer style="margin-top:1.4rem;font-family:var(--f-mono);font-size:.72rem;color:#78716c;border-top:1px solid #e7e5e4;padding-top:1rem">
+    <a href="../index.html">← Back to IELTS Academic hub</a> · <span class="muted">Mock band data · Hydrates from localStorage when available · Offline vanilla HTML/CSS/JS</span>
+  </footer>
+</main>
+
+<div id="dash-toast" class="dash-toast" role="status" aria-live="polite"></div>
+
+<script>
+(function(){
+  var prefersReduced = false;
+  try{ prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches; }catch(e){}
+  var CIRC = 2 * Math.PI * 42; // 263.893...
+
+  // ---- Mock data (spec §4) ----
+  var quadrants = [
+    {skill:'Listening', key:'listening', band:'6.5', correct:28, hours:4.2, trend:'↑', spark:[32,48,38,62,54,78,46,58,72,40,68,84]},
+    {skill:'Reading',   key:'reading',   band:'6.0', correct:24, hours:3.8, trend:'↑', spark:[28,36,52,44,60,38,70,50,66,42,74,60]},
+    {skill:'Writing',   key:'writing',   band:'5.5', correct:19, hours:5.1, trend:'→', spark:[30,34,28,46,38,52,40,48,56,36,62,54]},
+    {skill:'Speaking',  key:'speaking',  band:'6.0', correct:22, hours:2.9, trend:'↑', spark:[36,42,30,54,48,66,52,60,44,72,58,76]}
+  ];
+  var ladderData = [
+    {label:'5.0', tier:5},{label:'5.5', tier:5},{label:'6.0', tier:6},{label:'6.5', tier:6},{label:'7.0', tier:7},{label:'7.5', tier:7},{label:'8.0+', tier:8}
+  ];
+  var pathNodes = [
+    {title:'Listening — MCQ', band:'5.0', tier:5, status:'completed'},
+    {title:'Reading — True/False', band:'5.5', tier:5, status:'completed'},
+    {title:'Writing Task 1 — Trends', band:'6.0', tier:6, status:'completed'},
+    {title:'Speaking Part 1', band:'6.0', tier:6, status:'current'},
+    {title:'Reading — Matching', band:'6.5', tier:6, status:'locked'},
+    {title:'Writing Task 2 — Opinion', band:'7.0', tier:7, status:'locked'},
+    {title:'Listening — Map Label', band:'7.0', tier:7, status:'locked'},
+    {title:'Full Mock — 2h30', band:'8.0+', tier:8, status:'locked'}
+  ];
+  var targetBand = '7.0';
+  var mockStreak = 48;
+  var mockVocabPct = 68;
+
+  // ---- Optional hydration from it1m.v1 (and sat.v1 ignored) ----
+  try{
+    var raw = localStorage.getItem('it1m.v1');
+    if(raw){
+      var j = JSON.parse(raw);
+      if(j && typeof j.streak==='number') mockStreak = j.streak;
+      else if(j && j.stats && typeof j.stats.streak==='number') mockStreak = j.stats.streak;
+      // vocab: flashcards bucket >=3
+      if(j && j.flashcards && typeof j.flashcards==='object'){
+        var vals = Object.values(j.flashcards);
+        if(vals.length){
+          var mastered = vals.filter(function(c){ return c && typeof c.bucket==='number' && c.bucket>=3; }).length;
+          var pct = Math.round((mastered / vals.length)*100);
+          if(!isNaN(pct)) mockVocabPct = Math.max(0, Math.min(100, pct));
+        }
+      }
+    }
+  }catch(e){}
+
+  // ---- Render quadrants ----
+  var qWrap = document.getElementById('quadrants');
+  quadrants.forEach(function(q){
+    var card = document.createElement('div');
+    card.className = 'q-card q-card--'+q.key+' reveal-dash';
+    card.setAttribute('tabindex','0');
+    card.setAttribute('role','button');
+    card.setAttribute('aria-label','Start '+q.skill+' Practice');
+    var trendCls = q.trend==='↑' ? 'q-trend-up' : '';
+    var sparkBars = q.spark.map(function(v,i){
+      var h = v; // already %
+      var op = (0.3 + (i/11)*0.7).toFixed(2);
+      var col = 'var(--skill-'+q.key+')';
+      return '<span class="q-spark__bar" style="height:'+h+'%;opacity:'+op+';background:'+col+'"></span>';
+    }).join('');
+    card.innerHTML =
+      '<div class="q-card__head"><span class="q-card__label"><span class="q-dot q-dot--'+q.key+'" aria-hidden="true"></span>'+q.skill+'</span><span class="q-band q-band--'+q.key+'" data-band="'+q.band+'">0.0</span></div>'+
+      '<div class="q-stats"><span><b>'+q.correct+'</b> correct</span><span><b>'+q.hours.toFixed(1)+'h</b></span><span class="'+trendCls+'">'+q.trend+' trend</span></div>'+
+      '<div class="q-spark" aria-hidden="true">'+sparkBars+'</div>'+
+      '<button class="q-btn q-btn--'+q.key+'" type="button" aria-label="Start '+q.skill+' Practice">Start '+q.skill+' →</button>';
+    // click + keyboard
+    function fire(){ showToast(q.skill+' practice — coming soon'); }
+    card.addEventListener('click', function(e){
+      if(e.target.closest('button')){ fire(); return; }
+      fire();
+    });
+    card.querySelector('button').addEventListener('click', function(e){ e.stopPropagation(); fire(); });
+    card.addEventListener('keydown', function(e){ if(e.key==='Enter'||e.key===' '){ e.preventDefault(); fire(); }});
+    qWrap.appendChild(card);
+  });
+
+  // ---- Ladder ----
+  var ladderEl = document.getElementById('ladder');
+  var tierColor = {5:'#22c55e',6:'#14b8a6',7:'#3b82f6',8:'#8b5cf6'};
+  ladderData.forEach(function(r){
+    var idx = ladderData.findIndex(function(x){return x.label===targetBand});
+    var curIdx = ladderData.findIndex(function(x){return x.label===targetBand});
+    // determine states: passed if before target, current if equals, future if after
+    var thisIdx = ladderData.indexOf(r);
+    var state = thisIdx < curIdx ? 'passed' : thisIdx===curIdx ? 'current' : 'future';
+    var li = document.createElement('li');
+    li.className = 'ladder__row ladder__row--'+state;
+    li.setAttribute('role','listitem');
+    if(state==='current') li.setAttribute('aria-current','true');
+    var status = state==='current' ? 'current — target' : state==='passed' ? 'passed' : 'locked';
+    li.innerHTML = '<span class="ladder__bar" style="background:'+tierColor[r.tier]+'" aria-hidden="true"></span><span class="ladder__label">'+r.label+'</span><span class="ladder__status">'+status+'</span>';
+    ladderEl.appendChild(li);
+  });
+
+  // ---- Learning path ----
+  var tierNames={5:'Band 5',6:'Band 6',7:'Band 7',8:'Band 8+'};
+  var lpTrack = document.getElementById('lp-track');
+  pathNodes.forEach(function(n){
+    var col = document.createElement('div');
+    col.className='lp-node-col';
+    col.setAttribute('role','listitem');
+    if(n.status==='current') col.setAttribute('aria-current','true');
+    var nodeCls = 'lp-node lp-node--'+n.tier + (n.status==='current' ? ' lp-node--current':'');
+    var cardCls = 'lp-card' + (n.status==='completed'?' lp-card--completed': n.status==='locked'?' lp-card--locked':'');
+    var check = n.status==='completed' ? '<span class="lp-check" aria-hidden="true">✓</span>' : '';
+    col.innerHTML = '<div class="'+nodeCls+'" aria-hidden="true"></div><div class="'+cardCls+'"><p class="lp-card__title">'+escapeHtml(n.title)+'</p><span class="lp-card__band">'+check+escapeHtml(n.band)+' \u00B7 '+escapeHtml(tierNames[n.tier])+'</span></div>';
+    if(n.status!=='locked'){
+      col.style.cursor='pointer';
+      col.addEventListener('click', function(){ showToast(n.title+' \u2014 '+(n.status==='completed'?'review':'start'))});
+      col.setAttribute('tabindex','0');
+      col.addEventListener('keydown', function(e){ if(e.key==='Enter'||e.key===' '){ e.preventDefault(); showToast(n.title); }});
+    }
+    lpTrack.appendChild(col);
+  });
+
+  // ---- Count-up for band numbers ----
+  var bandEls = document.querySelectorAll('[data-band]');
+  if(prefersReduced){
+    bandEls.forEach(function(el){ el.textContent = el.getAttribute('data-band'); });
+  } else {
+    bandEls.forEach(function(el, idx){
+      var target = parseFloat(el.getAttribute('data-band'));
+      var start=0; var steps=30; var cur=0; var delay = idx*80;
+      setTimeout(function(){
+        var id = setInterval(function(){
+          cur++;
+          var v = (target * (cur/steps));
+          el.textContent = v.toFixed(1);
+          if(cur>=steps){ clearInterval(id); el.textContent = target.toFixed(1); }
+        }, 30);
+      }, delay);
+    });
+  }
+
+  // ---- Streak number (simple set, could count) ----
+  var streakNum = document.getElementById('streak-num');
+  if(prefersReduced){
+    streakNum.textContent = String(mockStreak);
+  } else {
+    var sCur=0, sSteps=30, sTarget=mockStreak;
+    var sId=setInterval(function(){
+      sCur++; streakNum.textContent = String(Math.round(sTarget*(sCur/sSteps)));
+      if(sCur>=sSteps){ clearInterval(sId); streakNum.textContent=String(sTarget); }
+    }, 30);
+  }
+
+  // ---- Vocab ring ----
+  var pctEl=document.getElementById('vocab-pct');
+  var countEl=document.getElementById('vocab-count');
+  var ringEl=document.getElementById('vocab-progress');
+  var totalHW=30;
+  var masteredHW = Math.round(totalHW * (mockVocabPct/100));
+  countEl.textContent = masteredHW+'/'+totalHW;
+  if(prefersReduced){
+    var off = CIRC * (1 - mockVocabPct/100);
+    ringEl.setAttribute('stroke-dashoffset', String(off));
+    pctEl.textContent = mockVocabPct+'%';
+  } else {
+    var step=0, steps2=30;
+    var tid=setInterval(function(){
+      step++;
+      var curPct=Math.round(mockVocabPct*(step/steps2));
+      var off2=CIRC*(1-curPct/100);
+      ringEl.setAttribute('stroke-dashoffset', String(off2));
+      pctEl.textContent = curPct+'%';
+      if(step>=steps2){ clearInterval(tid); }
+    },30);
+  }
+
+  // ---- Sparkline reveal: animate from 0 after IO ----
+  // handled via height transition — bars already at final height; if reduced-motion skip, else we no-op (already visible)
+
+  // ---- IntersectionObserver fade-in-up threshold .15 ----
+  var revealEls=document.querySelectorAll('.reveal-dash');
+  if('IntersectionObserver' in window && !prefersReduced){
+    var io=new IntersectionObserver(function(ents){
+      ents.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); }});
+    },{threshold:.15});
+    revealEls.forEach(function(el){ io.observe(el); });
+  } else {
+    revealEls.forEach(function(el){ el.classList.add('in'); });
+  }
+
+  // ---- Toast ----
+  var toastEl=document.getElementById('dash-toast');
+  var toastTimer=null;
+  function showToast(msg){
+    toastEl.textContent = msg;
+    toastEl.classList.add('show');
+    clearTimeout(toastTimer);
+    toastTimer=setTimeout(function(){ toastEl.classList.remove('show'); },2000);
+  }
+  window._dashShowToast = showToast;
+
+  function escapeHtml(s){
+    return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+  }
+
+})();
+</script>
+<script src="../_Shared/js/hub.js"></script>
+</body>
+</html>

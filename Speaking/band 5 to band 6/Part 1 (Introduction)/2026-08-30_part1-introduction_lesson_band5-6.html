@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<script>try{var t=localStorage.getItem('ct-theme');if(t==='dark'||t==='light')document.documentElement.setAttribute('data-theme',t)}catch(e){}</script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>IELTS Speaking Part 1: Introduction - Band 5-6</title>
@@ -37,8 +38,21 @@ button:hover{background:var(--primary-dark)}
 .progress-fill{background:var(--success);height:100%;width:0%;transition:width 0.3s}
 footer{margin-top:40px;padding-top:20px;border-top:1px solid var(--border);font-size:13px;color:var(--text-muted);text-align:center}</style>
 <link rel="stylesheet" href="../../../_Shared/css/lesson.css">
+<link rel="stylesheet" href="../../../_Shared/css/dashboard.css">
 </head>
-<body>
+<body class="with-dash">
+<header class="dash-topbar" aria-label="Dashboard top bar">
+  <a class="dash-topbar__left" href="../../../index.html" aria-label="Back to hub">
+    <span class="dash-topbar__mark" aria-hidden="true">CT</span>
+    <span>
+      <div class="dash-topbar__brand-title">CLAUDE TEACHING</div>
+      <div class="dash-topbar__brand-sub">IELTS Academic · Dashboard</div>
+    </span>
+  </a>
+  <nav class="dash-topbar__center" aria-label="Primary"><a class="dash-tab" href="../../../dashboard/index.html">Dashboard</a><a class="dash-tab" href="../../../index.html">Hub</a><a class="dash-tab" href="../../../Reading/index.html">Reading</a><a class="dash-tab" href="../../../Writing/index.html">Writing</a></nav>
+  <span class="dash-target" aria-label="Target Band">Target: Band 7.0</span>
+</header>
+
     <div class="timer inactive" id="timer">Ready</div>
 
     <div class="container">
