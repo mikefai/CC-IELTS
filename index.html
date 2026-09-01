@@ -5,152 +5,146 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>IELTS Academic — Materials Hub · Examination Atelier</title>
-<meta name="description" content="IELTS Academic — Materials Hub — CLAUDE TEACHING Examination Atelier. Every lesson by band and question type, band tape, offline.">
+<meta name="description" content="IELTS Academic — Materials Hub — CLAUDE TEACHING Examination Atelier. 236 lessons · 115 answer keys · 28 drills — every lesson by band and question type.">
 <meta name="theme-color" content="#0f141c">
 <link rel="stylesheet" href="_Shared/css/design-system.css">
 <link rel="stylesheet" href="_Shared/css/dashboard.css">
 </head>
 <body class="with-dash">
-<header class="dash-topbar" aria-label="Dashboard top bar">
+<header class="dash-topbar" aria-label="Primary navigation">
   <a class="dash-topbar__left" href="index.html" aria-label="Back to hub">
     <span class="dash-topbar__mark" aria-hidden="true">CT</span>
     <span>
       <div class="dash-topbar__brand-title">CLAUDE TEACHING</div>
-      <div class="dash-topbar__brand-sub">IELTS Academic · Dashboard</div>
+      <div class="dash-topbar__brand-sub">IELTS Academic · Examination Atelier</div>
     </span>
   </a>
-  <nav class="dash-topbar__center" aria-label="Primary"><a class="dash-tab" href="dashboard/index.html">Dashboard</a><a class="dash-tab" href="index.html">Hub</a><a class="dash-tab" href="Reading/index.html">Reading</a><a class="dash-tab" href="Writing/index.html">Writing</a></nav>
-  <span class="dash-target" aria-label="Target Band">Target: Band 7.0</span>
+  <nav class="dash-topbar__center" aria-label="Primary">
+    <a class="dash-tab dash-tab--active" href="index.html" aria-current="page">Hub</a>
+    <a class="dash-tab" href="dashboard/index.html">Dashboard</a>
+    <a class="dash-tab" href="Reading/index.html">Reading</a>
+    <a class="dash-tab" href="Writing/index.html">Writing</a>
+  </nav>
+  <div class="dash-topbar__right">
+    <span class="dash-target" id="dashTarget" aria-label="Target band" role="button" tabindex="0" title="Click to change target band">Target: Band 7.0</span>
+    <button id="theme-toggle" class="theme-toggle" type="button" aria-pressed="false" aria-label="Switch to dark theme"><span class="theme-icon" aria-hidden="true">☀</span><span class="theme-label visually-hidden">Dark</span></button>
+  </div>
 </header>
 
 <div id="progress" class="progress" aria-hidden="true"></div>
 <a class="skip-link" href="#main">Skip to content</a>
-<header class="topbar">
-  <div class="wrap topbar__inner">
-    <a class="topbar__brand" href="#">
-      <span class="topbar__mark">CT</span>
-      <span>
-        <span class="topbar__title">CLAUDE TEACHING</span>
-        <span class="topbar__sub">Examination Atelier · Offline</span>
-      </span>
-    </a>
-    <div class="topbar__right">
-      <a class="topbar__crumb" href="dashboard/index.html">Dashboard →</a>
-      <a class="topbar__crumb" href="../SAT/index.html">Digital SAT →</a>
-      <span class="pill pill--violet">IELTS Academic</span>
-      <button id="theme-toggle" class="theme-toggle" type="button" aria-pressed="false" aria-label="Switch to dark theme"><span class="theme-icon" aria-hidden="true">☀</span><span class="theme-label visually-hidden">Dark</span></button>
-    </div>
-  </div>
-</header>
 
 <main id="main" class="wrap">
   <section class="hero">
     <span class="eyebrow">IELTS Academic · Bands 4 → 9 · Four skills</span>
-    <h1 class="hero__title">IELTS Academic — <em>the whole exam, in order</em></h1>
-    <p class="lede">Every lesson, practice set and app — organized the way examiners organize the test: section → band → question type. Tape below is the band ruler.</p>
-    <div class="hero__meta">
-      <span class="chip"><b>5</b> sections</span>
-      <span class="chip"><b>32</b> materials</span>
-      <span class="chip">Max 3–4 strategies per lesson · Fully offline</span>
+    <h1 class="hero__title">IELTS Academic — the whole exam, in order</h1>
+    <p class="lede">Every lesson, practice set and app — organized the way examiners organize the test: section → band → question type. Choose your target band below and start.</p>
+    <div class="hero__actions">
+      <a class="btn btn--primary" href="dashboard/index.html" id="heroPrimary">Start at Band 6–7 →</a>
+      <a class="btn btn--ghost" href="Listening/band 6 to band 7/Multiple Choice/2026-09-04_listening-multiple-cho-paraphrase-matching_lesson_band6-7.html">Try a sample lesson</a>
+      <span class="hero__meta-inline">236 lessons · 115 keys · 28 drills · Offline</span>
     </div>
   </section>
 
-  <div class="band-tape" aria-hidden="true">
-    <div class="band-tape__track">
-      <span class="band-tape__item"><b>4.0</b> — 5.0</span>
-      <span class="band-tape__item"><b>5.0</b> — 6.0</span>
-      <span class="band-tape__item band-tape__item--accent"><b>6.0</b> — 7.0 ★ target</span>
-      <span class="band-tape__item"><b>7.0</b> — 8.0</span>
-      <span class="band-tape__item"><b>8.0</b> — 9.0</span>
-      <span class="band-tape__item"><b>Listening</b> 5 types</span>
-      <span class="band-tape__item"><b>Reading</b> 5 types</span>
-      <span class="band-tape__item"><b>Writing</b> Task 1 + 2</span>
-      <span class="band-tape__item"><b>Speaking</b> Parts 1—3</span>
-      <!-- duplicate -->
-      <span class="band-tape__item"><b>4.0</b> — 5.0</span>
-      <span class="band-tape__item"><b>5.0</b> — 6.0</span>
-      <span class="band-tape__item band-tape__item--accent"><b>6.0</b> — 7.0 ★ target</span>
-      <span class="band-tape__item"><b>7.0</b> — 8.0</span>
-      <span class="band-tape__item"><b>8.0</b> — 9.0</span>
-      <span class="band-tape__item"><b>Listening</b> 5 types</span>
-      <span class="band-tape__item"><b>Reading</b> 5 types</span>
-      <span class="band-tape__item"><b>Writing</b> Task 1 + 2</span>
-      <span class="band-tape__item"><b>Speaking</b> Parts 1—3</span>
+  <div class="band-ruler" role="radiogroup" aria-label="Band ruler — choose your target">
+    <span class="band-ruler__label">Target band</span>
+    <div class="band-ruler__track" id="bandRuler">
+      <button class="band-ruler__item" role="radio" aria-checked="false" data-band="4-5"><b>4.0</b>–5.0</button>
+      <button class="band-ruler__item" role="radio" aria-checked="false" data-band="5-6"><b>5.0</b>–6.0</button>
+      <button class="band-ruler__item band-ruler__item--active" role="radio" aria-checked="true" data-band="6-7"><b>6.0</b>–7.0 ★</button>
+      <button class="band-ruler__item" role="radio" aria-checked="false" data-band="7-8"><b>7.0</b>–8.0</button>
+      <button class="band-ruler__item" role="radio" aria-checked="false" data-band="8-9"><b>8.0</b>–9.0</button>
     </div>
+    <span class="band-ruler__hint" id="bandHint">You’re viewing Band 6–7. Cards below update to your band.</span>
   </div>
 
   <div class="toolbar reveal">
     <label class="search" aria-label="Filter sections">
-      <svg class="search__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
-      <input id="q" type="search" placeholder="Filter sections… try ‘writing’ or ‘reading 6’" autocomplete="off">
+      <svg class="search__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+      <input id="q" type="search" placeholder="Search question types… e.g. ‘heading match’ or ‘bar charts’" autocomplete="off" aria-describedby="filterLive">
     </label>
     <div class="filter-row" role="group" aria-label="Quick filters">
-      <button class="filter-btn" data-filter="all" aria-pressed="false">All</button>
+      <button class="filter-btn" data-filter="all" aria-pressed="true">All</button>
       <button class="filter-btn" data-filter="writing" aria-pressed="false">Writing</button>
       <button class="filter-btn" data-filter="reading" aria-pressed="false">Reading</button>
       <button class="filter-btn" data-filter="listening" aria-pressed="false">Listening</button>
       <button class="filter-btn" data-filter="speaking" aria-pressed="false">Speaking</button>
     </div>
+    <div id="filterLive" class="visually-hidden" aria-live="polite" aria-atomic="true"></div>
   </div>
 
   <nav class="grid grid--cards reveal" id="cards" aria-label="IELTS sections">
-    <a class="card card--teal" data-k="listening first material live beat-the-distractors mcq at band 5 6 five question types" href="Listening/index.html">
-      <span class="card__kicker">Section · Listening</span>
+    <a class="card" data-k="listening five question types multiple choice matching sentence completion plan map diagram form table band 4 5 6 7 8" data-bands="4-5 5-6 6-7 7-8 8-9" href="Listening/index.html">
       <div class="card__head">
         <span class="card__icon" aria-hidden="true">♬</span>
         <span class="card__title">Listening</span>
-        <span class="card__count">1</span>
       </div>
-      <p class="card__desc">First material live — beat-the-distractors MCQ at Band 5–6. Five question types to cover.</p>
-      <span class="card__go">Browse materials</span>
+      <p class="card__desc">Master paraphrase and traps across all 25 band × type combinations — from form filling to camouflaged labels.</p>
+      <div class="card__meta">
+        <span class="card__count">25 folders · 50 lessons</span>
+        <span class="card__meta-dot">·</span>
+        <span class="card__band">Target 6–7 ready</span>
+      </div>
+      <span class="card__go">Open Listening →</span>
     </a>
-    <a class="card card--accent" data-k="reading full band 4 5 question-type coverage band 6 7 skills band 7 8 mixed matching timed skill trainer" href="Reading/index.html">
-      <span class="card__kicker">Section · Reading</span>
+    <a class="card card--featured" data-k="reading full band 4 5 question-type coverage band 6 7 skills band 7 8 mixed matching headings sentence endings true false short answer" data-bands="4-5 5-6 6-7 7-8 8-9" href="Reading/index.html">
       <div class="card__head">
         <span class="card__icon" aria-hidden="true">▤</span>
         <span class="card__title">Reading</span>
-        <span class="card__count">12</span>
+        <span class="card__badge">Most complete</span>
       </div>
-      <p class="card__desc">Full Band 4–5 question-type coverage, Band 6–7 skills, Band 7–8 mixed matching, plus the timed skill trainer.</p>
-      <span class="card__go">Browse materials</span>
+      <p class="card__desc">Full 4–5 foundations to 8–9 nuance — headings, sentence endings, T/F/NG and short answer with evidence drills.</p>
+      <div class="card__meta">
+        <span class="card__count">25 folders · 50 lessons</span>
+        <span class="card__meta-dot">·</span>
+        <span class="card__band">12 lessons live</span>
+      </div>
+      <span class="card__go">Open Reading →</span>
     </a>
-    <a class="card card--violet" data-k="speaking part 1 lesson practice plus the part 2 long turn cue-card trainer with real exam timing" href="Speaking/index.html">
-      <span class="card__kicker">Section · Speaking</span>
+    <a class="card" data-k="speaking part 1 introduction part 2 long turn cue-card part 3 discussion" data-bands="4-5 5-6 6-7 7-8 8-9" href="Speaking/index.html">
       <div class="card__head">
         <span class="card__icon" aria-hidden="true">◉</span>
         <span class="card__title">Speaking</span>
-        <span class="card__count">3</span>
       </div>
-      <p class="card__desc">Part 1 lesson & practice plus the Part 2 Long Turn cue-card trainer with real exam timing.</p>
-      <span class="card__go">Browse materials</span>
+      <p class="card__desc">Fluency fills to discourse mastery — 15 cue-card sets with timers, checklists and model language.</p>
+      <div class="card__meta">
+        <span class="card__count">15 folders · 30 lessons</span>
+        <span class="card__meta-dot">·</span>
+        <span class="card__band">Part 2 drill →</span>
+      </div>
+      <span class="card__go">Open Speaking →</span>
     </a>
-    <a class="card" data-k="writing task 1 trend language training packs and two apps task 2 opinion discussion essays" href="Writing/index.html">
-      <span class="card__kicker">Section · Writing</span>
+    <a class="card" data-k="writing task 1 bar charts line graphs pie charts tables maps processes trend language task 2 opinion discussion problem solution advantage disadvantage" data-bands="4-5 5-6 6-7 7-8 8-9" href="Writing/index.html">
       <div class="card__head">
         <span class="card__icon" aria-hidden="true">✎</span>
         <span class="card__title">Writing</span>
-        <span class="card__count">15</span>
       </div>
-      <p class="card__desc">Task 1 trend language, training packs & two mastery apps · Task 2 complete suite (opinion, discussion, problem–solution, outweigh).</p>
-      <span class="card__go">Browse materials</span>
+      <p class="card__desc">Task 1: six visuals from overview to synthesis. Task 2: four essays from thesis to policy evaluation.</p>
+      <div class="card__meta">
+        <span class="card__count">50 folders · 100 lessons</span>
+        <span class="card__meta-dot">·</span>
+        <span class="card__band">Mastery apps live</span>
+      </div>
+      <span class="card__go">Open Writing →</span>
     </a>
-    <a class="card card--amber" data-k="vocabulary academic word list trainer 30 headwords three sets progress saved on your device" href="Vocabulary/index.html">
-      <span class="card__kicker">Section · Vocabulary</span>
+    <a class="card card--quiet" data-k="vocabulary academic word list awl trainer headwords" data-bands="" href="Vocabulary/index.html">
       <div class="card__head">
         <span class="card__icon" aria-hidden="true">✦</span>
         <span class="card__title">Vocabulary</span>
-        <span class="card__count">1</span>
       </div>
-      <p class="card__desc">Academic Word List Trainer — 30 headwords, three sets, progress saved on your device.</p>
-      <span class="card__go">Browse materials</span>
+      <p class="card__desc">Academic Word List — 570 families, focused trainer with spaced recall. Not banded.</p>
+      <div class="card__meta">
+        <span class="card__count">1 trainer · 30 headwords</span>
+      </div>
+      <span class="card__go">Open Vocabulary →</span>
     </a>
   </nav>
 
-  <div id="empty" class="empty" style="display:none; margin-top:1rem;">No sections match that filter. Try “writing” or “reading”.</div>
+  <div id="empty" class="empty" style="display:none; margin-top:1rem;">No sections match that filter. Try “writing” or “heading match”.</div>
 
-  <div class="callout callout--violet reveal" style="margin-top:1.6rem">
-    <div class="callout__label">Atelier rule — examiner’s pen</div>
-    <p class="small" style="margin:0">Max 3–4 new strategies per lesson · Balanced answer keys · Perforation is structure — tape shows band, not decoration. <a href="CLAUDE.md">CLAUDE.md</a> · Published at <a href="https://github.com/mikefai/CC-IELTS">github.com/mikefai/CC-IELTS</a> · <span class="muted">Lamp toggles Light / Dark</span></p>
+  <div class="callout reveal" style="margin-top:1.8rem">
+    <div class="callout__label">Atelier rule</div>
+    <p class="small" style="margin:0">Max 3–4 new strategies per lesson · Balanced keys (11/12 skew = rebuild) · Offline · <a href="dashboard/index.html">Dashboard</a> · <a href="https://github.com/mikefai/CC-IELTS">github.com/mikefai/CC-IELTS</a></p>
   </div>
 
   <footer class="foot reveal">

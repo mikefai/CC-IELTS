@@ -54,11 +54,13 @@ body.with-dash{padding-top:56px}
   content:"";position:absolute;left:.7rem;right:.7rem;bottom:-1px;height:2px;
   background:#6366f1;border-radius:999px;
 }
+.dash-topbar__right{ display:flex; align-items:center; gap:.6rem; }
 .dash-target{
   font-family:var(--f-mono, monospace);font-size:.7rem;font-weight:700;letter-spacing:.06em;
   background:#dbeafe;color:#1e40af;border:1px solid #bfdbfe;border-radius:999px;
-  padding:.35rem .75rem;white-space:nowrap;
+  padding:.35rem .75rem;white-space:nowrap; cursor:pointer; transition:filter .15s;
 }
+.dash-target:hover{ filter:brightness(1.05); }
 @media(max-width:600px){ .dash-target{display:none} }
 
 /* Grid + quadrants — only affect pages that include .dashboard */
