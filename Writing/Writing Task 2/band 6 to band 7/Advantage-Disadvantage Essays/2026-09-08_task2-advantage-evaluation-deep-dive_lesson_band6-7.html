@@ -48,6 +48,7 @@ Conclusion restate: <span class="line"></span>
 var KEY={};
 (function(){
   var timer=document.getElementById('timer'), start=document.getElementById('startBtn');
+  document.addEventListener('visibilitychange', function(){ if(document.hidden && typeof iv!=='undefined' && iv){ clearInterval(iv); iv=null; }});
   var sec=40*60, iv=null;
   function fmt(s){var m=Math.floor(s/60), r=s%60; return String(m).padStart(2,'0')+':'+String(r).padStart(2,'0')}
   function tick(){sec--; if(timer){timer.textContent=fmt(sec); if(sec<=0){timer.classList.add('over'); clearInterval(iv); iv=null;} } }

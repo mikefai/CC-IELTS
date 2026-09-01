@@ -8,14 +8,20 @@
   var el=document.getElementById('qs');
   qs.forEach(function(item,i){
     var d=document.createElement('div'); d.className='q'; d.dataset.ans=item.ans;
-    d.innerHTML='<div style="font-weight:700;margin-bottom:.4rem">'+item.q+'</div>' + item.opts.map(function(o,j){
-      var v=String.fromCharCode(65+j);
-      return '<label style="display:block;margin:.3rem 0;cursor:pointer"><input type="radio" name="q'+i+'" value="'+v+'"> '+o+'</label>';
-    }).join('');
-    el.appendChild(d);
+      var title=document.createElement('div'); title.style.fontWeight='700'; title.style.marginBottom='.4rem'; title.textContent=item.q; d.appendChild(title);
+  item.opts.forEach(function(o,j){
+    var v=String.fromCharCode(65+j);
+    var label=document.createElement('label'); label.style.display='block'; label.style.margin='0.3rem 0'; label.style.cursor='pointer';
+    var inp=document.createElement('input'); inp.type='radio'; inp.name='q'+i; inp.value=v;
+    label.appendChild(inp); label.appendChild(document.createTextNode(' '+o));
+    d.appendChild(label);
+  });
+  el.appendChild(d);
   });
   var timer=document.getElementById('timer'), start=document.getElementById('startBtn'), reset=document.getElementById('resetBtn');
   var sec=360, iv=null;
+  // H3 diagnostic + fix: clear timer on hidden to prevent leak
+  document.addEventListener('visibilitychange', function(){ if(document.hidden && iv){ clearInterval(iv); iv=null; var s=document.getElementById('startBtn'); if(s) s.textContent='Resume'; } });
   function fmt(s){var m=Math.floor(s/60), r=s%60; return String(m).padStart(2,'0')+':'+String(r).padStart(2,'0')}
   function tick(){sec--; timer.textContent=fmt(sec); if(sec<=0){timer.classList.add('over'); clearInterval(iv); iv=null;}}
   timer.textContent=fmt(sec);
