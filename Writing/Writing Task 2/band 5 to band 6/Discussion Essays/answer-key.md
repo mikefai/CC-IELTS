@@ -29,3 +29,6 @@ No MCQ key — self-assessed against checklist.
 
 ---
 **Before finalising:** count by letter — no option holds far more than its share. 4±1 per A-D per 12Q set; here 1 each per 4Q lesson. Rebalance distractors if skewed, never the key.
+## 2026-09-07_task2-discussion-language-focus_lesson_band5-6.html — Language Focus — Hedging (supplementary)
+
+No MCQ — self-assessed via checklist (cohesion/hedging/one-idea). 3 criteria ticked → ready.

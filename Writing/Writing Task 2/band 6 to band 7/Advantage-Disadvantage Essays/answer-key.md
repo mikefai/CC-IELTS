@@ -29,3 +29,6 @@ No MCQ key — self-assessed against checklist.
 
 ---
 **Before finalising:** count by letter — no option holds far more than its share. 4±1 per A-D per 12Q set; here 1 each per 4Q lesson. Rebalance distractors if skewed, never the key.
+## 2026-09-08_task2-advantage-evaluation-deep-dive_lesson_band6-7.html — Evaluation Deep Dive (supplementary)
+
+No MCQ — self-assessed via checklist (cohesion/hedging/one-idea). 3 criteria ticked → ready.

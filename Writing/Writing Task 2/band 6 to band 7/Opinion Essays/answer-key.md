@@ -111,3 +111,7 @@ Quote **one line of the student's own writing** as evidence for each band you aw
 an unevidenced band is not usable feedback.
 
 Limit yourself to **three prioritised actions**. More than three is not remembered.
+
+## 2026-09-08_task2-opinion-es-synthesis-extension_lesson_band6-7.html — Synthesis Extension (supplementary)
+
+No MCQ — self-assessed via checklist (cohesion/hedging/one-idea). 3 criteria ticked → ready.
